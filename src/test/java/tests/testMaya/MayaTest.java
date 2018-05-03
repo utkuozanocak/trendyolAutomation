@@ -34,5 +34,7 @@ public class MayaTest extends BaseTest {
 
 //        ucakBiletiPage.openPage();
 
+        //deneme
+
     }
 }
