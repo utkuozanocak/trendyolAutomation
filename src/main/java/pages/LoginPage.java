@@ -7,6 +7,9 @@ import com.codeborne.selenide.WebDriverRunner;
 import data.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -30,25 +33,32 @@ public class LoginPage extends MainPage  {
     private String LOGIN_PAGE_ID = GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP");
     private String TXT_USERNAME_ID = GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP");
     private String TXT_PASSWWORD_ID = GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP");
-    private String SELECT_MAINORG_XPATH = GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP");
+    //private String SELECT_MAINORG_XPATH = GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP");
     private String LBL_AFTER_USERPASS_ID =GetObject("MAYA","LBL_AFTER_USERPASS_ID","ID","MayaLoginPage","PRP");
-    private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP");
-    private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage","PRP");
-    private String BTN_LOGIN_ID = GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
+    //private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP");
+    //private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage");
+    //private String BTN_LOGIN_ID = GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
 
 
     private SelenideElement txtUsername = $(By.id(TXT_USERNAME_ID));
     private SelenideElement txtPassword = $(By.id(TXT_PASSWWORD_ID));
-    private SelenideElement cmbOrganisation = $x(SELECT_MAINORG_XPATH);
-    private SelenideElement txtSubOrganisation = $x(SELECT_SUBORG_XPATH);
+    private SelenideElement cmbOrganisation = $(By.id("loginForm:i3_input"));
+    //private SelenideElement txtSubOrganisation = $x(SELECT_SUBORG_XPATH);
+   // private SelenideElement btnSubOrganisatioid(n = $(By.BTN_SUBORG_ID));
 
-    private SelenideElement btnSubOrganisation = $(By.id(BTN_SUBORG_ID));
-
-
+    private SelenideElement SELECT_MAINORG_XPATH = $(By.xpath(GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP")));
+    private SelenideElement BTN_SUBORG_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUBORG_XPATH","XPATH","MayaLoginPage","PRP")));
+    private SelenideElement BTN_LOGIN_ID = $(By.id(GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP")));
+   // private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage");
+    private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage", "PRP");
 
     private SelenideElement btnLogin = $(By.id("eForm:egirisYapButton"));
     //private SelenideElement btnUsermenu = $(By.id("topMenuForm:userMenuButton_button"));
     private SelenideElement btnUsermenu = $("button#topMenuForm\\:userMenuButton_button");
+    private SelenideElement formAltOrganizasyon = $x("//*[@id='loginForm:subDealerDialogId_title']");
+    private SelenideElement btnKod1 = $(By.xpath("//span[text()='00001.00001']"));
+    private SelenideElement BTN_SUBORG_ID = $(By.id(GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage", "PRP")));
+    private SelenideElement btnKod2 = $(By.xpath("//*[@id='loginForm:subDealerTable_data']/tr[1]"));
 
 
 
@@ -77,15 +87,34 @@ public class LoginPage extends MainPage  {
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPage login(String username, String password) {
-//        System.out.println("LOGIN_PAGE_ID:" + LOGIN_PAGE_ID + " " + TXT_USERNAME_ID + " " + TXT_PASSWWORD_ID + " " + SELECT_MAINORG_XPATH + " " + LBL_AFTER_USERPASS_ID + " " + BTN_SUBORG_ID + " " + SELECT_SUBORG_XPATH + " " + BTN_LOGIN_ID);
         open();
 
         txtUsername.sendKeys(username);
         txtPassword.sendKeys(password);
-        cmbOrganisation.click();
+        txtPassword.sendKeys(Keys.ENTER);
+        //cmbOrganisation.selectOptionByValue("TTB01.00002");
+       // cmbOrganisation.selectOption("ADANA BACK OFIS");
 
-        cmbOrganisation.selectOption("ADANA BACK OFIS");
-//        btnLogin.click();
+        SELECT_MAINORG_XPATH.click();
+
+        //driver.findElement(By.xpath(text)).click();
+        WebDriverRunner.getWebDriver().findElement(By.xpath("//li[text()='ADANA BACK OFIS']")).click();
+
+        // driver.findElement(By.id(BTN_SUBORG_ID)).click();
+        BTN_SUBORG_ID.click();
+
+        //WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(),60);
+       //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SELECT_SUBORG_XPATH)));
+
+       // formAltOrganizasyon.shouldBe(Condition.visible);
+
+        //sorun burda
+        //driver.findElement(By.xpath(text)).click();
+      //  WebDriverRunner.getWebDriver().findElement(By.xpath("//span[text()='00001.00001']")).click();
+        btnKod2.click();
+
+        //  driver.findElement(By.id(BTN_LOGIN_ID)).click();
+        BTN_LOGIN_ID.click();
 //        btnUsermenu.waitUntil(Condition.visible, 40000);
         return this;
     }

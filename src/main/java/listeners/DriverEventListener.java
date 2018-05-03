@@ -82,9 +82,9 @@ public class DriverEventListener extends BaseLibrary implements WebDriverEventLi
                 || by.equals(By.cssSelector(".lobibox-notify"))
                 ||*/
 
-        if (by.toString().contains("lobibox")
+/*        if (by.toString().contains("lobibox")
                 || (element != null && element.toString().contains("lobibox")))
-            return;
+            return;*/
 
 
         waitForLoadingJS(driver);

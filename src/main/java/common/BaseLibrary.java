@@ -13,8 +13,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
+import org.testng.*;
+import org.testng.asserts.*;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -46,6 +46,7 @@ public class BaseLibrary extends ElementsContainer {
     private long waitForLoading = 30;
     private int doWaitLoading = 0;
     private boolean doNotWaitLoading = false;
+    //public WebDriverWait wait;
 
     private static Connection connection;
     private static Statement statement;
@@ -274,11 +275,12 @@ public class BaseLibrary extends ElementsContainer {
 
             boolean isLoaderHidden = false;
             try {
-                isLoaderHidden = (boolean) js.executeScript("return document.querySelectorAll('div[id*=\"bekleyiniz\"][style*=\"visibility: visible\"]').length == 0");
+                isLoaderHidden = (boolean) js.executeScript("return document.querySelectorAll('div[class*=\"ui-dialog\"][style*=\"visibility: visible\"]').length == 0");
 //                    executeScript("return $('.loading').is(':visible') == false");
+             //   System.out.println("Loading bekleniyor");
             } catch (Exception e) {
                 isLoaderHidden = true;
-                //System.out.println("Load: isLoaderHidden error: " + e.getMessage());
+                System.out.println("Load: isLoaderHidden error: " + e.getMessage());
             }
 
             return isJsFinished && isLoaderHidden && isAjaxFinished;
