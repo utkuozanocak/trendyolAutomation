@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import common.DBConnection;
 import data.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -16,6 +15,7 @@ import static data.TestData.usernameOPTIIM;
 
 public class LoginPage extends MainPage  {
 
+/*
     DBConnection dbConnection = new DBConnection();
     private String LOGIN_PAGE_ID = dbConnection.GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP");
     private String TXT_USERNAME_ID = dbConnection.GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP");
@@ -25,6 +25,16 @@ public class LoginPage extends MainPage  {
     private String BTN_SUBORG_ID = dbConnection.GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP");
     private String SELECT_SUBORG_XPATH = dbConnection.GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage","PRP");
     private String BTN_LOGIN_ID = dbConnection.GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
+*/
+
+    private String LOGIN_PAGE_ID = GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP");
+    private String TXT_USERNAME_ID = GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP");
+    private String TXT_PASSWWORD_ID = GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP");
+    private String SELECT_MAINORG_XPATH = GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP");
+    private String LBL_AFTER_USERPASS_ID =GetObject("MAYA","LBL_AFTER_USERPASS_ID","ID","MayaLoginPage","PRP");
+    private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP");
+    private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage","PRP");
+    private String BTN_LOGIN_ID = GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
 
 
     private SelenideElement txtUsername = $(By.id(TXT_USERNAME_ID));

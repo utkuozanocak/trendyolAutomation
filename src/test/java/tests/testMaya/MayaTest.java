@@ -18,9 +18,6 @@ public class MayaTest extends BaseTest {
 
     UcakBiletiPage ucakBiletiPage;
 
-
-
-
     @BeforeMethod
     public void loginBeforeTests() {
         login("TEOASLIM","Test1234");
@@ -33,8 +30,6 @@ public class MayaTest extends BaseTest {
     public void TS0001() throws InterruptedException {
 
 //        ucakBiletiPage.openPage();
-
-        //deneme
 
     }
 }
