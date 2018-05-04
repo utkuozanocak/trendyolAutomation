@@ -8,7 +8,7 @@ public class SozlesmelerimPage extends MainPage {
 
     @Step("Sözleşmelerim sayfası açılır.")
     public SozlesmelerimPage openPage() {
-        ustMenu(UstMenuData.Yonetim.SMSEPostaSablonlari);
+        ustMenu(UstMenuData.KurumsalSozlesmeYonetimi.Sozlesmelerim);
         return this;
     }
 
