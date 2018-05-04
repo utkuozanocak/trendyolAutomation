@@ -30,35 +30,46 @@ public class LoginPage extends MainPage  {
     private String BTN_LOGIN_ID = dbConnection.GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
 */
 
-    private String LOGIN_PAGE_ID = GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP");
-    private String TXT_USERNAME_ID = GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP");
-    private String TXT_PASSWWORD_ID = GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP");
+
+    //private String TXT_USERNAME_ID = GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP");
+    //private String TXT_PASSWWORD_ID = GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP");
     //private String SELECT_MAINORG_XPATH = GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP");
-    private String LBL_AFTER_USERPASS_ID =GetObject("MAYA","LBL_AFTER_USERPASS_ID","ID","MayaLoginPage","PRP");
+    //private String LBL_AFTER_USERPASS_ID =GetObject("MAYA","LBL_AFTER_USERPASS_ID","ID","MayaLoginPage","PRP");
     //private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP");
     //private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage");
     //private String BTN_LOGIN_ID = GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP");
 
 
-    private SelenideElement txtUsername = $(By.id(TXT_USERNAME_ID));
-    private SelenideElement txtPassword = $(By.id(TXT_PASSWWORD_ID));
-    private SelenideElement cmbOrganisation = $(By.id("loginForm:i3_input"));
+//    private SelenideElement txtUsername = $(By.id(TXT_USERNAME_ID));
+//    private SelenideElement txtPassword = $(By.id(TXT_PASSWWORD_ID));
+//    private SelenideElement cmbOrganisation = $(By.id("loginForm:i3_input"));
     //private SelenideElement txtSubOrganisation = $x(SELECT_SUBORG_XPATH);
    // private SelenideElement btnSubOrganisatioid(n = $(By.BTN_SUBORG_ID));
 
-    private SelenideElement SELECT_MAINORG_XPATH = $(By.xpath(GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP")));
-    private SelenideElement BTN_SUBORG_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUBORG_XPATH","XPATH","MayaLoginPage","PRP")));
-    private SelenideElement BTN_LOGIN_ID = $(By.id(GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP")));
-   // private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage");
-    private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage", "PRP");
 
-    private SelenideElement btnLogin = $(By.id("eForm:egirisYapButton"));
+//    private SelenideElement BTN_SUBORG_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUBORG_XPATH","XPATH","MayaLoginPage","PRP")));
+//    private SelenideElement BTN_LOGIN_ID = $(By.id(GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP")));
+   // private String BTN_SUBORG_ID = GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage");
+//    private String SELECT_SUBORG_XPATH = GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage", "PRP");
+//
+//    private SelenideElement btnLogin = $(By.id("eForm:egirisYapButton"));
     //private SelenideElement btnUsermenu = $(By.id("topMenuForm:userMenuButton_button"));
-    private SelenideElement btnUsermenu = $("button#topMenuForm\\:userMenuButton_button");
-    private SelenideElement formAltOrganizasyon = $x("//*[@id='loginForm:subDealerDialogId_title']");
-    private SelenideElement btnKod1 = $(By.xpath("//span[text()='00001.00001']"));
-    private SelenideElement BTN_SUBORG_ID = $(By.id(GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage", "PRP")));
-    private SelenideElement btnKod2 = $(By.xpath("//*[@id='loginForm:subDealerTable_data']/tr[1]"));
+//    private SelenideElement btnUsermenu = $("button#topMenuForm\\:userMenuButton_button");
+//    private SelenideElement formAltOrganizasyon = $x("//*[@id='loginForm:subDealerDialogId_title']");
+//    private SelenideElement btnKod1 = $(By.xpath("//span[text()='00001.00001']"));
+//    private SelenideElement BTN_SUBORG_ID = $(By.id(GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage", "PRP")));
+//    private SelenideElement btnKod2 = $(By.xpath("//*[@id='loginForm:subDealerTable_data']/tr[1]"));
+
+
+
+    private SelenideElement LOGIN_PAGE_ID = $(By.id(GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement TXT_USERNAME_ID = $(By.id(GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement TXT_PASSWWORD_ID = $(By.id(GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement SELECT_MAINORG_XPATH = $(By.xpath(GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP")));
+    private SelenideElement LBL_AFTER_USERPASS_ID = $(By.id(GetObject("MAYA","LBL_AFTER_USERPASS_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement BTN_SUBORG_ID = $(By.id(GetObject("MAYA","BTN_SUBORG_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement BTN_LOGIN_ID = $(By.id(GetObject("MAYA","BTN_LOGIN_ID","ID","MayaLoginPage","PRP")));
+    private SelenideElement SELECT_SUBORG_XPATH = $(By.xpath(GetObject("MAYA","SELECT_SUBORG_XPATH","XPATH","MayaLoginPage","PRP")));
 
 
 
@@ -86,8 +97,10 @@ public class LoginPage extends MainPage  {
     }
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
-    public LoginPage login(String username, String password) {
+    public LoginPage login(String username, String password,String MainOrg,String SubOrg) {
         open();
+
+
 
         txtUsername.sendKeys(username);
         txtPassword.sendKeys(password);
@@ -103,15 +116,21 @@ public class LoginPage extends MainPage  {
         // driver.findElement(By.id(BTN_SUBORG_ID)).click();
         BTN_SUBORG_ID.click();
 
-        //WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(),60);
-       //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SELECT_SUBORG_XPATH)));
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(),60);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SELECT_SUBORG_XPATH)));
 
        // formAltOrganizasyon.shouldBe(Condition.visible);
 
         //sorun burda
         //driver.findElement(By.xpath(text)).click();
       //  WebDriverRunner.getWebDriver().findElement(By.xpath("//span[text()='00001.00001']")).click();
-        btnKod2.click();
+        btnKod1.click();
+
+
+
+        //loginPage.clickSubOrg();
+        //loginPage.isValidSubOrgList();
+        //loginPage.selectSubOrg(loginPage.GetTestParameter("MayaLoginTest","SubOrg")[0]);
 
         //  driver.findElement(By.id(BTN_LOGIN_ID)).click();
         BTN_LOGIN_ID.click();
