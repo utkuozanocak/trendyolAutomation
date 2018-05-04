@@ -275,8 +275,9 @@ public class BaseLibrary extends ElementsContainer {
 
             boolean isLoaderHidden = false;
             try {
-                isLoaderHidden = (boolean) js.executeScript("return document.querySelectorAll('div[class*=\"ui-dialog\"][style*=\"visibility: visible\"]').length == 0");
-//                    executeScript("return $('.loading').is(':visible') == false");
+                isLoaderHidden = (boolean) js.executeScript("return document.querySelectorAll('div[style*='visibility: visible'] img[alt='loading']').length == 0");
+//                                                          return document.querySelectorAll('div[id*="bekleyiniz"][style*="visibility: visible"]').length == 0
+// executeScript("return $('.loading').is(':visible') == false");
              //   System.out.println("Loading bekleniyor");
             } catch (Exception e) {
                 isLoaderHidden = true;

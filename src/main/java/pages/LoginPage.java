@@ -91,10 +91,12 @@ public class LoginPage extends MainPage  {
         BTN_SUBORG_ID.click();
 //        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
 
-        ElementsCollection tblAltOrganizasyon =$$("tbody[id='loginForm:subDealerTable_data'] tr[data-ri]");
-        Selenide.sleep(5000);
+        SelenideElement p = $(By.id("loginForm:subDealerDialogId"));
+        ElementsCollection tblAltOrganizasyon =$$("tbody[id='loginForm:subDealerTable_data'] tr[data-ri]")
+                .shouldHave(CollectionCondition.sizeGreaterThan(0));
+        //Selenide.sleep(5000);
         tblAltOrganizasyon
-                .filterBy(Condition.text("00001.00001"))
+                .filterBy(Condition.text(SubOrg))
                 .first().click();
 //        $(By.xpath(SubOrg)).click();
         BTN_LOGIN_ID.click();
