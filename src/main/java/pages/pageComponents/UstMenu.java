@@ -19,24 +19,21 @@ public class UstMenu extends BaseLibrary {
     public void openMenu(Enum ustMenuData, boolean... useJS) {
         String groupName = ((UstMenuData.UstMenuDataInterface) ustMenuData).getGroupName();
         String menuName = ((UstMenuData.UstMenuDataInterface) ustMenuData).getName();
-
-        if ((useJS.length <= 0) || useJS[0])
-            openMenu(menuName);
-        else
-            openMenu(groupName, menuName);
+        openMenu(groupName, menuName);
     }
 
     private void openMenu(String menuName) {
-        SelenideElement menu = $x("//a[span[text()='" + menuName + "'] and @class='ui-commandlink boxMenuElem']");
+        //SelenideElement menu = $x("//a[span[text()='" + menuName + "'] and @class='ui-commandlink boxMenuElem']");
+        SelenideElement menu = $(By.xpath("//div[@class='headerMenu']//a[.='"+menuName+"']"));
         menu.waitUntil(exist, Configuration.timeout);
         executeJavaScript("arguments[0].click();", menu);
     }
 
     private void openMenu(String ustMenuIsmi, String altMenuIsmi) {
-        SelenideElement u = $(By.xpath("//div[@id='layoutTopMenuContainer']//button[.='" + ustMenuIsmi + "']"));
-        altMenuDialogId = (u.attr("id")).replace("ustMenuEleman", "altMenuDialog");
-        u.click();
-        $(By.id(altMenuDialogId)).$(By.linkText(altMenuIsmi)).click();
+        //SelenideElement u = $(By.xpath("//div[@id='layoutTopMenuContainer']//button[.='" + ustMenuIsmi + "']"));
+        //altMenuDialogId = (u.attr("id")).replace("ustMenuEleman", "altMenuDialog");
+        $(By.xpath("//div[@class='headerMenu']//a[.='"+ustMenuIsmi+"']")).click();
+        $(By.xpath("//div[@class='headerMenu']//a[.='"+altMenuIsmi+"']")).click();
     }
 
 

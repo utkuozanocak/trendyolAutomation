@@ -69,6 +69,7 @@ public class BaseTest extends BaseLibrary {
         //Configuration.remote = "http://10.101.20.151:4444/wd/hub";
         //Configuration.remote = "http://localhost:4444/wd/hub";
         System.setProperty("webdriver.chrome.driver","C:\\SeleniumDrivers\\chromedriver\\chromedriver.exe");
+
         System.out.println("mayaurl" + mayaURL);
         Configuration.baseUrl = (System.getProperty("URL") == null) ? mayaURL : System.getProperty("URL");
         Configuration.browser = (System.getProperty("browser") == null) ? "chrome" : System.getProperty("browser");

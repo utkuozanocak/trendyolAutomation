@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import common.BaseLibrary;
 import io.qameta.allure.Allure;
@@ -9,11 +10,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.pageComponents.*;
+import pages.pageData.UstMenuData;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.matchText;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage extends BaseLibrary {
@@ -36,8 +36,11 @@ public class MainPage extends BaseLibrary {
         return new Filtreler();
     }
 
-    public void ustMenu(Enum ustMenuData, boolean... useJS) {
-        new UstMenu().openMenu(ustMenuData, useJS);
+    public void ustMenu(Enum menu) {
+        String groupName = ((UstMenuData.UstMenuDataInterface) menu).getGroupName();
+        String menuName = ((UstMenuData.UstMenuDataInterface) menu).getName();
+        Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='"+groupName+"']")).should(Condition.visible).click();
+        Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='"+menuName+"']")).should(Condition.visible).click();
     }
 
     public void solMenu(Enum solMenuData, boolean... useJS) {

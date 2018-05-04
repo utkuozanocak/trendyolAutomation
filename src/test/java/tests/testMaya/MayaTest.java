@@ -5,7 +5,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.ustMenuPages.UcakBiletiPage;
+import pages.ustMenuPages.SozlesmelerimPage;
 
 /****************************************************
  * Tarih: 2017-12-22
@@ -15,7 +15,6 @@ import pages.ustMenuPages.UcakBiletiPage;
  ****************************************************/
 public class MayaTest extends BaseTest {
 
-    UcakBiletiPage ucakBiletiPage;
     String username = GetTestParameter("MayaLoginTest","Username")[0];
     String password = GetTestParameter("MayaLoginTest","Password")[0];
     String mainOrg = GetTestParameter("MayaLoginTest","MainOrg")[0];
@@ -24,7 +23,6 @@ public class MayaTest extends BaseTest {
     @BeforeMethod
     public void loginBeforeTests() {
         login(username,password,mainOrg,subOrg);
-//        ucakBiletiPage=new UcakBiletiPage();
 
     }
 
@@ -32,7 +30,8 @@ public class MayaTest extends BaseTest {
     @Test(enabled = true, description = "Selenide Maya first test description")
     public void TS0001() throws InterruptedException {
 
-//        ucakBiletiPage.openPage();
+        SozlesmelerimPage sozlesmelerimPage = new SozlesmelerimPage();
+        sozlesmelerimPage.openPage();
 
     }
 }

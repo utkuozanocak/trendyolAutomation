@@ -1166,13 +1166,13 @@ public class BaseLibrary extends ElementsContainer {
     public String URL_VALUE;
     public String OBJECT_VALUE;
     private String sEnvironment = "";
-    public  String GetUrl(String strapp)
+    public  String GetUrl(String strapp, String strenv)
     {
         try
         {
             connect();
             statement = connection.createStatement();
-            rs = statement.executeQuery("select Url from TBL_App where App='"+strapp+"' and Environment='"+ssEnvironment+"'");
+            rs = statement.executeQuery("select Url from TBL_App where App='"+strapp+"' and Environment='"+strenv+"'");
 
             while (rs.next()) {
 

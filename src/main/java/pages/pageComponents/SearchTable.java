@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.MainPage;
-import pages.newPages.EvrakDetayiPage;
+import pages.altMenuPages.EvrakDetayiPage;
 
 import java.util.ArrayList;
 
