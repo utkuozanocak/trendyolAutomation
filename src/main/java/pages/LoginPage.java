@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -86,45 +87,51 @@ public class LoginPage extends MainPage  {
     }
 
     @Step("Giriş yap")
-    public LoginPage login() {
+    public LoginPage login(String username, String password,String MainOrg,String SubOrg) {
         open();
-        txtUsername.sendKeys(usernameOPTIIM);
-        txtPassword.sendKeys(passwordOPTIIM);
-
-        btnLogin.shouldBe(Condition.visible).click();
-        btnUsermenu.waitUntil(Condition.visible, 40000);
+        TXT_USERNAME_ID.sendKeys(GetTestParameter("MayaLoginTest","Username")[0]);
+        TXT_PASSWWORD_ID.sendKeys(GetTestParameter("MayaLoginTest","Password")[0]);
+        SELECT_MAINORG_XPATH.click();
+        Assert.assertEquals(LBL_AFTER_USERPASS_ID.shouldBe(Condition.visible),true);
+        SELECT_MAINORG_XPATH.click();
+        $(By.xpath(GetTestParameter("MayaLoginTest","MainOrg")[0])).click();
+        Assert.assertEquals(BTN_SUBORG_ID.shouldBe(Condition.visible),true);
+        BTN_SUBORG_ID.click();
+        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
+        $(By.xpath(GetTestParameter("MayaLoginTest","SubOrg")[0])).click();
+        BTN_LOGIN_ID.click();
         return this;
     }
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
-    public LoginPage login(String username, String password,String MainOrg,String SubOrg) {
+    public LoginPage login(String username, String password) {
         open();
 
 
 
-        txtUsername.sendKeys(username);
-        txtPassword.sendKeys(password);
-        txtPassword.sendKeys(Keys.ENTER);
+//        txtUsername.sendKeys(username);
+//        txtPassword.sendKeys(password);
+//        txtPassword.sendKeys(Keys.ENTER);
         //cmbOrganisation.selectOptionByValue("TTB01.00002");
        // cmbOrganisation.selectOption("ADANA BACK OFIS");
 
-        SELECT_MAINORG_XPATH.click();
+//        SELECT_MAINORG_XPATH.click();
 
         //driver.findElement(By.xpath(text)).click();
-        WebDriverRunner.getWebDriver().findElement(By.xpath("//li[text()='ADANA BACK OFIS']")).click();
+//        WebDriverRunner.getWebDriver().findElement(By.xpath("//li[text()='ADANA BACK OFIS']")).click();
 
         // driver.findElement(By.id(BTN_SUBORG_ID)).click();
-        BTN_SUBORG_ID.click();
-
-        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(),60);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SELECT_SUBORG_XPATH)));
+//        BTN_SUBORG_ID.click();
+//
+//        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(),60);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SELECT_SUBORG_XPATH)));
 
        // formAltOrganizasyon.shouldBe(Condition.visible);
 
         //sorun burda
         //driver.findElement(By.xpath(text)).click();
       //  WebDriverRunner.getWebDriver().findElement(By.xpath("//span[text()='00001.00001']")).click();
-        btnKod1.click();
+//        btnKod1.click();
 
 
 
@@ -133,8 +140,19 @@ public class LoginPage extends MainPage  {
         //loginPage.selectSubOrg(loginPage.GetTestParameter("MayaLoginTest","SubOrg")[0]);
 
         //  driver.findElement(By.id(BTN_LOGIN_ID)).click();
-        BTN_LOGIN_ID.click();
+        //BTN_LOGIN_ID.click();
 //        btnUsermenu.waitUntil(Condition.visible, 40000);
+        TXT_USERNAME_ID.sendKeys(GetTestParameter("MayaLoginTest","Username")[0]);
+        TXT_PASSWWORD_ID.sendKeys(GetTestParameter("MayaLoginTest","Password")[0]);
+        SELECT_MAINORG_XPATH.click();
+        Assert.assertEquals(LBL_AFTER_USERPASS_ID.shouldBe(Condition.visible),true);
+        SELECT_MAINORG_XPATH.click();
+        $(By.xpath(GetTestParameter("MayaLoginTest","MainOrg")[0])).click();
+        Assert.assertEquals(BTN_SUBORG_ID.shouldBe(Condition.visible),true);
+        BTN_SUBORG_ID.click();
+        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
+        $(By.xpath(GetTestParameter("MayaLoginTest","SubOrg")[0])).click();
+        BTN_LOGIN_ID.click();
         return this;
     }
 
