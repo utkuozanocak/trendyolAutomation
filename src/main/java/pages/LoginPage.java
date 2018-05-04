@@ -1,21 +1,13 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import data.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static data.TestData.passwordOPTIIM;
-import static data.TestData.usernameOPTIIM;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class LoginPage extends MainPage  {
 
@@ -89,16 +81,22 @@ public class LoginPage extends MainPage  {
     @Step("Giriş yap")
     public LoginPage login(String username, String password,String MainOrg,String SubOrg) {
         open();
-        TXT_USERNAME_ID.sendKeys(GetTestParameter("MayaLoginTest","Username")[0]);
-        TXT_PASSWWORD_ID.sendKeys(GetTestParameter("MayaLoginTest","Password")[0]);
+        TXT_USERNAME_ID.sendKeys(username);
+        TXT_PASSWWORD_ID.sendKeys(password);
         SELECT_MAINORG_XPATH.click();
-        Assert.assertEquals(LBL_AFTER_USERPASS_ID.shouldBe(Condition.visible),true);
+//        Assert.assertEquals(LBL_AFTER_USERPASS_ID.shouldBe(Condition.visible),true);
         SELECT_MAINORG_XPATH.click();
-        $(By.xpath(GetTestParameter("MayaLoginTest","MainOrg")[0])).click();
-        Assert.assertEquals(BTN_SUBORG_ID.shouldBe(Condition.visible),true);
+        $(By.xpath(MainOrg)).click();
+//        Assert.assertEquals(BTN_SUBORG_ID.shouldBe(Condition.visible),true);
         BTN_SUBORG_ID.click();
-        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
-        $(By.xpath(GetTestParameter("MayaLoginTest","SubOrg")[0])).click();
+//        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
+
+        ElementsCollection tblAltOrganizasyon =$$("tbody[id='loginForm:subDealerTable_data'] tr[data-ri]");
+        Selenide.sleep(5000);
+        tblAltOrganizasyon
+                .filterBy(Condition.text("00001.00001"))
+                .first().click();
+//        $(By.xpath(SubOrg)).click();
         BTN_LOGIN_ID.click();
         return this;
     }
@@ -160,10 +158,10 @@ public class LoginPage extends MainPage  {
     public LoginPage loginBakim(String username, String password) {
         open();
 
-        txtUsername.sendKeys(username);
-        txtPassword.sendKeys(password);
-        btnLogin.click();
-        btnUsermenu.waitUntil(Condition.visible, 40000);
+//        txtUsername.sendKeys(username);
+//        txtPassword.sendKeys(password);
+//        btnLogin.click();
+//        btnUsermenu.waitUntil(Condition.visible, 40000);
         return this;
     }
 

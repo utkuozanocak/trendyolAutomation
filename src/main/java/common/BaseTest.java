@@ -394,14 +394,14 @@ public class BaseTest extends BaseLibrary {
     @Step("{name} : {description}")
     public void step(String name, String description) { }
 
-    @Step("Login")
-    public void login() {
-        new LoginPage().login();
-    }
+//    @Step("Login")
+//    public void login() {
+//        new LoginPage().login();
+//    }
 
     @Step("Login")
-    public void login(String username, String password) {
-        new LoginPage().login(username, password);
+    public void login(String username, String password,String MainOrg,String SubOrg) {
+        new LoginPage().login(username, password,MainOrg,SubOrg);
     }
 
     @Step("Logout")

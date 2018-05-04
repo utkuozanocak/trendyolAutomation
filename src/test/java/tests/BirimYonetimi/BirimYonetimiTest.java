@@ -1,9 +1,7 @@
 package tests.BirimYonetimi;
 
-import com.codeborne.selenide.Condition;
 import common.BaseTest;
 import data.TestData;
-import data.User;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -11,10 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.ustMenuPages.*;
-
-import java.util.List;
-
-import static com.codeborne.selenide.Selenide.switchTo;
 
 /******************
  * Tarih: 2018-02-15
@@ -143,7 +137,7 @@ public class BirimYonetimiTest extends BaseTest {
         String kaldirilacakKlasor = "2336 test";
         String basariMesaji = "İşlem başarılıdır!";
 
-        login(TestData.usernameTS2336, TestData.passwordTS23362);
+//        login(TestData.usernameTS2336, TestData.passwordTS23362);
 
         birimYonetimiPage
                 .openPage()
@@ -155,7 +149,7 @@ public class BirimYonetimiTest extends BaseTest {
                 .kaydet()
                 .islemMesaji().basariliOlmali(basariMesaji);
 
-        login(TestData.usernameTS2336, TestData.passwordTS23362);
+//        login(TestData.usernameTS2336, TestData.passwordTS23362);
 
         olurYazisiOlusturPage
                 .openPage()
@@ -179,7 +173,7 @@ public class BirimYonetimiTest extends BaseTest {
         String pasifIcBirimAdi = "TS1108 Pasif İç Birim";
         String pasifDisBirimAdi = "TS1108 Pasif Dış Birim";
 
-        login();
+//        login();
 
         birimYonetimiPage
                 .openPage()

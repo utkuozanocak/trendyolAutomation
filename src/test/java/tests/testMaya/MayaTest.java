@@ -1,6 +1,5 @@
 package tests.testMaya;
 
-import com.codeborne.selenide.Selenide;
 import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -17,10 +16,14 @@ import pages.ustMenuPages.UcakBiletiPage;
 public class MayaTest extends BaseTest {
 
     UcakBiletiPage ucakBiletiPage;
+    String username = GetTestParameter("MayaLoginTest","Username")[0];
+    String password = GetTestParameter("MayaLoginTest","Password")[0];
+    String mainOrg = GetTestParameter("MayaLoginTest","MainOrg")[0];
+    String subOrg = GetTestParameter("MayaLoginTest","SubOrg")[0];
 
     @BeforeMethod
     public void loginBeforeTests() {
-        login("TEOASLIM","Test1234");
+        login(username,password,mainOrg,subOrg);
 //        ucakBiletiPage=new UcakBiletiPage();
 
     }
