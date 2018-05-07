@@ -5,6 +5,9 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.reporters.jq.Main;
+import pages.MainPage;
+import pages.ustMenuPages.SearchCustomerCorparatePage;
 import pages.ustMenuPages.SozlesmelerimPage;
 
 /****************************************************
@@ -23,15 +26,21 @@ public class MayaTest extends BaseTest {
     @BeforeMethod
     public void loginBeforeTests() {
         login(username,password,mainOrg,subOrg);
-
     }
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Selenide Maya first test description")
-    public void TS0001() throws InterruptedException {
+    public void TS0001_MayaCreateOrderTest() throws InterruptedException {
+        MainPage mainPage = new MainPage();
+        SearchCustomerCorparatePage searchCustomerCorparatePage =new SearchCustomerCorparatePage();
 
-        SozlesmelerimPage sozlesmelerimPage = new SozlesmelerimPage();
-        sozlesmelerimPage.openPage();
+        mainPage.musteriDetayliArama();
 
+        searchCustomerCorparatePage
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest","UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest","CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest","CustomerSegmentSoho")[0])
+                .ara()
+                .tablodanIlkKayitTikla();
     }
 }

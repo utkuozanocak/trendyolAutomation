@@ -12,6 +12,7 @@ public class TestData extends BaseLibrary {
 
     // Mevcut Belgenet - external IP
 //    public static final String mayaURL = dbconn.GetUrl("MAYA");
+
     public static final String mayaURL = "https://extprp.superonline.net/sol-crm-2.0/login.xhtml";
 //     public final  String  mayaURL = GetUrl("MAYA","PRP");
 

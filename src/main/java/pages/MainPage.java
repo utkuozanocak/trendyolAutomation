@@ -36,7 +36,7 @@ public class MainPage extends BaseLibrary {
         return new Filtreler();
     }
 
-    public void ustMenu(Enum menu) {
+        public void ustMenu(Enum menu) {
         String groupName = ((UstMenuData.UstMenuDataInterface) menu).getGroupName();
         String menuName = ((UstMenuData.UstMenuDataInterface) menu).getName();
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='"+groupName+"']")).should(Condition.visible).click();
@@ -468,4 +468,11 @@ public class MainPage extends BaseLibrary {
     public void profilEkraniKapat() {
         $x("//span[text()='Profil']//..//..//div//a[@class='ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all']").click();
     }
+
+    @Step("Müşteri Detaylı Arama butonu tıklanır.")
+    public void musteriDetayliArama() {
+        $(By.id(GetObject("MAYA","BTN_CUSTOMERNOSEARCHDOWN_ID","ID","MayaMainPage","PRP"))).click();
+        $x(GetObject("MAYA","BTN_CUSTOMERNODETAILSEARCH_XPATH","XPATH","MayaMainPage","PRP")).click();
+    }
+
 }

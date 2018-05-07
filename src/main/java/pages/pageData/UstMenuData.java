@@ -13,7 +13,8 @@ public class UstMenuData {
         Satis("Satış"),
         Urun("Ürün"),
         Akislar("Akışlar"),
-        Yonetim("Yönetim");
+        Yonetim("Yönetim"),
+        Islemler("İşlemler");
 
 
         private String name;
@@ -188,6 +189,41 @@ public class UstMenuData {
             return groupName;
         }
     }
+
+    public enum Islemler implements UstMenuDataInterface {
+        SiparisOlustur("Sipariş Oluştur"),
+        SabitKullaniciEkrani("Sabit Kullanıcı Ekranı"),
+        DSLIslemleri("DSL İşlemleri"),
+        AdresBilgileri("Adres Bilgileri"),
+        IsEmirleri("İş Emirleri"),
+        MusteriBilgileri("Müşteri Bilgileri"),
+        MusteriProfilBilgileri("Müşteri Profil Bilgileri"),
+        MusteriUrunleri("Müşteri Ürünleri"),
+        KurumIletisimBilgileri("Kurum İletişim Bilgileri"),
+        MusteriGecmisi("Müşteri Geçmişi"),
+        MusteriIliskileri("Müşteri İlişkileri"),
+        KontakBilgleri("Kontak Bilgileri"),
+        MusteriFaturaHesabi("Müşteri Fatura Hesabı"),
+        Dokumanlar("Dokümanlar"),
+        MusteriEtkilesimleri("Müşteri Etkileşimleri"),
+        MusteriSiparisleri("Müşteri Siparişleri");
+
+        private String name;
+        private String groupName = UstMenuGroup1.Islemler.getName();
+
+        Islemler(final String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getGroupName() {
+            return groupName;
+        }
+    }
+
 
     public interface UstMenuDataInterface {
         String getName();
