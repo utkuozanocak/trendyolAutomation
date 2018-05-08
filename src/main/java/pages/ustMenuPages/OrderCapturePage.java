@@ -14,7 +14,7 @@ public class OrderCapturePage extends MainPage {
 
 
     @Step("Siparis Oluştur sayfası açılır.")
-    public OrderCapturePage unvanDoldur() {
+    public OrderCapturePage siparisOlusturTikla() {
         ustMenu(UstMenuData.Islemler.SiparisOlustur);
         return this;
     }
