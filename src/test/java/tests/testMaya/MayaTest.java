@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.reporters.jq.Main;
 import pages.MainPage;
+import pages.ustMenuPages.OrderCapturePage;
 import pages.ustMenuPages.SearchCustomerCorparatePage;
 import pages.ustMenuPages.SozlesmelerimPage;
 
@@ -42,5 +43,9 @@ public class MayaTest extends BaseTest {
                 .segmentSec(GetTestParameter("MayaCreateOrderTest","CustomerSegmentSoho")[0])
                 .ara()
                 .tablodanIlkKayitTikla();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage.siparisOlusturTikla();
+        orderCapturePage.siparseUrunEkleTikla();
+
     }
 }
