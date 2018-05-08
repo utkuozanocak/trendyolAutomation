@@ -10,8 +10,10 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.pageComponents.ConfirmDialog;
 import pages.pageComponents.SearchTable;
+import pages.pageData.UrunEklemeData;
 import pages.pageData.UstMenuData;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -38,6 +40,42 @@ public class MainPage extends BaseLibrary {
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + menuName + "']")).should(Condition.visible).click();
     }
 
+    public void urunSecimMenu(String kategori, String... altKategori) {
+
+        if (altKategori.length > 0) {
+            Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']"))
+                    .filterBy(text(kategori)).first().
+                    $("span[class='ui-treetable-toggler ui-icon ui-icon-triangle-1-e ui-c']").click();
+            if (kategori.equals(altKategori[0]))
+                Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(altKategori[0])).get(1).click();
+            else
+                Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(altKategori[0])).first().click();
+        }
+        else {
+            Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(kategori)).first().click();
+            Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(altKategori[0])).first().click();
+        }
+
+    }
+
+    public void urunSecimMenu(Enum menu) {
+
+        String groupName = ((UrunEklemeData.UrunEklemeDataInterface) menu).getGroupName();
+        String menuName = ((UrunEklemeData.UrunEklemeDataInterface) menu).getName();
+        if (menuName.toString().length() > 0) {
+            Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']"))
+                    .filterBy(text(groupName)).first().
+                    $("span[class='ui-treetable-toggler ui-icon ui-icon-triangle-1-e ui-c']").click();
+            if (groupName.equals(menuName))
+                Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(menuName)).get(1).click();
+            else
+                Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(menuName)).first().click();
+        }
+        else {
+            Selenide.$$(("tbody[id='productSelectionWizardForm:salesCategoryTreeTableId_data'] tr[role='row']")).filterBy(text(groupName)).first().click();
+        }
+
+    }
     @Step("Çıkış yap")
     public void logout() {
         $("button[id='topMenuForm:userMenuButton_button']").click();
@@ -84,9 +122,10 @@ public class MainPage extends BaseLibrary {
 
         return this;
     }
+
     @Step("Müşteri Detaylı Arama butonu tıklanır.")
     public void musteriDetayliArama() {
-        $(By.id(GetObject("MAYA","BTN_CUSTOMERNOSEARCHDOWN_ID","ID","MayaMainPage","PRP"))).click();
-        $x(GetObject("MAYA","BTN_CUSTOMERNODETAILSEARCH_XPATH","XPATH","MayaMainPage","PRP")).click();
+        $(By.id(GetObject("MAYA", "BTN_CUSTOMERNOSEARCHDOWN_ID", "ID", "MayaMainPage", "PRP"))).click();
+        $x(GetObject("MAYA", "BTN_CUSTOMERNODETAILSEARCH_XPATH", "XPATH", "MayaMainPage", "PRP")).click();
     }
 }

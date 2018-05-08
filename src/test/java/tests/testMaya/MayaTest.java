@@ -17,33 +17,48 @@ import pages.ustMenuPages.SearchCustomerCorparatePage;
  ****************************************************/
 public class MayaTest extends BaseTest {
 
-    String username = GetTestParameter("MayaLoginTest","Username")[0];
-    String password = GetTestParameter("MayaLoginTest","Password")[0];
-    String mainOrg = GetTestParameter("MayaLoginTest","MainOrg")[0];
-    String subOrg = GetTestParameter("MayaLoginTest","SubOrg")[0];
+    String username = GetTestParameter("MayaLoginTest", "Username")[0];
+    String password = GetTestParameter("MayaLoginTest", "Password")[0];
+    String mainOrg = GetTestParameter("MayaLoginTest", "MainOrg")[0];
+    String subOrg = GetTestParameter("MayaLoginTest", "SubOrg")[0];
+    String LocationId = GetLocationData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0])[0];
+    String fiberKampanya = GetTestParameter("MayaCreateOrderTest", "Product")[0];
 
     @BeforeMethod
     public void loginBeforeTests() {
-        login(username,password,mainOrg,subOrg);
+        login(username, password, mainOrg, subOrg);
     }
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Selenide Maya first test description")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
         MainPage mainPage = new MainPage();
-        SearchCustomerCorparatePage searchCustomerCorparatePage =new SearchCustomerCorparatePage();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
 
         mainPage.musteriDetayliArama();
 
         searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest","UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest","CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest","CustomerSegmentSoho")[0])
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
                 .ara()
                 .tablodanIlkKayitTikla();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage.siparisOlusturTikla();
-        orderCapturePage.siparseUrunEkleTikla();
+        orderCapturePage
+                .siparisOlusturTikla()
+                .siparseUrunEkleTikla()
+                .fiberAc()
+                .degistirTikla()
+                .lokasyonIDDoldur(LocationId)
+                .Ara()
+                .tablodanLokasyonSec()
+                .lokasyonSec();
+//                .kampanyaAra(fiberKampanya)
+//                .tablodanKampanyaSec(fiberKampanya)
 
+
+//        orderCapturePage.adslAc();
+
+//        mainPage.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
 }
