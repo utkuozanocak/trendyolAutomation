@@ -11,6 +11,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.HashMap;
 import java.util.Map;
 
+//import data.TestData;
+
 /**
  * Yazan: Ilyas Bayraktar
  * Tarih: 31.12.2017

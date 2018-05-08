@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.commands.Click;
@@ -9,7 +9,7 @@ import com.codeborne.selenide.impl.WebElementSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class BelgenetFramework {
+public class SolCrmFramework {
 
 //    private static ComboLov comboLov = new ComboLov();
 //    private static ComboBox comboBox = new ComboBox();
@@ -59,7 +59,7 @@ public class BelgenetFramework {
         Commands.getInstance().add("closePanel", new ComboBox().new ClosePanel());
         //endregion
 
-        //Belgenet checkbox için geliştirildi
+        //SolCrm checkbox için geliştirildi
         Commands.getInstance().add("setSelected", new SetSelected(){
             Click click = new Click();
 

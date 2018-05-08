@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.Command;
 import com.codeborne.selenide.ElementsCollection;
@@ -11,18 +11,18 @@ import java.io.IOException;
 
 class ComboLov {
 
-    class ClearLastSelectedItem implements Command<BelgenetElement> {
+    class ClearLastSelectedItem implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.clearLastSelectedItem();
         }
     }
 
-    class ClearAllSelectedItems implements Command<BelgenetElement> {
+    class ClearAllSelectedItems implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.clearAllSelectedItems();
@@ -35,27 +35,27 @@ class ComboLov {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             By by = comboLovHelper.selectLov(args[0].toString());
-            return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
         }
     }*/
 
-    class SelectLov implements Command<BelgenetElement> {
+    class SelectLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             By by = comboLovHelper.selectLov((String[]) args[0]);
-            return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
         }
     }
 
-    class SelectExactLov implements Command<BelgenetElement> {
+    class SelectExactLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             By by = comboLovHelper.selectExactLov((String[]) args[0]);
-            return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
         }
     }
 
@@ -125,25 +125,25 @@ class ComboLov {
     }
 
 
-    class OpenTreePanel implements Command<BelgenetElement> {
+    class OpenTreePanel implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.openTreePanel();
         }
     }
 
-    /*class ClearLov implements Command<BelgenetElement> {
+    /*class ClearLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             setLocators(proxy);
             return clearLov();
         }
     }*/
-    class Type implements Command<BelgenetElement> {
+    class Type implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.type(args[0].toString());
@@ -186,23 +186,23 @@ class ComboLov {
         }
     }
 
-    class GetLastSelectedItem implements Command<BelgenetElement> {
+    class GetLastSelectedItem implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             By by = comboLovHelper.getLastSelectedItem();
-            return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
         }
     }
 
-    class CloseTreePanel implements Command<BelgenetElement> {
+    class CloseTreePanel implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             comboLovHelper.closeTreePanel();
-            return (BelgenetElement) proxy;
+            return (SolCrmElement) proxy;
         }
     }
 
@@ -235,18 +235,18 @@ class ComboLov {
 
 
 
-/*    class ClearLastSelectedLov implements Command<BelgenetElement> {
+/*    class ClearLastSelectedLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.clearLastSelectedLov();
         }
     }
 
-    class ClearAllSelectedLov implements Command<BelgenetElement> {
+    class ClearAllSelectedLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.clearAllSelectedLov();
@@ -260,9 +260,9 @@ class ComboLov {
             comboLovHelper.setLocators(proxy);
             if (args.length > 0) {
                 By by = comboLovHelper.selectLov(args[0].toString());
-                return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+                return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
             } else
-                return (BelgenetElement) proxy;
+                return (SolCrmElement) proxy;
         }
     }
 
@@ -275,18 +275,18 @@ class ComboLov {
         }
     }
 
-    class LastSelectedLovTitle implements Command<BelgenetElement> {
+    class LastSelectedLovTitle implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.getLastSelectedItemTitle();
         }
     }
 
-    class LastSelectedLovDetail implements Command<BelgenetElement> {
+    class LastSelectedLovDetail implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.getLastSelectedItemDetail();
@@ -332,25 +332,25 @@ class ComboLov {
     }
 
 
-    class OpenTree implements Command<BelgenetElement> {
+    class OpenTree implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.openTree();
         }
     }
 
-    *//*class ClearLov implements Command<BelgenetElement> {
+    *//*class ClearLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             setLocators(proxy);
             return clearLov();
         }
     }*//*
-    class Type implements Command<BelgenetElement> {
+    class Type implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             return comboLovHelper.type(args[0].toString());
@@ -384,23 +384,23 @@ class ComboLov {
         }
     }
 
-    class LastSelectedLov implements Command<BelgenetElement> {
+    class LastSelectedLov implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             By by = comboLovHelper.lastSelectedLov();
-            return ElementFinder.wrap(BelgenetElement.class, null, by, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, by, 0);
         }
     }
 
-    class CloseLovTreePanel implements Command<BelgenetElement> {
+    class CloseLovTreePanel implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             ComboLovHelper comboLovHelper = new ComboLovHelper();
             comboLovHelper.setLocators(proxy);
             comboLovHelper.closeLovTreePanel();
-            return (BelgenetElement) proxy;
+            return (SolCrmElement) proxy;
         }
     }
 

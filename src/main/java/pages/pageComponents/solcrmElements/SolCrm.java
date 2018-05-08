@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Condition.visible;
  * Tarih: 28.12.2017
  * Açıklama:
  */
-public class Belgenet extends Selenide {
+public class SolCrm extends Selenide {
 
     /**
      * Locates the first element matching given CSS selector
@@ -23,7 +23,7 @@ public class Belgenet extends Selenide {
      * @param cssSelector any CSS selector like "input[name='first_name']" or "#messages .new_message"
      * @return SelenideElement
      */
-    public static BelgenetElement $(String cssSelector) {
+    public static SolCrmElement $(String cssSelector) {
         return getElement(By.cssSelector(cssSelector));
     }
 
@@ -34,7 +34,7 @@ public class Belgenet extends Selenide {
      * @param xpathExpression any XPATH expression //*[@id='value'] //E[contains(@A, 'value')]
      * @return SelenideElement which locates elements via XPath
      */
-    public static BelgenetElement $x(String xpathExpression) {
+    public static SolCrmElement $x(String xpathExpression) {
         return getElement(By.xpath(xpathExpression));
     }
 
@@ -45,14 +45,14 @@ public class Belgenet extends Selenide {
      * @param seleniumSelector any Selenium selector like By.id(), By.name() etc.
      * @return SelenideElement
      */
-    public static BelgenetElement $(By seleniumSelector) {
+    public static SolCrmElement $(By seleniumSelector) {
         return getElement(seleniumSelector);
     }
 
     /**
      * @see #getElement(By, int)
      */
-    public static BelgenetElement $(By seleniumSelector, int index) {
+    public static SolCrmElement $(By seleniumSelector, int index) {
         return getElement(seleniumSelector, index);
     }
 
@@ -64,7 +64,7 @@ public class Belgenet extends Selenide {
      * @param index       0..N
      * @return SelenideElement
      */
-    public static BelgenetElement $(String cssSelector, int index) {
+    public static SolCrmElement $(String cssSelector, int index) {
         return getElement(By.cssSelector(cssSelector), index);
     }
 
@@ -75,8 +75,8 @@ public class Belgenet extends Selenide {
      * @param criteria instance of By: By.id(), By.className() etc.
      * @return SelenideElement
      */
-    public static BelgenetElement getElement(By criteria) {
-        return ElementFinder.wrap(BelgenetElement.class, null, criteria, 0);
+    public static SolCrmElement getElement(By criteria) {
+        return ElementFinder.wrap(SolCrmElement.class, null, criteria, 0);
     }
 
     /**
@@ -87,58 +87,58 @@ public class Belgenet extends Selenide {
      * @param index    0..N
      * @return SelenideElement
      */
-    public static BelgenetElement getElement(By criteria, int index) {
-        return ElementFinder.wrap(BelgenetElement.class, null, criteria, index);
+    public static SolCrmElement getElement(By criteria, int index) {
+        return ElementFinder.wrap(SolCrmElement.class, null, criteria, index);
     }
 
 
     /**
      * Replacement for standard Selenide `$` method.
      *
-     * @return BelgenetElement - an "advanced" version of `SelenideElement` with more custom methods
+     * @return SolCrmElement - an "advanced" version of `SelenideElement` with more custom methods
      */
-    public static BelgenetElement comboLov(WebElement parentElement, String cssLocator) {
-        return ElementFinder.wrap(BelgenetElement.class, parentElement, By.cssSelector(cssLocator), 0);
+    public static SolCrmElement comboLov(WebElement parentElement, String cssLocator) {
+        return ElementFinder.wrap(SolCrmElement.class, parentElement, By.cssSelector(cssLocator), 0);
     }
 
     /**
      * Replacement for standard Selenide `$` method.
      *
-     * @return BelgenetElement - an "advanced" version of `SelenideElement` with more custom methods
+     * @return SolCrmElement - an "advanced" version of `SelenideElement` with more custom methods
      */
-    public static BelgenetElement comboLov(WebElement parentElement, By locator) {
-        return ElementFinder.wrap(BelgenetElement.class, parentElement, locator, 0);
+    public static SolCrmElement comboLov(WebElement parentElement, By locator) {
+        return ElementFinder.wrap(SolCrmElement.class, parentElement, locator, 0);
     }
 
-    public static BelgenetElement comboLov(String selector) {
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(selector), 0);
+    public static SolCrmElement comboLov(String selector) {
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
     }
 
-    public static BelgenetElement comboLov(By locator) {
-        return ElementFinder.wrap(BelgenetElement.class, null, locator, 0);
+    public static SolCrmElement comboLov(By locator) {
+        return ElementFinder.wrap(SolCrmElement.class, null, locator, 0);
     }
 
 
-    public static BelgenetElement comboBox(WebElement parentElement, String selector) {
-        return ElementFinder.wrap(BelgenetElement.class, parentElement, By.cssSelector(selector), 0);
+    public static SolCrmElement comboBox(WebElement parentElement, String selector) {
+        return ElementFinder.wrap(SolCrmElement.class, parentElement, By.cssSelector(selector), 0);
     }
 
     /**
      * Replacement for standard Selenide `$` method.
      *
-     * @return BelgenetElement - an "advanced" version of `SelenideElement` with more custom methods
+     * @return SolCrmElement - an "advanced" version of `SelenideElement` with more custom methods
      */
-    public static BelgenetElement comboBox(WebElement parentElement, By locator) {
-        return ElementFinder.wrap(BelgenetElement.class, parentElement, locator, 0);
+    public static SolCrmElement comboBox(WebElement parentElement, By locator) {
+        return ElementFinder.wrap(SolCrmElement.class, parentElement, locator, 0);
     }
 
 
-    public static BelgenetElement comboBox(String selector) {
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(selector), 0);
+    public static SolCrmElement comboBox(String selector) {
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
     }
 
-    public static BelgenetElement comboBox(By locator) {
-        return ElementFinder.wrap(BelgenetElement.class, null, locator, 0);
+    public static SolCrmElement comboBox(By locator) {
+        return ElementFinder.wrap(SolCrmElement.class, null, locator, 0);
     }
 
 
@@ -154,7 +154,7 @@ public class Belgenet extends Selenide {
 
         switchToFrameOfElement(locator, iframeLocator);
 
-        return ElementFinder.wrap(BelgenetElement.class, null, locator, 0);
+        return ElementFinder.wrap(SolCrmElement.class, null, locator, 0);
     }
 
     /**
@@ -169,7 +169,7 @@ public class Belgenet extends Selenide {
 
         switchToFrameOfElement(By.cssSelector(cssSelector), iframeLocator);
 
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(cssSelector), 0);
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(cssSelector), 0);
     }
 
     private static void switchToFrameOfElement(By elementLocator, By... iframeLocator) {

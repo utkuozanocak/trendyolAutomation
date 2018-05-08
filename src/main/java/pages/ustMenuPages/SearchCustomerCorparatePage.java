@@ -1,17 +1,15 @@
 package pages.ustMenuPages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.ElementsContainer;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import pages.MainPage;
-import pages.pageComponents.belgenetElements.BelgenetElement;
-import pages.pageData.UstMenuData;
+import pages.pageComponents.solcrmElements.SolCrmElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static pages.pageComponents.belgenetElements.Belgenet.comboBox;
+import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
 public class SearchCustomerCorparatePage extends MainPage {
 
@@ -24,8 +22,8 @@ public class SearchCustomerCorparatePage extends MainPage {
     private SelenideElement BTN_SIPARISOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISOLUSTUR_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
 
     ElementsCollection tblCustomerList = $$(GetObject("MAYA","TBL_SEARCH_CUSTOMER","CSS_SELECTOR","MayaSearchCustomerCorporate","PRP"));
-    BelgenetElement cmbStatu = comboBox(By.id(GetObject("MAYA","BTN_STATU","ID","MayaSearchCustomerCorporate","PRP")));
-    BelgenetElement cmbSegment = comboBox(By.id(GetObject("MAYA", "BTN_SEGMENT", "ID", "MayaSearchCustomerCorporate", "PRP")));
+    SolCrmElement cmbStatu = comboBox(By.id(GetObject("MAYA","BTN_STATU","ID","MayaSearchCustomerCorporate","PRP")));
+    SolCrmElement cmbSegment = comboBox(By.id(GetObject("MAYA", "BTN_SEGMENT", "ID", "MayaSearchCustomerCorporate", "PRP")));
 
     @Step("Ünvan alanına \"{unvan}\" yazılır.")
     public SearchCustomerCorparatePage unvanDoldur(String unvan) {

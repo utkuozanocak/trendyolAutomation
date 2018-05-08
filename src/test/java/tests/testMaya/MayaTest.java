@@ -5,15 +5,13 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.reporters.jq.Main;
 import pages.MainPage;
 import pages.ustMenuPages.SearchCustomerCorparatePage;
-import pages.ustMenuPages.SozlesmelerimPage;
 
 /****************************************************
- * Tarih: 2017-12-22
- * Proje: Türksat Functional Test Automation
- * Class: "Evrak kontroller" konulu senaryoları içerir
+ * Tarih: 2018-05-08
+ * Proje: Turkcell Functional Test Automation
+ * Class:
  * Yazan: Emre Sencan
  ****************************************************/
 public class MayaTest extends BaseTest {

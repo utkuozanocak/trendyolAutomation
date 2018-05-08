@@ -2,7 +2,6 @@ package common;
 
 import com.codeborne.selenide.*;
 import data.TestData;
-import data.User;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import listeners.DriverEventListener;
@@ -22,7 +21,7 @@ import org.testng.TestRunner;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.MainPage;
-import pages.pageComponents.belgenetElements.BelgenetFramework;
+import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -63,7 +62,7 @@ public class BaseTest extends BaseLibrary {
         sysProperties += "\nlocale: " + Locale.getDefault();
 
 
-        BelgenetFramework.setUp();
+        SolCrmFramework.setUp();
         WebDriverRunner.addListener(new DriverEventListener());
 
         //Configuration.remote = "http://10.101.20.151:4444/wd/hub";
@@ -87,12 +86,6 @@ public class BaseTest extends BaseLibrary {
         Configuration.collectionsPollingInterval = 100;
         Configuration.headless = false;
 
-        //Configuration.headless = false;
-        //Configuration.clickViaJs = true;
-        //Configuration.closeBrowserTimeoutMs = 34000;
-        //Configuration.openBrowserTimeoutMs = 34000;
-        //Configuration.browserSize = "1024x600";
-        //endregion
         setWaitForLoading(loadingTimeout);
 
         /*if (Configuration.browser.equalsIgnoreCase("firefox")){
@@ -370,14 +363,6 @@ public class BaseTest extends BaseLibrary {
             throw new RuntimeException("Invalid 'remote' parameter: " + Configuration.remote, e);
         }
         return downloadPath;
-    }
-
-
-    @Step("Login: {user.fullname}")
-    public void login(User user) {
-        LoginPage loginPage = new LoginPage().login(user.getUsername(), user.getPassword());
-        if (!user.getBirimAdi().isEmpty() && user.getBirimAdi() != null)
-            loginPage.birimSec(Condition.text(user.getBirimAdi()));
     }
 
     ElementsCollection birimDegistirme = $$("a[id^='leftMenuForm:edysMenuItem'] span[class='ui-menuitem-text']");

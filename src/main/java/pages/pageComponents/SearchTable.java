@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.MainPage;
-import pages.altMenuPages.EvrakDetayiPage;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
-import static pages.pageComponents.belgenetElements.BelgentCondition.isTableNavButtonDisabled;
+import static pages.pageComponents.solcrmElements.SolCrmCondition.isTableNavButtonDisabled;
 
 /**
  * Yazan: Ilyas Bayraktar
@@ -205,12 +204,6 @@ public class SearchTable extends MainPage {
         return this;
     }
 
-    @Step("Bulunan kayıtta \"İçerik Göster\" butona tıklanır")
-    public EvrakDetayiPage icerikGoster() {
-        getIcerikGosterButton().click();
-        return new EvrakDetayiPage();
-    }
-    
     @Step("Bulunan kayıtta \"Gönderen Notu\" butonu aranır")
     public SelenideElement getGonderenNotuButton(){
         return foundRow.$("button[id$='gonderenNotuButton']");
@@ -311,10 +304,6 @@ public class SearchTable extends MainPage {
         foundRow.$("button span.document-typeIade1");
         return this;
     }
-
-
-
-
     
     @Step
     public SelenideElement getYeniKayitEkleButton() {

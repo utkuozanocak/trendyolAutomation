@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.Command;
 import com.codeborne.selenide.ElementsCollection;
@@ -11,50 +11,50 @@ import java.io.IOException;
 
 class ComboBox {
 
-    class SelectComboBox implements Command<BelgenetElement> {
+    class SelectComboBox implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
             if (args == null || args.length == 0)
-                return (BelgenetElement) proxy;
+                return (SolCrmElement) proxy;
 
             boolean[] jaArr = (boolean[]) args[1];
             boolean js = (jaArr.length <= 0) || jaArr[0];
 
             new ComboBoxHelper().selectComboBox(proxy, args[0].toString(), js);
 
-            return (BelgenetElement) proxy;
+            return (SolCrmElement) proxy;
         }
     }
 
-    class OpenPanel implements Command<BelgenetElement> {
+    class OpenPanel implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
 
             ComboBoxHelper helper = new ComboBoxHelper();
             helper.setLocators(proxy);
             helper.openPanel();
-            return (BelgenetElement) proxy;
+            return (SolCrmElement) proxy;
         }
     }
 
-    class ClosePanel implements Command<BelgenetElement> {
+    class ClosePanel implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
 
             ComboBoxHelper helper = new ComboBoxHelper();
             helper.setLocators(proxy);
             helper.closePanel();
-            return (BelgenetElement) proxy;
+            return (SolCrmElement) proxy;
         }
     }
 
-    class GetComboBoxList implements Command<BelgenetElement> {
+    class GetComboBoxList implements Command<SolCrmElement> {
         @Override
-        public BelgenetElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
 
 
             By ulLocator = new ComboBoxHelper().getComboBoxHtmlList(proxy);
-            return ElementFinder.wrap(BelgenetElement.class, null, ulLocator, 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, ulLocator, 0);
         }
     }
 

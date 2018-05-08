@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.*;
-import data.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -165,12 +164,5 @@ public class LoginPage extends MainPage  {
 //        btnLogin.click();
 //        btnUsermenu.waitUntil(Condition.visible, 40000);
         return this;
-    }
-
-    @Step("Login")
-    public void login(User user) {
-        login(user.getUsername(), user.getPassword());
-        if (!user.getBirimAdi().isEmpty() && user.getBirimAdi() != null)
-            birimSec(Condition.text(user.getBirimAdi()));
     }
 }

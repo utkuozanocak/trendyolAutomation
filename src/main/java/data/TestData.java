@@ -4,20 +4,20 @@ import common.BaseLibrary;
 
 public class TestData extends BaseLibrary {
        // static DBConnection dbconn  = new DBConnection();
-    // PoC'de kullnailan Belgenet
+    // PoC'de kullnailan SolCrm
     // public static final String belgenetURL = "http://www.belgenet.com.tr:8282/edys-web/mainInbox.xhtml";
 
-    // Mevcut Belgenet - internal IP
+    // Mevcut SolCrm - internal IP
     // public static final String belgenetURL = "http://10.101.20.153:8889/edys-web/sistemeGiris.xhtml";
 
-    // Mevcut Belgenet - external IP
+    // Mevcut SolCrm - external IP
 //    public static final String mayaURL = dbconn.GetUrl("MAYA");
 
     public static final String mayaURL = "https://extprp.superonline.net/sol-crm-2.0/login.xhtml";
 //     public final  String  mayaURL = GetUrl("MAYA","PRP");
 
     //    public static final String belgenetURL = "http://10.101.20.153:8889/edys-web/sistemeGiris.xhtml";
-    public static final User optiim = new User("optiim", "123", "Optiim TEST", "Optiim Birim");
+//    public static final User optiim = new User("optiim", "123", "Optiim TEST", "Optiim Birim");
 
     //Default usernameOPTIIM
     public static final String usernameOPTIIM = "optiim";

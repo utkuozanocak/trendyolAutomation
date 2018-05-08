@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -6,28 +6,28 @@ import com.codeborne.selenide.impl.ElementFinder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public interface BelgenetElement extends SelenideElement {
+public interface SolCrmElement extends SelenideElement {
 
     //region ComboLov
 
-    static BelgenetElement $(WebElement parentElement, String cssLocator) {
-        return ElementFinder.wrap(BelgenetElement.class, parentElement, By.cssSelector(cssLocator), 0);
+    static SolCrmElement $(WebElement parentElement, String cssLocator) {
+        return ElementFinder.wrap(SolCrmElement.class, parentElement, By.cssSelector(cssLocator), 0);
 
     }
 
-    BelgenetElement comboLov(String selector);
+    SolCrmElement comboLov(String selector);
 
-    BelgenetElement comboLov(By locator);
-
-    /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
-     */
-    BelgenetElement clearLastSelectedItem();
+    SolCrmElement comboLov(By locator);
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
-    BelgenetElement clearAllSelectedItems();
+    SolCrmElement clearLastSelectedItem();
+
+    /**
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
+     */
+    SolCrmElement clearAllSelectedItems();
 
     /**
      * Search by text exact words case insensitive
@@ -35,9 +35,9 @@ public interface BelgenetElement extends SelenideElement {
      * select first filtered
      * if empty first will be selected
      *
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
-    BelgenetElement selectLov(String... text);
+    SolCrmElement selectLov(String... text);
 
     /**
      * Search by text exact words case insensitive
@@ -45,12 +45,12 @@ public interface BelgenetElement extends SelenideElement {
      * select first filtered
      * if empty first will be selected
      *
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
-    BelgenetElement selectExactLov(String... text);
+    SolCrmElement selectExactLov(String... text);
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
     Boolean isLovSelected();
 
@@ -59,12 +59,12 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @return
      */
-    BelgenetElement openTreePanel();
+    SolCrmElement openTreePanel();
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
-    BelgenetElement closeTreePanel();
+    SolCrmElement closeTreePanel();
 
     /**
      * Type text to comboLov input
@@ -72,7 +72,7 @@ public interface BelgenetElement extends SelenideElement {
      * @param text
      * @return
      */
-    BelgenetElement type(String text);
+    SolCrmElement type(String text);
 
     /**
      * "Sonuç bulunamamıştır" kontrolü, type ya da openTreePanel sonrası kullanılır
@@ -82,7 +82,7 @@ public interface BelgenetElement extends SelenideElement {
     Boolean isEmpty();
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
     Boolean isLovValueSelectable(String value);
 
@@ -108,31 +108,31 @@ public interface BelgenetElement extends SelenideElement {
     ElementsCollection getDetailItems();
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
     ElementsCollection getSelectedTitles();
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
     ElementsCollection getSelectedDetails();
 
     //endregion
 
     /**
-     * @see pages.pageComponents.belgenetElements.ComboLovHelper
+     * @see pages.pageComponents.solcrmElements.ComboLovHelper
      */
     ElementsCollection getSelectedItems();
 
     //region ComboBox
-    BelgenetElement comboBox(String selector);
+    SolCrmElement comboBox(String selector);
 
-    BelgenetElement comboBox(By locator);
+    SolCrmElement comboBox(By locator);
 
-    BelgenetElement selectComboBox(String text, boolean... js);
-    BelgenetElement openPanel();
-    BelgenetElement closePanel();
-    //BelgenetElement getComboBoxHtmlList();
+    SolCrmElement selectComboBox(String text, boolean... js);
+    SolCrmElement openPanel();
+    SolCrmElement closePanel();
+    //SolCrmElement getComboBoxHtmlList();
     //endregion
 
 
@@ -146,7 +146,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.Find
      */
-    BelgenetElement $(String cssSelector);
+    SolCrmElement $(String cssSelector);
 
     /**
      * ATTENTION! This method doesn't start any search yet!
@@ -154,7 +154,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.Find
      */
-    BelgenetElement $(String cssSelector, int index);
+    SolCrmElement $(String cssSelector, int index);
 
     /**
      * ATTENTION! This method doesn't start any search yet!
@@ -162,7 +162,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.Find
      */
-    BelgenetElement $(By selector);
+    SolCrmElement $(By selector);
 
     /**
      * ATTENTION! This method doesn't start any search yet!
@@ -170,7 +170,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.Find
      */
-    BelgenetElement $(By selector, int index);
+    SolCrmElement $(By selector, int index);
 
     /**
      * <p>Locates the first matching element inside given element using xpath locator</p>
@@ -179,7 +179,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.FindByXpath
      */
-    BelgenetElement $x(String xpath);
+    SolCrmElement $x(String xpath);
 
     /**
      * <p>Locates the Nth matching element inside given element using xpath locator</p>
@@ -187,7 +187,7 @@ public interface BelgenetElement extends SelenideElement {
      *
      * @see com.codeborne.selenide.commands.FindByXpath
      */
-    BelgenetElement $x(String xpath, int index);
+    SolCrmElement $x(String xpath, int index);
 
     /**
      * <p>

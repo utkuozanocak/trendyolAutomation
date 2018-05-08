@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -89,7 +89,7 @@ public class ComboLovHelper extends BaseLibrary {
     }
 
     @Step("Clear last selected items")
-    BelgenetElement clearSelectedItem(int index) {
+    SolCrmElement clearSelectedItem(int index) {
         int count = $$(lovInputTextleriTemizle).size();
 
         SelenideElement b = $$(lovInputTextleriTemizle).get(index).shouldBe(visible);
@@ -101,17 +101,17 @@ public class ComboLovHelper extends BaseLibrary {
 
         $$(lovInputTextleriTemizle).filter(visible).shouldHaveSize(count - 1);
 
-        return (BelgenetElement) element;
-//        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovText), 0);
+        return (SolCrmElement) element;
+//        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovText), 0);
     }
 
     @Step("Clear last selected item")
-    BelgenetElement clearLastSelectedItem() {
+    SolCrmElement clearLastSelectedItem() {
         ElementsCollection items = $$(lovSelectedItems).filterBy(visible);
         int size = items.size();
         if (size == 0) {
             Allure.addAttachment("No item to clear", String.valueOf(size));
-            return (BelgenetElement) element;
+            return (SolCrmElement) element;
         }
 
         SelenideElement lastItem = items.last();
@@ -120,11 +120,11 @@ public class ComboLovHelper extends BaseLibrary {
 
         //lastItem.shouldNotBe(exist);
         $$(lovSelectedItems).filterBy(visible).shouldHaveSize(size - 1);
-        return (BelgenetElement) element;
+        return (SolCrmElement) element;
     }
 
     @Step("Clear all selected items")
-    BelgenetElement clearAllSelectedItems() {
+    SolCrmElement clearAllSelectedItems() {
 
         int count = getSelectedItems().size();
         for (int i = 0; i < count; i++) {
@@ -132,8 +132,8 @@ public class ComboLovHelper extends BaseLibrary {
             //getSelectedItems().last().$(lovSecilenTemizleButton).pressEnter();
             getSelectedItems().shouldHaveSize(count - i - 1);
         }
-        return (BelgenetElement) element;
-//        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovText), 0);
+        return (SolCrmElement) element;
+//        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovText), 0);
     }
 
     //return type belgenetelement olsun
@@ -252,9 +252,9 @@ public class ComboLovHelper extends BaseLibrary {
 //        return By.cssSelector(lovText);
 
        /* if (multiType)
-            return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovText), 0);
+            return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovText), 0);
         else
-            return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovSecilen), 0);*/
+            return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovSecilen), 0);*/
         if (multiType)
             return By.cssSelector(lovText);
         else
@@ -435,23 +435,23 @@ public class ComboLovHelper extends BaseLibrary {
     //endregion
 
     @Step("Open tree panel")
-    public BelgenetElement openTreePanel() {
+    public SolCrmElement openTreePanel() {
         $(treeButton).shouldBe(visible).click();
 //        $(lovTree).shouldBe(visible);
-//        return (BelgenetElement) $$(lovTree).filterBy(visible).last();
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovTree), 0);
+//        return (SolCrmElement) $$(lovTree).filterBy(visible).last();
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovTree), 0);
     }
 
-    private BelgenetElement clearLov() {
+    private SolCrmElement clearLov() {
         if (!WebDriverRunner.getWebDriver().findElement(By.cssSelector(lovText)).isDisplayed())
             $(lovInputTextleriTemizle).shouldBe(visible).click();
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovText), 0);
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovText), 0);
     }
 
     @Step("Type text")
-    public BelgenetElement type(String text) {
+    public SolCrmElement type(String text) {
         $(lovText).setValue(text);
-        return ElementFinder.wrap(BelgenetElement.class, null, By.cssSelector(lovTree), 0);
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(lovTree), 0);
     }
 
     @Step("\"Sonuç bulunamamıştır\" mı?")

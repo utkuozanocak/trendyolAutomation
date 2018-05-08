@@ -1,4 +1,4 @@
-package pages.pageComponents.belgenetElements;
+package pages.pageComponents.solcrmElements;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.impl.Html;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.WebDriverRunner.isIE;
 
-public abstract class BelgentCondition extends Condition {
+public abstract class SolCrmCondition extends Condition {
 
     public static final Condition required = new Condition("required") {
         @Override
@@ -33,7 +33,7 @@ public abstract class BelgentCondition extends Condition {
         }
     };
 
-    public BelgentCondition(String name) {
+    public SolCrmCondition(String name) {
         super(name);
     }
 
