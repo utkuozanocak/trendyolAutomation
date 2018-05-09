@@ -15,8 +15,8 @@ public class SearchCustomerCorparatePage extends MainPage {
 
     private SelenideElement TXT_UNVAN_ID = $(By.id(GetObject("MAYA", "TXT_UNVAN_ID", "ID", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_SEARCH = $(By.id(GetObject("MAYA", "BTN_SEARCH", "ID", "MayaSearchCustomerCorporate", "PRP")));
-    //    private SelenideElement BTN_STATU = $(By.id(GetObject("MAYA","BTN_STATU","ID","MayaSearchCustomerCorporate","PRP")));
-//    private SelenideElement BTN_SEGMENT = $(By.id(GetObject("MAYA","BTN_SEGMENT","ID","MayaSearchCustomerCorporate","PRP")));
+    //private SelenideElement BTN_STATU = $(By.id(GetObject("MAYA","BTN_STATU","ID","MayaSearchCustomerCorporate","PRP")));
+//  //private SelenideElement BTN_SEGMENT = $(By.id(GetObject("MAYA","BTN_SEGMENT","ID","MayaSearchCustomerCorporate","PRP")));
     private SelenideElement TXT_SEARCHRESULT_ID = $(By.id(GetObject("MAYA", "TXT_SEARCHRESULT_ID", "ID", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_ISLEMLER_XPATH = $(By.xpath(GetObject("MAYA", "BTN_ISLEMLER_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_SIPARISOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISOLUSTUR_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
