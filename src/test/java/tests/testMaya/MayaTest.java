@@ -21,8 +21,9 @@ public class MayaTest extends BaseTest {
     String password = GetTestParameter("MayaLoginTest", "Password")[0];
     String mainOrg = GetTestParameter("MayaLoginTest", "MainOrg")[0];
     String subOrg = GetTestParameter("MayaLoginTest", "SubOrg")[0];
-    String LocationId = GetLocationData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0])[0];
+    String locationId = GetLocationData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0])[0];
     String fiberKampanya = GetTestParameter("MayaCreateOrderTest", "Product")[0];
+    String daireNo = GetLocationDaireData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0], locationId)[0];
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -49,12 +50,15 @@ public class MayaTest extends BaseTest {
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .degistirTikla()
-                .lokasyonIDDoldur(LocationId)
+                .lokasyonIDDoldur(locationId)
                 .Ara()
                 .tablodanLokasyonSec()
-                .lokasyonSec();
-//                .kampanyaAra(fiberKampanya)
-//                .tablodanKampanyaSec(fiberKampanya)
+                .lokasyonSec()
+                .daireNoDoldur(daireNo)
+                .daireNoSec(daireNo)
+                .kaydet()
+                .kampanyaAra(fiberKampanya)
+                .tablodanKampanyaSec(fiberKampanya);
 
 
 //        orderCapturePage.adslAc();
