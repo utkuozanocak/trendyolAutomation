@@ -14,6 +14,7 @@ public class TestData extends BaseLibrary {
 //    public static final String mayaURL = dbconn.GetUrl("MAYA");
 
     public static final String mayaURL = "https://extprp.superonline.net/sol-crm-2.0/login.xhtml";
+    public static final String foxURL = "http://172.20.165.150/netflowsolprp/FoxStartCenter.aspx";
 //     public final  String  mayaURL = GetUrl("MAYA","PRP");
 
     //    public static final String belgenetURL = "http://10.101.20.153:8889/edys-web/sistemeGiris.xhtml";

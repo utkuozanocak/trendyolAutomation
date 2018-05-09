@@ -1292,8 +1292,8 @@ public class BaseLibrary extends ElementsContainer {
                     "JOIN PQuiknetLocationUnit pqlu (nolock) on pqa.LocationID = pqlu.LocationId " +
                     "JOIN TAddress ta (nolock) on pqlu.ID = ta.PLocationUnitId " +
                     "JOIN PSiteLocation psl (nolock) on pqa.LocationID=psl.LocationId where " +
-                    "pqa.LocationInfrastructure = '"+LocationType+"' AND " +
-                    "pqa.StatusDescription = 'AKTIF (Satisa Hazir)' AND " +
+                    "pqa.LocationInfrastructure = '"+LocationType+"' AND pqlu.LocationId like '00%' " +
+                    "AND pqa.StatusDescription = 'AKTIF (Satisa Hazir)' AND " +
                     "pqa.IntegratorCode IS NOT NULL AND pqa.GcRecordId is null and " +
                     "psl.GcRecordId is null and pqlu.ProductInstanceBaseId is null and " +
                     "ta.PLocationUnitId IS NOT NULL AND pqa.EmptorSiteId IS NOT NULL ORDER BY NEWID()");
@@ -1402,5 +1402,4 @@ public class BaseLibrary extends ElementsContainer {
             ex.printStackTrace();
         }
     }
-
 }

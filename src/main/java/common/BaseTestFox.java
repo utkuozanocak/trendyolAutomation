@@ -31,7 +31,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static data.TestData.mayaURL;
+//import static data.TestData.mayaURL;
+import static data.TestData.foxURL;
 import static io.qameta.allure.util.ResultsUtils.firstNonEmpty;
 
 //BrowserPerTest.class
@@ -39,7 +40,7 @@ import static io.qameta.allure.util.ResultsUtils.firstNonEmpty;
         //, MethodInterceptor.class
 })
 //@Listeners({RerunFailedTests.class})
-public class BaseTest extends BaseLibrary {
+public class BaseTestFox extends BaseLibrary {
 
     //Seconds
     static final int timeout = 20;
@@ -69,8 +70,8 @@ public class BaseTest extends BaseLibrary {
         //Configuration.remote = "http://localhost:4444/wd/hub";
         System.setProperty("webdriver.chrome.driver","C:\\SeleniumDrivers\\chromedriver\\chromedriver.exe");
 
-        System.out.println("mayaurl" + mayaURL);
-        Configuration.baseUrl = (System.getProperty("URL") == null) ? mayaURL : System.getProperty("URL");
+        System.out.println("foxurl" + foxURL);
+        Configuration.baseUrl = (System.getProperty("URL") == null) ? foxURL : System.getProperty("URL");
         Configuration.browser = (System.getProperty("browser") == null) ? "chrome" : System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("node");
         Configuration.driverManagerEnabled = false;
@@ -386,8 +387,11 @@ public class BaseTest extends BaseLibrary {
 //    }
 
     @Step("Login")
-    public void login(String username, String password,String MainOrg,String SubOrg) {
-        new LoginPage().login(username, password,MainOrg,SubOrg);
+    public void loginFox(String username, String password) {
+        new LoginPage().loginFox(username, password);
+    }
+    public void isLoginFox() {
+        new LoginPage().isLoginFox();
     }
 
     @Step("Logout")
