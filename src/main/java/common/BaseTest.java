@@ -42,8 +42,8 @@ import static io.qameta.allure.util.ResultsUtils.firstNonEmpty;
 public class BaseTest extends BaseLibrary {
 
     //Seconds
-    static final int timeout = 30;
-    static final int loadingTimeout = 40;
+    static final int timeout = 20;
+    static final int loadingTimeout = 30;
 
     public Locale turkishLocal;
 

@@ -24,6 +24,7 @@ public class MayaTest extends BaseTest {
     String locationId = GetLocationData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0])[0];
     String fiberKampanya = GetTestParameter("MayaCreateOrderTest", "Product")[0];
     String daireNo = GetLocationDaireData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0], locationId)[0];
+    String hiz = GetTestParameter("MayaCreateOrderTest","DataProduct")[0];
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -35,6 +36,10 @@ public class MayaTest extends BaseTest {
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
         MainPage mainPage = new MainPage();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+
+        System.out.println(locationId);
+        System.out.println(daireNo);
+        System.out.println(fiberKampanya);
 
         mainPage.musteriDetayliArama();
 
@@ -58,7 +63,11 @@ public class MayaTest extends BaseTest {
                 .daireNoSec(daireNo)
                 .kaydet()
                 .kampanyaAra(fiberKampanya)
-                .tablodanKampanyaSec(fiberKampanya);
+                .tablodanKampanyaSec(fiberKampanya)
+                .kampanyaSec()
+                .hizSec(hiz)
+                .siparisEkle()
+                .siparişOluştur();
 
 
 //        orderCapturePage.adslAc();

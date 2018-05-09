@@ -6,12 +6,14 @@ import com.codeborne.selenide.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import pages.MainPage;
+import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.UstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
 public class OrderCapturePage extends MainPage {
 
@@ -42,21 +44,21 @@ public class OrderCapturePage extends MainPage {
 
     public class Fiber extends MainPage {
 
-        private SelenideElement TXT_KAMPANYAARA = $(By.id(GetObject("MAYA", "TXT_SEARCHPRODUCT_ID", "ID", "MayaOrderCapturePage", "PRP")));
-
+        private SelenideElement TXT_KAMPANYAARA = $(By.xpath(GetObject("MAYA", "TXT_SEARCHPRODUCT_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_DEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DEGISTIRFORLOC_ID","XPATH","MayaOrderCapturePage","PRP")));
-        private SelenideElement TXT_BINALOKASYON = $(By.id(GetObject("MAYA","TXT_LOCATION_ID","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement TXT_LOCATION_XPATH = $(By.xpath(GetObject("MAYA","TXT_LOCATION_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_ARA = $(By.xpath(GetObject("MAYA","BTN_SEARCHLOCATION","XPATH","MayaOrderCapturePage","PRP")));
-        private SelenideElement BTN_LOKASYONSEC = $(By.xpath(GetObject("MAYA","BTN_LOCATIONRESULT","XPATH","MayaOrderCapturePage","PRP")));
-
-
+        private SelenideElement BTN_LOCATIONRESULT = $(By.id(GetObject("MAYA","BTN_LOCATIONRESULT","ID","MayaOrderCapturePage","PRP")));
         private SelenideElement TXT_DAIRE_ID = $(By.id(GetObject("MAYA", "TXT_DAIRE_ID", "ID", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_NEXTDAIRE_XPATH = $(By.xpath(GetObject("MAYA","BTN_NEXTDAIRE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_LOCATIONKAYDET_ID = $(By.id(GetObject("MAYA","BTN_LOCATIONKAYDET_ID","ID","MayaOrderCapturePage","PRP")));
-
-
+        private SelenideElement BTN_SELECT_XPATH = $(By.xpath(GetObject("MAYA","BTN_SELECT_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         ElementsCollection TBL_KAMPANYA = $$(GetObject("MAYA","TBL_KAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
         ElementsCollection TBL_LOKASYON = $$(GetObject("MAYA","TBL_LOKASYON","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+        private SolCrmElement CMB_HIZSEC_ID = comboBox(By.id(GetObject("MAYA","CMB_HIZSEC_ID","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_HIZEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_HIZEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_SIPARISEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISIOLUSTUR_XPATH","XPATH","MayaOrderCapturePage","PRP")));
 
         @Step("Fiber menu açılır.")
         public Fiber openPage() {
@@ -78,7 +80,7 @@ public class OrderCapturePage extends MainPage {
 
         @Step("Seç butonu tıklanır.")
         public Fiber lokasyonSec() {
-            BTN_LOKASYONSEC.click();
+            BTN_LOCATIONRESULT.click();
             return this;
         }
 
@@ -86,16 +88,14 @@ public class OrderCapturePage extends MainPage {
         public Fiber tablodanLokasyonSec() {
             TBL_LOKASYON
                     .first()
-                    .$("td:nth-child(1)")
+                    .$("td:nth-child(1) span")
                     .click();
-
             return this;
         }
 
         @Step("Lokasyon id alanına \"{lokasyonId}\" yazılır.")
         public Fiber lokasyonIDDoldur(String lokasyonId) {
-            TXT_BINALOKASYON.sendKeys(lokasyonId);
-            sleep(1000);
+            TXT_LOCATION_XPATH.setValue(lokasyonId);
             return this;
         }
 
@@ -116,12 +116,13 @@ public class OrderCapturePage extends MainPage {
 
         @Step("Kaydet butonuna tıklanır.")
         public Fiber kaydet() {
-            BTN_LOKASYONSEC.click();
+            BTN_LOCATIONKAYDET_ID.click();
             return this;
         }
 
         @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
         public Fiber kampanyaAra(String kampanya) {
+            sleep(2000);
             TXT_KAMPANYAARA.sendKeys(kampanya);
             return this;
         }
@@ -135,10 +136,36 @@ public class OrderCapturePage extends MainPage {
             return this;
         }
 
+        @Step("Seç butonu tıklanır.")
+        public Fiber kampanyaSec() {
+            BTN_SELECT_XPATH.click();
+            return this;
+        }
+
+        @Step("Hız Seçilir ve Eklenir.")
+        public Fiber hizSec(String hiz) {
+            CMB_HIZSEC_ID.selectComboBox(hiz);
+            BTN_HIZEKLE_XPATH.click();
+            return this;
+        }
+
+        @Step("Sipariş Eklenir.")
+        public Fiber siparisEkle() {
+            clickJs(BTN_SIPARISEKLE_XPATH);
+
+            return this;
+        }
+
+        @Step("Sipariş oluştur tıklanır.")
+        public Fiber siparişOluştur() {
+            BTN_SIPARISIOLUSTUR_XPATH.click();
+            return this;
+        }
     }
 
-    public class ADSL extends MainPage {
 
+
+    public class ADSL extends MainPage {
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
