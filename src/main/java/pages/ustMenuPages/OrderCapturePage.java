@@ -1,6 +1,5 @@
 package pages.ustMenuPages;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -44,14 +43,13 @@ public class OrderCapturePage extends MainPage {
 
         private SelenideElement TXT_KAMPANYAARA = $(By.id(GetObject("MAYA", "TXT_SEARCHPRODUCT_ID", "ID", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_DEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DEGISTIRFORLOC_ID","XPATH","MayaOrderCapturePage","PRP")));
-        private  SelenideElement TXT_BINALOKASYON = $(By.id(GetObject("MAYA","TXT_LOCATION_ID","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement TXT_BINALOKASYON = $(By.id(GetObject("MAYA","TXT_LOCATION_ID","ID","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_ARA = $(By.xpath(GetObject("MAYA","BTN_SEARCHLOCATION","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_LOKASYONSEC = $(By.xpath(GetObject("MAYA","BTN_LOCATIONRESULT","XPATH","MayaOrderCapturePage","PRP")));
 
 
-        ElementsCollection TBL_KAMPANYA = $$("tbody[id='productSelectionWizardForm:fiberOfferDataTable_data'] tr[data-ri]");
-        ElementsCollection TBL_LOKASYON = $$("tbody[id='productSelectionWizardForm:fiberAddressManagementForm:fiberAddressTableLazy_data'] tr[data-ri]");
-
+        ElementsCollection TBL_KAMPANYA = $$(GetObject("MAYA","TBL_KAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+        ElementsCollection TBL_LOKASYON = $$(GetObject("MAYA","TBL_LOKASYON","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
 
         @Step("Fiber menu açılır.")
         public Fiber openPage() {
@@ -79,8 +77,8 @@ public class OrderCapturePage extends MainPage {
 
         @Step("Lokasyon tablosundan lokasyon seçilir.")
         public Fiber tablodanLokasyonSec() {
-            TBL_LOKASYON.
-            shouldBe(CollectionCondition.sizeGreaterThan(0)).first().click();
+            TBL_LOKASYON
+                    .first().click();
 
             return this;
         }
