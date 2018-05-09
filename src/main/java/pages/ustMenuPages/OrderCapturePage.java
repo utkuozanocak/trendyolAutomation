@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.MainPage;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
@@ -55,7 +56,8 @@ public class OrderCapturePage extends MainPage {
         private SelenideElement BTN_SELECT_XPATH = $(By.xpath(GetObject("MAYA","BTN_SELECT_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         ElementsCollection TBL_KAMPANYA = $$(GetObject("MAYA","TBL_KAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
         ElementsCollection TBL_LOKASYON = $$(GetObject("MAYA","TBL_LOKASYON","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
-        private SolCrmElement CMB_HIZSEC_ID = comboBox(By.id(GetObject("MAYA","CMB_HIZSEC_ID","ID","MayaOrderCapturePage","PRP")));
+        //private SolCrmElement CMB_HIZSEC_ID = comboBox(By.id(GetObject("MAYA","CMB_HIZSEC_ID","ID","MayaOrderCapturePage","PRP")));
+        private SolCrmElement CMB_HIZSEC_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_HIZSEC_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_HIZEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_HIZEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISIOLUSTUR_XPATH","XPATH","MayaOrderCapturePage","PRP")));
@@ -88,7 +90,7 @@ public class OrderCapturePage extends MainPage {
         public Fiber tablodanLokasyonSec() {
             TBL_LOKASYON
                     .first()
-                    .$("td:nth-child(1) span")
+                    .$("span")
                     .click();
             return this;
         }
@@ -107,10 +109,10 @@ public class OrderCapturePage extends MainPage {
 
         @Step("Daire no seçilir. \"{daireNo}\" ")
         public Fiber daireNoSec(String daireNo) {
-            while (!WebDriverRunner.getWebDriver().findElement(By.xpath("//span[text()='" + daireNo + "']")).isDisplayed()) {
+            while (!$(By.xpath("//span[text()='" + daireNo + "']")).isDisplayed()) {
                 BTN_NEXTDAIRE_XPATH.click();
             }
-            WebDriverRunner.getWebDriver().findElement(By.xpath("//span[text()='" + daireNo + "']")).click();
+            $(By.xpath("//a[@title='" + daireNo + "']//span")).click();
             return this;
         }
 
@@ -144,7 +146,7 @@ public class OrderCapturePage extends MainPage {
 
         @Step("Hız Seçilir ve Eklenir.")
         public Fiber hizSec(String hiz) {
-            CMB_HIZSEC_ID.selectComboBox(hiz);
+            CMB_HIZSEC_XPATH.selectComboBox(hiz);
             BTN_HIZEKLE_XPATH.click();
             return this;
         }

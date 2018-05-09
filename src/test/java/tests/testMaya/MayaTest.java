@@ -1,5 +1,6 @@
 package tests.testMaya;
 
+import com.codeborne.selenide.WebDriverRunner;
 import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -24,7 +25,7 @@ public class MayaTest extends BaseTest {
     String locationId = GetLocationData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0])[0];
     String fiberKampanya = GetTestParameter("MayaCreateOrderTest", "Product")[0];
     String daireNo = GetLocationDaireData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0], locationId)[0];
-    String hiz = GetTestParameter("MayaCreateOrderTest","DataProduct")[0];
+    String hiz = GetTestParameter("MayaCreateOrderTest", "DataProduct")[0];
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -68,6 +69,8 @@ public class MayaTest extends BaseTest {
                 .hizSec(hiz)
                 .siparisEkle()
                 .siparişOluştur();
+        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
+        //mainPage.basariMesajKontrolu();
 
 
 //        orderCapturePage.adslAc();

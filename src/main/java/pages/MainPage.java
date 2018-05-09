@@ -128,4 +128,10 @@ public class MainPage extends BaseLibrary {
         $(By.id(GetObject("MAYA", "BTN_CUSTOMERNOSEARCHDOWN_ID", "ID", "MayaMainPage", "PRP"))).click();
         $x(GetObject("MAYA", "BTN_CUSTOMERNODETAILSEARCH_XPATH", "XPATH", "MayaMainPage", "PRP")).click();
     }
+
+    @Step("Sipariş başarıyla tamamlanmıştır.")
+    public void basariMesajKontrolu() {
+        SelenideElement LBL_SIPARISMESSAGE_XPATH = $(By.xpath(GetObject("MAYA","LBL_SIPARISMESSAGE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        Assert.assertEquals(LBL_SIPARISMESSAGE_XPATH.isDisplayed(),true,"Başarılı mesaj gelmeli.");
+    }
 }
