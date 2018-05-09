@@ -5,7 +5,7 @@ package pages.pageData;
  * Tarih: 25.12.2017
  * Açıklama:
  */
-public class UstMenuData {
+public class MayaUstMenuData {
 
     private enum UstMenuGroup1 {
         KurumsalSozlesmeYonetimi("Kurumsal Sözleşme Yönetimi"),

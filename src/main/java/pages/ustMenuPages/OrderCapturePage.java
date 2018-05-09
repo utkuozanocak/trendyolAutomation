@@ -2,14 +2,12 @@ package pages.ustMenuPages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import pages.MainPage;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
-import pages.pageData.UstMenuData;
+import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -25,7 +23,7 @@ public class OrderCapturePage extends MainPage {
 
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturTikla() {
-        ustMenu(UstMenuData.Islemler.SiparisOlustur);
+        ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
 

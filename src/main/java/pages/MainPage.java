@@ -10,8 +10,9 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.pageComponents.ConfirmDialog;
 import pages.pageComponents.SearchTable;
+import pages.pageData.FoxUstMenuData;
 import pages.pageData.UrunEklemeData;
-import pages.pageData.UstMenuData;
+import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -34,11 +35,18 @@ public class MainPage extends BaseLibrary {
     }
 
     public void ustMenu(Enum menu) {
-        String groupName = ((UstMenuData.UstMenuDataInterface) menu).getGroupName();
-        String menuName = ((UstMenuData.UstMenuDataInterface) menu).getName();
+        String groupName = ((MayaUstMenuData.UstMenuDataInterface) menu).getGroupName();
+        String menuName = ((MayaUstMenuData.UstMenuDataInterface) menu).getName();
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + groupName + "']")).should(Condition.visible).click();
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + menuName + "']")).should(Condition.visible).click();
     }
+
+    public void ustMenuFox(Enum menu) {
+        String groupName = ((FoxUstMenuData.UstMenuGroup1) menu).getName();
+        Selenide.$(By.xpath("//ul[@class='nav nav-tabs']//a[.='" + groupName + "']")).should(Condition.visible).click();
+
+    }
+
 
     public void urunSecimMenu(String kategori, String... altKategori) {
 
