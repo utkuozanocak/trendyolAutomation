@@ -1,0 +1,10 @@
+diff a/src/main/java/pages/ustMenuPages/OrderCapturePage.java b/src/main/java/pages/ustMenuPages/OrderCapturePage.java	(rejected hunks)
+@@ -14,7 +14,7 @@
+ 
+ 
+     @Step("Siparis Oluştur sayfası açılır.")
+-    public OrderCapturePage unvanDoldur() {
++    public OrderCapturePage siparisOlusturTikla() {
+         ustMenu(UstMenuData.Islemler.SiparisOlustur);
+         return this;
+     }
