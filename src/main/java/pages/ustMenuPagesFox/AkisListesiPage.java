@@ -21,7 +21,7 @@ public class AkisListesiPage extends MainPageFox {
         return this;
     }
 
-    @Step("Akis Listesi sayfası açılır.")
+    @Step("Akış Detayı açılır.")
     public AkisListesiPage akisDetay(String akisNo) {
         TBL_AKISLISTESI
                 .filterBy(Condition.text(akisNo))

@@ -5,7 +5,9 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import common.BaseLibrary;
 import io.qameta.allure.Step;
+import org.apache.poi.hssf.record.LbsDataSubRecord;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.pageData.FoxUstMenuData;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -28,12 +30,23 @@ public class MainPageFox extends BaseLibrary {
         TXT_AKISNO_XPATH.pressEnter();
     }
 
-    @Step("Çıkış yap")
+    @Step("Çıkış yapılır")
     public void logout() {
         $("ul[class='nav navbar-nav']").click();
         $("#mi_exit").click();
     }
 
+    @Step("Kullanıcı Değiştir Tıklanır.")
+    public void kullaniciDegistir() {
+        $("ul[class='nav navbar-nav']").click();
+        $("#mi_changeUsers").click();
+    }
 
+    @Step("Mesaj kontrolü yapılır.")
+    public void mesajKontrol(String mesaj) {
+        SelenideElement LBL_MESAJ = $(By.id(GetObject("FOX","LBL_MESAJ","ID","FoxChangeUserPage","PRP")));
+        Assert.assertEquals(LBL_MESAJ.text(),mesaj);
+        takeScreenshot();
+    }
 
 }

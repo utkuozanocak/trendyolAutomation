@@ -22,6 +22,7 @@ import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.MainPageFox;
+import pages.pageComponents.ConfirmDialog;
 import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.lang.reflect.Method;
