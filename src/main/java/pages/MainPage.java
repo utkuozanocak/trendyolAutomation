@@ -10,9 +10,8 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.pageComponents.ConfirmDialog;
 import pages.pageComponents.SearchTable;
-import pages.pageData.FoxUstMenuData;
-import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
+import pages.pageData.UrunEklemeData;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;

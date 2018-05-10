@@ -13,8 +13,8 @@ import pages.ustMenuPagesFox.StepDetayPage;
 
 public class FoxTest extends BaseTestFox {
 
-    String taskId="104";
-    String flowStatus="KurulumKuyrukta";
+    String taskId=GetTestParameter("FoxSearchFlowTest","FiberKurulumTaskId")[0];
+    String flowStatus=GetTestParameter("FoxSearchFlowTest","FiberKurulumAkisStatu")[0];
 
     String username = GetTestParameter("FoxLoginTest", "FoxUserName")[0];
     String password = GetTestParameter("FoxLoginTest", "FoxPassword")[0];
