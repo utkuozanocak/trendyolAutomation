@@ -1,6 +1,5 @@
 package tests.testMaya;
 
-import com.codeborne.selenide.WebDriverRunner;
 import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -33,17 +32,11 @@ public class MayaTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Selenide Maya first test description")
+    @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
         MainPage mainPage = new MainPage();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-
-        System.out.println(locationId);
-        System.out.println(daireNo);
-        System.out.println(fiberKampanya);
-
         mainPage.musteriDetayliArama();
-
         searchCustomerCorparatePage
                 .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
                 .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
