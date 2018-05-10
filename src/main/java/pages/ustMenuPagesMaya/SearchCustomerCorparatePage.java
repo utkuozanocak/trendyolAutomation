@@ -1,4 +1,4 @@
-package pages.ustMenuPages;
+package pages.ustMenuPagesMaya;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;

@@ -6,8 +6,8 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPage;
-import pages.ustMenuPages.OrderCapturePage;
-import pages.ustMenuPages.SearchCustomerCorparatePage;
+import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
 /****************************************************
  * Tarih: 2018-05-08

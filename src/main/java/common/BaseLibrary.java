@@ -1163,6 +1163,27 @@ public class BaseLibrary extends ElementsContainer {
             ex.printStackTrace();
         }
     }
+    public void connectFoxPrp() throws SQLException,ClassNotFoundException
+    {
+        String[] _dataSet = new String[2];
+        String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
+        connection = null;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            System.out.println("Connecting to Database...");
+            connection = DriverManager.getConnection(databaseURL);
+            if (connection != null)
+            {
+                System.out.println("Connected to the Database...");
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
     public String URL_VALUE;
     public String OBJECT_VALUE;
     private String sEnvironment = "";
@@ -1343,33 +1364,60 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-    public String[] FoxSearchFlowNo(String CustomerNo, String TaskId, String FlowStatus)
+    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus)
     {
-        String[] dataSet = new String[1];
+        Integer[] dataSet = new Integer[1];
         try
         {
             connectFoxPrp();
             statement = connection.createStatement();
 
-            rs= statement.executeQuery("DECLARE @MUSTERINO NVARCHAR(20) = '"+CustomerNo+"'" +
-                    "    SELECT DISTINCT top 1 w.ID" +
-                    "    FROM   NFWDTT_WORKFLOWINSTANCE(NOLOCK) w"+
-                    "    INNER JOIN dbo.NFWDFT_WORKFLOWVERSION v(NOLOCK)"+
-                    "    ON  v.ID = w.WORKFLOWVERSION"+
-                    "    INNER JOIN NFWDTT_WORKFLOWSEARCHKEY(NOLOCK) s"+
-                    "    ON  s.WORKFLOWINSTANCE = w.ID"+
-                    "    AND s.SEARCHKEY = 'MUSTERINOKEY'"+
-                    "    AND s.[VALUE] = @MUSTERINO"+
-                    "    LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY(NOLOCK) s2"+
-                    "    ON  s2.WORKFLOWINSTANCE = w.ID"+
-                    "    AND s2.SEARCHKEY = 'TASKIDCODE'"+
-                    "    WHERE s2.[VALUE]='"+TaskId+"'"+
-                    "   AND w.WORKFLOWSTATUS = '"+FlowStatus+"'"+
-                    "    ORDER BY  w.ID DESC");
+            rs= statement.executeQuery("SELECT DISTINCT top 1 w.ID" +
+                    " FROM  NFWDTT_WORKFLOWINSTANCE w" +
+                    " INNER JOIN dbo.NFWDFT_WORKFLOWVERSION v" +
+                    " ON  v.ID = w.WORKFLOWVERSION" +
+                    " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY s" +
+                    " ON  s.WORKFLOWINSTANCE = w.ID" +
+                    " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2" +
+                    " ON  s2.WORKFLOWINSTANCE = w.ID" +
+                    " AND s2.SEARCHKEY = 'TASKIDCODE'" +
+                    " WHERE s2.[VALUE]='"+TaskId+"'" +
+                    " AND w.WORKFLOWSTATUS ='"+FlowStatus+"'" +
+                    " ORDER BY  w.ID DESC");
 
             while (rs.next())
             {
-                dataSet[0] = rs.getString("ID");
+                dataSet[0] = rs.getInt("ID");
+            }
+            connection.close();
+            System.out.println("Connection Closed to the Database...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return dataSet;
+    }
+
+    public String[] FoxGetUserForChange(String AkisNo)
+    {
+        String[] dataSet = new String[2];
+        try
+        {
+            connectFoxPrp();
+            statement = connection.createStatement();
+
+            rs= statement.executeQuery("select top 1 o.NAME,CAST(po.DESCRIPTIONS AS XML).value('(/Descriptions//Descriptions/Description/@Description)[1]', 'nvarchar(max)') as POSITIONNAME from NFWDTT_STEP s" +
+                    " JOIN NFWDTT_POOL p ON s.ID=p.STEP" +
+                    " JOIN NFWDFT_POSITION po on p.POSITION = po.CODE" +
+                    " JOIN NFWDFT_ORGANIZATION o on p.ORGANIZATION=o.CODE" +
+                    " JOIN NFWDTV_ACTIVEUSERPOSITION PP ON PP.POSITION = P.POSITION AND PP.ORGANIZATION = P.ORGANIZATION" +
+                    " where s.WORKFLOWINSTANCE='"+AkisNo+"' and p.TYPE='I' AND PP.ISACTIVE = 1 and po.DESCRIPTIONS not like '%WebService%' order by STARTTIME desc");
+
+            while (rs.next())
+            {
+                dataSet[0] = rs.getString("NAME");
+                dataSet[1] = rs.getString("POSITIONNAME");
 
             }
             connection.close();
@@ -1381,25 +1429,8 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-    public void connectFoxPrp() throws SQLException,ClassNotFoundException
-    {
-        String[] _dataSet = new String[2];
-        String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
-        connection = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Connecting to Database...");
-            connection = DriverManager.getConnection(databaseURL);
-            if (connection != null)
-            {
-                System.out.println("Connected to the Database...");
-            }
-        } catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex)
-        {
-            ex.printStackTrace();
-        }
-    }
+
+
+
+
 }

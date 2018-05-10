@@ -3,13 +3,19 @@ package pages.pageData;
 public class FoxUstMenuData {
 
 
-    public enum UstMenuGroup1 {
+    public enum UstMenuGroupFox {
         GelenKutusu("Gelen Kutusu"),
-        AkisListesi("Akış Listesi");
+        GidenKutusu("Giden Kutusu"),
+        DenetimKutusu("Denetim Kutusu"),
+        Askidakiler("Askıdakiler"),
+        AltAkislar("Alt Akışlar"),
+        AkisListesi("Akış Listesi"),
+        TakipEttiklerim("Takip Ettiklerim"),
+        Arsiv("Arşiv");
 
         private String name;
 
-        UstMenuGroup1(String name) {
+        UstMenuGroupFox(String name) {
             this.name = name;
         }
 
@@ -17,9 +23,4 @@ public class FoxUstMenuData {
             return name;
         }
     }
-
-//    public interface UstMenuDataInterfaceFox {
-//        String getName();
-//    }
-
 }

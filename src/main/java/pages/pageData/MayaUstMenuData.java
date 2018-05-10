@@ -7,7 +7,7 @@ package pages.pageData;
  */
 public class MayaUstMenuData {
 
-    private enum UstMenuGroup1 {
+    private enum UstMenuGroupMaya {
         KurumsalSozlesmeYonetimi("Kurumsal Sözleşme Yönetimi"),
         Musteri("Müşteri"),
         Satis("Satış"),
@@ -19,7 +19,7 @@ public class MayaUstMenuData {
 
         private String name;
 
-        UstMenuGroup1(String name) {
+        UstMenuGroupMaya(String name) {
             this.name = name;
         }
 
@@ -33,7 +33,7 @@ public class MayaUstMenuData {
         SozlesmeOlustur("Sözleşme Olulştur");
 
         private String name;
-        private String groupName = UstMenuGroup1.KurumsalSozlesmeYonetimi.getName();
+        private String groupName = UstMenuGroupMaya.KurumsalSozlesmeYonetimi.getName();
 
         KurumsalSozlesmeYonetimi(final String name) {
             this.name = name;
@@ -61,7 +61,7 @@ public class MayaUstMenuData {
         MusteriVergiDairesiGuncelleme("Müşteri Vergi Dairesi Güncelleme");
 
         private String name;
-        private String groupName = UstMenuGroup1.Musteri.getName();
+        private String groupName = UstMenuGroupMaya.Musteri.getName();
 
         Musteri(final String name) {
             this.name = name;
@@ -95,7 +95,7 @@ public class MayaUstMenuData {
         TaslakSiparislerim("Taslak Siparişlerim");
 
         private String name;
-        private String groupName = UstMenuGroup1.Satis.getName();
+        private String groupName = UstMenuGroupMaya.Satis.getName();
 
         Satis(final String name) {
             this.name = name;
@@ -128,7 +128,7 @@ public class MayaUstMenuData {
         OdemeSablonlari("Ödeme Şablonları");
 
         private String name;
-        private String groupName = UstMenuGroup1.Urun.getName();
+        private String groupName = UstMenuGroupMaya.Urun.getName();
 
         Urun(final String name) {
             this.name = name;
@@ -149,7 +149,7 @@ public class MayaUstMenuData {
         PortIn("Port-in");
 
         private String name;
-        private String groupName = UstMenuGroup1.Akislar.getName();
+        private String groupName = UstMenuGroupMaya.Akislar.getName();
 
         Akislar(final String name) {
             this.name = name;
@@ -175,7 +175,7 @@ public class MayaUstMenuData {
         SMSEPostaSablonlari("SMS / E-posta Şablonları");
 
         private String name;
-        private String groupName = UstMenuGroup1.Yonetim.getName();
+        private String groupName = UstMenuGroupMaya.Yonetim.getName();
 
         Yonetim(final String name) {
             this.name = name;
@@ -209,7 +209,7 @@ public class MayaUstMenuData {
         MusteriSiparisleri("Müşteri Siparişleri");
 
         private String name;
-        private String groupName = UstMenuGroup1.Islemler.getName();
+        private String groupName = UstMenuGroupMaya.Islemler.getName();
 
         Islemler(final String name) {
             this.name = name;

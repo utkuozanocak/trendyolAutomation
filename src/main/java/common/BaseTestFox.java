@@ -21,6 +21,7 @@ import org.testng.TestRunner;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.MainPageFox;
 import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.lang.reflect.Method;
@@ -396,7 +397,7 @@ public class BaseTestFox extends BaseLibrary {
 
     @Step("Logout")
     public void logout() {
-        new MainPage().logout();
+        new MainPageFox().logout();
     }
 
 

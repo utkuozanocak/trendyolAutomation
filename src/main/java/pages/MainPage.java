@@ -41,13 +41,6 @@ public class MainPage extends BaseLibrary {
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + menuName + "']")).should(Condition.visible).click();
     }
 
-    public void ustMenuFox(Enum menu) {
-        String groupName = ((FoxUstMenuData.UstMenuGroup1) menu).getName();
-        Selenide.$(By.xpath("//ul[@class='nav nav-tabs']//a[.='" + groupName + "']")).should(Condition.visible).click();
-
-    }
-
-
     public void urunSecimMenu(String kategori, String... altKategori) {
 
         if (altKategori.length > 0) {
