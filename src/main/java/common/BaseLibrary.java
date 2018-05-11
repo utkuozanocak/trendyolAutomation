@@ -22,6 +22,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.security.Key;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -1429,6 +1430,8 @@ public class BaseLibrary extends ElementsContainer {
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_N);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_N);
             switchTo().window(1);
             Selenide.open(url);
         } catch (AWTException e) {
@@ -1445,8 +1448,7 @@ public class BaseLibrary extends ElementsContainer {
         $(By.id("ctl00_MainContent_lnkSearch")).click();
         if ($(By.id("ctl00_MainContent_lblSuccess")).isDisplayed())
             seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).text();
-
-        close();
+        closeNewWindow();
         return seriNo;
     }
 

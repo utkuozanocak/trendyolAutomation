@@ -18,7 +18,8 @@ public class FoxTest extends BaseTestFox {
 
     String username = GetTestParameter("FoxLoginTest", "FoxUserName")[0];
     String password = GetTestParameter("FoxLoginTest", "FoxPassword")[0];
-
+    String seriNoFttb=null;
+    String seriNoGpon=null;
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -87,10 +88,24 @@ public class FoxTest extends BaseTestFox {
                 .kurulumAltStatuSec(kurulumAltStatu)
                 .sozlesmeStatuSec(sozlesmeStatu)
                 .sozlesmeSubStatuSec(sozlesmeSubStatu);
+               String altYapi =  stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+               cihazSeriNoGetir(altYapi);
 
-        testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-        String seriNo = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
+        stepDetayPage.teknikFormTabAc();
+    }
 
-
+    private void cihazSeriNoGetir(String altYapi) {
+        if(altYapi.equals("FTTb"))
+        {
+            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
+            seriNoFttb = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
+        }
+        else if (altYapi.equals("GPON"))
+        {
+            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
+            seriNoFttb = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
+            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
+            seriNoGpon = GetSerialNumber("PRP","FIBERTEK","Gpon Modem");
+        }
     }
 }

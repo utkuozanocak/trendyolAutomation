@@ -1,5 +1,6 @@
 package pages.ustMenuPagesFox;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -13,9 +14,7 @@ import pages.pageComponents.solcrmElements.SolCrmElement;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
 public class StepDetayPage extends MainPageFox {
@@ -92,6 +91,8 @@ public class StepDetayPage extends MainPageFox {
         private SelenideElement CMB_KURULUMALTSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_KURULUMALTSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
         private SelenideElement CMB_SOZLESMESTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_SOZLESMESTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
         private SelenideElement CMB_SOZLESMESUBSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_SOZLESMESUBSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
+        private SelenideElement TXT_ALTYAPI_ID = $(By.id(GetObject("FOX","TXT_ALTYAPI_ID","ID","FoxStepDetayPage","PRP")));
+        ElementsCollection TBL_SERINOCIHAZLISTE_CSS = $$(GetObject("FOX","TBL_SERINOCIHAZLISTE_CSS","CSS_SELECTOR","FoxStepDetayPage","PRP"));
 
         @Step("Teknik Form açılır.")
         public TeknikForm openPage() {
@@ -124,6 +125,12 @@ public class StepDetayPage extends MainPageFox {
             return this;
         }
 
+        @Step("Alt Yapı bilgisi alınır.")
+        public String altYapiBilgisiAl() {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TXT_ALTYAPI_ID);
+            String altYapi = TXT_ALTYAPI_ID.getValue();
+            return altYapi;
+        }
 
     }
 
