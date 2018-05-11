@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import pages.MainPageFox;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 public class AkisDetayPage extends MainPageFox {
 
@@ -13,6 +14,7 @@ public class AkisDetayPage extends MainPageFox {
 
     @Step("Kurulum tıklanır.")
     public AkisDetayPage kurulumAdımınaTikla() {
+        switchTo().frame(0);
         BTN_KURULUM_XPATH.click();
         return this;
     }

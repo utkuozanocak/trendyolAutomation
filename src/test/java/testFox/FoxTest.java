@@ -35,12 +35,17 @@ public class FoxTest extends BaseTestFox {
         AkisDetayPage akisDetayPage = new AkisDetayPage();
         StepDetayPage stepDetayPage =new StepDetayPage();
 
+
         String akisNo =  FoxSearchFlowNo(taskId,flowStatus)[0].toString();
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];
         String mesaj="Kullanıcı değiştirilmiştir.";
         String segment = "SOHO";
+        String kurulumStatu = "Teslim Edildi / Kurulum Yapıldı";
+        String kurulumAltStatu = "Teslim Edildi / Kurulum Yapıldı-Test edildi";
+        String akisDurumu = "COZULDU";
+        String aciklama = "test otomasyon";
 
 
 
@@ -68,11 +73,24 @@ public class FoxTest extends BaseTestFox {
 
         akisDetayPage.kurulumAdımınaTikla();
 
-
+        String sozlesmeStatu = "İmzalandı";
+        String sozlesmeSubStatu = "Sözleşme, Talep sahibi ile yapıldı";
         stepDetayPage
                 .uzerineAl()
                 .pazarlamaSegmentiSec(segment)
-                .akisDurumuSec("COZULDU");
+                .akisDurumuSec(akisDurumu)
+                .bayiOtomasyondanCikar()
+                .aciklamaDoldur(aciklama)
+                .aciklamaEkle()
+                .teknikFormTabAc()
+                .kurulumStatuSec(kurulumStatu)
+                .kurulumAltStatuSec(kurulumAltStatu)
+                .sozlesmeStatuSec(sozlesmeStatu)
+                .sozlesmeSubStatuSec(sozlesmeSubStatu);
+
+        testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
+        String seriNo = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
+
 
     }
 }
