@@ -56,8 +56,21 @@ public class KullaniciDegistirPage extends MainPageFox {
 
     @Step("Tablodan ilk kayıt seçilir.")
     public KullaniciDegistirPage tablodanIlkKayitSe() {
-       TBL_USERS_CSS
-                .first()
+        String assignType =null;
+        String userCode = null;
+        int i =0;
+                do {
+                    userCode= TBL_USERS_CSS
+                            .get(i)
+                            .$("td:nth-child(2)")
+                            .text();
+                    assignType = GetFoxUserAssignType(userCode)[0];
+                    System.out.println(assignType);
+                    i++;
+                }while (assignType.equals("O"));
+
+        TBL_USERS_CSS
+                .get(i)
                 .$("a")
                 .click();
         return this;

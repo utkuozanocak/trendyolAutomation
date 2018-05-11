@@ -8,6 +8,7 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -16,15 +17,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.*;
 import org.testng.asserts.*;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.security.Key;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -278,7 +283,7 @@ public class BaseLibrary extends ElementsContainer {
                 isLoaderHidden = (boolean) js.executeScript("return document.querySelectorAll('div[style*='visibility: visible'] img[alt='loading']').length == 0");
 //                                                          return document.querySelectorAll('div[id*="bekleyiniz"][style*="visibility: visible"]').length == 0
 // executeScript("return $('.loading').is(':visible') == false");
-             //   System.out.println("Loading bekleniyor");
+                //   System.out.println("Loading bekleniyor");
             } catch (Exception e) {
                 isLoaderHidden = true;
                 System.out.println("Load: isLoaderHidden error: " + e.getMessage());
@@ -318,7 +323,7 @@ public class BaseLibrary extends ElementsContainer {
                 try {
                     WebDriverRunner.getWebDriver().manage().window().maximize();
                     System.out.println("manage().window().maximize()");
-                }catch (Exception e) {
+                } catch (Exception e) {
                     System.out.println("maximize:" + e.getMessage());
                 }
             }
@@ -482,8 +487,8 @@ public class BaseLibrary extends ElementsContainer {
         Random random = new Random();
         int lineBreakEveryChar = 10;
         int i = 0;
-        while (sb.length() < textSize){
-            if (i!=0 && i%lineBreakEveryChar==0)
+        while (sb.length() < textSize) {
+            if (i != 0 && i % lineBreakEveryChar == 0)
                 sb.append(' ');
             sb.append(chars[random.nextInt(chars.length)]);
             i++;
@@ -523,6 +528,7 @@ public class BaseLibrary extends ElementsContainer {
 
         return dtf.format(now);
     }
+
     //dd.MM.yyyy formatına göre / koyarak sysdate alır.
     public String getSysDateForKis2() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -1093,8 +1099,7 @@ public class BaseLibrary extends ElementsContainer {
 
     }
 
-    public String myip()
-    {
+    public String myip() {
         WebDriver driver = WebDriverRunner.getWebDriver();
         driver.get("http://www.whatismyip.com/");
         String myIP = driver.findElement(By.cssSelector("ul[class='list-group text-center'] h3")).getText();
@@ -1123,8 +1128,7 @@ public class BaseLibrary extends ElementsContainer {
 
     //endregion
 
-    public void connect() throws SQLException,ClassNotFoundException
-    {
+    public void connect() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://10.35.160.7;databaseName=TestDB;user=SOLTEST;password=SOL2000!";
         //String user = "root";
@@ -1143,8 +1147,8 @@ public class BaseLibrary extends ElementsContainer {
             ex.printStackTrace();
         }
     }
-    public void connectPrp() throws SQLException,ClassNotFoundException
-    {
+
+    public void connectPrp() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://10.35.160.5;databaseName=SolTelcoPreProd;user=SOLTEST;password=SOL2000!";
         //String user = "root";
@@ -1163,8 +1167,8 @@ public class BaseLibrary extends ElementsContainer {
             ex.printStackTrace();
         }
     }
-    public void connectFoxPrp() throws SQLException,ClassNotFoundException
-    {
+
+    public void connectFoxPrp() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
         connection = null;
@@ -1172,28 +1176,25 @@ public class BaseLibrary extends ElementsContainer {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             System.out.println("Connecting to Database...");
             connection = DriverManager.getConnection(databaseURL);
-            if (connection != null)
-            {
+            if (connection != null) {
                 System.out.println("Connected to the Database...");
             }
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
+
     public String URL_VALUE;
     public String OBJECT_VALUE;
     private String sEnvironment = "";
-    public  String GetUrl(String strapp, String strenv)
-    {
-        try
-        {
+
+    public String GetUrl(String strapp, String strenv) {
+        try {
             connect();
             statement = connection.createStatement();
-            rs = statement.executeQuery("select Url from TBL_App where App='"+strapp+"' and Environment='"+strenv+"'");
+            rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and Environment='" + strenv + "'");
 
             while (rs.next()) {
 
@@ -1207,10 +1208,9 @@ public class BaseLibrary extends ElementsContainer {
         }
         return URL_VALUE;
     }
-    public String GetObject(String strApp,String strObjectName,String strObjectType,String strPageName)
-    {
-        try
-        {
+
+    public String GetObject(String strApp, String strObjectName, String strObjectType, String strPageName) {
+        try {
             connect();
             statement = connection.createStatement();
 
@@ -1218,32 +1218,26 @@ public class BaseLibrary extends ElementsContainer {
                     "join TBL_ObjectTypes tot on tpo.ObjectTypeID=tot.ObjectTypeID " +
                     "join TBL_Pages tp on tp.PageID=tpo.PageID " +
                     "join TBL_App ta on ta.AppID=tpo.AppID " +
-                    "where ta.App='"+strApp+"' and ta.Environment='"+ssEnvironment+"' " +
-                    "and tpo.ObjectName='"+strObjectName+"' " +
-                    "and tot.ObjectType='"+strObjectType+"' and tp.PageName='"+strPageName+"'");
+                    "where ta.App='" + strApp + "' and ta.Environment='" + ssEnvironment + "' " +
+                    "and tpo.ObjectName='" + strObjectName + "' " +
+                    "and tot.ObjectType='" + strObjectType + "' and tp.PageName='" + strPageName + "'");
 
-            while (rs.next())
-            {
+            while (rs.next()) {
 
                 OBJECT_VALUE = rs.getNString("ObjectValue");
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return OBJECT_VALUE;
     }
 
-    public String GetObject(String strApp,String strObjectName,String strObjectType,String strPageName,String strEnv)
-    {
-        try
-        {
+    public String GetObject(String strApp, String strObjectName, String strObjectType, String strPageName, String strEnv) {
+        try {
             connect();
             statement = connection.createStatement();
 
@@ -1251,107 +1245,90 @@ public class BaseLibrary extends ElementsContainer {
                     "join TBL_ObjectTypes tot on tpo.ObjectTypeID=tot.ObjectTypeID " +
                     "join TBL_Pages tp on tp.PageID=tpo.PageID " +
                     "join TBL_App ta on ta.AppID=tpo.AppID " +
-                    "where ta.App='"+strApp+"' and ta.Environment='"+strEnv+"' " +
-                    "and tpo.ObjectName='"+strObjectName+"' " +
-                    "and tot.ObjectType='"+strObjectType+"' and tp.PageName='"+strPageName+"'");
+                    "where ta.App='" + strApp + "' and ta.Environment='" + strEnv + "' " +
+                    "and tpo.ObjectName='" + strObjectName + "' " +
+                    "and tot.ObjectType='" + strObjectType + "' and tp.PageName='" + strPageName + "'");
 
-            while (rs.next())
-            {
+            while (rs.next()) {
 
                 OBJECT_VALUE = rs.getNString("ObjectValue");
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return OBJECT_VALUE;
     }
-    public  String[] GetTestParameter(String strTestName,String strParameterName)
-    {
-        String[] dataSet  = new String[4];
-        try
-        {
+
+    public String[] GetTestParameter(String strTestName, String strParameterName) {
+        String[] dataSet = new String[4];
+        try {
             connect();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select tp.TestParameterValue from TBL_TestParamMove tpa " +
                     "join TBL_TestParameters tp on tpa.TestParameterID=tp.TestParameterID " +
-                    "join TBL_Tests t on t.TestID=tpa.TestID where t.TestName = '"+strTestName+"' and tp.TestParameterName = '"+strParameterName+"'");
-            int i=0;
-            while (rs.next())
-            {
+                    "join TBL_Tests t on t.TestID=tpa.TestID where t.TestName = '" + strTestName + "' and tp.TestParameterName = '" + strParameterName + "'");
+            int i = 0;
+            while (rs.next()) {
                 dataSet[i] = rs.getNString("TestParameterValue");
                 i = i + 1;
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return dataSet;
     }
-    public String[] GetLocationData(String LocationType)
-    {
+
+    public String[] GetLocationData(String LocationType) {
         String[] dataSet = new String[1];
-        try
-        {
+        try {
             connectPrp();
             statement = connection.createStatement();
             rs = statement.executeQuery("SELECT top 1 pqlu.LocationId FROM PQuiknetAddress pqa " +
                     "JOIN PQuiknetLocationUnit pqlu (nolock) on pqa.LocationID = pqlu.LocationId " +
                     "JOIN TAddress ta (nolock) on pqlu.ID = ta.PLocationUnitId " +
                     "JOIN PSiteLocation psl (nolock) on pqa.LocationID=psl.LocationId where " +
-                    "pqa.LocationInfrastructure = '"+LocationType+"' AND pqlu.LocationId like '00%' " +
+                    "pqa.LocationInfrastructure = '" + LocationType + "' AND pqlu.LocationId like '00%' " +
                     "AND pqa.StatusDescription = 'AKTIF (Satisa Hazir)' AND " +
                     "pqa.IntegratorCode IS NOT NULL AND pqa.GcRecordId is null and " +
                     "psl.GcRecordId is null and pqlu.ProductInstanceBaseId is null and " +
                     "ta.PLocationUnitId IS NOT NULL AND pqa.EmptorSiteId IS NOT NULL ORDER BY NEWID()");
-            while (rs.next())
-            {
+            while (rs.next()) {
                 dataSet[0] = rs.getNString("LocationId");
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return dataSet;
     }
-    public String[] GetLocationDaireData(String LocationType,String LocationId)
-    {
+
+    public String[] GetLocationDaireData(String LocationType, String LocationId) {
         String[] dataSet = new String[1];
-        try
-        {
+        try {
             connectPrp();
             statement = connection.createStatement();
             rs = statement.executeQuery("SELECT top 1 pqlu.LocationUnitName FROM PQuiknetAddress pqa " +
                     "JOIN PQuiknetLocationUnit pqlu (nolock) on pqa.LocationID = pqlu.LocationId " +
                     "JOIN TAddress ta (nolock) on pqlu.ID = ta.PLocationUnitId " +
                     "JOIN PSiteLocation psl (nolock) on pqa.LocationID=psl.LocationId where " +
-                    "pqa.LocationInfrastructure = '"+LocationType+"' AND " +
+                    "pqa.LocationInfrastructure = '" + LocationType + "' AND " +
                     "pqa.StatusDescription = 'AKTIF (Satisa Hazir)' AND " +
                     "pqa.IntegratorCode IS NOT NULL AND pqa.GcRecordId is null and " +
                     "psl.GcRecordId is null and pqlu.ProductInstanceBaseId is null and " +
                     "ta.PLocationUnitId IS NOT NULL AND pqa.EmptorSiteId IS NOT NULL " +
-                    "and pqlu.LocationId = '"+LocationId+"' ORDER BY NEWID()");
+                    "and pqlu.LocationId = '" + LocationId + "' ORDER BY NEWID()");
             while (rs.next()) {
                 dataSet[0] = rs.getNString("LocationUnitName");
             }
@@ -1364,15 +1341,14 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus)
-    {
+
+    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus) {
         Integer[] dataSet = new Integer[1];
-        try
-        {
+        try {
             connectFoxPrp();
             statement = connection.createStatement();
 
-            rs= statement.executeQuery("SELECT DISTINCT top 1 w.ID" +
+            rs = statement.executeQuery("SELECT DISTINCT top 1 w.ID" +
                     " FROM  NFWDTT_WORKFLOWINSTANCE w" +
                     " INNER JOIN dbo.NFWDFT_WORKFLOWVERSION v" +
                     " ON  v.ID = w.WORKFLOWVERSION" +
@@ -1381,12 +1357,11 @@ public class BaseLibrary extends ElementsContainer {
                     " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2" +
                     " ON  s2.WORKFLOWINSTANCE = w.ID" +
                     " AND s2.SEARCHKEY = 'TASKIDCODE'" +
-                    " WHERE s2.[VALUE]='"+TaskId+"'" +
-                    " AND w.WORKFLOWSTATUS ='"+FlowStatus+"'" +
+                    " WHERE s2.[VALUE]='" + TaskId + "'" +
+                    " AND w.WORKFLOWSTATUS ='" + FlowStatus + "'" +
                     " ORDER BY  w.ID DESC");
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 dataSet[0] = rs.getInt("ID");
             }
             connection.close();
@@ -1399,23 +1374,20 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
-    public String[] FoxGetUserForChange(String AkisNo)
-    {
+    public String[] FoxGetUserForChange(String AkisNo) {
         String[] dataSet = new String[2];
-        try
-        {
+        try {
             connectFoxPrp();
             statement = connection.createStatement();
 
-            rs= statement.executeQuery("select top 1 o.NAME,CAST(po.DESCRIPTIONS AS XML).value('(/Descriptions//Descriptions/Description/@Description)[1]', 'nvarchar(max)') as POSITIONNAME from NFWDTT_STEP s" +
+            rs = statement.executeQuery("select top 1 o.NAME,CAST(po.DESCRIPTIONS AS XML).value('(/Descriptions//Descriptions/Description/@Description)[1]', 'nvarchar(max)') as POSITIONNAME from NFWDTT_STEP s" +
                     " JOIN NFWDTT_POOL p ON s.ID=p.STEP" +
                     " JOIN NFWDFT_POSITION po on p.POSITION = po.CODE" +
                     " JOIN NFWDFT_ORGANIZATION o on p.ORGANIZATION=o.CODE" +
                     " JOIN NFWDTV_ACTIVEUSERPOSITION PP ON PP.POSITION = P.POSITION AND PP.ORGANIZATION = P.ORGANIZATION" +
-                    " where s.WORKFLOWINSTANCE='"+AkisNo+"' and p.TYPE='I' AND PP.ISACTIVE = 1 and po.DESCRIPTIONS not like '%WebService%' order by STARTTIME desc");
+                    " where s.WORKFLOWINSTANCE='" + AkisNo + "' and p.TYPE='I' AND PP.ISACTIVE = 1 and po.DESCRIPTIONS not like '%WebService%' order by STARTTIME desc");
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 dataSet[0] = rs.getString("NAME");
                 dataSet[1] = rs.getString("POSITIONNAME");
 
@@ -1430,7 +1402,54 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
+    public String[] GetFoxUserAssignType(String userCode) {
+        String[] dataSet = new String[1];
+        try {
+            connectFoxPrp();
+            statement = connection.createStatement();
 
+            rs = statement.executeQuery("select ASSIGNTYPE from nfwdft_user where CODE='" + userCode + "'");
 
+            while (rs.next()) {
+                dataSet[0] = rs.getString("ASSIGNTYPE");
+
+            }
+            connection.close();
+            System.out.println("Connection Closed to the Database...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return dataSet;
+    }
+
+    @Step("Test Tool sayfası açılır.")
+    public void testToolAc(String url) {
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_N);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_N);
+            switchTo().window(1);
+            Selenide.open(url);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Step("Test Tool sayfası açılır.")
+    public String GetSerialNumber(String ortam, String depo, String cihaz) {
+        String seriNo = null;
+        $(By.id("ctl00_MainContent_DrpOrtamList")).selectOption(ortam);
+        $(By.id("ctl00_MainContent_DrpDepoList")).selectOption(depo);
+        $(By.id("ctl00_MainContent_DrpProductList")).selectOption(cihaz);
+        $(By.id("ctl00_MainContent_lnkSearch")).click();
+        if ($(By.id("ctl00_MainContent_lblSuccess")).isDisplayed())
+            seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).text();
+        closeNewWindow();
+        return seriNo;
+    }
 
 }
