@@ -13,6 +13,7 @@ import pages.ustMenuPagesFox.StepDetayPage;
 
 public class FoxTest extends BaseTestFox {
 
+
     String taskId = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumTaskId")[0];
     String flowStatus = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumAkisStatu")[0];
 
@@ -21,6 +22,20 @@ public class FoxTest extends BaseTestFox {
     String seriNoFttb = null;
     String seriNoGpon = null;
 
+    String mesaj= GetTestParameter("FoxKurulumKapatTest", "KullaniciDegistirMesaj")[0];
+    String segment = GetTestParameter("FoxKurulumKapatTest", "CustomerSegmentSoho")[0];
+    String kurulumStatu = GetTestParameter("FoxKurulumKapatTest", "KurulumYapıldı")[0];
+    String kurulumAltStatu = GetTestParameter("FoxKurulumKapatTest", "TeslimEdildi")[0];
+    String akisDurumu = GetTestParameter("FoxKurulumKapatTest", "AkisDurumuCozuldu")[0];
+    String aciklama =  GetTestParameter("FoxKurulumKapatTest", "Aciklama")[0];
+    String sozlesmeStatu = GetTestParameter("FoxKurulumKapatTest", "sozlesmeStatu")[0];
+    String sozlesmeSubStatu = GetTestParameter("FoxKurulumKapatTest", "sozlesmeSubStatu")[0];
+    String ortamPrp = GetTestParameter("FoxKurulumKapatTest", "TestToolPRP")[0];
+    String depoFibertek = GetTestParameter("FoxKurulumKapatTest", "TestToolDepoFIBERTEK")[0];
+    String cihazFttb = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazFttb")[0];
+    String cihazGpon = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazGpon")[0];
+    String eamControlUrl = GetTestParameter("FoxKurulumKapatTest", "eamControlUrl")[0];
+
     @BeforeMethod
     public void loginBeforeTests() {
         loginFox(username, password);
@@ -28,12 +43,13 @@ public class FoxTest extends BaseTestFox {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Akış Arama")
-    public void TS0001_FoxAkisArama() throws InterruptedException {
+    public void TS0001_FoxKurulumKapat() throws InterruptedException {
 
         MainPageFox mainPageFox = new MainPageFox();
         AkisListesiPage akisListesiPage = new AkisListesiPage();
         KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
         AkisDetayPage akisDetayPage = new AkisDetayPage();
+
         StepDetayPage stepDetayPage = new StepDetayPage();
 
 
@@ -41,40 +57,22 @@ public class FoxTest extends BaseTestFox {
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];
-        String mesaj = "Kullanıcı değiştirilmiştir.";
-        String segment = "SOHO";
-        String kurulumStatu = "Teslim Edildi / Kurulum Yapıldı";
-        String kurulumAltStatu = "Teslim Edildi / Kurulum Yapıldı-Test edildi";
-        String akisDurumu = "COZULDU";
-        String aciklama = "test otomasyon";
 
 
         akisListesiPage.openPage();
-
         mainPageFox.akisNoDoldur(akisNo);
-
         akisListesiPage.akisDetay(akisNo);
-
         mainPageFox.kullaniciDegistir();
-
         kullaniciDegistirPage
                 .organizasyonSec(name)
                 .pozisyonSec(positionName)
                 .ara()
                 .tablodanIlkKayitSe();
-
         mainPageFox.mesajKontrol(mesaj);
-
         akisListesiPage.openPage();
-
         mainPageFox.akisNoDoldur(akisNo);
-
         akisListesiPage.akisDetay(akisNo);
-
         akisDetayPage.kurulumAdımınaTikla();
-
-        String sozlesmeStatu = "İmzalandı";
-        String sozlesmeSubStatu = "Sözleşme, Talep sahibi ile yapıldı";
         stepDetayPage
                 .uzerineAl()
                 .pazarlamaSegmentiSec(segment)
@@ -87,6 +85,7 @@ public class FoxTest extends BaseTestFox {
                 .kurulumAltStatuSec(kurulumAltStatu)
                 .sozlesmeStatuSec(sozlesmeStatu)
                 .sozlesmeSubStatuSec(sozlesmeSubStatu);
+
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
         cihazSeriNoGetir(altYapi);
 
@@ -110,14 +109,18 @@ public class FoxTest extends BaseTestFox {
     }
 
     private void cihazSeriNoGetir(String altYapi) {
-        if (altYapi.equals("FTTb")) {
-            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoFttb = GetSerialNumber("PRP", "FIBERTEK", "Fiber Modem");
-        } else if (altYapi.equals("GPON")) {
-            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoFttb = GetSerialNumber("PRP", "FIBERTEK", "Fiber Modem");
-            testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoGpon = GetSerialNumber("PRP", "FIBERTEK", "Gpon Modem");
+        if(altYapi.equals("FTTb"))
+        {
+            testToolAc(eamControlUrl);
+            seriNoFttb = GetSerialNumber(ortamPrp,depoFibertek,cihazFttb);
+        }
+        else if (altYapi.equals("GPON"))
+        {
+            testToolAc(eamControlUrl);
+            seriNoFttb = GetSerialNumber(ortamPrp,depoFibertek,cihazFttb);
+            testToolAc(eamControlUrl);
+            seriNoGpon = GetSerialNumber(ortamPrp,depoFibertek,cihazGpon);
+
         }
     }
 }
