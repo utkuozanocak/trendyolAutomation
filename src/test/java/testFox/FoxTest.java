@@ -13,17 +13,17 @@ import pages.ustMenuPagesFox.StepDetayPage;
 
 public class FoxTest extends BaseTestFox {
 
-    String taskId=GetTestParameter("FoxSearchFlowTest","FiberKurulumTaskId")[0];
-    String flowStatus=GetTestParameter("FoxSearchFlowTest","FiberKurulumAkisStatu")[0];
+    String taskId = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumTaskId")[0];
+    String flowStatus = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumAkisStatu")[0];
 
     String username = GetTestParameter("FoxLoginTest", "FoxUserName")[0];
     String password = GetTestParameter("FoxLoginTest", "FoxPassword")[0];
-    String seriNoFttb=null;
-    String seriNoGpon=null;
+    String seriNoFttb = null;
+    String seriNoGpon = null;
 
     @BeforeMethod
     public void loginBeforeTests() {
-        loginFox(username,password);
+        loginFox(username, password);
     }
 
     @Severity(SeverityLevel.CRITICAL)
@@ -34,20 +34,19 @@ public class FoxTest extends BaseTestFox {
         AkisListesiPage akisListesiPage = new AkisListesiPage();
         KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
         AkisDetayPage akisDetayPage = new AkisDetayPage();
-        StepDetayPage stepDetayPage =new StepDetayPage();
+        StepDetayPage stepDetayPage = new StepDetayPage();
 
 
-        String akisNo =  FoxSearchFlowNo(taskId,flowStatus)[0].toString();
+        String akisNo = FoxSearchFlowNo(taskId, flowStatus)[0].toString();
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];
-        String mesaj="Kullanıcı değiştirilmiştir.";
+        String mesaj = "Kullanıcı değiştirilmiştir.";
         String segment = "SOHO";
         String kurulumStatu = "Teslim Edildi / Kurulum Yapıldı";
         String kurulumAltStatu = "Teslim Edildi / Kurulum Yapıldı-Test edildi";
         String akisDurumu = "COZULDU";
         String aciklama = "test otomasyon";
-
 
 
         akisListesiPage.openPage();
@@ -88,24 +87,37 @@ public class FoxTest extends BaseTestFox {
                 .kurulumAltStatuSec(kurulumAltStatu)
                 .sozlesmeStatuSec(sozlesmeStatu)
                 .sozlesmeSubStatuSec(sozlesmeSubStatu);
-               String altYapi =  stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
-               cihazSeriNoGetir(altYapi);
+        String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+        cihazSeriNoGetir(altYapi);
 
-        stepDetayPage.teknikFormTabAc();
+        if (altYapi.equals("FTTb")) {
+            stepDetayPage
+                    .teknikFormTabAc()
+                    .tabloFiberSeriNoGiris()
+                    .yeniCihazSeriNoDoldur(seriNoFttb)
+                    .guncelle();
+        } else if (altYapi.equals("GPON")) {
+            stepDetayPage
+                    .teknikFormTabAc()
+                    .tabloFiberSeriNoGiris()
+                    .yeniCihazSeriNoDoldur(seriNoFttb)
+                    .guncelle()
+                    .tabloGPONSeriNoGiris()
+                    .yeniCihazSeriNoDoldur(seriNoGpon)
+                    .guncelle();
+        }
+        stepDetayPage.teknikFormTabAc().seriNoKontrol();
     }
 
     private void cihazSeriNoGetir(String altYapi) {
-        if(altYapi.equals("FTTb"))
-        {
+        if (altYapi.equals("FTTb")) {
             testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoFttb = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
-        }
-        else if (altYapi.equals("GPON"))
-        {
+            seriNoFttb = GetSerialNumber("PRP", "FIBERTEK", "Fiber Modem");
+        } else if (altYapi.equals("GPON")) {
             testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoFttb = GetSerialNumber("PRP","FIBERTEK","Fiber Modem");
+            seriNoFttb = GetSerialNumber("PRP", "FIBERTEK", "Fiber Modem");
             testToolAc("http://othertest.superonline.net/SOLTestTool/EamControl.aspx");
-            seriNoGpon = GetSerialNumber("PRP","FIBERTEK","Gpon Modem");
+            seriNoGpon = GetSerialNumber("PRP", "FIBERTEK", "Gpon Modem");
         }
     }
 }

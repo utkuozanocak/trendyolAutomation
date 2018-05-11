@@ -1,9 +1,6 @@
 package pages.ustMenuPagesFox;
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import drivers.Chrome;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -93,9 +90,13 @@ public class StepDetayPage extends MainPageFox {
         private SelenideElement CMB_SOZLESMESUBSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_SOZLESMESUBSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
         private SelenideElement TXT_ALTYAPI_ID = $(By.id(GetObject("FOX","TXT_ALTYAPI_ID","ID","FoxStepDetayPage","PRP")));
         ElementsCollection TBL_SERINOCIHAZLISTE_CSS = $$(GetObject("FOX","TBL_SERINOCIHAZLISTE_CSS","CSS_SELECTOR","FoxStepDetayPage","PRP"));
+        private SelenideElement TXT_YENICIHAZSERINO_XPATH = $(By.xpath(GetObject("FOX","TXT_YENICIHAZSERINO_XPATH","XPATH","FoxStepDetayPage","PRP")));
+        private SelenideElement BTN_GUNCELLE_ID = $(By.id(GetObject("FOX","BTN_GUNCELLE_ID","ID","FoxStepDetayPage","PRP")));
+        private SelenideElement BTN_SERINOKONTROL_XPATH = $(By.xpath(GetObject("FOX","BTN_SERINOKONTROL_XPATH","XPATH","FoxStepDetayPage","PRP")));
 
         @Step("Teknik Form açılır.")
         public TeknikForm openPage() {
+//            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TAB_TEKNIKFORM_XPATH);
             TAB_TEKNIKFORM_XPATH.click();
             return this;
         }
@@ -130,6 +131,44 @@ public class StepDetayPage extends MainPageFox {
             Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TXT_ALTYAPI_ID);
             String altYapi = TXT_ALTYAPI_ID.getValue();
             return altYapi;
+        }
+
+        @Step("Tabloda Alytapı \"Fiber\" için kalem ikonuna tıklanır.")
+        public TeknikForm tabloFiberSeriNoGiris() {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TBL_SERINOCIHAZLISTE_CSS);
+            TBL_SERINOCIHAZLISTE_CSS
+                    .filterBy(Condition.text("GENERIC"))
+                    .first()
+                    .$("a");
+            return this;
+        }
+
+        @Step("Tabloda Alytapı \"GPON\" için kalem ikonuna tıklanır.")
+        public TeknikForm tabloGPONSeriNoGiris() {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TBL_SERINOCIHAZLISTE_CSS);
+            TBL_SERINOCIHAZLISTE_CSS
+                    .filterBy(Condition.text("ONT"))
+                    .first()
+                    .$("a");
+            return this;
+        }
+
+        @Step("Yeni Cihaz Seri No alanına \"{seriNo}\" yazılır.")
+        public TeknikForm yeniCihazSeriNoDoldur(String seriNo) {
+            TXT_YENICIHAZSERINO_XPATH.sendKeys(seriNo);
+            return this;
+        }
+
+        @Step("Güncelle butonuna tıklanır.")
+        public TeknikForm guncelle() {
+            BTN_GUNCELLE_ID.click();
+            return this;
+        }
+
+        @Step("Seri No Kontrol butonuna tıklanır.")
+        public TeknikForm seriNoKontrol() {
+            BTN_SERINOKONTROL_XPATH.click();
+            return this;
         }
 
     }
