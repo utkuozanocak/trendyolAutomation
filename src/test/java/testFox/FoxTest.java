@@ -11,6 +11,8 @@ import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 
+import static com.codeborne.selenide.Selenide.switchTo;
+
 public class FoxTest extends BaseTestFox {
 
 
@@ -35,6 +37,7 @@ public class FoxTest extends BaseTestFox {
     String cihazFttb = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazFttb")[0];
     String cihazGpon = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazGpon")[0];
     String eamControlUrl = GetTestParameter("FoxKurulumKapatTest", "eamControlUrl")[0];
+
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -94,17 +97,24 @@ public class FoxTest extends BaseTestFox {
                     .teknikFormTabAc()
                     .tabloFiberSeriNoGiris()
                     .yeniCihazSeriNoDoldur(seriNoFttb)
-                    .guncelle();
+                    .guncelle()
+                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
+                    .seriNoGirisEkraniKapat();
         } else if (altYapi.equals("GPON")) {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloFiberSeriNoGiris()
                     .yeniCihazSeriNoDoldur(seriNoFttb)
                     .guncelle()
+                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
+                    .seriNoGirisEkraniKapat()
                     .tabloGPONSeriNoGiris()
                     .yeniCihazSeriNoDoldur(seriNoGpon)
-                    .guncelle();
+                    .guncelle()
+                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
+                    .seriNoGirisEkraniKapat();
         }
+        switchTo().frame(0);
         stepDetayPage.teknikFormTabAc().seriNoKontrol();
     }
 
@@ -113,6 +123,7 @@ public class FoxTest extends BaseTestFox {
         {
             testToolAc(eamControlUrl);
             seriNoFttb = GetSerialNumber(ortamPrp,depoFibertek,cihazFttb);
+            switchTo().window(0);
         }
         else if (altYapi.equals("GPON"))
         {
@@ -120,6 +131,7 @@ public class FoxTest extends BaseTestFox {
             seriNoFttb = GetSerialNumber(ortamPrp,depoFibertek,cihazFttb);
             testToolAc(eamControlUrl);
             seriNoGpon = GetSerialNumber(ortamPrp,depoFibertek,cihazGpon);
+            switchTo().window(0);
 
         }
     }

@@ -5,6 +5,7 @@ import drivers.Chrome;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import pages.MainPageFox;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 
@@ -83,21 +84,28 @@ public class StepDetayPage extends MainPageFox {
 
     public class TeknikForm extends MainPageFox {
 
-        private SelenideElement TAB_TEKNIKFORM_XPATH = $(By.xpath(GetObject("FOX","TAB_TEKNIKFORM_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement CMB_KURULUMSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_KURULUMSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement CMB_KURULUMALTSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_KURULUMALTSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement CMB_SOZLESMESTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_SOZLESMESTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement CMB_SOZLESMESUBSTATU_XPATH = $(By.xpath(GetObject("FOX","CMB_SOZLESMESUBSTATU_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement TXT_ALTYAPI_ID = $(By.id(GetObject("FOX","TXT_ALTYAPI_ID","ID","FoxStepDetayPage","PRP")));
-        ElementsCollection TBL_SERINOCIHAZLISTE_CSS = $$(GetObject("FOX","TBL_SERINOCIHAZLISTE_CSS","CSS_SELECTOR","FoxStepDetayPage","PRP"));
-        private SelenideElement TXT_YENICIHAZSERINO_XPATH = $(By.xpath(GetObject("FOX","TXT_YENICIHAZSERINO_XPATH","XPATH","FoxStepDetayPage","PRP")));
-        private SelenideElement BTN_GUNCELLE_ID = $(By.id(GetObject("FOX","BTN_GUNCELLE_ID","ID","FoxStepDetayPage","PRP")));
-        private SelenideElement BTN_SERINOKONTROL_XPATH = $(By.xpath(GetObject("FOX","BTN_SERINOKONTROL_XPATH","XPATH","FoxStepDetayPage","PRP")));
+        private SelenideElement TAB_TEKNIKFORM_XPATH = $(By.xpath(GetObject("FOX", "TAB_TEKNIKFORM_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement CMB_KURULUMSTATU_XPATH = $(By.xpath(GetObject("FOX", "CMB_KURULUMSTATU_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement CMB_KURULUMALTSTATU_XPATH = $(By.xpath(GetObject("FOX", "CMB_KURULUMALTSTATU_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement CMB_SOZLESMESTATU_XPATH = $(By.xpath(GetObject("FOX", "CMB_SOZLESMESTATU_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement CMB_SOZLESMESUBSTATU_XPATH = $(By.xpath(GetObject("FOX", "CMB_SOZLESMESUBSTATU_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement TXT_ALTYAPI_ID = $(By.id(GetObject("FOX", "TXT_ALTYAPI_ID", "ID", "FoxStepDetayPage", "PRP")));
+        ElementsCollection TBL_SERINOCIHAZLISTE_CSS = $$(GetObject("FOX", "TBL_SERINOCIHAZLISTE_CSS", "CSS_SELECTOR", "FoxStepDetayPage", "PRP"));
+        private SelenideElement TXT_YENICIHAZSERINO_XPATH = $(By.xpath(GetObject("FOX", "TXT_YENICIHAZSERINO_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement BTN_GUNCELLE_ID = $(By.id(GetObject("FOX", "BTN_GUNCELLE_ID", "ID", "FoxStepDetayPage", "PRP")));
+        private SelenideElement BTN_SERINOKONTROL_XPATH = $(By.xpath(GetObject("FOX", "BTN_SERINOKONTROL_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
+        private SelenideElement MSJ_SERINOGIRIS_XPATH = $(By.xpath(GetObject("FOX","MSJ_SERINOGIRIS_XPATH","XPATH","FoxStepDetayPage","PRP")));
+        private SelenideElement BTN_SERINOGIRISKAPAT_ID = $(By.id(GetObject("FOX","BTN_SERINOGIRISKAPAT_ID","ID","FoxStepDetayPage","PRP")));
 
         @Step("Teknik Form açılır.")
         public TeknikForm openPage() {
 //            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TAB_TEKNIKFORM_XPATH);
             TAB_TEKNIKFORM_XPATH.click();
+            return this;
+        }
+
+        @Step("Teknik Form açılır.")
+        public TeknikForm teknik() {
             return this;
         }
 
@@ -135,26 +143,29 @@ public class StepDetayPage extends MainPageFox {
 
         @Step("Tabloda Alytapı \"Fiber\" için kalem ikonuna tıklanır.")
         public TeknikForm tabloFiberSeriNoGiris() {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TBL_SERINOCIHAZLISTE_CSS);
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("CONTROL_READONLY_ESKICIHAZSERINO")));
             TBL_SERINOCIHAZLISTE_CSS
                     .filterBy(Condition.text("GENERIC"))
                     .first()
-                    .$("a");
+                    .$("a")
+                    .click();
             return this;
         }
 
         @Step("Tabloda Alytapı \"GPON\" için kalem ikonuna tıklanır.")
         public TeknikForm tabloGPONSeriNoGiris() {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TBL_SERINOCIHAZLISTE_CSS);
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("CONTROL_READONLY_ESKICIHAZSERINO")));
             TBL_SERINOCIHAZLISTE_CSS
                     .filterBy(Condition.text("ONT"))
                     .first()
-                    .$("a");
+                    .$("a")
+                    .click();
             return this;
         }
 
         @Step("Yeni Cihaz Seri No alanına \"{seriNo}\" yazılır.")
         public TeknikForm yeniCihazSeriNoDoldur(String seriNo) {
+            switchTo().frame(1);
             TXT_YENICIHAZSERINO_XPATH.sendKeys(seriNo);
             return this;
         }
@@ -165,6 +176,19 @@ public class StepDetayPage extends MainPageFox {
             return this;
         }
 
+        @Step("Mesaj kontrolü.")
+        public TeknikForm mesajKontrolu(String mesaj) {
+            Assert.assertEquals(MSJ_SERINOGIRIS_XPATH.text().equals(mesaj),true);
+            takeScreenshot();
+            return this;
+        }
+
+        @Step("Seri No Giriş ekranı kapatılır.")
+        public TeknikForm seriNoGirisEkraniKapat() {
+            switchTo().frame(0);
+            BTN_SERINOGIRISKAPAT_ID.click();
+            return this;
+        }
         @Step("Seri No Kontrol butonuna tıklanır.")
         public TeknikForm seriNoKontrol() {
             BTN_SERINOKONTROL_XPATH.click();

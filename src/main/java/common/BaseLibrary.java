@@ -1442,12 +1442,17 @@ public class BaseLibrary extends ElementsContainer {
     @Step("Test Tool sayfası açılır.")
     public String GetSerialNumber(String ortam, String depo, String cihaz) {
         String seriNo = null;
+        int i = 0;
         $(By.id("ctl00_MainContent_DrpOrtamList")).selectOption(ortam);
         $(By.id("ctl00_MainContent_DrpDepoList")).selectOption(depo);
         $(By.id("ctl00_MainContent_DrpProductList")).selectOption(cihaz);
         $(By.id("ctl00_MainContent_lnkSearch")).click();
-        if ($(By.id("ctl00_MainContent_lblSuccess")).isDisplayed())
-            seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).text();
+        while(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i<10 ){
+            sleep( 1000);
+            i++;
+        }
+        seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).getValue();
+        System.out.println(seriNo);
         closeNewWindow();
         return seriNo;
     }
