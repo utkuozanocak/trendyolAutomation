@@ -74,7 +74,7 @@ public class MayaTest extends BaseTestMaya {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber ve TV Sipariş Giriş Testi")
     public void TS0002_MayaCreateDSLOrderTest() throws InterruptedException {
-        MainPage mainPage = new MainPage();
+        MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         mainPage.musteriDetayliArama();
         searchCustomerCorparatePage
