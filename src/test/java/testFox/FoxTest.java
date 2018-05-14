@@ -37,6 +37,8 @@ public class FoxTest extends BaseTestFox {
     String cihazFttb = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazFttb")[0];
     String cihazGpon = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazGpon")[0];
     String eamControlUrl = GetTestParameter("FoxKurulumKapatTest", "eamControlUrl")[0];
+    String basariliMesaj = "numaralı akış üzerinde yaptığınız işlemler kaydedilip kayıt başarıyla gönderilmiştir.";
+    String EAMmesaj = "Statü bilgisi alınmış ve boş olan stok için MacAddress, OUI, Marka ve Model bilgileri başarıyla güncellenmiştir.";
 
 
     @BeforeMethod
@@ -114,8 +116,14 @@ public class FoxTest extends BaseTestFox {
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
         }
-        switchTo().frame(0);
-        stepDetayPage.teknikFormTabAc().seriNoKontrol();
+        stepDetayPage
+                .teknikFormTabAc()
+                .seriNoKontrol()
+                .EAMmesajKontrol(EAMmesaj)
+                .EAMmesajKontrolTamam()
+                .gonder();
+
+        mainPageFox.mesajKontrol(basariliMesaj);
     }
 
     private void cihazSeriNoGetir(String altYapi) {

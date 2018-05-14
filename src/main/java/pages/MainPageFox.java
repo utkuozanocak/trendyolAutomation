@@ -45,7 +45,7 @@ public class MainPageFox extends BaseLibrary {
     @Step("Mesaj kontrolü yapılır.")
     public void mesajKontrol(String mesaj) {
         SelenideElement LBL_MESAJ = $(By.id(GetObject("FOX","LBL_MESAJ","ID","FoxChangeUserPage","PRP")));
-        Assert.assertEquals(LBL_MESAJ.text(),mesaj);
+        Assert.assertEquals(LBL_MESAJ.text().contains(mesaj),true);
         takeScreenshot();
     }
 

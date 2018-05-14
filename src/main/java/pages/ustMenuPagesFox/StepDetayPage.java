@@ -1,6 +1,7 @@
 package pages.ustMenuPagesFox;
 
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.collections.SizeGreaterThan;
 import drivers.Chrome;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -96,6 +97,9 @@ public class StepDetayPage extends MainPageFox {
         private SelenideElement BTN_SERINOKONTROL_XPATH = $(By.xpath(GetObject("FOX", "BTN_SERINOKONTROL_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
         private SelenideElement MSJ_SERINOGIRIS_XPATH = $(By.xpath(GetObject("FOX","MSJ_SERINOGIRIS_XPATH","XPATH","FoxStepDetayPage","PRP")));
         private SelenideElement BTN_SERINOGIRISKAPAT_ID = $(By.id(GetObject("FOX","BTN_SERINOGIRISKAPAT_ID","ID","FoxStepDetayPage","PRP")));
+        private SelenideElement BTN_MESAJTAMAM_ID = $(By.id(GetObject("FOX","BTN_MESAJTAMAM_ID","ID","FoxStepDetayPage","PRP")));
+        private SelenideElement LBL_MESAJDETAY_ID = $(By.id(GetObject("FOX","LBL_MESAJDETAY_ID","ID","FoxStepDetayPage","PRP")));
+        private SelenideElement BTN_GONDER_XPATH = $(By.xpath(GetObject("FOX","BTN_GONDER_XPATH","XPATH","FoxStepDetayPage","PRP")));
 
         @Step("Teknik Form açılır.")
         public TeknikForm openPage() {
@@ -185,16 +189,37 @@ public class StepDetayPage extends MainPageFox {
 
         @Step("Seri No Giriş ekranı kapatılır.")
         public TeknikForm seriNoGirisEkraniKapat() {
-            switchTo().frame(0);
+            switchTo().parentFrame();
             BTN_SERINOGIRISKAPAT_ID.click();
             return this;
         }
         @Step("Seri No Kontrol butonuna tıklanır.")
         public TeknikForm seriNoKontrol() {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",BTN_SERINOKONTROL_XPATH);
             BTN_SERINOKONTROL_XPATH.click();
             return this;
         }
 
+        @Step("EAM mesaj kontrolu")
+        public TeknikForm EAMmesajKontrol(String mesaj) {
+            LBL_MESAJDETAY_ID.shouldHave(Condition.visible);
+            String msj= LBL_MESAJDETAY_ID.getText();
+            boolean sonuc = msj.equals(mesaj);
+            Assert.assertEquals(sonuc,true,"Mesaj aynı olmalı");
+            return this;
+        }
+
+        @Step("EAM mesajda Tamam butonuna tıklanır.")
+        public TeknikForm EAMmesajKontrolTamam() {
+            BTN_MESAJTAMAM_ID.click();
+            return this;
+        }
+
+        @Step("Gönder butonuna tıklanır.")
+        public TeknikForm gonder() {
+            BTN_GONDER_XPATH.click();
+            return this;
+        }
     }
 
 
