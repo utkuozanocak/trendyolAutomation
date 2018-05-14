@@ -8,7 +8,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class LoginPage extends MainPage  {
+public class LoginPageMaya extends MainPageMaya {
 
     private SelenideElement LOGIN_PAGE_ID = $(By.id(GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP")));
     private SelenideElement TXT_USERNAME_ID = $(By.id(GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP")));
@@ -25,7 +25,7 @@ public class LoginPage extends MainPage  {
     private SelenideElement TXT_USERNAMEFOX = $(By.xpath(GetObject("FOX","TXT_USERNAMEFOX","XPATH","FoxLoginPage","PRP")));
     private SelenideElement BTN_FOX_INBOX = $(By.id(GetObject("FOX","BTN_FOX_INBOX","ID","FoxMainPage","PRP")));
 
-    private LoginPage open() {
+    private LoginPageMaya open() {
 //        clearCookies();
         WebDriverRunner.clearBrowserCache();
         Selenide.open("");
@@ -38,7 +38,7 @@ public class LoginPage extends MainPage  {
     }
 
     @Step("Giriş yap")
-    public LoginPage login(String username, String password,String MainOrg,String SubOrg) {
+    public LoginPageMaya login(String username, String password, String MainOrg, String SubOrg) {
         open();
         TXT_USERNAME_ID.sendKeys(username);
         TXT_PASSWWORD_ID.sendKeys(password);
@@ -63,29 +63,12 @@ public class LoginPage extends MainPage  {
     }
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
-    public LoginPage loginFox(String username, String password) {
+    public LoginPageMaya loginFox(String username, String password) {
         open();
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
         BTN_LOGIN.click();
         BTN_FOX_INBOX.waitUntil(Condition.visible,10000);
-        return this;
-    }
-
-    @Step("Fox Giriş Başarılımı Kontrolü Yapılır.")
-    public LoginPage isLoginFox(){
-        Assert.assertEquals(BTN_FOX_INBOX.isDisplayed(),true,"Inbox Gelmeli");
-        return this;
-    }
-
-    @Step("\"{username}\" kullanıcısı ile giriş yapmaya çalış. Bakımdan dolayı giriş yapamaz.")
-    public LoginPage loginBakim(String username, String password) {
-        open();
-
-//        txtUsername.sendKeys(username);
-//        txtPassword.sendKeys(password);
-//        btnLogin.click();
-//        btnUsermenu.waitUntil(Condition.visible, 40000);
         return this;
     }
 }

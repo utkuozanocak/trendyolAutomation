@@ -1,7 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import common.BaseTest;
+import common.BaseTestMaya;
 import data.TestData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +18,7 @@ import java.util.Map;
  * Tarih: 31.12.2017
  * Açıklama:
  */
-public class Chrome extends BaseTest implements WebDriverProvider {
+public class Chrome extends BaseTestMaya implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities capabilities) {
 //        System.setProperty("webdriver.gecko.driver","/Users/ilyas/Documents/WebDrivers/geckodriver-v0.19.0");

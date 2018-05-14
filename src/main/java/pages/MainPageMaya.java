@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class MainPage extends BaseLibrary {
+public class MainPageMaya extends BaseLibrary {
     SelenideElement mainPageLeftContainer = $("#mainInboxForm");
     SelenideElement mainPageLeftContainerDataTable = $("#mainInboxForm\\:inboxDataTable");
 
@@ -110,7 +110,7 @@ public class MainPage extends BaseLibrary {
     }
 
     @Step("User Menu listesinde \"{menuName}\" menusu bulunur.")
-    public MainPage userMenuKontrol(String menuName) {
+    public MainPageMaya userMenuKontrol(String menuName) {
 
         ElementsCollection elementList = $$(By.id("topMenuForm:userMenuButton_menu")).last().$$("li");
 

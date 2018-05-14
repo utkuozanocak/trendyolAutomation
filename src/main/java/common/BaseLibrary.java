@@ -1200,7 +1200,7 @@ public class BaseLibrary extends ElementsContainer {
 
                 URL_VALUE = rs.getNString("Url");
             }
-            connection.close();
+//            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
