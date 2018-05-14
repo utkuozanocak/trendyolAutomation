@@ -26,6 +26,11 @@ public class OrderCapturePage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
+    @Step("Kontak Bilgileri sayfası açılır.")
+    public OrderCapturePage kontakBilgileriTikla() {
+        ustMenu(MayaUstMenuData.Islemler.KontakBilgleri);
+        return this;
+    }
 
     @Step("Siparise ürün ekle butonu tıklanır.")
     public OrderCapturePage siparseUrunEkleTikla() {

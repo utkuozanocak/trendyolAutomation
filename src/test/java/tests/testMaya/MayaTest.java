@@ -6,6 +6,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
+import pages.ustMenuPagesMaya.MayaCustomerContactPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
@@ -93,6 +94,28 @@ public class MayaTest extends BaseTestMaya {
               //  .kaydet()
                 .kampanyaAra(fiberKampanya); */
 
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
+    public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+        searchCustomerCorparatePage
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
+                .ara()
+                .tablodanIlkKayitTikla();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .kontakBilgileriTikla();
+        MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
+        mayaCustomerContactPage
+                .tablodanIlkKontakSec()
+                .telefonNumarasıDoldur("5555555555")
+                .kaydet()
+                .mesajKontrol("Kontak bilgisi başarıyla kaydedilmiştir");
     }
 
 }
