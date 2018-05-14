@@ -1,20 +1,15 @@
 package pages.ustMenuPagesFox;
 
-import com.codeborne.selenide.*;
-import com.codeborne.selenide.collections.SizeGreaterThan;
-import drivers.Chrome;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import pages.MainPageFox;
-import pages.pageComponents.solcrmElements.SolCrmElement;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 import static com.codeborne.selenide.Selenide.*;
-import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
 public class StepDetayPage extends MainPageFox {
 
@@ -145,27 +140,18 @@ public class StepDetayPage extends MainPageFox {
             return altYapi;
         }
 
-        @Step("Tabloda Alytapı \"Fiber\" için kalem ikonuna tıklanır.")
-        public TeknikForm tabloFiberSeriNoGiris() {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("CONTROL_READONLY_ESKICIHAZSERINO")));
+
+        @Step("Tabloda Alytapı \"{text}\" için kalem ikonuna tıklanır.")
+        public TeknikForm tabloSeriNoGiris(String text) {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("FRM_FIELDSET_DEVICEINFORMATIONFORM")));
             TBL_SERINOCIHAZLISTE_CSS
-                    .filterBy(Condition.text("GENERIC"))
+                    .filterBy(Condition.text(text))
                     .first()
                     .$("a")
                     .click();
             return this;
         }
 
-        @Step("Tabloda Alytapı \"GPON\" için kalem ikonuna tıklanır.")
-        public TeknikForm tabloGPONSeriNoGiris() {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("CONTROL_READONLY_ESKICIHAZSERINO")));
-            TBL_SERINOCIHAZLISTE_CSS
-                    .filterBy(Condition.text("ONT"))
-                    .first()
-                    .$("a")
-                    .click();
-            return this;
-        }
 
         @Step("Yeni Cihaz Seri No alanına \"{seriNo}\" yazılır.")
         public TeknikForm yeniCihazSeriNoDoldur(String seriNo) {
