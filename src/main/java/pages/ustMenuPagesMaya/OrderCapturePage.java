@@ -19,11 +19,16 @@ public class OrderCapturePage extends MainPageMaya {
     private Fiber fiber = new Fiber();
     private ADSL adsl = new ADSL();
     private SelenideElement BTN_SIPARISEURUNEKLE_ID = $(By.id(GetObject("MAYA", "BTN_SIPARISEURUNEKLE_ID", "ID", "MayaOrderCapturePage", "PRP")));
-
+    private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
 
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturTikla() {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
+        return this;
+    }
+    @Step("Adres bilgileri sayfası açılır.")
+    public OrderCapturePage siparisAdresEkle() {
+        ustMenu(MayaUstMenuData.Islemler.AdresBilgileri);
         return this;
     }
 
@@ -165,7 +170,8 @@ public class OrderCapturePage extends MainPageMaya {
 
 
 
-    public class ADSL extends MainPageMaya {
+    public class ADSL extends MainPageMaya
+    {
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);

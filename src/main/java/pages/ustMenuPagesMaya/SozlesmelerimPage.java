@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import pages.MainPageMaya;
 import pages.pageData.MayaUstMenuData;
 
-public class SozlesmelerimPage extends MainPageMaya {
+public class SozlesmelerimPage extends MainPageMaya
+{
 
 
     @Step("Sözleşmelerim sayfası açılır.")

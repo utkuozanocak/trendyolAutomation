@@ -206,6 +206,7 @@ public class MayaUstMenuData {
         MusteriFaturaHesabi("Müşteri Fatura Hesabı"),
         Dokumanlar("Dokümanlar"),
         MusteriEtkilesimleri("Müşteri Etkileşimleri"),
+
         MusteriSiparisleri("Müşteri Siparişleri");
 
         private String name;

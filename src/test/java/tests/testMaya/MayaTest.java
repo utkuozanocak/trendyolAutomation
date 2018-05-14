@@ -6,6 +6,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
+import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
@@ -25,7 +26,11 @@ public class MayaTest extends BaseTestMaya {
     String fiberKampanya = GetTestParameter("MayaCreateOrderTest", "Product")[0];
     String daireNo = GetLocationDaireData(GetTestParameter("MayaCreateOrderTest", "LocationTypeFTTB")[0], locationId)[0];
     String hiz = GetTestParameter("MayaCreateOrderTest", "DataProduct")[0];
-
+    String sehir =GetTestParameter("MayaCreateDSLOrderTest", "AdslSehir")[0];
+    String ilce =GetTestParameter("MayaCreateDSLOrderTest", "Adslilce")[0];
+    String mahalle =GetTestParameter("MayaCreateDSLOrderTest", "AdslMahalle")[0];
+    String sokak =GetTestParameter("MayaCreateDSLOrderTest", "AdslSokak")[0];
+    String blok =GetTestParameter("MayaCreateDSLOrderTest", "blokTestOtomasyon")[0];
     @BeforeMethod
     public void loginBeforeTests() {
         login(username, password, mainOrg, subOrg);
@@ -83,12 +88,21 @@ public class MayaTest extends BaseTestMaya {
                 .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
                 .ara()
                 .tablodanIlkKayitTikla();
-
-
-    /*    OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .siparisOlusturTikla()
-                .siparseUrunEkleTikla()
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage.siparisAdresEkle();
+        AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
+        adresBilgileriPage
+                .yeniAdresEkle()
+                .sehirSec(sehir)
+                .ilceSec(ilce)
+                .mahalleSec(mahalle)
+                .sokakSec(sokak)
+                .binaNoIlkKayitSec()
+                .blokEkle(blok)
+                .adresKaydet()
+                .adresOnay()
+                .adresEvetButonSec();
+        /*  .siparseUrunEkleTikla()
                 .adslAc();
               //  .kaydet()
                 .kampanyaAra(fiberKampanya); */
