@@ -176,13 +176,7 @@ public class FoxTest extends BaseTestFox {
                 .gonder();
         mainPageFox.mesajKontrol(basariliMesaj);
     }
-
-    @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fox Akış Arama")
-    public void TS0002() throws InterruptedException {
-
-    }
-
+    
     private void cihazSeriNoGetir(String altYapi) {
         if(altYapi.equals("FTTb"))
         {
