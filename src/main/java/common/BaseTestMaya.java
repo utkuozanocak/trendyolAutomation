@@ -19,8 +19,8 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestRunner;
 import org.testng.annotations.*;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.LoginPageMaya;
+import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.lang.reflect.Method;
@@ -39,11 +39,11 @@ import static io.qameta.allure.util.ResultsUtils.firstNonEmpty;
         //, MethodInterceptor.class
 })
 //@Listeners({RerunFailedTests.class})
-public class BaseTest extends BaseLibrary {
+public class BaseTestMaya extends BaseLibrary {
 
     //Seconds
-    static final int timeout = 20;
-    static final int loadingTimeout = 30;
+    static final int timeout = 30;
+    static final int loadingTimeout = 40;
 
     public Locale turkishLocal;
 
@@ -382,17 +382,17 @@ public class BaseTest extends BaseLibrary {
 
 //    @Step("Login")
 //    public void login() {
-//        new LoginPage().login();
+//        new LoginPageMaya().login();
 //    }
 
     @Step("Login")
     public void login(String username, String password,String MainOrg,String SubOrg) {
-        new LoginPage().login(username, password,MainOrg,SubOrg);
+        new LoginPageMaya().login(username, password,MainOrg,SubOrg);
     }
 
     @Step("Logout")
     public void logout() {
-        new MainPage().logout();
+        new MainPageMaya().logout();
     }
 
 

@@ -1,11 +1,11 @@
 package tests.testMaya;
 
-import common.BaseTest;
+import common.BaseTestMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.MainPage;
+import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
@@ -15,7 +15,7 @@ import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
  * Class:
  * Yazan: Emre Sencan
  ****************************************************/
-public class MayaTest extends BaseTest {
+public class MayaTest extends BaseTestMaya {
 
     String username = GetTestParameter("MayaLoginTest", "Username")[0];
     String password = GetTestParameter("MayaLoginTest", "Password")[0];
@@ -34,9 +34,9 @@ public class MayaTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
-        MainPage mainPage = new MainPage();
+        MainPageMaya mainPageMaya = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
+        mainPageMaya.musteriDetayliArama();
         searchCustomerCorparatePage
                 .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
                 .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
@@ -63,12 +63,12 @@ public class MayaTest extends BaseTest {
                 .siparisEkle()
                 .siparişOluştur();
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
-        //mainPage.basariMesajKontrolu();
+        //mainPageMaya.basariMesajKontrolu();
 
 
 //        orderCapturePage.adslAc();
 
-//        mainPage.urunSecimMenu("Bulut Ürünleri","Eplatform");
+//        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
 
     @Severity(SeverityLevel.CRITICAL)

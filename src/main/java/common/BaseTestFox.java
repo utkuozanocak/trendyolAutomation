@@ -19,10 +19,9 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestRunner;
 import org.testng.annotations.*;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.LoginPageFox;
+import pages.LoginPageMaya;
 import pages.MainPageFox;
-import pages.pageComponents.ConfirmDialog;
 import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.lang.reflect.Method;
@@ -385,15 +384,12 @@ public class BaseTestFox extends BaseLibrary {
 
 //    @Step("Login")
 //    public void login() {
-//        new LoginPage().login();
+//        new LoginPageMaya().login();
 //    }
 
     @Step("Login")
     public void loginFox(String username, String password) {
-        new LoginPage().loginFox(username, password);
-    }
-    public void isLoginFox() {
-        new LoginPage().isLoginFox();
+        new LoginPageFox().loginFox(username, password);
     }
 
     @Step("Logout")

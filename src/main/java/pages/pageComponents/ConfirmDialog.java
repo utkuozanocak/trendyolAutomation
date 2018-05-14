@@ -4,7 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import pages.MainPage;
+import pages.MainPageMaya;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.visible;
@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.$$x;
  * Tarih: 24.12.2017
  * Açıklama:
  */
-public class ConfirmDialog extends MainPage {
+public class ConfirmDialog extends MainPageMaya {
 
     //"//div[contains(@class,'ui-confirm-dialog') and contains(@id,'Confirm')]"
     //$$("div[class~='ui-confirm-dialog'][class~='ui-dialog'][id*=Confirm]")

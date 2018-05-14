@@ -4,7 +4,7 @@
 <!--<suite thread-count="5" name="Test Suite" parallel="classes" verbose="1">-->
 
 
-<suite name="Evrak Not" parallel="classes" verbose="1">
+<suite name="MayaTest" parallel="classes" verbose="1">
     <!--<method-selectors>
         <method-selector>
             <selector-class name="tests.BirimIcerikSablonu.BirimIcerikSablonuTest">
@@ -23,9 +23,9 @@
     <!--<suite-file path="testSuite1.xml"></suite-file>-->
     <!--<suite-file path="testSuite2.xml"></suite-file>-->
     <!--</suite-files>-->
-    <test name="Evrak Not">
+    <test name="MayaTest">
         <classes>
-            <class name="tests.EvrakNot.EvrakNotTest"/>
+            <class name="tests.testMaya.MayaTest"/>
         </classes>
     </test>
     <!--<test name="TuzelKisiYonetimiTest">
