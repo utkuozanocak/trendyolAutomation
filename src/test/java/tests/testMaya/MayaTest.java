@@ -113,8 +113,9 @@ public class MayaTest extends BaseTestMaya {
         MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
         mayaCustomerContactPage
                 .tablodanIlkKontakSec()
-                .telefonNumarasıDoldur("5555555555");
-
+                .telefonNumarasıDoldur("5555555555")
+                .kaydet()
+                .mesajKontrol("Kontak bilgisi başarıyla kaydedilmiştir");
     }
 
 }
