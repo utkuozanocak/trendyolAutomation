@@ -70,4 +70,29 @@ public class MayaTest extends BaseTestMaya {
 
 //        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber ve TV Sipariş Giriş Testi")
+    public void TS0002_MayaCreateDSLOrderTest() throws InterruptedException {
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+        searchCustomerCorparatePage
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
+                .ara()
+                .tablodanIlkKayitTikla();
+
+
+    /*    OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturTikla()
+                .siparseUrunEkleTikla()
+                .adslAc();
+              //  .kaydet()
+                .kampanyaAra(fiberKampanya); */
+
+    }
+
 }
