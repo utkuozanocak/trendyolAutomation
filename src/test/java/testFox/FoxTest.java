@@ -37,8 +37,8 @@ public class FoxTest extends BaseTestFox {
     String cihazFttb = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazFttb")[0];
     String cihazGpon = GetTestParameter("FoxKurulumKapatTest", "TestToolCihazGpon")[0];
     String eamControlUrl = GetTestParameter("FoxKurulumKapatTest", "eamControlUrl")[0];
-    String basariliMesaj = "numaralı akış üzerinde yaptığınız işlemler kaydedilip kayıt başarıyla gönderilmiştir.";
-    String EAMmesaj = "Statü bilgisi alınmış ve boş olan stok için MacAddress, OUI, Marka ve Model bilgileri başarıyla güncellenmiştir.";
+    String basariliMesaj =  GetTestParameter("FoxKurulumKapatTest", "foxAkisGonderMesaj")[0];
+    String EAMmesaj = GetTestParameter("FoxKurulumKapatTest", "eamKontrolMesaj")[0];
 
 
     @BeforeMethod
@@ -57,13 +57,11 @@ public class FoxTest extends BaseTestFox {
 
         StepDetayPage stepDetayPage = new StepDetayPage();
 
-
         String akisNo = FoxSearchFlowNo(taskId, flowStatus)[0].toString();
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];
-
-
+        
         akisListesiPage.openPage();
         mainPageFox.akisNoDoldur(akisNo);
         akisListesiPage.akisDetay(akisNo);
