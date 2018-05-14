@@ -1439,10 +1439,10 @@ public class BaseLibrary extends ElementsContainer {
         }
     }
 
-    @Step("Test Tool sayfası açılır.")
+    @Step("Test Tool'dan seri numarası sorgulanır.")
     public String GetSerialNumber(String ortam, String depo, String cihaz) {
-        String seriNo = null;
-        int i = 0;
+            String seriNo = null;
+            int i = 0;
         $(By.id("ctl00_MainContent_DrpOrtamList")).selectOption(ortam);
         $(By.id("ctl00_MainContent_DrpDepoList")).selectOption(depo);
         $(By.id("ctl00_MainContent_DrpProductList")).selectOption(cihaz);
@@ -1450,11 +1450,11 @@ public class BaseLibrary extends ElementsContainer {
         while(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i<10 ){
             sleep( 1000);
             i++;
-        }
+       }
         seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).getValue();
-        System.out.println(seriNo);
-        closeNewWindow();
-        return seriNo;
-    }
+                System.out.println(seriNo);
+                closeNewWindow();
+                return seriNo;
+                }
 
 }
