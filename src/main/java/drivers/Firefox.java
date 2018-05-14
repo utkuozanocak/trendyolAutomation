@@ -1,7 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import common.BaseTest;
+import common.BaseTestMaya;
 import data.TestData;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.logging.Level;
 
-public class Firefox extends BaseTest implements WebDriverProvider {
+public class Firefox extends BaseTestMaya implements WebDriverProvider {
 
     @Override
     public WebDriver createDriver(DesiredCapabilities capabilities) {

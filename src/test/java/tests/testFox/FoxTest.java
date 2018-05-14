@@ -1,4 +1,4 @@
-package testFox;
+package tests.testFox;
 
 import common.BaseTestFox;
 import io.qameta.allure.Severity;

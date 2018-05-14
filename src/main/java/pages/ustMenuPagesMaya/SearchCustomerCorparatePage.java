@@ -4,14 +4,14 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import pages.MainPage;
+import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
-public class SearchCustomerCorparatePage extends MainPage {
+public class SearchCustomerCorparatePage extends MainPageMaya {
 
     private SelenideElement TXT_UNVAN_ID = $(By.id(GetObject("MAYA", "TXT_UNVAN_ID", "ID", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_SEARCH = $(By.id(GetObject("MAYA", "BTN_SEARCH", "ID", "MayaSearchCustomerCorporate", "PRP")));

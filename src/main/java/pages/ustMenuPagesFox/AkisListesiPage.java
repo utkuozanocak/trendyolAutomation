@@ -2,12 +2,9 @@ package pages.ustMenuPagesFox;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.ElementsContainer;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import pages.MainPageFox;
 import pages.pageData.FoxUstMenuData;
-import pages.ustMenuPagesMaya.SozlesmelerimPage;
 
 import static com.codeborne.selenide.Selenide.$$;
 

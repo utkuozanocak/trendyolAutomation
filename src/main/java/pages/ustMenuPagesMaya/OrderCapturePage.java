@@ -4,7 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import pages.MainPage;
+import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
 
-public class OrderCapturePage extends MainPage {
+public class OrderCapturePage extends MainPageMaya {
 
     private Fiber fiber = new Fiber();
     private ADSL adsl = new ADSL();
@@ -41,7 +41,7 @@ public class OrderCapturePage extends MainPage {
         return adsl.openPage();
     }
 
-    public class Fiber extends MainPage {
+    public class Fiber extends MainPageMaya {
 
         private SelenideElement TXT_KAMPANYAARA = $(By.xpath(GetObject("MAYA", "TXT_SEARCHPRODUCT_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_DEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DEGISTIRFORLOC_ID","XPATH","MayaOrderCapturePage","PRP")));
@@ -165,7 +165,7 @@ public class OrderCapturePage extends MainPage {
 
 
 
-    public class ADSL extends MainPage {
+    public class ADSL extends MainPageMaya {
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);

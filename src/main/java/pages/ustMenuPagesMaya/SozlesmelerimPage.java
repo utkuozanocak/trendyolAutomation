@@ -1,11 +1,10 @@
 package pages.ustMenuPagesMaya;
 
 import io.qameta.allure.Step;
-import pages.MainPage;
-import pages.pageData.FoxUstMenuData;
+import pages.MainPageMaya;
 import pages.pageData.MayaUstMenuData;
 
-public class SozlesmelerimPage extends MainPage {
+public class SozlesmelerimPage extends MainPageMaya {
 
 
     @Step("Sözleşmelerim sayfası açılır.")

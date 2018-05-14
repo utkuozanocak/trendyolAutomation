@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.MainPage;
+import pages.MainPageMaya;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import static pages.pageComponents.solcrmElements.SolCrmCondition.isTableNavButt
  * Tarih: 4.01.2018
  * Açıklama:
  */
-public class SearchTable extends MainPage {
+public class SearchTable extends MainPageMaya {
 
     private static String rowXpathLocator = "tr[@role='row']";
     private static String rowCssLocator = "tbody > tr[role=row]";
