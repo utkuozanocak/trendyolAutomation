@@ -201,4 +201,14 @@
             <package name="tests.YonetimHavuzuIslemleri"/>
         </packages>
     </test>
+    <test name="MayaTest">
+        <packages>
+            <package name="tests.testMaya"/>
+        </packages>
+    </test>
+    <test name="FoxTest">
+        <packages>
+            <package name="tests.testFox"/>
+        </packages>
+    </test>
 </suite>
