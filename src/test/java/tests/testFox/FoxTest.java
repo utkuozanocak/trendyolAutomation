@@ -50,6 +50,7 @@ public class FoxTest extends BaseTestFox {
     KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
     AkisDetayPage akisDetayPage = new AkisDetayPage();
     StepDetayPage stepDetayPage = new StepDetayPage();
+
     @BeforeMethod
     public void loginBeforeTests() {
         loginFox(username, password);
