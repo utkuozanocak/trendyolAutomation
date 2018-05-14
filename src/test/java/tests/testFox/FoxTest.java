@@ -45,6 +45,11 @@ public class FoxTest extends BaseTestFox {
     String EAMmesaj = GetTestParameter("FoxKurulumKapatTest", "eamKontrolMesaj")[0];
 
 
+    MainPageFox mainPageFox = new MainPageFox();
+    AkisListesiPage akisListesiPage = new AkisListesiPage();
+    KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
+    AkisDetayPage akisDetayPage = new AkisDetayPage();
+    StepDetayPage stepDetayPage = new StepDetayPage();
     @BeforeMethod
     public void loginBeforeTests() {
         loginFox(username, password);
@@ -53,41 +58,7 @@ public class FoxTest extends BaseTestFox {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException {
-        MainPageFox mainPageFox = new MainPageFox();
-        AkisListesiPage akisListesiPage = new AkisListesiPage();
-        KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
-        AkisDetayPage akisDetayPage = new AkisDetayPage();
-        StepDetayPage stepDetayPage = new StepDetayPage();
-        String akisNo = FoxSearchFlowNo(taskId, flowStatus)[0].toString();
-        String[] dataset = FoxGetUserForChange(akisNo);
-        String name = dataset[0];
-        String positionName = dataset[1];
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        mainPageFox.kullaniciDegistir();
-        kullaniciDegistirPage
-                .organizasyonSec(name)
-                .pozisyonSec(positionName)
-                .ara()
-                .tablodanIlkKayitSec();
-        mainPageFox.mesajKontrol(mesaj);
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        akisDetayPage.kurulumAdımınaTikla();
-        stepDetayPage
-                .uzerineAl()
-                .pazarlamaSegmentiSec(segment)
-                .akisDurumuSec(akisDurumu)
-                .bayiOtomasyondanCikar()
-                .aciklamaDoldur(aciklama)
-                .aciklamaEkle()
-                .teknikFormTabAc()
-                .kurulumStatuSec(kurulumStatu)
-                .kurulumAltStatuSec(kurulumAltStatu)
-                .sozlesmeStatuSec(sozlesmeStatu)
-                .sozlesmeSubStatuSec(sozlesmeSubStatu);
+        sameProcess(taskId,flowStatus,mesaj,segment,akisDurumu,aciklama,kurulumStatu,kurulumAltStatu,sozlesmeStatu,sozlesmeSubStatu);
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
         cihazSeriNoGetir(altYapi);
         if (altYapi.equals("FTTb")) {
@@ -123,41 +94,7 @@ public class FoxTest extends BaseTestFox {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Adsl Kurulum Kapama")
     public void TS0001_FoxAdslKurulumKapat() throws InterruptedException {
-        MainPageFox mainPageFox = new MainPageFox();
-        AkisListesiPage akisListesiPage = new AkisListesiPage();
-        KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
-        AkisDetayPage akisDetayPage = new AkisDetayPage();
-        StepDetayPage stepDetayPage = new StepDetayPage();
-        String akisNo = FoxSearchFlowNo(taskIdAdsl, flowStatusAdsl)[0].toString();
-        String[] dataset = FoxGetUserForChange(akisNo);
-        String name = dataset[0];
-        String positionName = dataset[1];
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        mainPageFox.kullaniciDegistir();
-        kullaniciDegistirPage
-                .organizasyonSec(name)
-                .pozisyonSec(positionName)
-                .ara()
-                .tablodanIlkKayitSec();
-        mainPageFox.mesajKontrol(mesaj);
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        akisDetayPage.kurulumAdımınaTikla();
-        stepDetayPage
-                .uzerineAl()
-                .pazarlamaSegmentiSec(segment)
-                .akisDurumuSec(akisDurumu)
-                .bayiOtomasyondanCikar()
-                .aciklamaDoldur(aciklama)
-                .aciklamaEkle()
-                .teknikFormTabAc()
-                .kurulumStatuSec(kurulumStatu)
-                .kurulumAltStatuSec(kurulumAltStatu)
-                .sozlesmeStatuSec(sozlesmeStatu)
-                .sozlesmeSubStatuSec(sozlesmeSubStatu);
+        sameProcess(taskIdAdsl,flowStatusAdsl,mesaj,segment,akisDurumu,aciklama,kurulumStatu,kurulumAltStatu,sozlesmeStatu,sozlesmeSubStatu);
         testToolAc(eamControlUrl);
         seriNoAdsl = GetSerialNumber(ortamPrp,depoFibertek,cihazAdsl);
         switchTo().window(0);
@@ -193,5 +130,39 @@ public class FoxTest extends BaseTestFox {
             switchTo().window(0);
 
         }
+    }
+    private void sameProcess(String foxTaskId,String foxFlowStatu,String foxUserChangeMessage,
+                             String foxCustomerSegment,String foxAkisDurumu,String Aciklama,
+                             String foxKurulumStatu,String foxKurulumAltStatu,String foxSozlesmeStatu,String foxSozlesmeSubStatu) {
+        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu)[0].toString();
+        String[] dataset = FoxGetUserForChange(akisNo);
+        String name = dataset[0];
+        String positionName = dataset[1];
+        akisListesiPage.openPage();
+        mainPageFox.akisNoDoldur(akisNo);
+        akisListesiPage.akisDetay(akisNo);
+        mainPageFox.kullaniciDegistir();
+        kullaniciDegistirPage
+                .organizasyonSec(name)
+                .pozisyonSec(positionName)
+                .ara()
+                .tablodanIlkKayitSec();
+        mainPageFox.mesajKontrol(foxUserChangeMessage);
+        akisListesiPage.openPage();
+        mainPageFox.akisNoDoldur(akisNo);
+        akisListesiPage.akisDetay(akisNo);
+        akisDetayPage.kurulumAdımınaTikla();
+        stepDetayPage
+                .uzerineAl()
+                .pazarlamaSegmentiSec(foxCustomerSegment)
+                .akisDurumuSec(foxAkisDurumu)
+                .bayiOtomasyondanCikar()
+                .aciklamaDoldur(Aciklama)
+                .aciklamaEkle()
+                .teknikFormTabAc()
+                .kurulumStatuSec(foxKurulumStatu)
+                .kurulumAltStatuSec(foxKurulumAltStatu)
+                .sozlesmeStatuSec(foxSozlesmeStatu)
+                .sozlesmeSubStatuSec(foxSozlesmeSubStatu);
     }
 }
