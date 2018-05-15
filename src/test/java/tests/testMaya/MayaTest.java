@@ -6,10 +6,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
-import pages.ustMenuPagesMaya.AdresBilgileriPage;
-import pages.ustMenuPagesMaya.MayaCustomerContactPage;
-import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import pages.ustMenuPagesMaya.*;
 
 /****************************************************
  * Tarih: 2018-05-08
@@ -32,23 +29,17 @@ public class MayaTest extends BaseTestMaya {
     String mahalle =GetTestParameter("MayaCreateDSLOrderTest", "AdslMahalle")[0];
     String sokak =GetTestParameter("MayaCreateDSLOrderTest", "AdslSokak")[0];
     String blok =GetTestParameter("MayaCreateDSLOrderTest", "blokTestOtomasyon")[0];
+    MainPageMaya mainPage = new MainPageMaya();
     @BeforeMethod
     public void loginBeforeTests() {
         login(username, password, mainOrg, subOrg);
     }
-
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
-        MainPageMaya mainPageMaya = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPageMaya.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
-                .ara()
-                .tablodanIlkKayitTikla();
+        customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturTikla()
@@ -80,15 +71,9 @@ public class MayaTest extends BaseTestMaya {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber ve TV Sipariş Giriş Testi")
     public void TS0002_MayaCreateDSLOrderTest() throws InterruptedException {
-        MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
-                .ara()
-                .tablodanIlkKayitTikla();
+        customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
@@ -112,15 +97,9 @@ public class MayaTest extends BaseTestMaya {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
     public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
-        MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
-                .ara()
-                .tablodanIlkKayitTikla();
+        customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .kontakBilgileriTikla();
@@ -130,6 +109,32 @@ public class MayaTest extends BaseTestMaya {
                 .telefonNumarasıDoldur("5555555555")
                 .kaydet()
                 .mesajKontrol("Kontak bilgisi başarıyla kaydedilmiştir");
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
+    public void TS0004_MusteriSmsSifreGonderimiTest() throws InterruptedException {
+        customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .musteriBilgileriTikla();
+        EditCorporateCustomerPage editCorporateCustomerPage = new EditCorporateCustomerPage();
+        editCorporateCustomerPage
+                .btnSMS()
+                .mesajKontrol("nolu telefona gönderilmiştir.");
+    }
+
+    private void customerSearch(String Unvan,String Statu,String Segment) {
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+        searchCustomerCorparatePage
+                .unvanDoldur(Unvan)
+                .statuSec(Statu)
+                .segmentSec(Segment)
+                .ara()
+                .tablodanIlkKayitTikla();
     }
 
 }
