@@ -26,6 +26,10 @@ public class OrderCapturePage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
+    public OrderCapturePage kontakBilgileriTikla() {
+        ustMenu(MayaUstMenuData.Islemler.KontakBilgleri);
+        return this;
+    }
     @Step("Adres bilgileri sayfası açılır.")
     public OrderCapturePage siparisAdresEkle() {
         ustMenu(MayaUstMenuData.Islemler.AdresBilgileri);
