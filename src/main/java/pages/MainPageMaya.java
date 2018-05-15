@@ -8,8 +8,6 @@ import common.BaseLibrary;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import pages.pageComponents.ConfirmDialog;
-import pages.pageComponents.SearchTable;
 import pages.pageData.MayaUstMenuData;
 import pages.pageData.UrunEklemeData;
 
@@ -29,9 +27,6 @@ public class MainPageMaya extends BaseLibrary {
         return mainPageLeftContainerDataTable;
     }
 
-    public SearchTable searchTable() {
-        return new SearchTable(mainPageLeftContainerDataTable);
-    }
 
     public void ustMenu(Enum menu) {
         String groupName = ((MayaUstMenuData.UstMenuDataInterface) menu).getGroupName();
@@ -92,9 +87,6 @@ public class MainPageMaya extends BaseLibrary {
         return $x("//div[@id='baseConfirmationDialog:dialog']");
     }
 
-    public ConfirmDialog confirmDialog() {
-        return new ConfirmDialog();
-    }
 
     public ElementsCollection getPageCloseButtons() {
         return $$("div[id^='window'][id$='Dialog'] > div[class~='ui-dialog-titlebar'] > a[class~='ui-dialog-titlebar-close']");

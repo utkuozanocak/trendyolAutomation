@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RerunFailedTests implements IRetryAnalyzer, IAnnotationTransformer {
 
     int counter = 0;
-    int retryLimit = 2;
+    int retryLimit = 0;
 
     @Override
     public boolean retry(ITestResult result) {

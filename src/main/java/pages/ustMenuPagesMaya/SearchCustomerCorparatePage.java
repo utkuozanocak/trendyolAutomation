@@ -9,7 +9,7 @@ import pages.pageComponents.solcrmElements.SolCrmElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
+import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class SearchCustomerCorparatePage extends MainPageMaya {
 

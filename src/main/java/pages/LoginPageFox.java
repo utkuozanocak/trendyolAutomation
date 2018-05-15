@@ -1,9 +1,7 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
+import data.TestData;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -21,17 +19,22 @@ public class LoginPageFox extends MainPageFox {
 //        clearCookies();
         WebDriverRunner.clearBrowserCache();
         Selenide.open("");
+        maximazeBrowser();
+        return this;
+    }
 
-        System.out.println("================================");
-        System.out.println("Driver: " + getCapabilities().toString());
-        System.out.println("================================");
+    private LoginPageFox open(String url) {
+//        clearCookies();
+        WebDriverRunner.clearBrowserCache();
+        Selenide.open(url);
         maximazeBrowser();
         return this;
     }
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPageFox loginFox(String username, String password) {
-        open();
+        //Configuration.baseUrl = (System.getProperty("URL") == null) ? TestData.foxURL : System.getProperty("URL");
+        open(TestData.foxURL);
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
         BTN_LOGIN.click();

@@ -1,6 +1,6 @@
 package tests.testMaya;
 
-import common.BaseTestMaya;
+import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +14,7 @@ import pages.ustMenuPagesMaya.*;
  * Class:
  * Yazan: Emre Sencan
  ****************************************************/
-public class MayaTest extends BaseTestMaya {
+public class MayaTest extends BaseTest {
 
     String username = GetTestParameter("MayaLoginTest", "Username")[0];
     String password = GetTestParameter("MayaLoginTest", "Password")[0];
@@ -32,7 +32,7 @@ public class MayaTest extends BaseTestMaya {
     MainPageMaya mainPage = new MainPageMaya();
     @BeforeMethod
     public void loginBeforeTests() {
-        login(username, password, mainOrg, subOrg);
+        loginMaya(username, password, mainOrg, subOrg);
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")

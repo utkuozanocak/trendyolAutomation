@@ -1,6 +1,6 @@
 package tests.testFox;
 
-import common.BaseTestFox;
+import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
@@ -13,7 +13,7 @@ import pages.ustMenuPagesFox.StepDetayPage;
 
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class FoxTest extends BaseTestFox {
+public class FoxTest extends BaseTest {
 
 
 

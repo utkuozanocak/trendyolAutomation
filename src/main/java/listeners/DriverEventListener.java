@@ -64,62 +64,7 @@ public class DriverEventListener extends BaseLibrary implements WebDriverEventLi
     }
 
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-
-//        By loadingLocator = By.cssSelector("div[style*='display: block;'] .loading");
-        By loadingLocator = By.cssSelector("div[style*='display: block;'] img[alt='loading']");
-
-
-
-        long timeout = Configuration.timeout / 1000;
-
-        /*private By messageLocator = By.cssSelector(".lobibox-notify");
-        private By bodyLocator = By.cssSelector(".lobibox-notify-body");
-        private By titleLocator = By.cssSelector(".lobibox-notify-title");
-        private By msgLocator = By.cssSelector(".lobibox-notify-msg");
-        private By closeButtonLocator = By.cssSelector(".lobibox-close");*/
-
-        /*(by.equals(By.className("lobibox-notify"))
-                || by.equals(By.cssSelector(".lobibox-notify"))
-                ||*/
-
-/*        if (by.toString().contains("lobibox")
-                || (element != null && element.toString().contains("lobibox")))
-            return;*/
-
-
         waitForLoadingJS(driver);
-        /*//İşlem Mesajları için loading kaybolması beklememeli.
-        if (by.equals(By.cssSelector(".lobibox-notify-title")) || by.equals(By.cssSelector(".lobibox-notify-msg")))
-                return;*/
-
-        /*final String[] readyState = new String[1];
-        //JS readyStates: loading, interactive, complete
-        new WebDriverWait(driver, timeout, 10)
-                .until(Boolean -> {
-                    readyState[0] = ((JavascriptExecutor) driver).executeScript("return document.readyState").toString();
-                    return readyState[0].equals("interactive") || readyState[0].equals("complete");
-                });
-        if (log) {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            System.out.println(timestamp + "    readyState:  " + readyState[0]);
-        }*/
-
-        /*//Loading aramalarda beklememeli.
-        if (by.equals(loadingLocator))
-            return;
-
-        //"div[id*='bekleyiniz'][style*='visibility: visible']"
-        new WebDriverWait(driver, timeout, 50).until(
-                invisibilityOfAllElements(driver.findElements(loadingLocator)));
-//            until(invisibilityOfElementLocated(By.cssSelector("div[style*='display: block;'] .loading")));
-
-        if (log) {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            System.out.println(timestamp + "    looking for element: " + by.toString());
-        }
-
-        }*/
-
     }
 
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
@@ -130,31 +75,7 @@ public class DriverEventListener extends BaseLibrary implements WebDriverEventLi
     }
 
     public void beforeClickOn(WebElement element, WebDriver driver) {
-        //waitForLoadingJS(driver);
-        //new WebDriverWait(driver, Configuration.timeout / 1000).until(elementToBeClickable(element));
 
-        // Selenide.sleep(1000);
-        /**
-         * Focus on element: Belgenete özel
-         * Visible fakat ekranda görünmeyen olan buronlar için.
-         * executeScript("arguments[0].scrollIntoView();", element) bazı yerlerde beklenmedik
-         * sonuçları verdiği için sendKeys kullanıldı. Test edilecek..!
-         */
-        /*try {
-            element.sendKeys("\n");
-        } catch (Exception ignored) { }
-        try {
-            element.sendKeys(Keys.SHIFT);
-        } catch (Exception ignored) { }*/
-        /*Actions action = new Actions(driver);
-        action.moveToElement(element, element.getLocation().x/2, element.getLocation().y/2)
-                .perform();*/
-        // System.out.println("Element location: " + element.getLocation().x + "-" + element.getLocation().y);
-
-        /*if (log) {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            System.out.println(timestamp + "    Before click: " + element.toString());
-        }*/
     }
 
     public void afterClickOn(WebElement element, WebDriver driver) {
@@ -202,10 +123,7 @@ public class DriverEventListener extends BaseLibrary implements WebDriverEventLi
     }
 
     public void onException(Throwable throwable, WebDriver driver) {
-        /*System.out.println("///////////////////////////////////////////////////////////////////////////");
-        System.out.println("Case Error: " + throwable.getMessage());
-        System.out.println("///////////////////////////////////////////////////////////////////////////");
-        takeScreenshot(driver);*/
+
     }
 
 

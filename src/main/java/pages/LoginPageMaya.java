@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.*;
+import data.TestData;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -25,30 +26,23 @@ public class LoginPageMaya extends MainPageMaya {
     private SelenideElement TXT_USERNAMEFOX = $(By.xpath(GetObject("FOX","TXT_USERNAMEFOX","XPATH","FoxLoginPage","PRP")));
     private SelenideElement BTN_FOX_INBOX = $(By.id(GetObject("FOX","BTN_FOX_INBOX","ID","FoxMainPage","PRP")));
 
-    private LoginPageMaya open() {
+    private LoginPageMaya open(String url) {
 //        clearCookies();
         WebDriverRunner.clearBrowserCache();
-        Selenide.open("");
-
-        System.out.println("================================");
-        System.out.println("Driver: " + getCapabilities().toString());
-        System.out.println("================================");
+        Selenide.open(url);
         maximazeBrowser();
         return this;
     }
 
     @Step("Giriş yap")
     public LoginPageMaya login(String username, String password, String MainOrg, String SubOrg) {
-        open();
+        open(TestData.mayaURL);
         TXT_USERNAME_ID.sendKeys(username);
         TXT_PASSWWORD_ID.sendKeys(password);
         SELECT_MAINORG_XPATH.click();
-//        Assert.assertEquals(LBL_AFTER_USERPASS_ID.shouldBe(Condition.visible),true);
         SELECT_MAINORG_XPATH.click();
         $(By.xpath(MainOrg)).click();
-//        Assert.assertEquals(BTN_SUBORG_ID.shouldBe(Condition.visible),true);
         BTN_SUBORG_ID.click();
-//        Assert.assertEquals(SELECT_SUBORG_XPATH.shouldBe(Condition.visible),true);
 
         SelenideElement p = $(By.id("loginForm:subDealerDialogId"));
         ElementsCollection tblAltOrganizasyon =$$("tbody[id='loginForm:subDealerTable_data'] tr[data-ri]")
@@ -64,7 +58,7 @@ public class LoginPageMaya extends MainPageMaya {
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPageMaya loginFox(String username, String password) {
-        open();
+        open(TestData.mayaURL);
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
         BTN_LOGIN.click();

@@ -12,7 +12,7 @@ import pages.pageData.MayaUstMenuData;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
-import static pages.pageComponents.solcrmElements.SolCrm.comboBox;
+import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class OrderCapturePage extends MainPageMaya {
 

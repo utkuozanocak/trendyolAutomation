@@ -76,9 +76,6 @@ public class BaseLibrary extends ElementsContainer {
             System.out.println("Processler Kill Edilememdi!!!");
         }
     }
-    //</editor-fold>
-
-    //<editor-fold desc="Page loading methods">
 
     /**
      * Türkçe harfleri inglizce harflere dönüştürüyor
@@ -94,20 +91,6 @@ public class BaseLibrary extends ElementsContainer {
             ret = ret.replaceAll(new String(new char[]{turkishChars[i]}), new String(new char[]{englishChars[i]}));
         }
         return ret;
-    }
-
-    public static String getPCUsername() {
-        return System.getProperty("user.name");
-    }
-
-    @Step("Browserdaki Cookieleri temizle")
-    public void clearCookies() {
-        try {
-            Selenide.clearBrowserLocalStorage();
-            Selenide.clearBrowserCookies();
-        } catch (Exception e) {
-            log.info("Error clearBrowserLocalStorage and clearBrowserCookies: " + e.getMessage());
-        }
     }
 
     //<editor-fold desc="Allure screenshooter">
@@ -405,34 +388,6 @@ public class BaseLibrary extends ElementsContainer {
     public void clickJs(WebElement element) {
         executeJavaScript("arguments[0].click();", element);
     }
-
-    /**
-     * if input not visible, otherwise use selenide setselected
-     */
-    public void checkboxSelect(SelenideElement element, boolean setSelected) {
-        element = element.getTagName().equalsIgnoreCase("input") ? element : element.$("input");
-        if (element.isSelected() ^ setSelected) {
-            if (element.getAttribute("readonly") != null)
-                throw new InvalidStateException("Cannot change value of readonly element");
-            clickJs(element);
-        }
-    }
-
-
-//    private String closeAlertAndGetItsText() {
-//        try {
-//            Alert alert = driver.switchTo().alert();
-//            String alertText = alert.getText();
-//            if (acceptNextAlert) {
-//                alert.accept();
-//            } else {
-//                alert.dismiss();
-//            }
-//            return alertText;
-//        } finally {
-//            acceptNextAlert = true;
-//        }
-//    }
 
     //Dosya ekler
     public void uploadFile(SelenideElement element, String pathToFile) {
@@ -765,38 +720,6 @@ public class BaseLibrary extends ElementsContainer {
         WebDriverRunner.getWebDriver().close();
     }
 
-    //region Neden burada?
-    public String cssSE(String element, String attribute, String startsWith, String endsWith) {
-
-        if (element != "" || element == null) {
-            return "[" + attribute + "^=''][" + attribute + "$='']";
-        } else {
-            return element + "[" + attribute + "^=''][" + attribute + "$='']";
-        }
-
-    }
-
-    @Step("\"{element}\" alanının değeri \"{value}\" olmalı.")
-    public void alanDegeriKontrolEt(SelenideElement element, String value, boolean shouldHaveValue, boolean exactText) {
-        if (shouldHaveValue == true) {
-            if (exactText == true)
-                element.shouldHave(exactValue(value));
-            else {
-                String _value = element.getValue();
-                Assert.assertEquals(_value.contains(value), true);
-            }
-        } else {
-            if (exactText == true)
-                element.shouldNotHave(exactValue(value));
-
-            else {
-                String _value = element.getValue();
-                Assert.assertEquals(_value.contains(value), false);
-            }
-        }
-    }
-
-
     public boolean findElementOnTableAllPages(String form, SelenideElement element) {
 
         SelenideElement next = $(("[id='" + form + "'] [class='ui-paginator-next ui-state-default ui-corner-all']"));
@@ -905,24 +828,6 @@ public class BaseLibrary extends ElementsContainer {
 
     //endregion
 
-    @Step("Popup İşlem Onayı: {secim}")
-    public void islemOnayi(String secim) {
-
-        SelenideElement btnIslemOnayiEvet = $(By.id("baseConfirmationDialog:confirmButton"));
-        SelenideElement btnIslemOnayiHayir = $(By.id("baseConfirmationDialog:baseConfirmationDialogCancelButton"));
-        btnIslemOnayiEvet.shouldBe(visible);
-
-        switch (secim) {
-            case "Evet":
-                clickJs(btnIslemOnayiEvet);
-                break;
-            case "Hayır":
-                clickJs(btnIslemOnayiHayir);
-                break;
-        }
-    }
-
-
     @Step("\"{fileName}\" isimli dosya silindi")
     public BaseLibrary deleteSpecificFile(String fileName) {
 
@@ -976,126 +881,8 @@ public class BaseLibrary extends ElementsContainer {
         return flag;
     }
 
-    //region Capabilities
-    public String getOS() {
-        Capabilities caps = getCapabilities();
-        String platformName = caps.getCapability("platformName").toString();
-        //System.out.println("Operation System: " + platformName);
-        return platformName;
-    }
-
-    public String getBrowserName() {
-        String browserName = getCapabilities().getBrowserName();
-        //System.out.println("Browser Name : " + browserName);
-        return browserName;
-    }
-
-    @Deprecated
-    private String setDocPath() {
-
-        // Get Browser name and version.
-        Capabilities caps = ((RemoteWebDriver) WebDriverRunner.getWebDriver()).getCapabilities();
-        // String browserName = caps.getBrowserName();
-        // String browserVersion = caps.getVersion();
-        Platform operationSystem = caps.getPlatform();
-        //System.out.println("Operation System: " + operationSystem.name());
-
-        if (operationSystem.is(Platform.WINDOWS)) {
-            uploadPath = "C:\\TestAutomation\\BelgenetFTA\\documents\\";
-        } else if (operationSystem.is(Platform.XP)) {
-            uploadPath = "C:\\TestAutomation\\BelgenetFTA\\documents\\";
-        } else if (operationSystem.is(Platform.LINUX)) {
-            //TODO: Linux pathi verilecek
-            uploadPath = System.getProperty("user.name") + "/BelgenetFTA/documents";
-        } else if (operationSystem.is(Platform.MAC)) {
-            //TODO: Mac pathi verilecek
-            uploadPath = System.getProperty("user.name") + "/BelgenetFTA/documents";
-        }
-        //System.out.println("File path: " + uploadPath);
-        return uploadPath;
-    }
-
-    public String getUploadPath() {
-        Capabilities caps = getCapabilities();
-        Platform operationSystem = caps.getPlatform();
-
-        //String uploadPath = "";
-        if (operationSystem.is(Platform.WINDOWS) || operationSystem.is(Platform.XP))
-            uploadPath = TestData.docPathWindows;
-        else
-            uploadPath = TestData.docPathLinux;
-
-        log.info("Upload file path: " + uploadPath);
-
-        return uploadPath;
-    }
-
-    public String getDownloadPath() {
-        Capabilities caps = getCapabilities();
-        Platform operationSystem = caps.getPlatform();
-        //String downloadPath = "";
-        if (operationSystem.is(Platform.WINDOWS) || operationSystem.is(Platform.XP))
-            downloadPath = TestData.docDownloadPathWindows;
-        else
-            downloadPath = TestData.docDownloadPathLinux;
-
-        log.info("Downloads file path: " + downloadPath);
-
-        return downloadPath;
-    }
-
-    /**
-     * Get Capabilities of EventFiringWebDriver
-     */
-    public Capabilities getCapabilities() {
-        //This 'if' handle case when LoggingWebDriver.driver is instanceof EventFiringWebDriver .
-        //In this case RemoteWebDriver is field within EventFiringWebDriver while EventFiringWebDriver don't support getting Capabilities
-        WebDriver driver = WebDriverRunner.getWebDriver();
-
-        if (driver instanceof EventFiringWebDriver
-                && ((EventFiringWebDriver) driver).getWrappedDriver() instanceof HasCapabilities) {
-            return ((HasCapabilities) ((EventFiringWebDriver) driver)
-                    .getWrappedDriver()).getCapabilities();
-        } else if (driver instanceof HasCapabilities) {
-            return ((HasCapabilities) driver).getCapabilities();
-        }
-        throw new UnsupportedOperationException(
-                "Underlying driver instance does not support capabilities");
-    }
-
-    public RemoteWebDriver getDriverAsRemoteWebDriver() {
-        //This 'if' handle case when LoggingWebDriver.driver is instanceof EventFiringWebDriver .
-        //In this case RemoteWebDriver is field within EventFiringWebDriver while EventFiringWebDriver don't support getting Capabilities
-        WebDriver driver = WebDriverRunner.getWebDriver();
-
-        if (driver instanceof EventFiringWebDriver
-                && ((EventFiringWebDriver) driver).getWrappedDriver() instanceof HasCapabilities) {
-            return (RemoteWebDriver) ((EventFiringWebDriver) driver)
-                    .getWrappedDriver();
-        } else if (driver instanceof HasCapabilities) {
-            return (RemoteWebDriver) driver;
-        }
-        throw new UnsupportedOperationException(
-                "Underlying driver instance does not support capabilities");
-    }
-
     public int getRandomNumber(int startIndex, int endIndex) {
         return (new Random().nextInt((endIndex - startIndex) + 1) + startIndex);
-    }
-
-    public void waitForFileUploading(WebDriver driver, long timeoutSec) {
-
-        try {
-
-            //System.out.println("Count:" + driver.findElements(By.cssSelector("div[style*='display: block;'] .template-upload")).size());
-            new WebDriverWait(driver, timeoutSec, 10).
-                    until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(
-                            By.className("template-upload"))));
-
-        } catch (Exception e) {
-            System.out.println("File uploading error: " + e.getMessage());
-        }
-
     }
 
     public String myip() {
@@ -1107,25 +894,6 @@ public class BaseLibrary extends ElementsContainer {
         //System.out.println(myIP);
         return myIP;
     }
-
-
-    private String setValueByJs(SelenideElement element, String text) {
-        return executeJavaScript(
-                "return (function(webelement, text) {" +
-                        "if (webelement.getAttribute('readonly') != undefined) return 'Cannot change value of readonly element';" +
-                        "if (webelement.getAttribute('disabled') != undefined) return 'Cannot change value of disabled element';" +
-                        "webelement.focus();" +
-                        "var maxlength = webelement.getAttribute('maxlength') == null ? -1 : parseInt(webelement.getAttribute('maxlength'));" +
-                        "webelement.value = " +
-                        "maxlength == -1 ? text " +
-                        ": text.length <= maxlength ? text " +
-                        ": text.substring(0, maxlength);" +
-                        "return null;" +
-                        "})(arguments[0], arguments[1]);",
-                element, text);
-    }
-
-    //endregion
 
     public void connect() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];

@@ -15,24 +15,6 @@ public abstract class SolCrmCondition extends Condition {
         }
     };
 
-    /**
-     * Sonuç tabloda navigasyon buton disabled
-     */
-    public static final Condition isTableNavButtonDisabled = new Condition("isTableNavButtonDisabled") {
-        @Override
-        public boolean apply(WebElement element) {
-            return element.getAttribute("class").contains("ui-state-disabled");
-        }
-    };
-
-    public static final Condition toolboxButtonOn = new Condition("toolboxButtonOn") {
-        @Override
-        public boolean apply(WebElement element) {
-//            return element.getAttribute("aria-pressed") != null && element.getAttribute("aria-pressed").contains("true");
-            return element.getAttribute("class").contains("cke_button_on");
-        }
-    };
-
     public SolCrmCondition(String name) {
         super(name);
     }
@@ -64,13 +46,5 @@ public abstract class SolCrmCondition extends Condition {
             }
         };
     }
-
-    public static final Condition isChecked = new Condition("isChecked") {
-        @Override
-        public boolean apply(WebElement element) {
-//            return element.getAttribute("aria-pressed") != null && element.getAttribute("aria-pressed").contains("true");
-            return element.getAttribute("class").contains("ui-state-active");
-        }
-    };
 
 }
