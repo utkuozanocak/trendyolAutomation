@@ -28,11 +28,6 @@
             <class name="tests.testMaya.MayaTest"/>
         </classes>
     </test>
-    <test name="FoxTest">
-        <classes>
-            <class name="tests.testFox.FoxTest"/>
-        </classes>
-    </test>
     <!--<test name="TuzelKisiYonetimiTest">
         <classes>
             <class name="tests.TuzelKisiYonetimi.TuzelKisiYonetimiTest"/>
