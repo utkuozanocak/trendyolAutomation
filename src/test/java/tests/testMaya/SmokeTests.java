@@ -1,7 +1,7 @@
 package tests.testMaya;
 
 import common.BaseTest;
-import data.TestData;
+import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +15,7 @@ public class SmokeTests extends BaseTest {
 
     @BeforeMethod
     public void loginBeforeTests() {
-        loginMaya(TestData.username, TestData.password, TestData.mainOrg, TestData.subOrg);
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
@@ -69,10 +69,10 @@ public class SmokeTests extends BaseTest {
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
                 .yeniAdresEkle()
-                .sehirSec(TestData.sehir)
-                .ilceSec(TestData.ilce)
-                .mahalleSec(TestData.mahalle)
-                .sokakSec(TestData.sokak)
+                .sehirSec(TestDataMaya.sehir)
+                .ilceSec(TestDataMaya.ilce)
+                .mahalleSec(TestDataMaya.mahalle)
+                .sokakSec(TestDataMaya.sokak)
                 .binaNoIlkKayitSec()
                 .blokEkle("Test Blok")
                 .adresKaydet()

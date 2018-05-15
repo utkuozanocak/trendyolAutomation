@@ -1,7 +1,7 @@
 package tests.testMaya;
 
 import common.BaseTest;
-import data.TestData;
+import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +14,7 @@ public class FiberTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
     @BeforeMethod
     public void loginBeforeTests() {
-        loginMaya(TestData.username, TestData.password, TestData.mainOrg, TestData.subOrg);
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
@@ -23,26 +23,26 @@ public class FiberTests extends BaseTest {
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         mainPage.musteriDetayliArama();
         searchCustomerCorparatePage
-                .unvanDoldur(TestData.unvan)
-                .statuSec(TestData.statu)
-                .segmentSec(TestData.segment);
+                .unvanDoldur(TestDataMaya.unvan)
+                .statuSec(TestDataMaya.statu)
+                .segmentSec(TestDataMaya.segment);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .degistirTikla()
-                .lokasyonIDDoldur(TestData.locationId)
+                .lokasyonIDDoldur(TestDataMaya.locationId)
                 .Ara()
                 .tablodanLokasyonSec()
                 .lokasyonSec()
-                .daireNoDoldur(TestData.daireNo)
-                .daireNoSec(TestData.daireNo)
+                .daireNoDoldur(TestDataMaya.daireNo)
+                .daireNoSec(TestDataMaya.daireNo)
                 .kaydet()
-                .kampanyaAra(TestData.fiberKampanya)
-                .tablodanKampanyaSec(TestData.fiberKampanya)
+                .kampanyaAra(TestDataMaya.fiberKampanya)
+                .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
-                .hizSec(TestData.hiz)
+                .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);

@@ -1,10 +1,9 @@
 package pages;
 
 import com.codeborne.selenide.*;
-import data.TestData;
+import data.TestDataMaya;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -36,7 +35,7 @@ public class LoginPageMaya extends MainPageMaya {
 
     @Step("Giriş yap")
     public LoginPageMaya login(String username, String password, String MainOrg, String SubOrg) {
-        open(TestData.mayaURL);
+        open(TestDataMaya.mayaURL);
         TXT_USERNAME_ID.sendKeys(username);
         TXT_PASSWWORD_ID.sendKeys(password);
         SELECT_MAINORG_XPATH.click();
@@ -58,7 +57,7 @@ public class LoginPageMaya extends MainPageMaya {
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPageMaya loginFox(String username, String password) {
-        open(TestData.mayaURL);
+        open(TestDataMaya.mayaURL);
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
         BTN_LOGIN.click();

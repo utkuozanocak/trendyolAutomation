@@ -1,27 +1,21 @@
 package common;
 
 import com.codeborne.selenide.*;
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import listeners.DriverEventListener;
-import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.TestRunner;
 import org.testng.annotations.*;
 import pages.LoginPageFox;
 import pages.LoginPageMaya;
 import pages.MainPageFox;
 import pages.pageComponents.solcrmElements.SolCrmFramework;
 
-import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.$$;
-//import static data.TestData.mayaURL;
-import static com.codeborne.selenide.Selenide.sleep;
-import static data.TestData.foxURL;
-import static io.qameta.allure.util.ResultsUtils.firstNonEmpty;
+//import static data.TestDataMaya.mayaURL;
+
 
 public class BaseTest extends BaseLibrary {
 
