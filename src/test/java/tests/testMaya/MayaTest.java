@@ -164,7 +164,7 @@ public class MayaTest extends BaseTest {
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
-    public void TS0004_MusteriSmsSifreGonderimiTest() throws InterruptedException {
+    public void TS0005_MusteriSmsSifreGonderimiTest() throws InterruptedException {
         customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
@@ -178,7 +178,7 @@ public class MayaTest extends BaseTest {
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
-    public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
+    public void TS0006_MusteriOzellikEkleme() throws InterruptedException {
 
     }
     private void customerSearch(String Unvan,String Statu,String Segment) {
