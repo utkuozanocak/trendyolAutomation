@@ -182,11 +182,20 @@ public class OrderCapturePage extends MainPageMaya {
 
     public class ADSL extends MainPageMaya
     {
+        private SelenideElement CMB_DSLHIZ_ID = $(By.id(GetObject("FOX","CMB_DSLHIZ_ID","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement CMB_HIZADSL_XPATH = $(By.xpath(GetObject("MAYA","CMB_HIZADSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
             return this;
         }
+        @Step("DSL hızı seçilir.")
+        public ADSL dslHizSec() {
+            CMB_DSLHIZ_ID.click();
+            CMB_HIZADSL_XPATH.click();
+            return this;
+        }
     }
+
 
 }

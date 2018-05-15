@@ -1,22 +1,21 @@
 package pages.ustMenuPagesMaya;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import javafx.scene.control.ComboBox;
 import org.openqa.selenium.By;
 import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class AdresBilgileriPage extends MainPageMaya
 {
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-    SolCrmElement CMB_SEHIR_ID = comboBox(By.id(GetObject("MAYA","CMB_SEHIR_ID","ID","MayaCustomerAddressManagementPage","PRP")));
+    SolCrmElement  CMB_SEHIR_ID = comboBox(By.id(GetObject("MAYA","CMB_SEHIR_ID","ID","MayaCustomerAddressManagementPage","PRP")));
     SolCrmElement CMB_ILCE_ID = comboBox(By.id(GetObject("MAYA","CMB_ILCE_ID","ID","MayaCustomerAddressManagementPage","PRP")));
     SolCrmElement CMB_MAHALLE_ID = comboBox(By.id(GetObject("MAYA","CMB_MAHALLE_ID","ID","MayaCustomerAddressManagementPage","PRP")));
     SolCrmElement CMB_SOKAK_ID = comboBox(By.id(GetObject("MAYA","CMB_SOKAK_ID","ID","MayaCustomerAddressManagementPage","PRP")));
@@ -25,8 +24,6 @@ public class AdresBilgileriPage extends MainPageMaya
     private SelenideElement BTN_ADRESKAYDET_XPATH = $(By.xpath(GetObject("MAYA","BTN_ADRESKAYDET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
     private SelenideElement POP_ONAY_XPATH = $(By.xpath(GetObject("FOX","POP_ONAY_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
     private SelenideElement BTN_EVET_XPATH = $(By.xpath(GetObject("MAYA","BTN_EVET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-
-
     @Step("Adres Bilgileri sayfası açılır.")
     public AdresBilgileriPage openPage()
     {
@@ -69,14 +66,15 @@ public class AdresBilgileriPage extends MainPageMaya
     }
     @Step("bina No seçilir.")
     public AdresBilgileriPage blokEkle(String blok) {
-        TXT_BLOK_XPATH.sendKeys(blok);
+        TXT_BLOK_XPATH.setValue(blok);
         return this;
     }
 
     @Step("Adres detayları kaydedilir.")
     public AdresBilgileriPage adresKaydet() {
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",BTN_ADRESKAYDET_XPATH );
-        BTN_ADRESKAYDET_XPATH.click();
+        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",BTN_ADRESKAYDET_XPATH);
+        //BTN_ADRESKAYDET_XPATH.shouldHave(Condition.appear);
+        clickJs(BTN_ADRESKAYDET_XPATH);
         return this;
     }
 
@@ -88,7 +86,9 @@ public class AdresBilgileriPage extends MainPageMaya
 
     @Step("Adres detayları kaydedilir.")
     public AdresBilgileriPage adresEvetButonSec() {
-        BTN_EVET_XPATH.click();
+
+        //clickJs(BTN_EVET_XPATH);
+        clickJs($x("//body[@onload='closeMessagesDialog()']//div[69]//span[text()='Evet']//..//..//button[2]"));
         return this;
     }
 

@@ -69,11 +69,17 @@ public class MayaTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber ve TV Sipariş Giriş Testi")
-    public void TS0002_MayaCreateDSLOrderTest() throws InterruptedException {
-        customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+    @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
+    public void TS0002_MayaAdresEkleTest() throws InterruptedException {
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+        searchCustomerCorparatePage
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
+                .ara()
+                .tablodanIlkKayitTikla();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
@@ -84,7 +90,7 @@ public class MayaTest extends BaseTest {
                 .mahalleSec(mahalle)
                 .sokakSec(sokak)
                 .binaNoIlkKayitSec()
-                .blokEkle(blok)
+                .blokEkle("Test Blok")
                 .adresKaydet()
                 .adresOnay()
                 .adresEvetButonSec();
@@ -94,6 +100,52 @@ public class MayaTest extends BaseTest {
                 .kampanyaAra(fiberKampanya); */
 
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
+    public void TS0004_MayaCreateDslOrderTest() throws InterruptedException {
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+        searchCustomerCorparatePage
+                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
+                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
+                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
+                .ara()
+                .tablodanIlkKayitTikla();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage.siparisAdresEkle();
+        AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
+        adresBilgileriPage
+                .yeniAdresEkle()
+                .sehirSec(sehir)
+                .ilceSec(ilce)
+                .mahalleSec(mahalle)
+                .sokakSec(sokak)
+                .binaNoIlkKayitSec()
+                .blokEkle("Test Blok")
+                .adresKaydet()
+                .adresOnay()
+                .adresEvetButonSec();
+        orderCapturePage
+                .siparisOlusturSayfaAc()
+                .siparseUrunEkleTikla()
+                .adslAc()
+                .dslHizSec();
+
+
+              /*  .kampanyaAra(fiberKampanya)
+                .tablodanKampanyaSec(fiberKampanya)
+                .kampanyaSec()
+                .hizSec(hiz)
+                .siparisEkle()
+                .siparişOluştur();
+        /*        .adslAc();
+              //  .kaydet()
+                .kampanyaAra(fiberKampanya); */
+
+    }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
     public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
@@ -125,7 +177,7 @@ public class MayaTest extends BaseTest {
                 .mesajKontrol("nolu telefona gönderilmiştir.");
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
+    @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
 
     }
