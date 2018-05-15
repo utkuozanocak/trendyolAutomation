@@ -1,20 +1,15 @@
 package common;
 
 import com.codeborne.selenide.*;
-import com.codeborne.selenide.ex.InvalidStateException;
-import data.TestData;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
@@ -33,7 +28,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static org.apache.commons.io.FileUtils.deleteDirectory;
@@ -895,7 +889,7 @@ public class BaseLibrary extends ElementsContainer {
         return myIP;
     }
 
-    public void connect() throws SQLException, ClassNotFoundException {
+    public static void connect() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://10.35.160.7;databaseName=TestDB;user=SOLTEST;password=SOL2000!";
         //String user = "root";
@@ -915,7 +909,7 @@ public class BaseLibrary extends ElementsContainer {
         }
     }
 
-    public void connectPrp() throws SQLException, ClassNotFoundException {
+    public static void connectPrp() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://10.35.160.5;databaseName=SolTelcoPreProd;user=SOLTEST;password=SOL2000!";
         //String user = "root";
@@ -935,7 +929,7 @@ public class BaseLibrary extends ElementsContainer {
         }
     }
 
-    public void connectFoxPrp() throws SQLException, ClassNotFoundException {
+    public static void connectFoxPrp() throws SQLException, ClassNotFoundException {
         String[] _dataSet = new String[2];
         String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
         connection = null;
@@ -1030,7 +1024,7 @@ public class BaseLibrary extends ElementsContainer {
         return OBJECT_VALUE;
     }
 
-    public String[] GetTestParameter(String strTestName, String strParameterName) {
+    public static String[] GetTestParameter(String strTestName, String strParameterName) {
         String[] dataSet = new String[4];
         try {
             connect();
@@ -1054,7 +1048,7 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
-    public String[] GetLocationData(String LocationType) {
+    public static String[] GetLocationData(String LocationType) {
         String[] dataSet = new String[1];
         try {
             connectPrp();
@@ -1081,7 +1075,7 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
-    public String[] GetLocationDaireData(String LocationType, String LocationId) {
+    public static String[] GetLocationDaireData(String LocationType, String LocationId) {
         String[] dataSet = new String[1];
         try {
             connectPrp();
