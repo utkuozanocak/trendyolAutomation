@@ -22,7 +22,7 @@ public class OrderCapturePage extends MainPageMaya {
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
 
     @Step("Siparis Oluştur sayfası açılır.")
-    public OrderCapturePage siparisOlusturTikla() {
+    public OrderCapturePage siparisOlusturSayfaAc() {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }

@@ -42,7 +42,7 @@ public class MayaTest extends BaseTestMaya {
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
-                .siparisOlusturTikla()
+                .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .degistirTikla()
