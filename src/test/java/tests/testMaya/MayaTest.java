@@ -124,7 +124,11 @@ public class MayaTest extends BaseTest {
                 .btnSMS()
                 .mesajKontrol("nolu telefona gönderilmiştir.");
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
+    public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
 
+    }
     private void customerSearch(String Unvan,String Statu,String Segment) {
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
