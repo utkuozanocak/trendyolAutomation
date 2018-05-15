@@ -51,7 +51,7 @@ public class MayaTest extends BaseTestMaya {
                 .tablodanIlkKayitTikla();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
-                .siparisOlusturTikla()
+                .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .degistirTikla()
