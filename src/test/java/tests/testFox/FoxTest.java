@@ -16,14 +16,18 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class FoxTest extends BaseTestFox {
 
 
-    String taskId = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumTaskId")[0];
-    String flowStatus = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumAkisStatu")[0];
 
+    String taskIdAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "AdslKurulumTaskId")[0];
+    String flowStatusAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "FiberKurulumAkisStatu")[0];
+    String cihazAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "TestToolCihazAdsl")[0];
+
+    String flowStatus = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumAkisStatu")[0];
+    String taskId = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumTaskId")[0];
     String username = GetTestParameter("FoxLoginTest", "FoxUserName")[0];
     String password = GetTestParameter("FoxLoginTest", "FoxPassword")[0];
     String seriNoFttb = null;
     String seriNoGpon = null;
-
+    String seriNoAdsl = null;
     String mesaj= GetTestParameter("FoxKurulumKapatTest", "KullaniciDegistirMesaj")[0];
     String segment = GetTestParameter("FoxKurulumKapatTest", "CustomerSegmentSoho")[0];
     String kurulumStatu = GetTestParameter("FoxKurulumKapatTest", "KurulumYapıldı")[0];
@@ -41,61 +45,27 @@ public class FoxTest extends BaseTestFox {
     String EAMmesaj = GetTestParameter("FoxKurulumKapatTest", "eamKontrolMesaj")[0];
 
 
+    MainPageFox mainPageFox = new MainPageFox();
+    AkisListesiPage akisListesiPage = new AkisListesiPage();
+    KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
+    AkisDetayPage akisDetayPage = new AkisDetayPage();
+    StepDetayPage stepDetayPage = new StepDetayPage();
+
     @BeforeMethod
     public void loginBeforeTests() {
         loginFox(username, password);
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fox Akış Arama")
+    @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException {
-
-        MainPageFox mainPageFox = new MainPageFox();
-        AkisListesiPage akisListesiPage = new AkisListesiPage();
-        KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
-        AkisDetayPage akisDetayPage = new AkisDetayPage();
-
-        StepDetayPage stepDetayPage = new StepDetayPage();
-
-        String akisNo = FoxSearchFlowNo(taskId, flowStatus)[0].toString();
-        String[] dataset = FoxGetUserForChange(akisNo);
-        String name = dataset[0];
-        String positionName = dataset[1];
-        
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        mainPageFox.kullaniciDegistir();
-        kullaniciDegistirPage
-                .organizasyonSec(name)
-                .pozisyonSec(positionName)
-                .ara()
-                .tablodanIlkKayitSe();
-        mainPageFox.mesajKontrol(mesaj);
-        akisListesiPage.openPage();
-        mainPageFox.akisNoDoldur(akisNo);
-        akisListesiPage.akisDetay(akisNo);
-        akisDetayPage.kurulumAdımınaTikla();
-        stepDetayPage
-                .uzerineAl()
-                .pazarlamaSegmentiSec(segment)
-                .akisDurumuSec(akisDurumu)
-                .bayiOtomasyondanCikar()
-                .aciklamaDoldur(aciklama)
-                .aciklamaEkle()
-                .teknikFormTabAc()
-                .kurulumStatuSec(kurulumStatu)
-                .kurulumAltStatuSec(kurulumAltStatu)
-                .sozlesmeStatuSec(sozlesmeStatu)
-                .sozlesmeSubStatuSec(sozlesmeSubStatu);
-
+        sameProcess(taskId,flowStatus,mesaj,segment,akisDurumu,aciklama,kurulumStatu,kurulumAltStatu,sozlesmeStatu,sozlesmeSubStatu);
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
         cihazSeriNoGetir(altYapi);
-
         if (altYapi.equals("FTTb")) {
             stepDetayPage
                     .teknikFormTabAc()
-                    .tabloFiberSeriNoGiris()
+                    .tabloSeriNoGiris("GENERIC")
                     .yeniCihazSeriNoDoldur(seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
@@ -103,12 +73,12 @@ public class FoxTest extends BaseTestFox {
         } else if (altYapi.equals("GPON")) {
             stepDetayPage
                     .teknikFormTabAc()
-                    .tabloFiberSeriNoGiris()
+                    .tabloSeriNoGiris("GENERIC")
                     .yeniCihazSeriNoDoldur(seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat()
-                    .tabloGPONSeriNoGiris()
+                    .tabloSeriNoGiris("ONT")
                     .yeniCihazSeriNoDoldur(seriNoGpon)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
@@ -120,10 +90,31 @@ public class FoxTest extends BaseTestFox {
                 .EAMmesajKontrol(EAMmesaj)
                 .EAMmesajKontrolTamam()
                 .gonder();
-
         mainPageFox.mesajKontrol(basariliMesaj);
     }
-
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fox Adsl Kurulum Kapama")
+    public void TS0001_FoxAdslKurulumKapat() throws InterruptedException {
+        sameProcess(taskIdAdsl,flowStatusAdsl,mesaj,segment,akisDurumu,aciklama,kurulumStatu,kurulumAltStatu,sozlesmeStatu,sozlesmeSubStatu);
+        testToolAc(eamControlUrl);
+        seriNoAdsl = GetSerialNumber(ortamPrp,depoFibertek,cihazAdsl);
+        switchTo().window(0);
+        stepDetayPage
+                .teknikFormTabAc()
+                .tabloSeriNoGiris("AIRTIES")
+                .yeniCihazSeriNoDoldur(seriNoAdsl)
+                .guncelle()
+                .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
+                .seriNoGirisEkraniKapat();
+        stepDetayPage
+                .teknikFormTabAc()
+                .seriNoKontrol()
+                .EAMmesajKontrol(EAMmesaj)
+                .EAMmesajKontrolTamam()
+                .gonder();
+        mainPageFox.mesajKontrol(basariliMesaj);
+    }
+    
     private void cihazSeriNoGetir(String altYapi) {
         if(altYapi.equals("FTTb"))
         {
@@ -140,5 +131,39 @@ public class FoxTest extends BaseTestFox {
             switchTo().window(0);
 
         }
+    }
+    private void sameProcess(String foxTaskId,String foxFlowStatu,String foxUserChangeMessage,
+                             String foxCustomerSegment,String foxAkisDurumu,String Aciklama,
+                             String foxKurulumStatu,String foxKurulumAltStatu,String foxSozlesmeStatu,String foxSozlesmeSubStatu) {
+        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu)[0].toString();
+        String[] dataset = FoxGetUserForChange(akisNo);
+        String name = dataset[0];
+        String positionName = dataset[1];
+        akisListesiPage.openPage();
+        mainPageFox.akisNoDoldur(akisNo);
+        akisListesiPage.akisDetay(akisNo);
+        mainPageFox.kullaniciDegistir();
+        kullaniciDegistirPage
+                .organizasyonSec(name)
+                .pozisyonSec(positionName)
+                .ara()
+                .tablodanIlkKayitSec();
+        mainPageFox.mesajKontrol(foxUserChangeMessage);
+        akisListesiPage.openPage();
+        mainPageFox.akisNoDoldur(akisNo);
+        akisListesiPage.akisDetay(akisNo);
+        akisDetayPage.kurulumAdımınaTikla();
+        stepDetayPage
+                .uzerineAl()
+                .pazarlamaSegmentiSec(foxCustomerSegment)
+                .akisDurumuSec(foxAkisDurumu)
+                .bayiOtomasyondanCikar()
+                .aciklamaDoldur(Aciklama)
+                .aciklamaEkle()
+                .teknikFormTabAc()
+                .kurulumStatuSec(foxKurulumStatu)
+                .kurulumAltStatuSec(foxKurulumAltStatu)
+                .sozlesmeStatuSec(foxSozlesmeStatu)
+                .sozlesmeSubStatuSec(foxSozlesmeSubStatu);
     }
 }

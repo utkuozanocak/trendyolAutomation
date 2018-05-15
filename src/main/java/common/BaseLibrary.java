@@ -14,15 +14,14 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.*;
-import org.testng.asserts.*;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.security.Key;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -1455,6 +1454,23 @@ public class BaseLibrary extends ElementsContainer {
                 System.out.println(seriNo);
                 closeNewWindow();
                 return seriNo;
-                }
+    }
+    @Step("Test Tool'dan Telefon numarası sorgulanır.")
+    public String GetPhoneNumber(String city, String env, String churnType) {
+        String phoneNumber = null;
+        int i = 0;
+        $(By.id("ctl00_MainContent_CityList")).selectOption(city);
+        $(By.xpath("//label[text()='"+env+"']//..//input")).click();
+        $(By.id("ctl00_MainContent_ChurnList")).selectOption(churnType);
+        $(By.id("ctl00_MainContent_lnkErisimNoGetir")).click();
+        while(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i<10 ){
+            sleep( 1000);
+            i++;
+        }
+        phoneNumber = $(By.id("ctl00_MainContent_txtTelno")).getValue();
+        System.out.println(phoneNumber);
+        closeNewWindow();
+        return phoneNumber;
+    }
 
 }
