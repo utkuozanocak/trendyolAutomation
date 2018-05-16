@@ -45,12 +45,20 @@ public class SmokeTests extends BaseTest {
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
-    public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
+    public void TS0005_MusteriOzellikEklemeTest() throws InterruptedException {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-
-
+        CustomerPropertyPage customerPropertyPage = new CustomerPropertyPage();
+        customerPropertyPage
+                .musteriOzellikSayfasıAc()
+                .btnYeniOzellikTikla()
+                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı")
+                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu")
+                .txtMinimumDegerDoldur("1")
+                .txtMaksimumDegerDoldur("10")
+                .btnKaydetTikla()
+                .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
