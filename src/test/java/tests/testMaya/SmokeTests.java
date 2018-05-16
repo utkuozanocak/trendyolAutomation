@@ -50,20 +50,18 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
+        mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
 
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
     public void TS0002_MayaAdresEkleTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
-                .ara()
-                .tablodanIlkKayitTikla();
+        mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
