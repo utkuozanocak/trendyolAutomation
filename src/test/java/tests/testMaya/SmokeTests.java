@@ -23,11 +23,9 @@ public class SmokeTests extends BaseTest {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .kontakBilgileriTikla();
         MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
         mayaCustomerContactPage
+                .kontakBilgileriTikla()
                 .tablodanIlkKontakSec()
                 .telefonNumarasıDoldur("5555555555")
                 .kaydet()
@@ -39,11 +37,9 @@ public class SmokeTests extends BaseTest {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .musteriBilgileriTikla();
         EditCorporateCustomerPage editCorporateCustomerPage = new EditCorporateCustomerPage();
         editCorporateCustomerPage
+                .musteriBilgileriTikla()
                 .btnSMS()
                 .mesajKontrol("nolu telefona gönderilmiştir.");
     }
@@ -54,6 +50,7 @@ public class SmokeTests extends BaseTest {
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
 
+
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
@@ -62,10 +59,9 @@ public class SmokeTests extends BaseTest {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
+                .siparisAdresEkle()
                 .yeniAdresEkle()
                 .sehirSec(TestDataMaya.sehir)
                 .ilceSec(TestDataMaya.ilce)
