@@ -91,7 +91,11 @@ public class AdresBilgileriPage extends MainPageMaya
         clickJs($x("//body[@onload='closeMessagesDialog()']//div[69]//span[text()='Evet']//..//..//button[2]"));
         return this;
     }
-
+    @Step("Adres bilgileri sayfası açılır.")
+    public AdresBilgileriPage siparisAdresEkle() {
+        ustMenu(MayaUstMenuData.Islemler.AdresBilgileri);
+        return this;
+    }
 
 
     public AdresBilgileriPage sablonTipi(String tip)

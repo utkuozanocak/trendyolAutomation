@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.MainPageMaya;
+import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -33,6 +34,11 @@ public class MayaCustomerContactPage extends MainPageMaya {
     @Step("Kaydet butonu tıklanır.")
     public MayaCustomerContactPage kaydet() {
         BTN_CONTACTKAYDET_ID.click();
+        return this;
+    }
+    @Step("Kontak bilgileri sayfası açılır.")
+    public MayaCustomerContactPage kontakBilgileriTikla() {
+        ustMenu(MayaUstMenuData.Islemler.KontakBilgleri);
         return this;
     }
     @Step("Mesaj Kontrol Edilir")
