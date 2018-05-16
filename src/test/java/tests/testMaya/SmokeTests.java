@@ -53,8 +53,8 @@ public class SmokeTests extends BaseTest {
         customerPropertyPage
                 .musteriOzellikSayfasıAc()
                 .btnYeniOzellikTikla()
-                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı")
-                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu")
+                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı "+createRandomNumber(8))
+                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu "+createRandomNumber(8))
                 .txtMinimumDegerDoldur("1")
                 .txtMaksimumDegerDoldur("10")
                 .btnKaydetTikla()
