@@ -24,21 +24,6 @@ public class OrderCapturePage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
-    @Step("Kontak bilgileri sayfası açılır.")
-    public OrderCapturePage kontakBilgileriTikla() {
-        ustMenu(MayaUstMenuData.Islemler.KontakBilgleri);
-        return this;
-    }
-    @Step("Adres bilgileri sayfası açılır.")
-    public OrderCapturePage siparisAdresEkle() {
-        ustMenu(MayaUstMenuData.Islemler.AdresBilgileri);
-        return this;
-    }
-    @Step("Müşteri bilgileri sayfası açılır.")
-    public OrderCapturePage musteriBilgileriTikla() {
-        ustMenu(MayaUstMenuData.Islemler.MusteriBilgileri);
-        return this;
-    }
 
     @Step("Siparise ürün ekle butonu tıklanır.")
     public OrderCapturePage siparseUrunEkleTikla() {

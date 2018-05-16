@@ -33,10 +33,9 @@ public class AdslTests extends BaseTest {
                 .segmentSec(TestDataMaya.segment)
                 .ara()
                 .tablodanIlkKayitTikla();
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
+                .siparisAdresEkle()
                 .yeniAdresEkle()
                 .sehirSec(TestDataMaya.sehir)
                 .ilceSec(TestDataMaya.ilce)
@@ -47,6 +46,7 @@ public class AdslTests extends BaseTest {
                 .adresKaydet()
                 .adresOnay()
                 .adresEvetButonSec();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
