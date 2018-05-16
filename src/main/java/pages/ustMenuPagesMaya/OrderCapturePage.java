@@ -240,6 +240,25 @@ public class OrderCapturePage extends MainPageMaya {
                     .click();
             return this;
         }
+
+        @Step("Hız Seçilir ve Eklenir.")
+        public Fiber hizSec(String hiz) {
+            CMB_HIZSEC_XPATH.selectComboBox(hiz);
+            BTN_HIZEKLE_XPATH.click();
+            return this;
+        }
+
+        @Step("Sipariş Eklenir.")
+        public Fiber siparisEkle() {
+            clickJs(BTN_SIPARISEKLE_XPATH);
+            return this;
+        }
+        
+        @Step("Sipariş oluştur tıklanır.")
+        public Fiber siparişOluştur() {
+            BTN_SIPARISIOLUSTUR_XPATH.click();
+            return this;
+        }
     }
 
 
