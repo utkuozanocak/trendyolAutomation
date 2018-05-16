@@ -25,7 +25,9 @@ public class FiberTests extends BaseTest {
         searchCustomerCorparatePage
                 .unvanDoldur(TestDataMaya.unvan)
                 .statuSec(TestDataMaya.statu)
-                .segmentSec(TestDataMaya.segment);
+                .segmentSec(TestDataMaya.segment)
+                .ara()
+                .tablodanIlkKayitTikla();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
