@@ -1,4 +1,4 @@
-package tests.testFox;
+package tests.FoxFiberTests;
 
 import common.BaseTest;
 import data.TestDataFox;
@@ -6,6 +6,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.FoxTest;
 import pages.MainPageFox;
 import pages.ustMenuPagesFox.AkisDetayPage;
 import pages.ustMenuPagesFox.AkisListesiPage;
@@ -41,7 +42,7 @@ public class FiberTests extends BaseTest {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb())
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
@@ -49,12 +50,12 @@ public class FiberTests extends BaseTest {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb())
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat()
                     .tabloSeriNoGiris("ONT")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoGpon)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoGpon())
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
