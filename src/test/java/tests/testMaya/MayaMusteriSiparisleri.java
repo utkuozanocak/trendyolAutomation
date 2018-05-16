@@ -13,8 +13,13 @@ import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 import pages.ustMenuPagesMaya.TrackOrdersPage;
 
 public class MayaMusteriSiparisleri extends BaseTest {
-    String  siparisno="1750150504";
-    String  tip="Yeni";
+    String  siparisno = "1750150504";
+    String  tip = "Yeni";
+    String  status = "İşleniyor";
+    String  baslangicTarih ="15.05.2018 10:50";
+    String  tamamlanmaTarih ="15.05.2018 10:50";
+    String  yaratanOrganizasyon ="00001.00001";
+
     MayaTest mayaTest = new MayaTest();
     @BeforeMethod
     public void loginBeforeTests() {
@@ -36,6 +41,12 @@ public class MayaMusteriSiparisleri extends BaseTest {
         trackOrdersPage.openPage();
         trackOrdersPage.siparisNoGir(siparisno);
         trackOrdersPage.islemTipiSec(tip);
+        trackOrdersPage.statuSec(status);
+        trackOrdersPage.baslangicTarihiSec(baslangicTarih);
+        //trackOrdersPage.tamamlanmaTarihiSec(tamamlanmaTarih);
+        trackOrdersPage.yaratanOrganizasyonSec(yaratanOrganizasyon);
+        trackOrdersPage.siparisSec();
+
 
     }
 }

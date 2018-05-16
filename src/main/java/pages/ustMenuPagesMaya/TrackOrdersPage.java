@@ -1,6 +1,7 @@
 package pages.ustMenuPagesMaya;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -13,9 +14,7 @@ import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class TrackOrdersPage extends MainPageMaya {
@@ -30,12 +29,18 @@ public class TrackOrdersPage extends MainPageMaya {
 //    private SelenideElement BTN_ADRESKAYDET_XPATH = $(By.xpath(GetObject("MAYA","BTN_ADRESKAYDET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
 //    private SelenideElement POP_ONAY_XPATH = $(By.xpath(GetObject("FOX","POP_ONAY_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
 //    private SelenideElement BTN_EVET_XPATH = $(By.xpath(GetObject("MAYA","BTN_EVET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
+//    Select select = new Select($(By.id("orderForm:orderDataTable:orderTypeId_input")));
+//    private  SelenideElement TXT_SIPARISNO_XPATH = $(By.xpath("//input[@id='orderForm:orderDataTable:siparisNoHeader:filter']"));
+//    private SelenideElement CMB_ISLEMTIPI_XPATH = $(By.xpath("//div[@id='orderForm:orderDataTable:orderTypeId']//label[@id='orderForm:orderDataTable:orderTypeId_label']"));
 
-    //private  SelenideElement TXT_SIPARISNO_XPATH = $(By.xpath("//input[@id='orderForm:orderDataTable:siparisNoHeader:filter']"));
     private SelenideElement TXT_SIPARISNO_ID = $(By.id("orderForm:orderDataTable:siparisNoHeader:filter"));
-    //private SelenideElement CMB_ISLEMTIPI_XPATH = $(By.xpath("//select[@id='orderForm:orderDataTable:orderTypeId_input']"));
-    private SolCrmElement CMB_ISLEMTIPI_ID = comboBox(By.id("orderForm:orderDataTable:orderTypeId_input"));
-   // Select select = new Select($(By.id("orderForm:orderDataTable:orderTypeId_input")));
+    private SolCrmElement CMB_ISLEMTIPI_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderTypeId']//label[@id='orderForm:orderDataTable:orderTypeId_label']"));
+    private SolCrmElement CMB_STATU_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderStatusId']//label[@id='orderForm:orderDataTable:orderStatusId_label']"));
+    private SelenideElement TXT_BASLAGICTARIHI_ID = $(By.id("orderForm:orderDataTable:baslangicTarihiHeader:filter"));
+    private SelenideElement TXT_TAMAMLANMATARIHI_ID = $(By.id("orderForm:orderDataTable:tamamlanmaTarihiHeader:filter"));
+    private SelenideElement TXT_YARATANORGANIZASYON_ID = $(By.id("orderForm:orderDataTable:yaratanOrganizasyonHeader:filter"));
+    private ElementsCollection TBL_SIPARIS_SEC = $$("tbody[id='orderForm:orderDataTable_data'] tr[data-ri]']");
+
 
      @Step("Adres Bilgileri sayfası açılır.")
     public TrackOrdersPage openPage()
@@ -52,21 +57,47 @@ public class TrackOrdersPage extends MainPageMaya {
     @Step("İşlem Tipi Seçilir.")
     public TrackOrdersPage islemTipiSec(String tip) {
 
-        clickJs(CMB_ISLEMTIPI_ID.selectComboBox(tip));
+         sleep(1000);
+        CMB_ISLEMTIPI_XPATH.selectComboBox(tip);
         return this;
     }
-//    @Step("İlçe seçilir.")
-//    public TrackOrdersPage ilceSec(String ilce) {
-//        CMB_ILCE_ID.selectComboBox(ilce);
-//        return this;
-//    }
-//
-//    @Step("Mahalle seçilir.")
-//    public TrackOrdersPage mahalleSec(String mahalle) {
-//        CMB_MAHALLE_ID.selectComboBox(mahalle);
-//        return this;
-//    }
-//
+    @Step("Statü Seçilir.")
+    public TrackOrdersPage statuSec(String status) {
+        sleep(1000);
+        CMB_STATU_XPATH.selectComboBox(status);
+        return this;
+    }
+
+    @Step("Başlangıç Tarihi Girilir.")
+    public TrackOrdersPage baslangicTarihiSec(String baslangicTarih) {
+        sleep(1000);
+        TXT_BASLAGICTARIHI_ID.sendKeys(baslangicTarih);
+        return this;
+    }
+
+    @Step("Tamamlanma Tarihi Girilir.")
+    public TrackOrdersPage tamamlanmaTarihiSec(String tamamlanmaTarih) {
+        sleep(1000);
+        TXT_TAMAMLANMATARIHI_ID.sendKeys(tamamlanmaTarih);
+        return this;
+    }
+
+    @Step("Yaratan Organizasyon Tarihi Girilir.")
+    public TrackOrdersPage yaratanOrganizasyonSec(String yaratanOrganizasyon) {
+        sleep(1000);
+        TXT_YARATANORGANIZASYON_ID.sendKeys(yaratanOrganizasyon);
+        return this;
+    }
+
+    @Step("Tablodan ilk Sipariş Seçilir.")
+    public TrackOrdersPage siparisSec() {
+        sleep(1000);
+        TBL_SIPARIS_SEC.first()
+                .$("a")
+                .click();
+        return this;
+    }
+
 //    @Step("Sokak seçilir.")
 //    public TrackOrdersPage sokakSec(String sokak) {
 //        CMB_SOKAK_ID.selectComboBox(sokak);
