@@ -176,6 +176,9 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement BTN_SUNUSEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUNUSEC_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement TXT_SEARCHCAMPAIGN_XPATH = $(By.xpath(GetObject("MAYA","TXT_SEARCHCAMPAIGN_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         ElementsCollection TBL_DSLKAMPANYA = $$(GetObject("MAYA","TBL_DSLKAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+        private SolCrmElement CMB_HIZSEC_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_HIZSEC_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_HIZEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_HIZEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+
 
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
@@ -227,13 +230,13 @@ public class OrderCapturePage extends MainPageMaya {
         }
 
         @Step("Hız Seçilir ve Eklenir.")
-        public Fiber hizSec(String hiz) {
+        public ADSL hizSecAdsl(String hiz) {
             CMB_HIZSEC_XPATH.selectComboBox(hiz);
             BTN_HIZEKLE_XPATH.click();
             return this;
         }
 
-        @Step("Sipariş Eklenir.")
+  /*      @Step("Sipariş Eklenir.")
         public Fiber siparisEkle() {
             clickJs(BTN_SIPARISEKLE_XPATH);
             return this;
@@ -243,7 +246,7 @@ public class OrderCapturePage extends MainPageMaya {
         public Fiber siparişOluştur() {
             BTN_SIPARISIOLUSTUR_XPATH.click();
             return this;
-        }
+        }  */
     }
 
 
