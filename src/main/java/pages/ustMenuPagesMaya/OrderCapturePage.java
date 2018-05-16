@@ -49,7 +49,7 @@ public class OrderCapturePage extends MainPageMaya {
     }
 
     public Fiber fiberAc() {
-        return fiber.openPage();
+        return fiber;
     }
 
     public ADSL adslAc() {

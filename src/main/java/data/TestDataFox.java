@@ -3,6 +3,7 @@ package data;
 import common.BaseLibrary;
 
 public class TestDataFox extends BaseLibrary {
+
     public static final String foxURL = "http://172.20.165.150/netflowsolprp/LoginForm.aspx";
     public static final String taskIdAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "AdslKurulumTaskId")[0];
     public static final String flowStatusAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "FiberKurulumAkisStatu")[0];
