@@ -26,7 +26,7 @@ public class OrderCapturePage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
-    
+
     @Step("Siparise ürün ekle butonu tıklanır.")
     public OrderCapturePage siparseUrunEkleTikla() {
         BTN_SIPARISEURUNEKLE_ID.click();
