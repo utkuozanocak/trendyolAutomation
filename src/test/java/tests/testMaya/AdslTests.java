@@ -61,6 +61,7 @@ public class AdslTests extends BaseTest {
                 .kampanyaAraDsl(TestDataMaya.adslKampanya)
                 .tablodanKampanyaSecDsl(TestDataMaya.adslKampanya)
                 .hizSecAdsl(TestDataMaya.adslHiz);
+        
               /*  .siparisEkle()
                 .siparişOluştur();
 */
