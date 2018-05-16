@@ -19,23 +19,29 @@ public class FiberTests extends BaseTest {
     KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
     AkisDetayPage akisDetayPage = new AkisDetayPage();
     StepDetayPage stepDetayPage = new StepDetayPage();
+
     @BeforeMethod
     public void loginBeforeTests() {
         loginFox(TestDataFox.username, TestDataFox.password);
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException {
+
         foxTest.sameProcess(TestDataFox.taskId,TestDataFox.flowStatus,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
                 TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+
         foxTest.cihazSeriNoGetir(altYapi);
+
+
         if (altYapi.equals("FTTb")) {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
@@ -43,12 +49,12 @@ public class FiberTests extends BaseTest {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat()
                     .tabloSeriNoGiris("ONT")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoGpon)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoGpon)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
