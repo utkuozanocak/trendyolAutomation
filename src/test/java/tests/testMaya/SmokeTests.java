@@ -80,11 +80,20 @@ public class SmokeTests extends BaseTest {
                 .adresKaydet()
                 .adresOnay()
                 .adresEvetButonSec();
-        /*  .siparseUrunEkleTikla()
-                .adslAc();
-              //  .kaydet()
-                .kampanyaAra(fiberKampanya); */
+    }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Müşteri Özellik ekleme")
+    public void TS0008_MusteriKurumsalIletisimBilgileriTest() throws InterruptedException {
+        mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        customerCommunicationInfoDisplayPage customerCommunicationInfoDisplay = new customerCommunicationInfoDisplayPage();
+        customerCommunicationInfoDisplay
+                .openPage();
+
+
+           //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
 
 }
