@@ -1,8 +1,7 @@
-package tests.testFox;
+package pages;
 
 import common.BaseTest;
 import data.TestDataFox;
-import pages.MainPageFox;
 import pages.ustMenuPagesFox.AkisDetayPage;
 import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
@@ -10,11 +9,12 @@ import pages.ustMenuPagesFox.StepDetayPage;
 
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class FoxTest extends BaseTest {
+public class FoxTest extends MainPageFox {
 
     String seriNoFttb = null;
     String seriNoGpon = null;
     String seriNoAdsl = null;
+
     MainPageFox mainPageFox = new MainPageFox();
     AkisListesiPage akisListesiPage = new AkisListesiPage();
     KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
@@ -39,6 +39,14 @@ public class FoxTest extends BaseTest {
 
         }
     }
+
+    public String seriNoFttb() {
+        return seriNoFttb;
+    }
+    public String seriNoGpon() {
+        return seriNoGpon;
+    }
+
     public void sameProcess(String foxTaskId,String foxFlowStatu,String foxUserChangeMessage,
                              String foxCustomerSegment,String foxAkisDurumu,String Aciklama,
                              String foxKurulumStatu,String foxKurulumAltStatu,String foxSozlesmeStatu,String foxSozlesmeSubStatu) {

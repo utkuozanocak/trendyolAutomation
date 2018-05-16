@@ -19,7 +19,7 @@ public class OrderCapturePage extends MainPageMaya {
     private VDSL vdsl = new VDSL();
     private SelenideElement BTN_SIPARISEURUNEKLE_ID = $(By.id(GetObject("MAYA", "BTN_SIPARISEURUNEKLE_ID", "ID", "MayaOrderCapturePage", "PRP")));
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-
+    private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISIOLUSTUR_XPATH","XPATH","MayaOrderCapturePage","PRP")));
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturSayfaAc() {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
@@ -29,6 +29,11 @@ public class OrderCapturePage extends MainPageMaya {
     @Step("Siparise ürün ekle butonu tıklanır.")
     public OrderCapturePage siparseUrunEkleTikla() {
         BTN_SIPARISEURUNEKLE_ID.click();
+        return this;
+    }
+    @Step("Siparis Oluştur Tıkla")
+    public OrderCapturePage siparisOlusturTikla() {
+        BTN_SIPARISIOLUSTUR_XPATH.click();
         return this;
     }
 
