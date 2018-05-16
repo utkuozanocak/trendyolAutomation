@@ -184,6 +184,10 @@ public class OrderCapturePage extends MainPageMaya {
     {
         private SelenideElement CMB_DSLHIZ_ID = $(By.id(GetObject("FOX","CMB_DSLHIZ_ID","ID","MayaOrderCapturePage","PRP")));
         private SelenideElement CMB_HIZADSL_XPATH = $(By.xpath(GetObject("MAYA","CMB_HIZADSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement CMB_DSLTIPI_XPATH = $(By.xpath(GetObject("MAYA","CMB_DSLTIPI_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement LBL_STANDARTDSL_XPATH = $(By.xpath(GetObject("MAYA","LBL_STANDARTDSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_TTHIZMETSORGULA_XPATH = $(By.xpath(GetObject("MAYA","BTN_TTHIZMETSORGULA_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
@@ -193,6 +197,17 @@ public class OrderCapturePage extends MainPageMaya {
         public ADSL dslHizSec() {
             CMB_DSLHIZ_ID.click();
             CMB_HIZADSL_XPATH.click();
+            return this;
+        }
+        @Step("DSL Tipi Seçilir.")
+        public ADSL dslTipiSec(String tip) {
+            CMB_DSLTIPI_XPATH.click();
+            LBL_STANDARTDSL_XPATH.click();
+            return this;
+        }
+        @Step("DSL Tipi Seçilir.")
+        public ADSL ttHizmetSorgulama() {
+            BTN_TTHIZMETSORGULA_XPATH.click();
             return this;
         }
     }

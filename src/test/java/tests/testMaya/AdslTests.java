@@ -47,9 +47,9 @@ public class AdslTests extends BaseTest {
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .adslAc()
-                .dslHizSec();
-
-
+                .dslHizSec()
+                .dslTipiSec("Standart DSL")
+                .ttHizmetSorgulama();
               /*  .kampanyaAra(fiberKampanya)
                 .tablodanKampanyaSec(fiberKampanya)
                 .kampanyaSec()
