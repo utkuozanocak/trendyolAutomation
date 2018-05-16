@@ -4,6 +4,7 @@ import common.BaseTest;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
@@ -11,6 +12,8 @@ import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 import tests.testFox.FoxTest;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
@@ -48,15 +51,13 @@ public class AdslTests extends BaseTest {
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .adslAc()
+                .openPage()
                 .dslHizSec()
-                .dslTipiSec("Standart DSL")
-                .testToolAc("http://othertest.superonline.net/soltesttool/ChurnControl.aspx");
-                GetPhoneNumber();
-
-
-
-               // .ttHizmetSorgulama();
-
+                .dslTipiSec("Standart DSL");
+        String erisimNo = mayaTest.erisimNoGetir();
+        orderCapturePage.adslAc().erisimNoGir(erisimNo)
+                .ttHizmetSorgulama();
+        
               /*  .kampanyaAra(fiberKampanya)
                 .tablodanKampanyaSec(fiberKampanya)
                 .kampanyaSec()

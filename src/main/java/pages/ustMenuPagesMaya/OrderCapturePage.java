@@ -9,9 +9,7 @@ import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class OrderCapturePage extends MainPageMaya {
@@ -53,7 +51,9 @@ public class OrderCapturePage extends MainPageMaya {
     }
 
     public ADSL adslAc() {
-        return adsl.openPage();
+       // if($x("//a[text()='DSL Konfigrasyonu']").isDisplayed())
+            return adsl;
+        //return adsl.openPage();
     }
 
     public class Fiber extends MainPageMaya {
@@ -187,7 +187,7 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement CMB_DSLTIPI_XPATH = $(By.xpath(GetObject("MAYA","CMB_DSLTIPI_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement LBL_STANDARTDSL_XPATH = $(By.xpath(GetObject("MAYA","LBL_STANDARTDSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_TTHIZMETSORGULA_XPATH = $(By.xpath(GetObject("MAYA","BTN_TTHIZMETSORGULA_XPATH","XPATH","MayaOrderCapturePage","PRP")));
-
+        private SelenideElement DSL_ERISIM_NO = $(By.id(GetObject("MAYA","DSL_ERISIM_NO","ID","MayaOrderCapturePage","PRP")));
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
@@ -205,7 +205,12 @@ public class OrderCapturePage extends MainPageMaya {
             LBL_STANDARTDSL_XPATH.click();
             return this;
         }
-        @Step("DSL Tipi Seçilir.")
+        @Step("TT'den gelen erisim no girilir.")
+        public ADSL erisimNoGir(String erisimno) {
+            DSL_ERISIM_NO.sendKeys(erisimno);
+            return this;
+        }
+        @Step("TT hizmet sorgulama butonuna tıklanır.")
         public ADSL ttHizmetSorgulama() {
             BTN_TTHIZMETSORGULA_XPATH.click();
             return this;

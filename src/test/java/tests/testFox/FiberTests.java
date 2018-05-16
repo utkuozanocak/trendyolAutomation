@@ -30,7 +30,10 @@ public class FiberTests extends BaseTest {
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
                 TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+
         foxTest.cihazSeriNoGetir(altYapi);
+
+
         if (altYapi.equals("FTTb")) {
             stepDetayPage
                     .teknikFormTabAc()

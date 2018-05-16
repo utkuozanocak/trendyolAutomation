@@ -1,8 +1,12 @@
 package tests.testMaya;
 
 import common.BaseTest;
+import data.TestDataFox;
+import data.TestDataMaya;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+
+import static com.codeborne.selenide.Selenide.switchTo;
 
 /****************************************************
  * Tarih: 2018-05-08
@@ -12,7 +16,7 @@ import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
  ****************************************************/
 public class MayaTest extends BaseTest {
 
-
+    String erisimNo = null;
 
     public void customerSearch(String Unvan,String Statu,String Segment) {
         MainPageMaya mainPage = new MainPageMaya();
@@ -24,6 +28,12 @@ public class MayaTest extends BaseTest {
                 .segmentSec(Segment)
                 .ara()
                 .tablodanIlkKayitTikla();
+    }
+    public String erisimNoGetir() {
+            testToolAc(TestDataMaya.churnKontrolUrl);
+            erisimNo = GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
+            switchTo().window(0);
+            return erisimNo;
     }
 
 }
