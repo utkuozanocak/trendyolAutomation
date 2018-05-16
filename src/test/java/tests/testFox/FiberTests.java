@@ -41,7 +41,7 @@ public class FiberTests extends BaseTest {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
@@ -49,12 +49,12 @@ public class FiberTests extends BaseTest {
             stepDetayPage
                     .teknikFormTabAc()
                     .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoFttb)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat()
                     .tabloSeriNoGiris("ONT")
-                    .yeniCihazSeriNoDoldur(TestDataFox.seriNoGpon)
+                    .yeniCihazSeriNoDoldur(foxTest.seriNoGpon)
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();

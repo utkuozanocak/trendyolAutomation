@@ -37,7 +37,7 @@ public class AdslTests extends BaseTest {
         stepDetayPage
                 .teknikFormTabAc()
                 .tabloSeriNoGiris("AIRTIES")
-                .yeniCihazSeriNoDoldur(TestDataFox.seriNoAdsl)
+                .yeniCihazSeriNoDoldur(foxTest.seriNoAdsl)
                 .guncelle()
                 .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                 .seriNoGirisEkraniKapat();
