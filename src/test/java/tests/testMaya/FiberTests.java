@@ -31,6 +31,7 @@ public class FiberTests extends BaseTest {
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .fiberAc()
+                .openPage()
                 .degistirTikla()
                 .lokasyonIDDoldur(TestDataMaya.locationId)
                 .Ara()
