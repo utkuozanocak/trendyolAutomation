@@ -92,9 +92,7 @@ public class TrackOrdersPage extends MainPageMaya {
     @Step("Tablodan ilk Sipariş Seçilir.")
     public TrackOrdersPage siparisSec() {
         sleep(1000);
-        TBL_SIPARIS_SEC.first()
-                .$("a")
-                .click();
+        TBL_SIPARIS_SEC.get(1).click();
         return this;
     }
 

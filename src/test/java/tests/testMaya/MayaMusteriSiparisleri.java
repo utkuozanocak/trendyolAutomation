@@ -27,7 +27,7 @@ public class MayaMusteriSiparisleri extends BaseTest {
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Siparişleri Sayfası Açılır")
-    public void TS0005_MayaMusteriSiparisleriTest() throws InterruptedException {
+    public void TS0001_MayaMusteriSiparisleriTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         mainPage.musteriDetayliArama();
@@ -40,11 +40,11 @@ public class MayaMusteriSiparisleri extends BaseTest {
         TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
         trackOrdersPage.openPage();
         trackOrdersPage.siparisNoGir(siparisno);
-        trackOrdersPage.islemTipiSec(tip);
-        trackOrdersPage.statuSec(status);
-        trackOrdersPage.baslangicTarihiSec(baslangicTarih);
+        //trackOrdersPage.islemTipiSec(tip);
+        //trackOrdersPage.statuSec(status);
+        //trackOrdersPage.baslangicTarihiSec(baslangicTarih);
         //trackOrdersPage.tamamlanmaTarihiSec(tamamlanmaTarih);
-        trackOrdersPage.yaratanOrganizasyonSec(yaratanOrganizasyon);
+        //trackOrdersPage.yaratanOrganizasyonSec(yaratanOrganizasyon);
         trackOrdersPage.siparisSec();
 
 
