@@ -7,6 +7,8 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
+import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
+import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 
 public class FiberTests extends BaseTest {
@@ -47,5 +49,28 @@ public class FiberTests extends BaseTest {
 //        orderCapturePage.adslAc();
 
 //        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
+    public void TS0008_HizDegisikligiTest() throws InterruptedException {
+        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla()
+                .btnKampanyaIciUrunDegisikligiTikla();
+        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
+        changeBundleOfferSelectionPage
+                .tablodanDegistirButonuTikla("Fiber Internet")
+                .tablodanIlkHiziSec()
+                .btnIleriTikla();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturTikla();
     }
 }
