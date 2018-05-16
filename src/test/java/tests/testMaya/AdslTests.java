@@ -4,16 +4,11 @@ import common.BaseTest;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
-import tests.testFox.FoxTest;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
@@ -25,14 +20,7 @@ public class AdslTests extends BaseTest {
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
     public void TS0004_MayaCreateDslOrderTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(TestDataMaya.unvan)
-                .statuSec(TestDataMaya.statu)
-                .segmentSec(TestDataMaya.segment)
-                .ara()
-                .tablodanIlkKayitTikla();
+        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
                 .siparisAdresEkle()

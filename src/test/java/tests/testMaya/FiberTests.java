@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
 public class FiberTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
@@ -20,14 +19,7 @@ public class FiberTests extends BaseTest {
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(TestDataMaya.unvan)
-                .statuSec(TestDataMaya.statu)
-                .segmentSec(TestDataMaya.segment)
-                .ara()
-                .tablodanIlkKayitTikla();
+        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
