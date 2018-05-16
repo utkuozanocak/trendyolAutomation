@@ -21,7 +21,7 @@ public class AdslTests extends BaseTest {
     public void TS0004_MayaCreateDslOrderTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
         mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
-        AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
+   /*     AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
                 .siparisAdresEkle()
                 .yeniAdresEkle()
@@ -33,7 +33,7 @@ public class AdslTests extends BaseTest {
                 .blokEkle("Test Blok")
                 .adresKaydet()
                 .adresOnay()
-                .adresEvetButonSec();
+                .adresEvetButonSec(); */
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
