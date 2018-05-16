@@ -10,6 +10,7 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import tests.testFox.FoxTest;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
@@ -49,7 +50,13 @@ public class AdslTests extends BaseTest {
                 .adslAc()
                 .dslHizSec()
                 .dslTipiSec("Standart DSL")
-                .ttHizmetSorgulama();
+                .testToolAc("http://othertest.superonline.net/soltesttool/ChurnControl.aspx");
+                GetPhoneNumber();
+
+
+
+               // .ttHizmetSorgulama();
+
               /*  .kampanyaAra(fiberKampanya)
                 .tablodanKampanyaSec(fiberKampanya)
                 .kampanyaSec()

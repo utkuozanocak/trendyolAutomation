@@ -21,5 +21,7 @@ public class TestDataMaya extends BaseLibrary {
     public static final String unvan =GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0];
     public static final String statu = GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0];
     public static final String segment = GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0];
-
+    public static final String ortamPrp = GetTestParameter("FoxKurulumKapatTest", "TestToolPRP")[0];
+    public static final String testToolCity = GetTestParameter("MayaCreateDSLOrderTest", "TestToolCity")[0];
+    public static final String testToolChurnType = GetTestParameter("MayaCreateDSLOrderTest", "TestToolChurnType")[0];
 }
