@@ -90,9 +90,11 @@ public class SmokeTests extends BaseTest {
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         customerCommunicationInfoDisplayPage customerCommunicationInfoDisplay = new customerCommunicationInfoDisplayPage();
         customerCommunicationInfoDisplay
-                .openPage();
-
-
+                .openPage()
+                .iletisimBilgisiSec()
+                .güncelleSec()
+                .yeniNumaraGirisi()
+                .güncellePopUpOnaySec();
            //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
 
