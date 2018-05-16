@@ -188,6 +188,10 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement LBL_STANDARTDSL_XPATH = $(By.xpath(GetObject("MAYA","LBL_STANDARTDSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_TTHIZMETSORGULA_XPATH = $(By.xpath(GetObject("MAYA","BTN_TTHIZMETSORGULA_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement DSL_ERISIM_NO = $(By.id(GetObject("MAYA","DSL_ERISIM_NO","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_SUNUSEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUNUSEC_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement TXT_SEARCHCAMPAIGN_XPATH = $(By.xpath(GetObject("MAYA","TXT_SEARCHCAMPAIGN_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        ElementsCollection TBL_DSLKAMPANYA = $$(GetObject("MAYA","TBL_DSLKAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
@@ -213,6 +217,27 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("TT hizmet sorgulama butonuna tıklanır.")
         public ADSL ttHizmetSorgulama() {
             BTN_TTHIZMETSORGULA_XPATH.click();
+            return this;
+        }
+
+        @Step("Sunu seç butonuna tıklanır.")
+        public ADSL dslSunuSec() {
+            BTN_SUNUSEC_XPATH.click();
+            return this;
+        }
+        @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
+        public ADSL kampanyaAraDsl(String kampanya) {
+            sleep(2000);
+            TXT_SEARCHCAMPAIGN_XPATH.sendKeys(kampanya);
+            return this;
+        }
+
+        @Step("Kamapnya tablosundan \"{kampanya}\" seçilir.")
+        public ADSL tablodanKampanyaSecDsl(String kampanya) {
+            TBL_DSLKAMPANYA
+                    .filterBy(Condition.text(kampanya))
+                    .first()
+                    .click();
             return this;
         }
     }

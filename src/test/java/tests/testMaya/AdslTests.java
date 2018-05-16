@@ -56,17 +56,15 @@ public class AdslTests extends BaseTest {
                 .dslTipiSec("Standart DSL");
         String erisimNo = mayaTest.erisimNoGetir();
         orderCapturePage.adslAc().erisimNoGir(erisimNo)
-                .ttHizmetSorgulama();
-        
-              /*  .kampanyaAra(fiberKampanya)
-                .tablodanKampanyaSec(fiberKampanya)
-                .kampanyaSec()
-                .hizSec(hiz)
-                .siparisEkle()
+                .ttHizmetSorgulama()
+                .dslSunuSec()
+                .kampanyaAraDsl(TestDataMaya.adslKampanya)
+                .tablodanKampanyaSecDsl(TestDataMaya.adslKampanya)
+                .hizSec(hiz);
+
+              /*  .siparisEkle()
                 .siparişOluştur();
-        /*        .adslAc();
-              //  .kaydet()
-                .kampanyaAra(fiberKampanya); */
+*/
 
     }
 }

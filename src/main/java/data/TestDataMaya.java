@@ -25,4 +25,5 @@ public class TestDataMaya extends BaseLibrary {
     public static final String ortamPrp = GetTestParameter("MayaCreateDSLOrderTest", "TestToolOrtamPRP")[0];
     public static final String testToolCity = GetTestParameter("MayaCreateDSLOrderTest", "TestToolCity")[0];
     public static final String testToolChurnType = GetTestParameter("MayaCreateDSLOrderTest", "TestToolChurnType")[0];
+    public static final String adslKampanya = GetTestParameter("MayaCreateDSLOrderTest", "adslKampanya")[0];
 }
