@@ -35,6 +35,8 @@ public class FiberTests extends BaseTest {
         String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
 
         foxTest.cihazSeriNoGetir(altYapi);
+
+
         if (altYapi.equals("FTTb")) {
             stepDetayPage
                     .teknikFormTabAc()

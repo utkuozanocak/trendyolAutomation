@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.MainPageMaya;
+import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -20,5 +21,10 @@ public class EditCorporateCustomerPage extends MainPageMaya {
     public void mesajKontrol(String mesaj) {
         Assert.assertEquals(LBL_SMSMSG_XPATH.text().contains(mesaj),true);
         takeScreenshot();
+    }
+    @Step("Müşteri bilgileri sayfası açılır.")
+    public EditCorporateCustomerPage musteriBilgileriTikla() {
+        ustMenu(MayaUstMenuData.Islemler.MusteriBilgileri);
+        return this;
     }
 }

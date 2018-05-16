@@ -4,12 +4,16 @@ import common.BaseTest;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import tests.testFox.FoxTest;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
@@ -29,10 +33,9 @@ public class AdslTests extends BaseTest {
                 .segmentSec(TestDataMaya.segment)
                 .ara()
                 .tablodanIlkKayitTikla();
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage.siparisAdresEkle();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
+                .siparisAdresEkle()
                 .yeniAdresEkle()
                 .sehirSec(TestDataMaya.sehir)
                 .ilceSec(TestDataMaya.ilce)
@@ -43,22 +46,25 @@ public class AdslTests extends BaseTest {
                 .adresKaydet()
                 .adresOnay()
                 .adresEvetButonSec();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .adslAc()
-                .dslHizSec();
+                .openPage()
+                .dslHizSec()
+                .dslTipiSec("Standart DSL");
+        String erisimNo = mayaTest.erisimNoGetir();
+        orderCapturePage.adslAc().erisimNoGir(erisimNo)
+                .ttHizmetSorgulama()
+                .dslSunuSec()
+                .kampanyaAraDsl(TestDataMaya.adslKampanya)
+                .tablodanKampanyaSecDsl(TestDataMaya.adslKampanya)
+                .hizSec(hiz);
 
-
-              /*  .kampanyaAra(fiberKampanya)
-                .tablodanKampanyaSec(fiberKampanya)
-                .kampanyaSec()
-                .hizSec(hiz)
-                .siparisEkle()
+              /*  .siparisEkle()
                 .siparişOluştur();
-        /*        .adslAc();
-              //  .kaydet()
-                .kampanyaAra(fiberKampanya); */
+*/
 
     }
 }

@@ -25,7 +25,7 @@
     <!--</suite-files>-->
     <test name="MayaTest">
         <classes>
-            <class name="tests.testMaya.MayaTest"/>
+            <class name="tests.testMaya.SmokeTests"/>
         </classes>
     </test>
     <!--<test name="TuzelKisiYonetimiTest">

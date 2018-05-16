@@ -9,9 +9,7 @@ import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class OrderCapturePage extends MainPageMaya {
@@ -26,21 +24,6 @@ public class OrderCapturePage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.SiparisOlustur);
         return this;
     }
-    @Step("Kontak bilgileri sayfası açılır.")
-    public OrderCapturePage kontakBilgileriTikla() {
-        ustMenu(MayaUstMenuData.Islemler.KontakBilgleri);
-        return this;
-    }
-    @Step("Adres bilgileri sayfası açılır.")
-    public OrderCapturePage siparisAdresEkle() {
-        ustMenu(MayaUstMenuData.Islemler.AdresBilgileri);
-        return this;
-    }
-    @Step("Müşteri bilgileri sayfası açılır.")
-    public OrderCapturePage musteriBilgileriTikla() {
-        ustMenu(MayaUstMenuData.Islemler.MusteriBilgileri);
-        return this;
-    }
 
     @Step("Siparise ürün ekle butonu tıklanır.")
     public OrderCapturePage siparseUrunEkleTikla() {
@@ -53,7 +36,9 @@ public class OrderCapturePage extends MainPageMaya {
     }
 
     public ADSL adslAc() {
-        return adsl.openPage();
+       // if($x("//a[text()='DSL Konfigrasyonu']").isDisplayed())
+            return adsl;
+        //return adsl.openPage();
     }
 
     public class Fiber extends MainPageMaya {
@@ -184,6 +169,14 @@ public class OrderCapturePage extends MainPageMaya {
     {
         private SelenideElement CMB_DSLHIZ_ID = $(By.id(GetObject("FOX","CMB_DSLHIZ_ID","ID","MayaOrderCapturePage","PRP")));
         private SelenideElement CMB_HIZADSL_XPATH = $(By.xpath(GetObject("MAYA","CMB_HIZADSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement CMB_DSLTIPI_XPATH = $(By.xpath(GetObject("MAYA","CMB_DSLTIPI_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement LBL_STANDARTDSL_XPATH = $(By.xpath(GetObject("MAYA","LBL_STANDARTDSL_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_TTHIZMETSORGULA_XPATH = $(By.xpath(GetObject("MAYA","BTN_TTHIZMETSORGULA_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement DSL_ERISIM_NO = $(By.id(GetObject("MAYA","DSL_ERISIM_NO","ID","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_SUNUSEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_SUNUSEC_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement TXT_SEARCHCAMPAIGN_XPATH = $(By.xpath(GetObject("MAYA","TXT_SEARCHCAMPAIGN_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        ElementsCollection TBL_DSLKAMPANYA = $$(GetObject("MAYA","TBL_DSLKAMPANYA","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+
         @Step("ADSL menu açılır.")
         public ADSL openPage() {
             urunSecimMenu(UrunEklemeData.Internet.ADSL);
@@ -193,6 +186,62 @@ public class OrderCapturePage extends MainPageMaya {
         public ADSL dslHizSec() {
             CMB_DSLHIZ_ID.click();
             CMB_HIZADSL_XPATH.click();
+            return this;
+        }
+        @Step("DSL Tipi Seçilir.")
+        public ADSL dslTipiSec(String tip) {
+            CMB_DSLTIPI_XPATH.click();
+            LBL_STANDARTDSL_XPATH.click();
+            return this;
+        }
+        @Step("TT'den gelen erisim no girilir.")
+        public ADSL erisimNoGir(String erisimno) {
+            DSL_ERISIM_NO.sendKeys(erisimno);
+            return this;
+        }
+        @Step("TT hizmet sorgulama butonuna tıklanır.")
+        public ADSL ttHizmetSorgulama() {
+            BTN_TTHIZMETSORGULA_XPATH.click();
+            return this;
+        }
+
+        @Step("Sunu seç butonuna tıklanır.")
+        public ADSL dslSunuSec() {
+            BTN_SUNUSEC_XPATH.click();
+            return this;
+        }
+        @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
+        public ADSL kampanyaAraDsl(String kampanya) {
+            sleep(2000);
+            TXT_SEARCHCAMPAIGN_XPATH.sendKeys(kampanya);
+            return this;
+        }
+
+        @Step("Kamapnya tablosundan \"{kampanya}\" seçilir.")
+        public ADSL tablodanKampanyaSecDsl(String kampanya) {
+            TBL_DSLKAMPANYA
+                    .filterBy(Condition.text(kampanya))
+                    .first()
+                    .click();
+            return this;
+        }
+
+        @Step("Hız Seçilir ve Eklenir.")
+        public Fiber hizSec(String hiz) {
+            CMB_HIZSEC_XPATH.selectComboBox(hiz);
+            BTN_HIZEKLE_XPATH.click();
+            return this;
+        }
+
+        @Step("Sipariş Eklenir.")
+        public Fiber siparisEkle() {
+            clickJs(BTN_SIPARISEKLE_XPATH);
+            return this;
+        }
+        
+        @Step("Sipariş oluştur tıklanır.")
+        public Fiber siparişOluştur() {
+            BTN_SIPARISIOLUSTUR_XPATH.click();
             return this;
         }
     }

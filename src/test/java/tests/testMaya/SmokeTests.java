@@ -23,11 +23,9 @@ public class SmokeTests extends BaseTest {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .kontakBilgileriTikla();
         MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
         mayaCustomerContactPage
+                .kontakBilgileriTikla()
                 .tablodanIlkKontakSec()
                 .telefonNumarasıDoldur("5555555555")
                 .kaydet()
@@ -39,35 +37,39 @@ public class SmokeTests extends BaseTest {
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .musteriBilgileriTikla();
         EditCorporateCustomerPage editCorporateCustomerPage = new EditCorporateCustomerPage();
         editCorporateCustomerPage
+                .musteriBilgileriTikla()
                 .btnSMS()
                 .mesajKontrol("nolu telefona gönderilmiştir.");
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
-    public void TS0005_MusteriOzellikEkleme() throws InterruptedException {
-
+    public void TS0005_MusteriOzellikEklemeTest() throws InterruptedException {
+        mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        CustomerPropertyPage customerPropertyPage = new CustomerPropertyPage();
+        customerPropertyPage
+                .musteriOzellikSayfasıAc()
+                .btnYeniOzellikTikla()
+                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı "+createRandomNumber(8))
+                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu "+createRandomNumber(8))
+                .txtMinimumDegerDoldur("1")
+                .txtMaksimumDegerDoldur("10")
+                .btnKaydetTikla()
+                .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
     public void TS0002_MayaAdresEkleTest() throws InterruptedException {
         MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-        searchCustomerCorparatePage
-                .unvanDoldur(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0])
-                .statuSec(GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0])
-                .segmentSec(GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0])
-                .ara()
-                .tablodanIlkKayitTikla();
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage.siparisAdresEkle();
+        mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
+                .siparisAdresEkle()
                 .yeniAdresEkle()
                 .sehirSec(TestDataMaya.sehir)
                 .ilceSec(TestDataMaya.ilce)
