@@ -5,8 +5,8 @@
 
     <test name="Emre Sencan Tests">
         <packages>
-            <package name="tests.testFox"/>
-            <package name="tests.testMaya"/>
+            <package name="tests.MayaTestSmokeTest"/>
+            <package name="tests.FoxAdslTests"/>
         </packages>
     </test>
 
