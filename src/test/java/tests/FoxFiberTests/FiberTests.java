@@ -30,6 +30,8 @@ public class FiberTests extends BaseTest {
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException {
 
+        for (int i=0;i<250;i++)
+        
         foxTest.sameProcess(TestDataFox.taskId,TestDataFox.flowStatus,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
                 TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
@@ -67,5 +69,7 @@ public class FiberTests extends BaseTest {
                 .EAMmesajKontrolTamam()
                 .gonder();
         mainPageFox.mesajKontrol(TestDataFox.basariliMesaj);
+
     }
+
 }
