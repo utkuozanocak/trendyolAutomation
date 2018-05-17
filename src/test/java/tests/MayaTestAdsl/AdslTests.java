@@ -1,4 +1,4 @@
-package tests.testMaya;
+package tests.MayaTestAdsl;
 
 import common.BaseTest;
 import data.TestDataMaya;
@@ -7,8 +7,8 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
-import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.MayaTest;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
