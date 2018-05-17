@@ -39,8 +39,16 @@ public class TrackOrdersPage extends MainPageMaya {
     private SelenideElement TXT_BASLAGICTARIHI_ID = $(By.id("orderForm:orderDataTable:baslangicTarihiHeader:filter"));
     private SelenideElement TXT_TAMAMLANMATARIHI_ID = $(By.id("orderForm:orderDataTable:tamamlanmaTarihiHeader:filter"));
     private SelenideElement TXT_YARATANORGANIZASYON_ID = $(By.id("orderForm:orderDataTable:yaratanOrganizasyonHeader:filter"));
-    private ElementsCollection TBL_SIPARIS_SEC = $$("tbody[id='orderForm:orderDataTable_data'] tr[data-ri]']");
-
+    private ElementsCollection TBL_SIPARIS_SEC_CSS = $$("tbody[id='orderForm:orderDataTable_data'] tr[data-ri]");
+    private SelenideElement TBL_SIPARIS_SEC1_CSS = $("tbody[id='orderForm:orderDataTable_data'] tr[data-ri] td[role] a");
+    private SelenideElement BTN_YENILE_XPATH = $(By.xpath("//div[@class='col-md-12 text-right']//button[@type='submit']"));
+    private SelenideElement BTN_SIPARISGECMISI_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[2]//a[text()='Sipariş Geçmişi']"));
+    private SelenideElement BTN_PROJELER_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[3]//a[text()='Projeler']"));
+    private SelenideElement BTN_SIPARISSATIRLARI_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[1]//a[text()='Sipariş Satırları']"));
+    private SelenideElement BTN_OZELLIK_XPATH = $(By.xpath("//td[@role='gridcell']//button[@title='Özellik']"));
+    private SelenideElement BTN_OZELLIKKAPAT_XPATH = $(By.xpath("//div[@class='ui-datatable-footer ui-widget-header ui-corner-bottom']//div//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left']"));
+    private SelenideElement BTN_SIPARISDETAY_XPATH = $(By.xpath("//span[contains(@class,'treetable')]"));
+    private SelenideElement BTN_URUNEGIT_XPATH = $(By.xpath("//a[text()='Ürüne git']"));
 
      @Step("Adres Bilgileri sayfası açılır.")
     public TrackOrdersPage openPage()
@@ -92,48 +100,61 @@ public class TrackOrdersPage extends MainPageMaya {
     @Step("Tablodan ilk Sipariş Seçilir.")
     public TrackOrdersPage siparisSec() {
         sleep(1000);
-        TBL_SIPARIS_SEC.get(1).click();
+        TBL_SIPARIS_SEC1_CSS.click();
         return this;
     }
 
-//    @Step("Sokak seçilir.")
-//    public TrackOrdersPage sokakSec(String sokak) {
-//        CMB_SOKAK_ID.selectComboBox(sokak);
-//        return this;
-//    }
-//
-//    @Step("bina No seçilir.")
-//    public TrackOrdersPage binaNoIlkKayitSec() {
-//        CMB_BINANO_ID.getComboBoxValues().get(1).click();
-//        return this;
-//    }
-//    @Step("bina No seçilir.")
-//    public TrackOrdersPage blokEkle(String blok) {
-//        TXT_BLOK_XPATH.setValue(blok);
-//        return this;
-//    }
-//
-//    @Step("Adres detayları kaydedilir.")
-//    public TrackOrdersPage adresKaydet() {
-//        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",BTN_ADRESKAYDET_XPATH);
-//        //BTN_ADRESKAYDET_XPATH.shouldHave(Condition.appear);
-//        clickJs(BTN_ADRESKAYDET_XPATH);
-//        return this;
-//    }
-//
-//    @Step("Adres detayları kaydedilir.")
-//    public TrackOrdersPage adresOnay() {
-//        POP_ONAY_XPATH.shouldHave(Condition.visible);
-//        return this;
-//    }
-//
-//    @Step("Adres detayları kaydedilir.")
-//    public TrackOrdersPage adresEvetButonSec() {
-//
-//        //clickJs(BTN_EVET_XPATH);
-//        clickJs($x("//body[@onload='closeMessagesDialog()']//div[69]//span[text()='Evet']//..//..//button[2]"));
-//        return this;
-//    }
+    @Step("Yenile Butonuna Tıklanır.")
+    public TrackOrdersPage yenileButtonTıkla() {
+        sleep(1000);
+        BTN_YENILE_XPATH.click();
+        return this;
+    }
+
+    @Step("Sipariş Geçişine Tıklanır")
+    public TrackOrdersPage siparisGecmisTıkla() {
+        sleep(1000);
+        BTN_SIPARISGECMISI_XPATH.click();
+        return this;
+    }
+
+    @Step("Projelere Tıklanır")
+    public TrackOrdersPage projelerTıkla() {
+        sleep(1000);
+        BTN_PROJELER_XPATH.click();
+        return this;
+    }
+
+    @Step("Projelere Tıklanır")
+    public TrackOrdersPage siparisSatirlariTıkla() {
+        sleep(1000);
+        BTN_SIPARISSATIRLARI_XPATH.click();
+        return this;
+    }
+
+    @Step("Özellik Butonuna Tıklanır.")
+    public TrackOrdersPage siparisOzelliklerTikla() {
+        BTN_OZELLIK_XPATH.click();
+        return this;
+    }
+
+    @Step("Özellik Popup Kapatılır.")
+    public TrackOrdersPage siparisOzelliklerKapat() {
+        BTN_OZELLIKKAPAT_XPATH.click();
+        return this;
+    }
+
+    @Step("Siparis Detayları Açılır.")
+    public TrackOrdersPage siparisDetayGoruntule() {
+        BTN_SIPARISDETAY_XPATH.click();
+        return this;
+    }
+
+    @Step("Ürüne git Buttonuna Tıklanır.")
+    public TrackOrdersPage uruneGit() {
+        BTN_URUNEGIT_XPATH.click();
+        return this;
+    }
 
 
 
