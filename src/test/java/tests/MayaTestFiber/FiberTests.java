@@ -74,4 +74,27 @@ public class FiberTests extends BaseTest {
         orderCapturePage
                 .siparisOlusturTikla();
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
+    public void TS0009_DeaktivasyonTest() throws InterruptedException {
+        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla();
+           /*     .btnKampanyaIciUrunDegisikligiTikla();
+        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
+        changeBundleOfferSelectionPage
+                .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
+                .tablodanIlkHiziSec()
+                .btnIleriTikla();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturTikla(); */
+    }
 }
