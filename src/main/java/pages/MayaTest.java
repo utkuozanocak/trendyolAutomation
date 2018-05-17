@@ -1,4 +1,4 @@
-package tests.testMaya;
+package pages;
 
 import common.BaseTest;
 import data.TestDataFox;

@@ -1,4 +1,4 @@
-package tests.testMaya;
+package tests.MayaTestFiber;
 
 import common.BaseTest;
 import data.TestDataMaya;
@@ -10,6 +10,7 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.MayaTest;
 
 public class FiberTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
