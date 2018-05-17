@@ -1108,20 +1108,19 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connectFoxPrp();
             statement = connection.createStatement();
-
-            rs = statement.executeQuery("SELECT DISTINCT top 1 w.ID" +
-                    " FROM  NFWDTT_WORKFLOWINSTANCE w" +
-                    " INNER JOIN dbo.NFWDFT_WORKFLOWVERSION v" +
+            rs = statement.executeQuery("SELECT top 1 w.ID" +
+                    " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
+                    " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
                     " ON  v.ID = w.WORKFLOWVERSION" +
-                    " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY s" +
+                    " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
                     " ON  s.WORKFLOWINSTANCE = w.ID" +
-                    " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2" +
+                    " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
+                    " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK) " +
                     " ON  s2.WORKFLOWINSTANCE = w.ID" +
                     " AND s2.SEARCHKEY = 'TASKIDCODE'" +
-                    " WHERE s2.[VALUE]='" + TaskId + "'" +
-                    " AND w.WORKFLOWSTATUS ='" + FlowStatus + "'" +
-                    " ORDER BY  w.ID DESC");
-
+                    " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
+                    " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" +
+                    " ORDER BY  v.STARTDATE DESC");
             while (rs.next()) {
                 dataSet[0] = rs.getInt("ID");
             }
