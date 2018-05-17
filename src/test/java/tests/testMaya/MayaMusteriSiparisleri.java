@@ -46,6 +46,14 @@ public class MayaMusteriSiparisleri extends BaseTest {
         //trackOrdersPage.tamamlanmaTarihiSec(tamamlanmaTarih);
         //trackOrdersPage.yaratanOrganizasyonSec(yaratanOrganizasyon);
         trackOrdersPage.siparisSec();
+        trackOrdersPage.yenileButtonTıkla();
+        trackOrdersPage.siparisGecmisTıkla();
+        trackOrdersPage.projelerTıkla();
+        trackOrdersPage.siparisSatirlariTıkla();
+        trackOrdersPage.siparisOzelliklerTikla();
+        trackOrdersPage.siparisOzelliklerKapat();
+        trackOrdersPage.siparisDetayGoruntule();
+        trackOrdersPage.uruneGit();
 
 
     }
