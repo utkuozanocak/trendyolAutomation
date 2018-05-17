@@ -1,5 +1,6 @@
 package pages.ustMenuPagesMaya;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -21,6 +22,9 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_ETKILESIMLER = $(By.xpath(GetObject("MAYA","BTN_ETKILESIMLER","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_KAMPANYAICIURUNDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYAICIURUNDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_ABONELIKISLEMLERIIPTAL_XPATH = $(By.xpath(GetObject("MAYA","BTN_ABONELIKISLEMLERIIPTAL_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    SolCrmElement CMB_IPTALMAINREASON_ID = comboBox(By.xpath(GetObject("MAYA","CMB_IPTALMAINREASON_ID","XPATH","CustomerAssetsPage","PRP")));
+    SolCrmElement deneme1 = comboBox(By.id(GetObject("MAYA","deneme1","ID","CustomerAssetsPage","PRP")));
+    SolCrmElement deneme2 = comboBox(By.id(GetObject("MAYA","deneme2","ID","CustomerAssetsPage","PRP")));
 
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
@@ -69,6 +73,26 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Abonelik işlemleri/İptal butonuna tıklanır.")
     public CustomerAssetsPage btnIptalSiparisiTikla() {
         BTN_ABONELIKISLEMLERIIPTAL_XPATH.click();
+        return this;
+    }
+    @Step("Değişiklik ana sebebi seçilir.")
+    public CustomerAssetsPage cmbIptalAnaNedeniSec(String iptalananedeni) {
+        $("div[id^='deactivationForm'][id$='mainReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
+        $$("div[id^='deactivationForm'][id$='mainReasons_panel'] li")
+                .filterBy(Condition.text(iptalananedeni))
+                .first()
+                .click();
+        return this;
+    }
+
+    @Step("Değişiklik ana sebebi seçilir.")
+    public CustomerAssetsPage altNedenSecilir(String iptalananedeni) {
+        $("div[id^='deactivationForm'][id$='detailReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
+        $$("div[id^='deactivationForm'][id$='detailReasons'] li")
+                .filterBy(Condition.text(iptalananedeni))
+                .first()
+                .click();
+
         return this;
     }
 

@@ -87,14 +87,16 @@ public class FiberTests extends BaseTest {
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla()
-                .btnIptalSiparisiTikla();
-           /*
+                .btnIptalSiparisiTikla()
+                .cmbIptalAnaNedeniSec("Kurumsal_Taşınma")
+                .altNedenSecilir("Kurumsal_Taşınma");
+/*
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
         changeBundleOfferSelectionPage
                 .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
                 .tablodanIlkHiziSec()
                 .btnIleriTikla();
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
+    /*    OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturTikla(); */
     }

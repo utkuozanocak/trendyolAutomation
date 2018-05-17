@@ -28,4 +28,5 @@ public class TestDataMaya extends BaseLibrary {
     public static final String adslKampanya = GetTestParameter("MayaCreateDSLOrderTest", "adslKampanya")[0];
     public static final String adslHiz = GetTestParameter("MayaCreateDSLOrderTest", "adslHiz")[0];
     public static final String fiberHizSecimGrubu = GetTestParameter("HizDegisikligiTest", "HizSecimGrubu")[0];
+    public static final String fiberIptalAnaNeden = GetTestParameter("TS0009_DeaktivasyonTest", "FiberIptalAnaNedeni")[0];
 }
