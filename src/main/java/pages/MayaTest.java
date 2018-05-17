@@ -29,10 +29,10 @@ public class MayaTest extends BaseTest {
                 .ara()
                 .tablodanIlkKayitTikla();
     }
-    public String erisimNoGetir() {
+    public String erisimNoGetir() throws InterruptedException {
             testToolAc(TestDataMaya.churnKontrolUrl);
             erisimNo = GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
-            switchTo().window(0);
+//            switchTo().window(0);
             return erisimNo;
     }
 

@@ -14,13 +14,14 @@ import pages.MayaTest;
 public class SmokeTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
 
-    @BeforeMethod
-    public void loginBeforeTests() {
-        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-    }
+//    @BeforeMethod
+//    public void loginBeforeTests() {
+//
+//    }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
     public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
@@ -35,6 +36,7 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
     public void TS0004_MusteriSmsSifreGonderimiTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
@@ -47,6 +49,7 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0005_MusteriOzellikEklemeTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
@@ -64,6 +67,7 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
     public void TS0002_MayaAdresEkleTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         MainPageMaya mainPage = new MainPageMaya();
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
@@ -86,6 +90,7 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0008_MusteriKurumsalIletisimBilgileriTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);

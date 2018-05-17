@@ -22,7 +22,7 @@ public class FoxTest extends MainPageFox {
     StepDetayPage stepDetayPage = new StepDetayPage();
 
 
-    public void cihazSeriNoGetir(String altYapi) {
+    public void cihazSeriNoGetir(String altYapi) throws InterruptedException {
         if(altYapi.equals("FTTb"))
         {
             testToolAc(TestDataFox.eamControlUrl);

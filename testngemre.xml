@@ -6,7 +6,7 @@
     <test name="Emre Sencan Tests">
         <packages>
             <package name="tests.MayaTestSmokeTest"/>
-            <package name="tests.FoxAdslTests"/>
+            <package name="tests.MayaTestAdsl"/>
         </packages>
     </test>
 

@@ -889,71 +889,74 @@ public class BaseLibrary extends ElementsContainer {
         return myIP;
     }
 
-    public static void connect() throws SQLException, ClassNotFoundException {
-        String[] _dataSet = new String[2];
-        String databaseURL = "jdbc:sqlserver://10.35.160.7;databaseName=TestDB;user=SOLTEST;password=SOL2000!";
-        //String user = "root";
-        //String password = "root";
-        connection = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Connecting to Database...");
-            connection = DriverManager.getConnection(databaseURL);
-            if (connection != null) {
-                System.out.println("Connected to the Database...");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static void connectPrp() throws SQLException, ClassNotFoundException {
-        String[] _dataSet = new String[2];
-        String databaseURL = "jdbc:sqlserver://10.35.160.5;databaseName=SolTelcoPreProd;user=SOLTEST;password=SOL2000!";
-        //String user = "root";
-        //String password = "root";
-        connection = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Connecting to Database...");
-            connection = DriverManager.getConnection(databaseURL);
-            if (connection != null) {
-                System.out.println("Connected to the Database...");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static void connectFoxPrp() throws SQLException, ClassNotFoundException {
-        String[] _dataSet = new String[2];
-        String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
-        connection = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Connecting to Database...");
-            connection = DriverManager.getConnection(databaseURL);
-            if (connection != null) {
-                System.out.println("Connected to the Database...");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
+//    public static void connect() throws SQLException, ClassNotFoundException {
+//        String[] _dataSet = new String[2];
+//        String databaseURL = "jdbc:sqlserver://10.35.160.7;databaseName=TestDB;user=SOLTEST;password=SOL2000!";
+//        //String user = "root";
+//        //String password = "root";
+//        connection = null;
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            System.out.println("Connecting to Database...");
+//            connection = DriverManager.getConnection(databaseURL);
+//            if (connection != null) {
+//                System.out.println("Connected to the Database...");
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } catch (ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
+//
+//    public static void connectPrp() throws SQLException, ClassNotFoundException {
+//        String[] _dataSet = new String[2];
+//        String databaseURL = "jdbc:sqlserver://10.35.160.5;databaseName=SolTelcoPreProd;user=SOLTEST;password=SOL2000!";
+//        //String user = "root";
+//        //String password = "root";
+//        connection = null;
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            System.out.println("Connecting to Database...");
+//            connection = DriverManager.getConnection(databaseURL);
+//            if (connection != null) {
+//                System.out.println("Connected to the Database...");
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } catch (ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
+//
+//    public static void connectFoxPrp() throws SQLException, ClassNotFoundException {
+//        String[] _dataSet = new String[2];
+//        String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
+//        connection = null;
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            System.out.println("Connecting to Database...");
+//            connection = DriverManager.getConnection(databaseURL);
+//            if (connection != null) {
+//                System.out.println("Connected to the Database...");
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } catch (ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
     public String URL_VALUE;
     public String OBJECT_VALUE;
     private String sEnvironment = "";
 
     public String GetUrl(String strapp, String strenv) {
+         Connection connection;
+         Statement statement;
+        ResultSet rs;
         try {
-            connect();
+            connection = new DBConnection().connect();
             statement = connection.createStatement();
             rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and Environment='" + strenv + "'");
 
@@ -971,8 +974,11 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public String GetObject(String strApp, String strObjectName, String strObjectType, String strPageName) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         try {
-            connect();
+            connection = new DBConnection().connect();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select ObjectValue from TBL_PageObjects tpo " +
@@ -998,8 +1004,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public String GetObject(String strApp, String strObjectName, String strObjectType, String strPageName, String strEnv) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         try {
-            connect();
+
+            connection = new DBConnection().connect();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select ObjectValue from TBL_PageObjects tpo " +
@@ -1025,9 +1035,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public static String[] GetTestParameter(String strTestName, String strParameterName) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         String[] dataSet = new String[4];
         try {
-            connect();
+            connection = new DBConnection().connect();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select tp.TestParameterValue from TBL_TestParamMove tpa " +
@@ -1049,9 +1062,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public static String[] GetLocationData(String LocationType) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         String[] dataSet = new String[1];
         try {
-            connectPrp();
+            connection = new DBConnection().connectPrp();
             statement = connection.createStatement();
             rs = statement.executeQuery("SELECT top 1 pqlu.LocationId FROM PQuiknetAddress pqa " +
                     "JOIN PQuiknetLocationUnit pqlu (nolock) on pqa.LocationID = pqlu.LocationId " +
@@ -1076,9 +1092,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public static String[] GetLocationDaireData(String LocationType, String LocationId) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         String[] dataSet = new String[1];
         try {
-            connectPrp();
+            connection = new DBConnection().connectPrp();
             statement = connection.createStatement();
             rs = statement.executeQuery("SELECT top 1 pqlu.LocationUnitName FROM PQuiknetAddress pqa " +
                     "JOIN PQuiknetLocationUnit pqlu (nolock) on pqa.LocationID = pqlu.LocationId " +
@@ -1104,9 +1123,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         Integer[] dataSet = new Integer[1];
         try {
-            connectFoxPrp();
+            connection = new DBConnection().connectPrp();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("SELECT DISTINCT top 1 w.ID" +
@@ -1136,9 +1158,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public String[] FoxGetUserForChange(String AkisNo) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         String[] dataSet = new String[2];
         try {
-            connectFoxPrp();
+            connection =new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select top 1 o.NAME,CAST(po.DESCRIPTIONS AS XML).value('(/Descriptions//Descriptions/Description/@Description)[1]', 'nvarchar(max)') as POSITIONNAME from NFWDTT_STEP s" +
@@ -1164,9 +1189,12 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     public String[] GetFoxUserAssignType(String userCode) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
         String[] dataSet = new String[1];
         try {
-            connectFoxPrp();
+            connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select ASSIGNTYPE from nfwdft_user where CODE='" + userCode + "'");
@@ -1186,13 +1214,13 @@ public class BaseLibrary extends ElementsContainer {
     }
 
     @Step("Test Tool sayfası açılır.")
-    public void testToolAc(String url) {
+    public void testToolAc(String url) throws InterruptedException {
         try {
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_N);
+            robot.keyPress(KeyEvent.VK_T);
             robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_N);
+            robot.keyRelease(KeyEvent.VK_T);
             switchTo().window(1);
             Selenide.open(url);
         } catch (AWTException e) {

@@ -24,12 +24,13 @@ public class AdslTests extends BaseTest {
     StepDetayPage stepDetayPage = new StepDetayPage();
     @BeforeMethod
     public void loginBeforeTests() {
-        loginFox(TestDataFox.username, TestDataFox.password);
+
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Adsl Kurulum Kapama")
     public void TS0001_FoxAdslKurulumKapat() throws InterruptedException {
 
+        loginFox(TestDataFox.username, TestDataFox.password);
 
         foxTest.sameProcess(TestDataFox.taskIdAdsl,TestDataFox.flowStatusAdsl,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,

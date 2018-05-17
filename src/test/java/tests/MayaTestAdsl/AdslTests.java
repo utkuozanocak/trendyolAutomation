@@ -12,13 +12,14 @@ import pages.MayaTest;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
-    @BeforeMethod
-    public void loginBeforeTests() {
-        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-    }
+//    @BeforeMethod
+//    public void loginBeforeTests() {
+//
+//    }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye ADSL siparişi girilir.")
     public void TS0006_MayaCreateDslOrderTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         MainPageMaya mainPage = new MainPageMaya();
         mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
    /*     AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
@@ -57,6 +58,7 @@ public class AdslTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye VDSL satışı yapılır.")
     public void TS0007_MayaCreateVdslOrderTest() throws InterruptedException {
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         MainPageMaya mainPage = new MainPageMaya();
         mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
    /*     AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
