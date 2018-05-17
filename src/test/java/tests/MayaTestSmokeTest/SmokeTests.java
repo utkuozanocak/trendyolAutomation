@@ -1,4 +1,4 @@
-package tests.testMaya;
+package tests.MayaTestSmokeTest;
 
 import common.BaseTest;
 import data.TestDataMaya;
@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.*;
+import pages.MayaTest;
 
 
 public class SmokeTests extends BaseTest {

@@ -7,8 +7,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
-import pages.ustMenuPagesMaya.AdresBilgileriPage;
-import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.MayaTest;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 import pages.ustMenuPagesMaya.TrackOrdersPage;
 

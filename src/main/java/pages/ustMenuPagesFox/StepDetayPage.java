@@ -50,8 +50,8 @@ public class StepDetayPage extends MainPageFox {
 
     @Step("Bayi Otomasyondan Çıkar varsa tıklanır")
     public StepDetayPage bayiOtomasyondanCikar() {
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_BAYIOTOMASYONUNDANCIKAR_XPATH);
         if (BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.isDisplayed()) {
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_BAYIOTOMASYONUNDANCIKAR_XPATH);
             BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.click();
             int i = 0;
             while (BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.isDisplayed() && i < 10) ;
