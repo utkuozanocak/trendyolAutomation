@@ -19,7 +19,6 @@ import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class TrackOrdersPage extends MainPageMaya {
 
-
     private SelenideElement TXT_SIPARISNO_ID = $(By.id("orderForm:orderDataTable:siparisNoHeader:filter"));
     private SolCrmElement CMB_ISLEMTIPI_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderTypeId']//label[@id='orderForm:orderDataTable:orderTypeId_label']"));
     private SolCrmElement CMB_STATU_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderStatusId']//label[@id='orderForm:orderDataTable:orderStatusId_label']"));
