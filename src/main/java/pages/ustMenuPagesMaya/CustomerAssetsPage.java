@@ -20,6 +20,8 @@ public class CustomerAssetsPage extends MainPageMaya {
     ElementsCollection TBL_PRODUCTLIST = $$(GetObject("MAYA","TBL_PRODUCTLIST","CSS_SELECTOR","CustomerAssetsPage","PRP"));
     private SelenideElement BTN_ETKILESIMLER = $(By.xpath(GetObject("MAYA","BTN_ETKILESIMLER","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_KAMPANYAICIURUNDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYAICIURUNDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_ABONELIKISLEMLERIIPTAL_XPATH = $(By.xpath(GetObject("MAYA","BTN_ABONELIKISLEMLERIIPTAL_XPATH","XPATH","CustomerAssetsPage","PRP")));
+
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -61,6 +63,12 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Kampanya İçi Ürün Değişikliği Butonu Tıklanır")
     public CustomerAssetsPage btnKampanyaIciUrunDegisikligiTikla() {
         BTN_KAMPANYAICIURUNDEGISIKLIGI.click();
+        return this;
+    }
+
+    @Step("Abonelik işlemleri/İptal butonuna tıklanır.")
+    public CustomerAssetsPage btnIptalSiparisiTikla() {
+        BTN_ABONELIKISLEMLERIIPTAL_XPATH.click();
         return this;
     }
 

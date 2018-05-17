@@ -86,8 +86,9 @@ public class FiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla();
-           /*     .btnKampanyaIciUrunDegisikligiTikla();
+                .btnEtkilesimlerTikla()
+                .btnIptalSiparisiTikla();
+           /*
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
         changeBundleOfferSelectionPage
                 .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
