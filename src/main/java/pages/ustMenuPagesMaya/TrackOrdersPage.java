@@ -19,34 +19,19 @@ import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class TrackOrdersPage extends MainPageMaya {
 
-//    private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-//    SolCrmElement CMB_SEHIR_ID = comboBox(By.id(GetObject("MAYA","CMB_SEHIR_ID","ID","MayaCustomerAddressManagementPage","PRP")));
-//    SolCrmElement CMB_ILCE_ID = comboBox(By.id(GetObject("MAYA","CMB_ILCE_ID","ID","MayaCustomerAddressManagementPage","PRP")));
-//    SolCrmElement CMB_MAHALLE_ID = comboBox(By.id(GetObject("MAYA","CMB_MAHALLE_ID","ID","MayaCustomerAddressManagementPage","PRP")));
-//    SolCrmElement CMB_SOKAK_ID = comboBox(By.id(GetObject("MAYA","CMB_SOKAK_ID","ID","MayaCustomerAddressManagementPage","PRP")));
-//    SolCrmElement CMB_BINANO_ID = comboBox(By.id(GetObject("MAYA","CMB_BINANO_ID","ID","MayaCustomerAddressManagementPage","PRP")));
-//    private SelenideElement TXT_BLOK_XPATH = $(By.xpath(GetObject("MAYA","TXT_BLOK_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-//    private SelenideElement BTN_ADRESKAYDET_XPATH = $(By.xpath(GetObject("MAYA","BTN_ADRESKAYDET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-//    private SelenideElement POP_ONAY_XPATH = $(By.xpath(GetObject("FOX","POP_ONAY_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-//    private SelenideElement BTN_EVET_XPATH = $(By.xpath(GetObject("MAYA","BTN_EVET_XPATH","XPATH","MayaCustomerAddressManagementPage","PRP")));
-//    Select select = new Select($(By.id("orderForm:orderDataTable:orderTypeId_input")));
-//    private  SelenideElement TXT_SIPARISNO_XPATH = $(By.xpath("//input[@id='orderForm:orderDataTable:siparisNoHeader:filter']"));
-//    private SelenideElement CMB_ISLEMTIPI_XPATH = $(By.xpath("//div[@id='orderForm:orderDataTable:orderTypeId']//label[@id='orderForm:orderDataTable:orderTypeId_label']"));
-
     private SelenideElement TXT_SIPARISNO_ID = $(By.id("orderForm:orderDataTable:siparisNoHeader:filter"));
     private SolCrmElement CMB_ISLEMTIPI_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderTypeId']//label[@id='orderForm:orderDataTable:orderTypeId_label']"));
     private SolCrmElement CMB_STATU_XPATH = comboBox(By.xpath("//div[@id='orderForm:orderDataTable:orderStatusId']//label[@id='orderForm:orderDataTable:orderStatusId_label']"));
     private SelenideElement TXT_BASLAGICTARIHI_ID = $(By.id("orderForm:orderDataTable:baslangicTarihiHeader:filter"));
     private SelenideElement TXT_TAMAMLANMATARIHI_ID = $(By.id("orderForm:orderDataTable:tamamlanmaTarihiHeader:filter"));
     private SelenideElement TXT_YARATANORGANIZASYON_ID = $(By.id("orderForm:orderDataTable:yaratanOrganizasyonHeader:filter"));
-    private ElementsCollection TBL_SIPARIS_SEC_CSS = $$("tbody[id='orderForm:orderDataTable_data'] tr[data-ri]");
     private SelenideElement TBL_SIPARIS_SEC1_CSS = $("tbody[id='orderForm:orderDataTable_data'] tr[data-ri] td[role] a");
     private SelenideElement BTN_YENILE_XPATH = $(By.xpath("//div[@class='col-md-12 text-right']//button[@type='submit']"));
-    private SelenideElement BTN_SIPARISGECMISI_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[2]//a[text()='Sipariş Geçmişi']"));
-    private SelenideElement BTN_PROJELER_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[3]//a[text()='Projeler']"));
-    private SelenideElement BTN_SIPARISSATIRLARI_XPATH = $(By.xpath("//div[@id='orderDetailForm:orderDetailFormTabView']//ul//li[1]//a[text()='Sipariş Satırları']"));
+    private SelenideElement BTN_SIPARISGECMISI_XPATH = $(By.xpath("//a[text()='Sipariş Geçmişi']"));
+    private SelenideElement BTN_PROJELER_XPATH = $(By.xpath("//a[text()='Projeler']"));
+    private SelenideElement BTN_SIPARISSATIRLARI_XPATH = $(By.xpath("//a[text()='Sipariş Satırları']"));
     private SelenideElement BTN_OZELLIK_XPATH = $(By.xpath("//td[@role='gridcell']//button[@title='Özellik']"));
-    private SelenideElement BTN_OZELLIKKAPAT_XPATH = $(By.xpath("//div[@class='ui-datatable-footer ui-widget-header ui-corner-bottom']//div//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left']"));
+    private SelenideElement BTN_OZELLIKKAPAT_XPATH = $(By.xpath("//div[@class='ui-datatable-footer ui-widget-header ui-corner-bottom']//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left']"));
     private SelenideElement BTN_SIPARISDETAY_XPATH = $(By.xpath("//span[contains(@class,'treetable')]"));
     private SelenideElement BTN_URUNEGIT_XPATH = $(By.xpath("//a[text()='Ürüne git']"));
 
@@ -155,8 +140,6 @@ public class TrackOrdersPage extends MainPageMaya {
         BTN_URUNEGIT_XPATH.click();
         return this;
     }
-
-
 
     public TrackOrdersPage sablonTipi(String tip)
     {
