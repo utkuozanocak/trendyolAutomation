@@ -67,7 +67,7 @@ public class FiberTests extends BaseTest {
                 .btnKampanyaIciUrunDegisikligiTikla();
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
         changeBundleOfferSelectionPage
-                .tablodanDegistirButonuTikla("Fiber Internet")
+                .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
                 .tablodanIlkHiziSec()
                 .btnIleriTikla();
         OrderCapturePage orderCapturePage = new OrderCapturePage();

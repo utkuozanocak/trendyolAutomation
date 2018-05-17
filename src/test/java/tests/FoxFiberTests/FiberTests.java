@@ -30,42 +30,22 @@ public class FiberTests extends BaseTest {
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException {
 
-        foxTest.sameProcess(TestDataFox.taskId,TestDataFox.flowStatus,TestDataFox.mesaj,TestDataFox.segment,
-                TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
-                TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
-        String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+        for (int i = 0; i < 250; i++) {
 
-        foxTest.cihazSeriNoGetir(altYapi);
+            foxTest.sameProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment, TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu, TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
+            String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+
+            foxTest.cihazSeriNoGetir(altYapi);
 
 
-        if (altYapi.equals("FTTb")) {
-            stepDetayPage
-                    .teknikFormTabAc()
-                    .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb())
-                    .guncelle()
-                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
-                    .seriNoGirisEkraniKapat();
-        } else if (altYapi.equals("GPON")) {
-            stepDetayPage
-                    .teknikFormTabAc()
-                    .tabloSeriNoGiris("GENERIC")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoFttb())
-                    .guncelle()
-                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
-                    .seriNoGirisEkraniKapat()
-                    .tabloSeriNoGiris("ONT")
-                    .yeniCihazSeriNoDoldur(foxTest.seriNoGpon())
-                    .guncelle()
-                    .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
-                    .seriNoGirisEkraniKapat();
+            if (altYapi.equals("FTTb")) {
+                stepDetayPage.teknikFormTabAc().tabloSeriNoGiris("GENERIC").yeniCihazSeriNoDoldur(foxTest.seriNoFttb()).guncelle().mesajKontrolu("Güncelleme işlemi tamamlanmıştır").seriNoGirisEkraniKapat();
+            } else if (altYapi.equals("GPON")) {
+                stepDetayPage.teknikFormTabAc().tabloSeriNoGiris("GENERIC").yeniCihazSeriNoDoldur(foxTest.seriNoFttb()).guncelle().mesajKontrolu("Güncelleme işlemi tamamlanmıştır").seriNoGirisEkraniKapat().tabloSeriNoGiris("ONT").yeniCihazSeriNoDoldur(foxTest.seriNoGpon()).guncelle().mesajKontrolu("Güncelleme işlemi tamamlanmıştır").seriNoGirisEkraniKapat();
+            }
+            stepDetayPage.teknikFormTabAc().seriNoKontrol().EAMmesajKontrol(TestDataFox.EAMmesaj).EAMmesajKontrolTamam().gonder();
+            mainPageFox.mesajKontrol(TestDataFox.basariliMesaj);
+
         }
-        stepDetayPage
-                .teknikFormTabAc()
-                .seriNoKontrol()
-                .EAMmesajKontrol(TestDataFox.EAMmesaj)
-                .EAMmesajKontrolTamam()
-                .gonder();
-        mainPageFox.mesajKontrol(TestDataFox.basariliMesaj);
     }
 }
