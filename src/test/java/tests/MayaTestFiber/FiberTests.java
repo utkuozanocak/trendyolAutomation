@@ -89,15 +89,7 @@ public class FiberTests extends BaseTest {
                 .btnEtkilesimlerTikla()
                 .btnIptalSiparisiTikla()
                 .cmbIptalAnaNedeniSec("Kurumsal_Taşınma")
-                .altNedenSecilir("Kurumsal_Taşınma");
-/*
-        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
-        changeBundleOfferSelectionPage
-                .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
-                .tablodanIlkHiziSec()
-                .btnIleriTikla();
-    /*    OrderCapturePage orderCapturePage = new OrderCapturePage();
-        orderCapturePage
-                .siparisOlusturTikla(); */
+                .altNedenSec("Kurumsal_Taşınma")
+                .iptalSiparişiTamamla();
     }
 }

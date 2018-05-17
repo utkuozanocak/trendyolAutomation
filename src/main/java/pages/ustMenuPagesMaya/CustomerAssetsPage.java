@@ -23,8 +23,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_KAMPANYAICIURUNDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYAICIURUNDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_ABONELIKISLEMLERIIPTAL_XPATH = $(By.xpath(GetObject("MAYA","BTN_ABONELIKISLEMLERIIPTAL_XPATH","XPATH","CustomerAssetsPage","PRP")));
     SolCrmElement CMB_IPTALMAINREASON_ID = comboBox(By.xpath(GetObject("MAYA","CMB_IPTALMAINREASON_ID","XPATH","CustomerAssetsPage","PRP")));
-    SolCrmElement deneme1 = comboBox(By.id(GetObject("MAYA","deneme1","ID","CustomerAssetsPage","PRP")));
-    SolCrmElement deneme2 = comboBox(By.id(GetObject("MAYA","deneme2","ID","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_IPTALSIPARISTAMAMLA_XPATH = $(By.xpath(GetObject("MAYA","BTN_IPTALSIPARISTAMAMLA_XPATH","XPATH","CustomerAssetsPage","PRP")));
 
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
@@ -75,7 +74,7 @@ public class CustomerAssetsPage extends MainPageMaya {
         BTN_ABONELIKISLEMLERIIPTAL_XPATH.click();
         return this;
     }
-    @Step("Değişiklik ana sebebi seçilir.")
+    @Step("İptal ana sebebi seçilir.")
     public CustomerAssetsPage cmbIptalAnaNedeniSec(String iptalananedeni) {
         $("div[id^='deactivationForm'][id$='mainReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
         $$("div[id^='deactivationForm'][id$='mainReasons_panel'] li")
@@ -85,15 +84,22 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
-    @Step("Değişiklik ana sebebi seçilir.")
-    public CustomerAssetsPage altNedenSecilir(String iptalananedeni) {
+    @Step("İptal ana sebebi seçilir.")
+    public CustomerAssetsPage altNedenSec(String iptalaltnedeni) {
         $("div[id^='deactivationForm'][id$='detailReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
-        $$("div[id^='deactivationForm'][id$='detailReasons'] li")
-                .filterBy(Condition.text(iptalananedeni))
+        $$("div[id^='deactivationForm'][id$='detailReasons_panel'] li")
+                .filterBy(Condition.text(iptalaltnedeni))
                 .first()
                 .click();
-
         return this;
     }
+
+    @Step("İptal siparişi tamamlanır.")
+    public CustomerAssetsPage iptalSiparişiTamamla() {
+        BTN_IPTALSIPARISTAMAMLA_XPATH.click();
+        return this;
+    }
+
+
 
 }
