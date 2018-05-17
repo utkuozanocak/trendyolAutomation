@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.lang.invoke.SwitchPoint;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -952,8 +953,8 @@ public class BaseLibrary extends ElementsContainer {
     private String sEnvironment = "";
 
     public String GetUrl(String strapp, String strenv) {
-         Connection connection;
-         Statement statement;
+        Connection connection;
+        Statement statement;
         ResultSet rs;
         try {
             connection = new DBConnection().connect();
@@ -1128,7 +1129,7 @@ public class BaseLibrary extends ElementsContainer {
         ResultSet rs;
         Integer[] dataSet = new Integer[1];
         try {
-            connection = new DBConnection().connectPrp();
+            connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
             rs = statement.executeQuery("SELECT top 1 w.ID" +
                     " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
@@ -1137,7 +1138,7 @@ public class BaseLibrary extends ElementsContainer {
                     " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
                     " ON  s.WORKFLOWINSTANCE = w.ID" +
                     " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
-                    " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK) " +
+                    " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" +
                     " ON  s2.WORKFLOWINSTANCE = w.ID" +
                     " AND s2.SEARCHKEY = 'TASKIDCODE'" +
                     " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
@@ -1162,7 +1163,7 @@ public class BaseLibrary extends ElementsContainer {
         ResultSet rs;
         String[] dataSet = new String[2];
         try {
-            connection =new DBConnection().connectFoxPrp();
+            connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select top 1 o.NAME,CAST(po.DESCRIPTIONS AS XML).value('(/Descriptions//Descriptions/Description/@Description)[1]', 'nvarchar(max)') as POSITIONNAME from NFWDTT_STEP s" +
@@ -1214,51 +1215,57 @@ public class BaseLibrary extends ElementsContainer {
 
     @Step("Test Tool sayfası açılır.")
     public void testToolAc(String url) throws InterruptedException {
-        try {
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_T);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_T);
-            switchTo().window(1);
-            Selenide.open(url);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+        Selenide.open(url);
+//        try {
+//            Robot robot = new Robot();
+//            robot.keyPress(KeyEvent.VK_CONTROL);
+//            robot.keyPress(KeyEvent.VK_T);
+//            robot.keyRelease(KeyEvent.VK_CONTROL);
+//            robot.keyRelease(KeyEvent.VK_T);
+//            switchTo().window(1);
+//            Selenide.open(url);
+//        } catch (AWTException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Step("Test Tool'dan seri numarası sorgulanır.")
-    public String GetSerialNumber(String ortam, String depo, String cihaz) {
-            String seriNo = null;
-            int i = 0;
+    public String GetSerialNumber(String ortam, String depo, String cihaz) throws AWTException {
+        String seriNo = null;
+        int i = 0;
         $(By.id("ctl00_MainContent_DrpOrtamList")).selectOption(ortam);
         $(By.id("ctl00_MainContent_DrpDepoList")).selectOption(depo);
         $(By.id("ctl00_MainContent_DrpProductList")).selectOption(cihaz);
         $(By.id("ctl00_MainContent_lnkSearch")).click();
-        while(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i<10 ){
-            sleep( 1000);
+        while (!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i < 10) {
+            sleep(1000);
             i++;
-       }
+        }
         seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).getValue();
-                System.out.println(seriNo);
-                closeNewWindow();
-                return seriNo;
+        System.out.println(seriNo);
+//        Robot robot = new Robot();
+//        robot.keyPress(KeyEvent.VK_CONTROL);
+//        robot.keyPress(KeyEvent.VK_W);
+//        robot.keyRelease(KeyEvent.VK_CONTROL);
+//        robot.keyRelease(KeyEvent.VK_W);
+        return seriNo;
     }
+
     @Step("Test Tool'dan Telefon numarası sorgulanır.")
     public String GetPhoneNumber(String city, String env, String churnType) {
         String phoneNumber = null;
         int i = 0;
         $(By.id("ctl00_MainContent_CityList")).selectOption(city);
-        $(By.xpath("//label[text()='"+env+"']//..//input")).click();
+        $(By.xpath("//label[text()='" + env + "']//..//input")).click();
         $(By.id("ctl00_MainContent_ChurnList")).selectOption(churnType);
         $(By.id("ctl00_MainContent_lnkErisimNoGetir")).click();
-        while(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i<10 ){
-            sleep( 1000);
+        while (!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i < 10) {
+            sleep(1000);
             i++;
         }
         phoneNumber = $(By.id("ctl00_MainContent_txtTelno")).getValue();
         System.out.println(phoneNumber);
-        closeNewWindow();
+//        closeNewWindow();
         return phoneNumber;
     }
 

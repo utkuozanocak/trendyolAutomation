@@ -12,16 +12,22 @@ import pages.MayaTest;
 
 public class AdslTests extends BaseTest {
     MayaTest mayaTest = new MayaTest();
-//    @BeforeMethod
+
+    //    @BeforeMethod
 //    public void loginBeforeTests() {
 //
 //    }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye ADSL siparişi girilir.")
     public void TS0006_MayaCreateDslOrderTest() throws InterruptedException {
+
+        String erisimNo = mayaTest.erisimNoGetir();
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         MainPageMaya mainPage = new MainPageMaya();
-        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        mayaTest.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
    /*     AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
                 .siparisAdresEkle()
@@ -36,6 +42,7 @@ public class AdslTests extends BaseTest {
                 .adresOnay()
                 .adresEvetButonSec(); */
         OrderCapturePage orderCapturePage = new OrderCapturePage();
+
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
@@ -43,8 +50,12 @@ public class AdslTests extends BaseTest {
                 .openPage()
                 .dslHizSec()
                 .dslTipiSec("Standart DSL");
-        String erisimNo = mayaTest.erisimNoGetir();
-        orderCapturePage.adslAc().erisimNoGir(erisimNo)
+
+//        String erisimNo = mayaTest.erisimNoGetir();
+
+        orderCapturePage
+                .adslAc()
+                .erisimNoGir(erisimNo)
                 .ttHizmetSorgulama()
                 .dslSunuSec()
                 .kampanyaAraDsl(TestDataMaya.adslKampanya)
@@ -58,9 +69,14 @@ public class AdslTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye VDSL satışı yapılır.")
     public void TS0007_MayaCreateVdslOrderTest() throws InterruptedException {
+
+        String erisimNo = mayaTest.erisimNoGetir();
+        
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         MainPageMaya mainPage = new MainPageMaya();
-        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        mayaTest.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
    /*     AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         adresBilgileriPage
                 .siparisAdresEkle()
@@ -75,15 +91,23 @@ public class AdslTests extends BaseTest {
                 .adresOnay()
                 .adresEvetButonSec(); */
         OrderCapturePage orderCapturePage = new OrderCapturePage();
+
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
                 .adslAc()
                 .openPage();
-        orderCapturePage.vdslAc().dslHizSec()
-                 .dslTipiSec("Standart DSL");
-        String erisimNo = mayaTest.erisimNoGetir();
-        orderCapturePage.vdslAc().erisimNoGir(erisimNo)
+
+        orderCapturePage
+                .vdslAc()
+                .dslHizSec()
+                .dslTipiSec("Standart DSL");
+
+//        String erisimNo = mayaTest.erisimNoGetir();
+
+        orderCapturePage
+                .vdslAc()
+                .erisimNoGir(erisimNo)
                 .ttHizmetSorgulama()
                 .vdsldslSunuSec();
       /*          .kampanyaAraDsl(TestDataMaya.adslKampanya)

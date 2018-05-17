@@ -1,10 +1,9 @@
-package tests.MayaTestSmokeTest;
+package tests.MayaTestSmoke;
 
 import common.BaseTest;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.*;
@@ -22,10 +21,13 @@ public class SmokeTests extends BaseTest {
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
     public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+
         MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
+
         mayaCustomerContactPage
                 .kontakBilgileriTikla()
                 .tablodanIlkKontakSec()
@@ -36,11 +38,15 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
     public void TS0004_MusteriSmsSifreGonderimiTest() throws InterruptedException {
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+
         EditCorporateCustomerPage editCorporateCustomerPage = new EditCorporateCustomerPage();
+
         editCorporateCustomerPage
                 .musteriBilgileriTikla()
                 .btnSMS()
@@ -49,11 +55,15 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0005_MusteriOzellikEklemeTest() throws InterruptedException {
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+
         CustomerPropertyPage customerPropertyPage = new CustomerPropertyPage();
+
         customerPropertyPage
                 .musteriOzellikSayfasıAc()
                 .btnYeniOzellikTikla()
@@ -67,12 +77,17 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
     public void TS0002_MayaAdresEkleTest() throws InterruptedException {
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         MainPageMaya mainPage = new MainPageMaya();
+
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
+
         adresBilgileriPage
                 .siparisAdresEkle()
                 .yeniAdresEkle()
@@ -90,11 +105,15 @@ public class SmokeTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteri Özellik ekleme")
     public void TS0008_MusteriKurumsalIletisimBilgileriTest() throws InterruptedException {
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
         mayaTest.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
                 GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+
         customerCommunicationInfoDisplayPage customerCommunicationInfoDisplay = new customerCommunicationInfoDisplayPage();
+
         customerCommunicationInfoDisplay
                 .openPage()
                 .iletisimBilgisiSec()
