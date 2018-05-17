@@ -1,4 +1,4 @@
-package tests.FoxFiberTests;
+package tests.FoxFiber;
 
 import common.BaseTest;
 import data.TestDataFox;
@@ -13,7 +13,11 @@ import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 
-public class FiberTests extends BaseTest {
+import java.awt.*;
+
+import static com.codeborne.selenide.Selenide.switchTo;
+
+public class FiberFoxTests extends BaseTest {
     FoxTest foxTest = new FoxTest();
     MainPageFox mainPageFox = new MainPageFox();
     AkisListesiPage akisListesiPage = new AkisListesiPage();
@@ -23,18 +27,24 @@ public class FiberTests extends BaseTest {
 
     @BeforeMethod
     public void loginBeforeTests() {
-        loginFox(TestDataFox.username, TestDataFox.password);
+
     }
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
-    public void TS0001_FoxKurulumKapat() throws InterruptedException {
+    public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
+        String altYapi;
+        foxTest.cihazSeriNoGetir();
+        loginFox(TestDataFox.username, TestDataFox.password);
 
-        foxTest.sameProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment, TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu, TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
-        String altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
+        foxTest.sameProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
+                TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
+         altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
 
-        foxTest.cihazSeriNoGetir(altYapi);
+//        foxTest.cihazSeriNoGetir(altYapi);
 
+//        switchTo().window(0);
 
         if (altYapi.equals("FTTb")) {
             stepDetayPage

@@ -227,7 +227,6 @@ public class OrderCapturePage extends MainPageMaya {
         }
         @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
         public ADSL kampanyaAraDsl(String kampanya) {
-            sleep(2000);
             TXT_SEARCHCAMPAIGN_XPATH.sendKeys(kampanya);
             return this;
         }

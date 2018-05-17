@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class LoginPageMaya extends MainPageMaya {
 
-    private SelenideElement LOGIN_PAGE_ID = $(By.id(GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP")));
+//    private SelenideElement LOGIN_PAGE_ID = $(By.id(GetObject("MAYA","LOGIN_PAGE_ID","ID","MayaLoginPage","PRP")));
     private SelenideElement TXT_USERNAME_ID = $(By.id(GetObject("MAYA","TXT_USERNAME_ID","ID","MayaLoginPage","PRP")));
     private SelenideElement TXT_PASSWWORD_ID = $(By.id(GetObject("MAYA","TXT_PASSWWORD_ID","ID","MayaLoginPage","PRP")));
     private SelenideElement SELECT_MAINORG_XPATH = $(By.xpath(GetObject("MAYA","SELECT_MAINORG_XPATH","XPATH","MayaLoginPage","PRP")));

@@ -54,6 +54,5 @@ public class MayaMusteriSiparisleri extends BaseTest {
         trackOrdersPage.siparisDetayGoruntule();
         trackOrdersPage.uruneGit();
 
-
     }
 }
