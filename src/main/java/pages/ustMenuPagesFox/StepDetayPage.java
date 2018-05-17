@@ -63,6 +63,7 @@ public class StepDetayPage extends MainPageFox {
 
     @Step("Açıklama alanı doldurulur.")
     public StepDetayPage aciklamaDoldur(String aciklama) {
+        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TXT_ACIKLAMA_XPATH);
         TXT_ACIKLAMA_XPATH.sendKeys(aciklama);
         return this;
     }

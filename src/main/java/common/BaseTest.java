@@ -51,7 +51,7 @@ public class BaseTest extends BaseLibrary {
         Configuration.screenshots = Configuration.remote == null;
         Configuration.savePageSource = false;
         Configuration.collectionsTimeout = timeout * 1000;
-        Configuration.holdBrowserOpen = Configuration.remote == null;
+        Configuration.holdBrowserOpen = false;
         Configuration.timeout = timeout * 1000;
         Configuration.startMaximized = true;
         Configuration.pollingInterval = 100;
@@ -122,8 +122,8 @@ public class BaseTest extends BaseLibrary {
                 break;
         }
 
-        /*if (testResult.getStatus() == ITestResult.FAILURE)
-            takeScreenshot();*/
+        if (testResult.getStatus() == ITestResult.FAILURE)
+            takeScreenshot();
         testResults += "///////////////////////////////////////////////////////";
         testResults += "///////////////////////////////////////////////////////";
         testResults += "\nTEST: " + testResult.getMethod().getMethodName() + "\n";

@@ -7,6 +7,8 @@ import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 
+import java.awt.*;
+
 import static com.codeborne.selenide.Selenide.switchTo;
 
 public class FoxTest extends MainPageFox {
@@ -22,22 +24,25 @@ public class FoxTest extends MainPageFox {
     StepDetayPage stepDetayPage = new StepDetayPage();
 
 
-    public void cihazSeriNoGetir(String altYapi) {
-        if(altYapi.equals("FTTb"))
-        {
-            testToolAc(TestDataFox.eamControlUrl);
-            seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazFttb);
-            switchTo().window(0);
-        }
-        else if (altYapi.equals("GPON"))
-        {
-            testToolAc(TestDataFox.eamControlUrl);
-            seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazFttb);
-            testToolAc(TestDataFox.eamControlUrl);
-            seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazGpon);
-            switchTo().window(0);
+    public void cihazSeriNoGetir() throws InterruptedException, AWTException {
+//        if(altYapi.equals("FTTb"))
+//        {
+//            testToolAc(TestDataFox.eamControlUrl);
+//            seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazFttb);
+//        }
+//        else if (altYapi.equals("GPON"))
+//        {
+//            testToolAc(TestDataFox.eamControlUrl);
+//            seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazFttb);
+//            testToolAc(TestDataFox.eamControlUrl);
+//            seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazGpon);
+//
+//        }
 
-        }
+        testToolAc(TestDataFox.eamControlUrl);
+        seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazFttb);
+        testToolAc(TestDataFox.eamControlUrl);
+        seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazGpon);
     }
 
     public String seriNoFttb() {

@@ -1,4 +1,4 @@
-package tests.FoxAdslTests;
+package tests.FoxAdsl;
 
 import common.BaseTest;
 import data.TestDataFox;
@@ -13,9 +13,11 @@ import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 
+import java.awt.*;
+
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class AdslTests extends BaseTest {
+public class FoxAdslTests extends BaseTest {
     FoxTest foxTest = new FoxTest();
     MainPageFox mainPageFox = new MainPageFox();
     AkisListesiPage akisListesiPage = new AkisListesiPage();
@@ -24,19 +26,29 @@ public class AdslTests extends BaseTest {
     StepDetayPage stepDetayPage = new StepDetayPage();
     @BeforeMethod
     public void loginBeforeTests() {
-        loginFox(TestDataFox.username, TestDataFox.password);
+
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Adsl Kurulum Kapama")
-    public void TS0001_FoxAdslKurulumKapat() throws InterruptedException {
+    public void TS0001_FoxAdslKurulumKapat() throws InterruptedException, AWTException {
 
+        testToolAc(TestDataFox.eamControlUrl);
+        String seriNoAdsl = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazAdsl);
+
+        loginFox(TestDataFox.username, TestDataFox.password);
 
         foxTest.sameProcess(TestDataFox.taskIdAdsl,TestDataFox.flowStatusAdsl,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
                 TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
-        testToolAc(TestDataFox.eamControlUrl);
-        String seriNoAdsl = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazAdsl);
+
+
+
+//        testToolAc(TestDataFox.eamControlUrl);
+
+//        String seriNoAdsl = GetSerialNumber(TestDataFox.ortamPrp,TestDataFox.depoFibertek,TestDataFox.cihazAdsl);
+
         switchTo().window(0);
+
         stepDetayPage
                 .teknikFormTabAc()
                 .tabloSeriNoGiris("AIRTIES")
