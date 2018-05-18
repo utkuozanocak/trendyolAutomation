@@ -7,7 +7,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
@@ -113,5 +112,25 @@ public class FiberTests extends BaseTest {
                 .cmbIptalAnaNedeniSec("Kurumsal_Taşınma")
                 .altNedenSec("Kurumsal_Taşınma")
                 .iptalSiparişiTamamla();
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
+    public void TS0034_FiberDataSifreDegisikligiTest() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunKontratDetayAc()
+                .tablodanKontratDetayHizIslemlerAc();
+
     }
 }
