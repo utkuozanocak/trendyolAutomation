@@ -1,6 +1,5 @@
 package pages.ustMenuPagesMaya;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -12,7 +11,6 @@ import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$x;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class CustomerAssetsPage extends MainPageMaya {
@@ -32,7 +30,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA", "BTN_FIBERDATASIFREDEGISIKLIGI", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA", "BTN_DATASIFREDEGISTIR", "XPATH", "CustomerAssetsPage", "PRP")));
-
+    private SelenideElement BTN_EVET = $(By.xpath(GetObject("MAYA","BTN_EVET","XPATH","CustomerAssetsPage","PRP")));
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -91,6 +89,11 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Data Şifre Değiştir Butonu Tıklanır")
     public CustomerAssetsPage btnDataSifreDegistirTikla() {
         BTN_DATASIFREDEGISTIR.click();
+        return this;
+    }
+    @Step("Data Şifre Değiştir Onay (Evet) Tıklanır")
+    public CustomerAssetsPage btnDataSifreDegisikligiEvetTikla() {
+        BTN_EVET.click();
         return this;
     }
 

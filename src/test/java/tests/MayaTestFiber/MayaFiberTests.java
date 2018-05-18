@@ -130,11 +130,10 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc("Aktif","Modem / Generic / Ücretsizzz","Etkileşimler")
-                .btnEtkilesimlerTikla()
+                .tablodanKontratDetayHizIslemlerAc("Aktif","Mbps","Etkileşimler")
                 .btnFiberDataSifreDegisikligi()
                 .btnDataSifreDegistirTikla()
-                .btnEtkilesimlerTikla();
-
+                .btnDataSifreDegisikligiEvetTikla()
+                .mesajKontrol("Fiber data şifre değişikliği akışı başarıyla başlatılmıştır");
     }
 }
