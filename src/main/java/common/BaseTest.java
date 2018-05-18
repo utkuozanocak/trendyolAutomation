@@ -46,6 +46,7 @@ public class BaseTest extends BaseLibrary {
         System.setProperty("webdriver.chrome.driver","C:\\SeleniumDrivers\\chromedriver\\chromedriver.exe");
 
         Configuration.browser="chrome";
+
         Configuration.driverManagerEnabled = false;
         Configuration.reportsFolder = "test-result/reports";
         Configuration.screenshots = Configuration.remote == null;

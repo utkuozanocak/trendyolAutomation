@@ -33,8 +33,8 @@ public class LoginPageFox extends MainPageFox {
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPageFox loginFox(String username, String password) {
-        //Configuration.baseUrl = (System.getProperty("URL") == null) ? TestDataMaya.foxURL : System.getProperty("URL");
-        open(TestDataMaya.foxURL);
+        Configuration.baseUrl = (System.getProperty("URLFOX") == null) ? TestDataMaya.foxURL : System.getProperty("URLFOX");
+        open();
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
         BTN_LOGIN.click();
