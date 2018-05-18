@@ -80,21 +80,18 @@ public class CustomerAssetsPage extends MainPageMaya {
     }
     @Step("İptal ana sebebi seçilir.")
     public CustomerAssetsPage cmbIptalAnaNedeniSec(String iptalananedeni) {
-        $("div[id^='deactivationForm'][id$='mainReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
-        $$("div[id^='deactivationForm'][id$='mainReasons_panel'] li")
-                .filterBy(Condition.text(iptalananedeni))
-                .first()
-                .click();
+        comboBox("div[id^='deactivationForm'][id$='mainReasons']").selectComboBox(iptalananedeni);
         return this;
     }
 
     @Step("İptal ana sebebi seçilir.")
     public CustomerAssetsPage altNedenSec(String iptalaltnedeni) {
-        $("div[id^='deactivationForm'][id$='detailReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
-        $$("div[id^='deactivationForm'][id$='detailReasons_panel'] li")
-                .filterBy(Condition.text(iptalaltnedeni))
-                .first()
-                .click();
+        comboBox("div[id^='deactivationForm'][id$='detailReasons']").selectComboBox(iptalaltnedeni);
+//        $("div[id^='deactivationForm'][id$='detailReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
+//        $$("div[id^='deactivationForm'][id$='detailReasons_panel'] li")
+//                .filterBy(Condition.text(iptalaltnedeni))
+//                .first()
+//                .click();
         return this;
     }
 

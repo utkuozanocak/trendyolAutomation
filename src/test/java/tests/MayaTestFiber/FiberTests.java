@@ -1,6 +1,7 @@
 package tests.MayaTestFiber;
 
 import common.BaseTest;
+import common.MayaReusableSteps;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -10,19 +11,24 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.MayaTest;
 
 public class FiberTests extends BaseTest {
-    MayaTest mayaTest = new MayaTest();
+
+
     @BeforeMethod
     public void loginBeforeTests() {
-        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderTest() throws InterruptedException {
-        MainPageMaya mainPage = new MainPageMaya();
-        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
@@ -51,11 +57,20 @@ public class FiberTests extends BaseTest {
 
 //        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
     public void TS0008_HizDegisikligiTest() throws InterruptedException {
-        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
                 .btnAramaTikla()
@@ -65,20 +80,27 @@ public class FiberTests extends BaseTest {
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla()
                 .btnKampanyaIciUrunDegisikligiTikla();
-        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
+
         changeBundleOfferSelectionPage
                 .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
                 .tablodanIlkHiziSec()
                 .btnIleriTikla();
-        OrderCapturePage orderCapturePage = new OrderCapturePage();
+
         orderCapturePage
                 .siparisOlusturTikla();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
     public void TS0009_DeaktivasyonTest() throws InterruptedException {
-        mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
                 .btnAramaTikla()
