@@ -77,6 +77,9 @@ public class CustomerAssetsPage extends MainPageMaya {
     public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc() {
         ElementsCollection tbl = TBL_PRODUCTLIST.filterBy(Condition.matchesText("Aktif"));
 
+        String id = tbl.filterBy(Condition.text("Mbps")).first().$("button").parent().$("span").getAttribute("id");
+        System.out.println(id);
+
         tbl.filterBy(Condition.text("Mbps")).first().$("button").click();
         return this;
     }
