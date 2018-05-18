@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
@@ -24,7 +25,10 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_ABONELIKISLEMLERIIPTAL_XPATH = $(By.xpath(GetObject("MAYA","BTN_ABONELIKISLEMLERIIPTAL_XPATH","XPATH","CustomerAssetsPage","PRP")));
     SolCrmElement CMB_IPTALMAINREASON_ID = comboBox(By.xpath(GetObject("MAYA","CMB_IPTALMAINREASON_ID","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_IPTALSIPARISTAMAMLA_XPATH = $(By.xpath(GetObject("MAYA","BTN_IPTALSIPARISTAMAMLA_XPATH","XPATH","CustomerAssetsPage","PRP")));
-
+    private SelenideElement BTN_PARTNERORANGIRISI = $(By.xpath(GetObject("MAYA","BTN_PARTNERORANGIRISI","XPATH","CustomerAssetsPage","PRP")));
+    SolCrmElement CMB_PARTNER = comboBox(By.id(GetObject("MAYA","CMB_PARTNER","ID","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA","BTN_KAYDET","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA","LBL_MSG","XPATH","CustomerAssetsPage","PRP")));
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -96,7 +100,25 @@ public class CustomerAssetsPage extends MainPageMaya {
         BTN_IPTALSIPARISTAMAMLA_XPATH.click();
         return this;
     }
-
-
+    @Step("Partner Oran Girişi Butonu Tıklanır")
+    public CustomerAssetsPage btnPartnerOranGirisiTikla() {
+        BTN_PARTNERORANGIRISI.click();
+        return this;
+    }
+    @Step("Partner alanında \"{partner}\" seçilir.")
+    public CustomerAssetsPage cmbPartnerSec(String partner) {
+        CMB_PARTNER.selectComboBox(partner);
+        return this;
+    }
+    @Step("Partner Oran Kaydet Butonu Tıklanır")
+    public CustomerAssetsPage btnPartnerKaydetTikla() {
+        BTN_KAYDET.click();
+        return this;
+    }
+    @Step("Mesaj kontrolü yapılır.")
+    public void mesajKontrol(String mesaj) {
+        Assert.assertEquals(LBL_MSG.text().contains(mesaj),true);
+        takeScreenshot();
+    }
 
 }
