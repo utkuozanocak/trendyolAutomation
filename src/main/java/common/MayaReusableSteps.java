@@ -1,27 +1,21 @@
-package pages;
+package common;
 
-import common.BaseTest;
-import data.TestDataFox;
 import data.TestDataMaya;
+import io.qameta.allure.Step;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
-import static com.codeborne.selenide.Selenide.switchTo;
-
-/****************************************************
- * Tarih: 2018-05-08
- * Proje: Turkcell Functional Test Automation
- * Class:
- * Yazan: Emre Sencan
- ****************************************************/
-public class MayaTest extends BaseTest {
+public class MayaReusableSteps extends BaseLibrary {
 
     String erisimNo = null;
 
+    @Step("Müşteri Araması yapılır.")
     public void customerSearch(String Unvan,String Statu,String Segment) {
+
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         mainPage.musteriDetayliArama();
+
         searchCustomerCorparatePage
                 .unvanDoldur(Unvan)
                 .statuSec(Statu)
@@ -29,10 +23,12 @@ public class MayaTest extends BaseTest {
                 .ara()
                 .tablodanIlkKayitTikla();
     }
-    public String erisimNoGetir() throws InterruptedException {
-            testToolAc(TestDataMaya.churnKontrolUrl);
-            erisimNo = GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
-            return erisimNo;
-    }
 
+    @Step("Testte kullanılmak üzere erişim no alınır.")
+    public String erisimNoGetir() throws InterruptedException {
+
+        testToolAc(TestDataMaya.churnKontrolUrl);
+        erisimNo = GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
+        return erisimNo;
+    }
 }
