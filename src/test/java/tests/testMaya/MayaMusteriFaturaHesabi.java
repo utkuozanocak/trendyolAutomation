@@ -23,7 +23,6 @@ public class MayaMusteriFaturaHesabi extends BaseTest {
     @Test(enabled = true, description = "Müşteri Fatura Hesabı Sayfası Açılır")
     public void TS0001_MayaMusteriFaturaHesabi() throws InterruptedException {
 
-        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         CustomerBillAccountPage customerBillAccountPage = new CustomerBillAccountPage();

@@ -5,6 +5,7 @@ import common.MayaReusableSteps;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
@@ -12,10 +13,11 @@ import pages.ustMenuPagesMaya.OrderCapturePage;
 public class AdslTests extends BaseTest {
 
 
-    //    @BeforeMethod
-//    public void loginBeforeTests() {
-//
-//    }
+    @BeforeMethod
+    public void loginBeforeTests() {
+
+    }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Müşteriye ADSL siparişi girilir.")
     public void TS0006_MayaCreateDslOrderTest() throws InterruptedException {

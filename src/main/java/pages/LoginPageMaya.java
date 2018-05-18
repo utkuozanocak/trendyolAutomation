@@ -25,6 +25,14 @@ public class LoginPageMaya extends MainPageMaya {
     private SelenideElement TXT_USERNAMEFOX = $(By.xpath(GetObject("FOX","TXT_USERNAMEFOX","XPATH","FoxLoginPage","PRP")));
     private SelenideElement BTN_FOX_INBOX = $(By.id(GetObject("FOX","BTN_FOX_INBOX","ID","FoxMainPage","PRP")));
 
+    private LoginPageMaya open() {
+//        clearCookies();
+        WebDriverRunner.clearBrowserCache();
+        Selenide.open("");
+        maximazeBrowser();
+        return this;
+    }
+
     private LoginPageMaya open(String url) {
 //        clearCookies();
         WebDriverRunner.clearBrowserCache();
@@ -35,7 +43,8 @@ public class LoginPageMaya extends MainPageMaya {
 
     @Step("Giriş yap")
     public LoginPageMaya login(String username, String password, String MainOrg, String SubOrg) {
-        open(TestDataMaya.mayaURL);
+        Configuration.baseUrl = (System.getProperty("URLMAYA") == null) ? TestDataMaya.mayaURL : System.getProperty("URLMAYA");
+        open();
         TXT_USERNAME_ID.sendKeys(username);
         TXT_PASSWWORD_ID.sendKeys(password);
         SELECT_MAINORG_XPATH.click();
@@ -55,13 +64,4 @@ public class LoginPageMaya extends MainPageMaya {
         return this;
     }
 
-    @Step("\"{username}\" kullanıcısı ile giriş yap")
-    public LoginPageMaya loginFox(String username, String password) {
-        open(TestDataMaya.mayaURL);
-        TXT_USERNAMEFOX.sendKeys(username);
-        TXT_PASSWORDFOX.sendKeys(password);
-        BTN_LOGIN.click();
-        BTN_FOX_INBOX.waitUntil(Condition.visible,10000);
-        return this;
-    }
 }
