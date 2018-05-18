@@ -7,7 +7,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.*;
 
 
@@ -131,9 +130,28 @@ public class SmokeTests extends BaseTest {
            //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Özellik ekleme")
+    @Test(enabled = true, description = "Müşteri Partner Oranı Girişi")
     public void TS0022_PartnerOraniGirisiTest() throws InterruptedException {
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
+        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
+                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla()
+                .btnPartnerOranGirisiTikla()
+                .cmbPartnerSec("EPİTEL")
+                .btnPartnerKaydetTikla()
+                .mesajKontrol("Partner Oran Girişi İşlemi Tamamlanmıştır. Partner:");
     }
 
 }
