@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import pages.ustMenuPagesMaya.*;
 
 
-public class SmokeTests extends BaseTest {
+public class MayaSmokeTests extends BaseTest {
 
 
     @BeforeMethod

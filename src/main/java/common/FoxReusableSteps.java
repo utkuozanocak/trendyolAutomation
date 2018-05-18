@@ -18,6 +18,7 @@ public class FoxReusableSteps extends BaseLibrary {
 
     @Step("Testte kullanılmak üzere cihaz seri no alınır.")
     public void cihazSeriNoGetir() throws InterruptedException, AWTException {
+
         testToolAc(TestDataFox.eamControlUrl);
         seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazFttb);
         testToolAc(TestDataFox.eamControlUrl);
@@ -32,7 +33,8 @@ public class FoxReusableSteps extends BaseLibrary {
         return seriNoGpon;
     }
 
-    public void sameProcess(String foxTaskId, String foxFlowStatu, String foxUserChangeMessage,
+    @Step("Fox Akış işlemleri tamamladı.")
+    public void foxTicketingProcess(String foxTaskId, String foxFlowStatu, String foxUserChangeMessage,
                             String foxCustomerSegment, String foxAkisDurumu, String Aciklama,
                             String foxKurulumStatu, String foxKurulumAltStatu, String foxSozlesmeStatu, String foxSozlesmeSubStatu) {
 

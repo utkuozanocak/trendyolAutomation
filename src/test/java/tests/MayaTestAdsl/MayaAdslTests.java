@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 
-public class AdslTests extends BaseTest {
+public class MayaAdslTests extends BaseTest {
 
 
     @BeforeMethod

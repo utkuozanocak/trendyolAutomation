@@ -11,7 +11,7 @@ import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 
-public class FiberTests extends BaseTest {
+public class MayaFiberTests extends BaseTest {
 
 
     @BeforeMethod
