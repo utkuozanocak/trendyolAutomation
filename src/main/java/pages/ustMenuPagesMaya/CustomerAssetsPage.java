@@ -31,6 +31,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_FIBERDATASIFREDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DATASIFREDEGISTIR","XPATH","CustomerAssetsPage","PRP")));
+
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);

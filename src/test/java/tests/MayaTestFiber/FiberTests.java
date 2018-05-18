@@ -137,4 +137,43 @@ public class FiberTests extends BaseTest {
                 .btnEtkilesimlerTikla();
 
     }
-}
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
+    public void TS0010_FiberIkınciDonanimTest() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturSayfaAc()
+                .siparseUrunEkleTikla()
+                .fiberAc()
+                .openPage()
+                .degistirTikla()
+                .lokasyonIDDoldur(TestDataMaya.locationId)
+                .Ara()
+                .tablodanLokasyonSec()
+                .lokasyonSec()
+                .daireNoDoldur(TestDataMaya.daireNo)
+                .daireNoSec(TestDataMaya.daireNo)
+                .kaydet()
+                .kampanyaAra(TestDataMaya.fiberKampanya)
+                .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
+                .kampanyaSec()
+                .hizSec(TestDataMaya.hiz)
+                .siparisEkle();
+             // .siparişOluştur();
+        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
+        //mainPageMaya.basariMesajKontrolu();
+
+
+//        orderCapturePage.adslAc();
+
+//        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
+    }
+    }
+
+
