@@ -122,5 +122,10 @@ public class SmokeTests extends BaseTest {
                 .güncellePopUpOnaySec();
            //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Müşteri Özellik ekleme")
+    public void TS0022_PartnerOraniGirisiTest() throws InterruptedException {
+
+    }
 
 }
