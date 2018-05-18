@@ -12,6 +12,7 @@ import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.$x;
 import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
 
 public class CustomerAssetsPage extends MainPageMaya {
@@ -29,8 +30,9 @@ public class CustomerAssetsPage extends MainPageMaya {
     SolCrmElement CMB_PARTNER = comboBox(By.id(GetObject("MAYA", "CMB_PARTNER", "ID", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA", "BTN_KAYDET", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
-    private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_FIBERDATASIFREDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DATASIFREDEGISTIR","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA", "BTN_FIBERDATASIFREDEGISIKLIGI", "XPATH", "CustomerAssetsPage", "PRP")));
+    private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA", "BTN_DATASIFREDEGISTIR", "XPATH", "CustomerAssetsPage", "PRP")));
+
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -73,14 +75,10 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
+
     @Step("Ürün tablosundan aktif olan ilk kontrat ürün detayı işlemler açılır.")
-    public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc() {
-        ElementsCollection tbl = TBL_PRODUCTLIST.filterBy(Condition.matchesText("Aktif"));
-
-        String id = tbl.filterBy(Condition.text("Mbps")).first().$("button").parent().$("span").getAttribute("id");
-        System.out.println(id);
-
-        tbl.filterBy(Condition.text("Mbps")).first().$("button").click();
+    public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc(String statu,String urun,String secim) {
+        tabloComboBoxSec(TBL_PRODUCTLIST,statu,urun,secim);
         return this;
     }
 
@@ -89,6 +87,7 @@ public class CustomerAssetsPage extends MainPageMaya {
         BTN_FIBERDATASIFREDEGISIKLIGI.click();
         return this;
     }
+
     @Step("Data Şifre Değiştir Butonu Tıklanır")
     public CustomerAssetsPage btnDataSifreDegistirTikla() {
         BTN_DATASIFREDEGISTIR.click();
