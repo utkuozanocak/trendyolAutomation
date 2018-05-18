@@ -75,7 +75,7 @@ public class FiberTests extends BaseTest {
                 .siparisOlusturTikla();
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
+    @Test(enabled = true, description = "Fiber İptal Siparişi Girilir.")
     public void TS0009_DeaktivasyonTest() throws InterruptedException {
         mayaTest.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
