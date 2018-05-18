@@ -29,7 +29,8 @@ public class CustomerAssetsPage extends MainPageMaya {
     SolCrmElement CMB_PARTNER = comboBox(By.id(GetObject("MAYA", "CMB_PARTNER", "ID", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA", "BTN_KAYDET", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
-
+    private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_FIBERDATASIFREDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DATASIFREDEGISTIR","XPATH","CustomerAssetsPage","PRP")));
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -66,17 +67,28 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
-    @Step("Ürün tablosundan ilk kontrot detayı açılır.")
+    @Step("Ürün tablosundan ilk kontrat detayı açılır.")
     public CustomerAssetsPage tablodanIlkUrunKontratDetayAc() {
         TBL_PRODUCTLIST.first().$("span").click();
         return this;
     }
 
-    @Step("Ürün tablosundan ilk kontrot detayı açılır.")
+    @Step("Ürün tablosundan aktif olan ilk kontrat ürün detayı işlemler açılır.")
     public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc() {
         ElementsCollection tbl = TBL_PRODUCTLIST.filterBy(Condition.matchesText("Aktif"));
 
         tbl.filterBy(Condition.text("Mbps")).first().$("button").click();
+        return this;
+    }
+
+    @Step("Fiber Data Şifre Değişikliği Butonu Tıklanır")
+    public CustomerAssetsPage btnFiberDataSifreDegisikligi() {
+        BTN_FIBERDATASIFREDEGISIKLIGI.click();
+        return this;
+    }
+    @Step("Data Şifre Değiştir Butonu Tıklanır")
+    public CustomerAssetsPage btnDataSifreDegistirTikla() {
+        BTN_DATASIFREDEGISTIR.click();
         return this;
     }
 
@@ -85,6 +97,7 @@ public class CustomerAssetsPage extends MainPageMaya {
         BTN_ETKILESIMLER.click();
         return this;
     }
+
 
     @Step("Kampanya İçi Ürün Değişikliği Butonu Tıklanır")
     public CustomerAssetsPage btnKampanyaIciUrunDegisikligiTikla() {

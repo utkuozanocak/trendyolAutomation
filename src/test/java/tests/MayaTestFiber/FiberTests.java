@@ -130,7 +130,11 @@ public class FiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc();
+                .tablodanKontratDetayHizIslemlerAc()
+                .btnEtkilesimlerTikla()
+                .btnFiberDataSifreDegisikligi()
+                .btnDataSifreDegistirTikla()
+                .btnEtkilesimlerTikla();
 
     }
 }
