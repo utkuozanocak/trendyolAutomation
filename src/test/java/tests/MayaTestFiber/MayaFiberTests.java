@@ -11,7 +11,7 @@ import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 
-public class FiberTests extends BaseTest {
+public class MayaFiberTests extends BaseTest {
 
 
     @BeforeMethod
@@ -130,12 +130,11 @@ public class FiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc()
-                .btnEtkilesimlerTikla()
+                .tablodanKontratDetayHizIslemlerAc("Aktif","Mbps","Etkileşimler")
                 .btnFiberDataSifreDegisikligi()
                 .btnDataSifreDegistirTikla()
-                .btnEtkilesimlerTikla();
-
+                .btnDataSifreDegisikligiEvetTikla()
+                .mesajKontrol("Fiber data şifre değişikliği akışı başarıyla başlatılmıştır");
     }
 
     @Severity(SeverityLevel.CRITICAL)

@@ -33,7 +33,7 @@ public class FiberFoxTests extends BaseTest {
 
         loginFox(TestDataFox.username, TestDataFox.password);
 
-        foxReusableSteps.sameProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
+        foxReusableSteps.foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
                 TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
                 TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
          altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();

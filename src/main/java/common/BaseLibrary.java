@@ -1269,4 +1269,19 @@ public class BaseLibrary extends ElementsContainer {
         return phoneNumber;
     }
 
+    public void tabloComboBoxSec(ElementsCollection element,String statu,String urun,String secim){
+
+        ElementsCollection tbl = element.filterBy(Condition.matchesText(statu));
+
+        String id = tbl.filterBy(Condition.text(urun)).first().$("button").parent().getAttribute("id");
+
+        By btnTriger = By.cssSelector("*[id='" + id + "'] button");
+        String menu = "//*[@id='" + id + "_menu']";
+        By liLocator = By.cssSelector("[id='" + id + "_menu'] li");
+        By ulLocator = By.cssSelector("[id='" + id + "_menu'] ul");
+
+        if($x(menu).is(Condition.not(Condition.visible)))
+            $(btnTriger).click();
+        $$(liLocator).filterBy(Condition.text(secim)).first().click();
+    }
 }

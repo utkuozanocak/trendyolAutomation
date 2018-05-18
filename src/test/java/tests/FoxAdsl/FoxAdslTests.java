@@ -35,7 +35,7 @@ public class FoxAdslTests extends BaseTest {
 
         loginFox(TestDataFox.username, TestDataFox.password);
 
-        foxReusableSteps.sameProcess(TestDataFox.taskIdAdsl,TestDataFox.flowStatusAdsl,TestDataFox.mesaj,TestDataFox.segment,
+        foxReusableSteps.foxTicketingProcess(TestDataFox.taskIdAdsl,TestDataFox.flowStatusAdsl,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
                 TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu);
 
