@@ -4,7 +4,7 @@
 <!--<suite thread-count="5" name="Test Suite" parallel="classes" verbose="1">-->
 
 
-<suite name="MayaTest" parallel="classes" verbose="1">
+<suite name="SolCtmTest" parallel="classes" verbose="1">
     <!--<method-selectors>
         <method-selector>
             <selector-class name="tests.BirimIcerikSablonu.BirimIcerikSablonuTest">
@@ -23,10 +23,12 @@
     <!--<suite-file path="testSuite1.xml"></suite-file>-->
     <!--<suite-file path="testSuite2.xml"></suite-file>-->
     <!--</suite-files>-->
-    <test name="MayaTest">
-        <classes>
-            <class name="tests.FoxFiber.FiberFoxTests"/>
-        </classes>
+    <test name="SolCrmTest">
+        <packages>
+            <package name="tests.FoxAdsl"/>
+            <package name="tests.MayaTestAdsl"/>
+            <package name="tests.MayaTestSmoke"/>
+        </packages>
     </test>
     <!--<test name="TuzelKisiYonetimiTest">
         <classes>
