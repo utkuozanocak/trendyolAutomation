@@ -90,7 +90,7 @@ public class FiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber Hız Değişikliği Siparişi Testi")
+    @Test(enabled = true, description = "Fiber İptal Siparişi Girilir.")
     public void TS0009_DeaktivasyonTest() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
