@@ -74,7 +74,7 @@ public class CustomerAssetsPage extends MainPageMaya {
 
     @Step("Ürün tablosundan ilk kontrot detayı açılır.")
     public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc() {
-        ElementsCollection tbl = TBL_PRODUCTLIST.filterBy(Condition.exactText("Aktif"));
+        ElementsCollection tbl = TBL_PRODUCTLIST.filterBy(Condition.matchesText("Aktif"));
 
         tbl.filterBy(Condition.text("Mbps")).first().$("button").click();
         return this;
