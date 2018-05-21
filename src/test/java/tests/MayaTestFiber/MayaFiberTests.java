@@ -163,10 +163,11 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
                 .hizSec(TestDataMaya.hiz)
-                .siparisEkle();
-             // .siparişOluştur();
-        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
-        //mainPageMaya.basariMesajKontrolu();
+                .donanimEkle("Gigaset CL540 FİBER/ Peşin");
+            //.siparisEkle();
+            // .siparişOluştur();
+            //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
+            //mainPageMaya.basariMesajKontrolu();
 
 
 //        orderCapturePage.adslAc();
