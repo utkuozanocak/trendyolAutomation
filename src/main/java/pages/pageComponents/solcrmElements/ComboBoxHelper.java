@@ -63,7 +63,7 @@ class ComboBoxHelper extends BaseLibrary {
             if ($$(liLocator).filterBy(exactText(text)).size() == 0)
                 openPanel();
 
-            clickJs($$(liLocator).filterBy(text(text)).first().toWebElement());
+            clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
         }
         else {
             openPanel();

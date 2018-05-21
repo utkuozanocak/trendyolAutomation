@@ -47,6 +47,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Statü alanında \"{statu}\" seçilir.")
     public CustomerAssetsPage statuSec(String statu) {
         CMB_STATU.selectComboBox(statu);
+
         return this;
     }
 
