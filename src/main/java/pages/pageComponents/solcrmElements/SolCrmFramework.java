@@ -11,6 +11,7 @@ public class SolCrmFramework {
 
         // region ComboBox
         Commands.getInstance().add("selectComboBox", new ComboBox().new SelectComboBox());
+        Commands.getInstance().add("selectComboText", new ComboBox().new SelectComboText());
         Commands.getInstance().add("getComboBoxValues", new ComboBox().new GetComboBoxValues());
         Commands.getInstance().add("getComboBoxHtmlList", new ComboBox().new GetComboBoxList());
         Commands.getInstance().add("openPanel", new ComboBox().new OpenPanel());
@@ -24,6 +25,10 @@ public class SolCrmFramework {
     }
 
     public static SolCrmElement comboBox(String selector) {
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
+    }
+
+    public static SolCrmElement comboText(String selector) {
         return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
     }
 }

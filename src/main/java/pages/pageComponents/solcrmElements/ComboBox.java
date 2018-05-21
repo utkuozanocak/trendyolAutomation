@@ -26,6 +26,21 @@ class ComboBox {
         }
     }
 
+    class SelectComboText implements Command<SolCrmElement> {
+        @Override
+        public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
+            if (args == null || args.length == 0)
+                return (SolCrmElement) proxy;
+
+            boolean[] jaArr = (boolean[]) args[1];
+            boolean js = (jaArr.length <= 0) || jaArr[0];
+
+            new ComboBoxHelper().selectComboText(proxy, args[0].toString(), js);
+
+            return (SolCrmElement) proxy;
+        }
+    }
+
     class OpenPanel implements Command<SolCrmElement> {
         @Override
         public SolCrmElement execute(SelenideElement proxy, WebElementSource locator, Object[] args) throws IOException {
