@@ -26,12 +26,15 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_IPTALSIPARISTAMAMLA_XPATH = $(By.xpath(GetObject("MAYA", "BTN_IPTALSIPARISTAMAMLA_XPATH", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_PARTNERORANGIRISI = $(By.xpath(GetObject("MAYA", "BTN_PARTNERORANGIRISI", "XPATH", "CustomerAssetsPage", "PRP")));
     SolCrmElement CMB_PARTNER = comboBox(By.id(GetObject("MAYA", "CMB_PARTNER", "ID", "CustomerAssetsPage", "PRP")));
+    SolCrmElement CMB_INTERNETPROFIL = comboBox(GetObject("MAYA","CMB_INTERNETPROFIL","CSS_SELECTOR","CustomerAssetsPage","PRP"));
     private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA", "BTN_KAYDET", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_FIBERDATASIFREDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DATASIFREDEGISTIR","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_EVET = $(By.xpath(GetObject("MAYA","BTN_EVET","XPATH","CustomerAssetsPage","PRP")));
-
+    private SelenideElement BTN_GUVENLIINTERNETPROFILDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_GUVENLIINTERNETPROFILDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DEGISIKLIGI_KAYDET = $(By.xpath(GetObject("MAYA","BTN_DEGISIKLIGI_KAYDET","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_POPUP_EVET = $(By.xpath(GetObject("MAYA","BTN_POPUP_EVET","XPATH","CustomerAssetsPage","PRP")));
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -41,6 +44,26 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Arama Butonu Tıklanır")
     public CustomerAssetsPage btnAramaTikla() {
         BTN_ARAMA.click();
+        return this;
+    }
+    @Step("Değişikliği Kaydet Butonu Tıklanır")
+    public CustomerAssetsPage btnDegisikligiKaydet() {
+        BTN_DEGISIKLIGI_KAYDET.click();
+        return this;
+    }
+    @Step("PopUp Evet Butonu Tıklanır")
+    public CustomerAssetsPage btnPopUpEvet() {
+        BTN_POPUP_EVET.click();
+        return this;
+    }
+    @Step("Güvenli İnternet Profil Değişikliği Butonu Tıklanır")
+    public CustomerAssetsPage btnGuvenliInternetProfilDegisikligiTikla() {
+        BTN_GUVENLIINTERNETPROFILDEGISIKLIGI.click();
+        return this;
+    }
+    @Step("İnternet Profil alanında \"{internetProfil}\" seçilir.")
+    public CustomerAssetsPage cmbInternetProfilSec(String internetProfil) {
+        CMB_INTERNETPROFIL.selectComboBox(internetProfil);
         return this;
     }
 
