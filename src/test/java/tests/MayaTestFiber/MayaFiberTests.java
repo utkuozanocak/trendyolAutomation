@@ -187,8 +187,8 @@ public class MayaFiberTests extends BaseTest {
                 .kampanyaSec()
                 .hizSec(TestDataMaya.hiz)
                 .donanimEkle("DECT D160_Fiber")
-                .siparisEkle();
-            // .siparişOluştur();
+                .siparisEkle()
+               .siparişOluştur();
             //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
             //mainPageMaya.basariMesajKontrolu();
 

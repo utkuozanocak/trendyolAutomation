@@ -172,7 +172,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("2. donanım ürünü siparişe eklenir.")
         public Fiber donanimEkle(String donanim) {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", CMB_IKINCIDONANIM_XPATH);
+            Selenide.executeJavaScript("javascript:window.scrollBy(250,350)");
             CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
             BTN_DONANIMEKLE_XPATH.click();
             return this;
