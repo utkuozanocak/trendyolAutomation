@@ -138,7 +138,7 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
+    @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
     public void TS0010_FiberIkınciDonanimTest() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
