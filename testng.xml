@@ -4,7 +4,7 @@
 <!--<suite thread-count="5" name="Test Suite" parallel="classes" verbose="1">-->
 
 
-<suite thread-count="3" name="SolCtmTest" parallel="classes" verbose="1">
+<suite thread-count="3" name="SolCrmTest" parallel="classes" verbose="1">
     <!--<method-selectors>
         <method-selector>
             <selector-class name="tests.BirimIcerikSablonu.BirimIcerikSablonuTest">
