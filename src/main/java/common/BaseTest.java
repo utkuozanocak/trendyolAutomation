@@ -55,7 +55,7 @@ public class BaseTest extends BaseLibrary {
         Configuration.screenshots = Configuration.remote == null;
         Configuration.savePageSource = false;
         Configuration.collectionsTimeout = timeout * 1000;
-
+        Configuration.holdBrowserOpen = true;
         Configuration.holdBrowserOpen = Configuration.remote== null;
         Configuration.timeout = timeout * 1000;
         Configuration.startMaximized = true;
