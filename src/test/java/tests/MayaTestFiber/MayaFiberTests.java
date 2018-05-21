@@ -184,7 +184,10 @@ public class MayaFiberTests extends BaseTest {
         changeBundleOfferSelectionPage
                 .cmbKampanyaGecisTipi("UPSELL")
                 .cmbYeniKampanya("KonuşturanFiberİnternetKampanyası_Retention")
+                .btnIleriTikla()
                 .btnIleriTikla();
+        orderCapturePage
+                .siparisOlusturTikla();
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
