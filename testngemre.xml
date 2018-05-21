@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Emre Sencan Suite" parallel="classes" verbose="1">
-    <!--By Emre-->
+    <!--By Sezai-->
 
     <test name="Emre Sencan Tests">
         <packages>
             <package name="tests.FoxAdsl"/>
-            <package name="tests.MayaTestFiber"/>
+            <package name="tests.MayaTestAdsl"/>
+            <package name="tests.MayaTestSmoke"/>
         </packages>
     </test>
 

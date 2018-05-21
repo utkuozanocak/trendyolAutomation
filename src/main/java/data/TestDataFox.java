@@ -8,8 +8,10 @@ public class TestDataFox extends BaseLibrary {
     public static final String taskIdAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "AdslKurulumTaskId")[0];
     public static final String flowStatusAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "FiberKurulumAkisStatu")[0];
     public static final String cihazAdsl = GetTestParameter("FoxAdslKurulumKapatTest", "TestToolCihazAdsl")[0];
+    public static final String cihazDect = GetTestParameter("FoxIkinciDonanimKurulumKapatTest", "TestToolCihazDect")[0];
     public static final String flowStatus = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumAkisStatu")[0];
     public static final String taskId = GetTestParameter("FoxKurulumKapatTest", "FiberKurulumTaskId")[0];
+    public static final String taskIdIkinciDonanim = GetTestParameter("FoxIkinciDonanimKurulumKapatTest", "TaskIdIkinciDonanim")[0];
     public static final String username = GetTestParameter("FoxLoginTest", "FoxUserName")[0];
     public static final String password = GetTestParameter("FoxLoginTest", "FoxPassword")[0];
     public static final String seriNoFttb = null;

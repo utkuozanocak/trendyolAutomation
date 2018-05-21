@@ -20,7 +20,6 @@ public class StepDetayPage extends MainPageFox {
     private SelenideElement RADIO_AKISDURUMU_XPATH = $(By.xpath(GetObject("FOX", "RADIO_AKISDURUMU_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
     private SelenideElement BTN_BAYIOTOMASYONUNDANCIKAR_XPATH = $(By.xpath(GetObject("FOX", "BTN_BAYIOTOMASYONUNDANCIKAR_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
 //    SolCrmElement CMB_PAZARLAMASEGMENTI_XPATH = comboBox(By.xpath(GetObject("FOX","CMB_PAZARLAMASEGMENTI_XPATH","XPATH","FoxStepDetayPage","PRP")));
-
     private SelenideElement TXT_ACIKLAMA_XPATH = $(By.xpath(GetObject("FOX", "TXT_ACIKLAMA_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
     private SelenideElement BTN_ACIKLAMAEKLE_XPATH = $(By.xpath(GetObject("FOX", "BTN_ACIKLAMAEKLE_XPATH", "XPATH", "FoxStepDetayPage", "PRP")));
 
@@ -97,7 +96,7 @@ public class StepDetayPage extends MainPageFox {
         private SelenideElement BTN_MESAJTAMAM_ID = $(By.id(GetObject("FOX","BTN_MESAJTAMAM_ID","ID","FoxStepDetayPage","PRP")));
         private SelenideElement LBL_MESAJDETAY_ID = $(By.id(GetObject("FOX","LBL_MESAJDETAY_ID","ID","FoxStepDetayPage","PRP")));
         private SelenideElement BTN_GONDER_XPATH = $(By.xpath(GetObject("FOX","BTN_GONDER_XPATH","XPATH","FoxStepDetayPage","PRP")));
-
+        private SelenideElement TXT_IKINCI_DONANIM_SERINO = $(By.xpath(GetObject("FOX","TXT_IKINCI_DONANIM_SERINO","XPATH","FoxStepDetayPage","PRP")));
         @Step("Teknik Form açılır.")
         public TeknikForm openPage() {
 //            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TAB_TEKNIKFORM_XPATH);
@@ -208,6 +207,13 @@ public class StepDetayPage extends MainPageFox {
             BTN_GONDER_XPATH.click();
             return this;
         }
+        @Step("Seri No alanına \"{seriNo}\" yazılır.")
+        public TeknikForm ikinciDonanimSeriNoDoldur(String seriNo) {
+            TXT_IKINCI_DONANIM_SERINO.pressEnter();
+            TXT_IKINCI_DONANIM_SERINO.sendKeys(seriNo);
+            return this;
+        }
+
     }
 
 
