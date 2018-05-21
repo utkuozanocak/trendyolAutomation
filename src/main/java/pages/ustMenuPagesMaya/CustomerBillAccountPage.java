@@ -11,16 +11,22 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class CustomerBillAccountPage extends MainPageMaya {
 
+    //private SelenideElement CMB_DENEME = $(By.xpath("//div[@class='form-group']//select[@id='customerBillAccountForm:billShippingMethod']"));
+
     private SelenideElement BTN_SECILIKAYDIGUNCELLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SECILIKAYDIGUNCELLE_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA","BTN_YENIKAYIT_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement BTN_SECILIKAYDISIL_XPATH = $(By.xpath(GetObject("MAYA","BTN_SECILIKAYDISIL_XPATH","XPATH","CustomerBillAccountPage","PRP")));
-    //private SelenideElement CMB_DENEME = $(By.xpath("//div[@class='form-group']//select[@id='customerBillAccountForm:billShippingMethod']"));
-    private SelenideElement CMB_FATURAGONDERMESEKLI_XPATH = $(By.xpath(GetObject("FOX","CMB_FATURAGONDERMESEKLI_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement CMB_FATURAGONDERMESEKLI_XPATH = $(By.xpath(GetObject("MAYA","CMB_FATURAGONDERMESEKLI_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement CMB_FATURADETAYTURU_XPATH = $(By.xpath(GetObject("MAYA","CMB_FATURADETAYTURU_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement CMB_HESAPPARABIRIMI_XPATH = $(By.xpath(GetObject("MAYA","CMB_HESAPPARABIRIMI_XPATH","XPATH","CustomerBillAccountPage","PRP")));
-    private SelenideElement TXT_FATURADAGORUNECEKACIKLAMA_XPATH = $(By.xpath(GetObject("FOX","TXT_FATURADAGORUNECEKACIKLAMA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
-    private SelenideElement TXT_VARSAYILANEPOSTA_XPATH = $(By.xpath(GetObject("FOX","TXT_VARSAYILANEPOSTA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement TXT_FATURADAGORUNECEKACIKLAMA_XPATH = $(By.xpath(GetObject("MAYA","TXT_FATURADAGORUNECEKACIKLAMA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement TXT_VARSAYILANEPOSTA_XPATH = $(By.xpath(GetObject("MAYA","TXT_VARSAYILANEPOSTA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement BTN_GUNCELLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_GUNCELLE_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement BTN_KAPAT_XPATH = $(By.xpath(GetObject("MAYA","BTN_KAPAT_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement TXT_ACIKLAMA_XPATH = $(By.xpath(GetObject("MAYA","TXT_ACIKLAMA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+    private SelenideElement BTN_KAYDET_XPATH = $(By.xpath(GetObject("MAYA","BTN_KAYDET_XPATH","XPATH","CustomerBillAccountPage","PRP")));
+
+
 
     @Step("Müsteri Fatura Hesabı Sayfası Açılır.")
     public CustomerBillAccountPage openPage()
@@ -36,7 +42,7 @@ public class CustomerBillAccountPage extends MainPageMaya {
         return this;
     }
 
-    @Step("Seçili Kaydı Sil Butonuna Tıklanır.")
+    @Step("Seçili Kaydı Güncelle Butonuna Tıklanır.")
     public CustomerBillAccountPage seciliKaydiGuncelle()
     {
         BTN_SECILIKAYDIGUNCELLE_XPATH.click();
@@ -85,9 +91,13 @@ public class CustomerBillAccountPage extends MainPageMaya {
     @Step("Varsayılan E Posta Adresi Girilir. ")
     public CustomerBillAccountPage varsayilanEPosta(String varsayilanEPosta) {
 
-        TXT_VARSAYILANEPOSTA_XPATH.sendKeys(varsayilanEPosta);
-
-        return this;
+        if ( TXT_VARSAYILANEPOSTA_XPATH.isEnabled()) {
+            TXT_VARSAYILANEPOSTA_XPATH.sendKeys(varsayilanEPosta);
+            return this;
+        }
+        else {
+            return this;
+        }
     }
 
     @Step("Güncelle Butonuna Tıklanır. ")
@@ -98,9 +108,26 @@ public class CustomerBillAccountPage extends MainPageMaya {
         return this;
     }
 
+    @Step("Kapat Butonuna Tıklanır. ")
+    public CustomerBillAccountPage kapat() {
 
+        BTN_KAPAT_XPATH.click();
 
+        return this;
+    }
 
+    @Step("Açıklama Alanı Doldurulur. ")
+    public CustomerBillAccountPage aciklamaAlaniDoldur(String aciklama) {
 
+        TXT_ACIKLAMA_XPATH.sendKeys(aciklama);
 
+        return this;
+    }
+
+    @Step("Kaydet Butonuna Tıklanır. ")
+    public CustomerBillAccountPage kaydet() {
+
+        BTN_KAYDET_XPATH.click();
+        return this;
+    }
 }
