@@ -162,7 +162,6 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("Sipariş Eklenir.")
         public Fiber siparisEkle() {
             clickJs(BTN_SIPARISEKLE_XPATH);
-
             return this;
         }
 

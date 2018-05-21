@@ -136,7 +136,30 @@ public class MayaFiberTests extends BaseTest {
                 .btnDataSifreDegisikligiEvetTikla()
                 .mesajKontrol("Fiber data şifre değişikliği akışı başarıyla başlatılmıştır");
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
+    public void TS0035_GuvenliInternetProfilDegisikligi() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
 
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunKontratDetayAc()
+                .tablodanKontratDetayHizIslemlerAc("Aktif","Mbps","Etkileşimler")
+                .btnGuvenliInternetProfilDegisikligiTikla()
+                .cmbInternetProfilSec("Çocuk Profili")
+                .btnDegisikligiKaydet()
+                .btnPopUpEvet()
+                .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
+    }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
     public void TS0010_FiberIkınciDonanimTest() throws InterruptedException {

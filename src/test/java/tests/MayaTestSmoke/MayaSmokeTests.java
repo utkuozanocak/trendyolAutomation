@@ -17,6 +17,7 @@ public class MayaSmokeTests extends BaseTest {
     public void loginBeforeTests() {
 
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
     public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
