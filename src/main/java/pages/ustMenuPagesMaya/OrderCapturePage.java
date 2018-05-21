@@ -69,7 +69,7 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement BTN_HIZEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_HIZEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISIOLUSTUR_XPATH","XPATH","MayaOrderCapturePage","PRP")));
-        private SelenideElement CMB_IKINCIDONANIM_XPATH = $(By.xpath(GetObject("MAYA","CMB_IKINCIDONANIM_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SolCrmElement CMB_IKINCIDONANIM_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_IKINCIDONANIM_XPATH","XPATH","MayaOrderCapturePage","PRP")));
 
 
         @Step("Fiber menu açılır.")
@@ -171,7 +171,7 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("2. donanım ürünü siparişe eklenir.")
         public Fiber donanimEkle(String donanim) {
             CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
-            BTN_HIZEKLE_XPATH.click();
+       //     BTN_HIZEKLE_XPATH.click();
             return this;
         }
         @Step("Sipariş oluştur tıklanır.")

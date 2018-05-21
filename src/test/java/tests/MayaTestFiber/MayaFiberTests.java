@@ -151,19 +151,19 @@ public class MayaFiberTests extends BaseTest {
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .openPage()
-                .degistirTikla()
-                .lokasyonIDDoldur(TestDataMaya.locationId)
-                .Ara()
-                .tablodanLokasyonSec()
-                .lokasyonSec()
-                .daireNoDoldur(TestDataMaya.daireNo)
-                .daireNoSec(TestDataMaya.daireNo)
-                .kaydet()
+             //   .degistirTikla()
+            //    .lokasyonIDDoldur(TestDataMaya.locationId)
+            //    .Ara()
+            //    .tablodanLokasyonSec()
+             //   .lokasyonSec()
+            //    .daireNoDoldur(TestDataMaya.daireNo)
+            //    .daireNoSec(TestDataMaya.daireNo)
+            //    .kaydet()
                 .kampanyaAra(TestDataMaya.fiberKampanya)
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
                 .hizSec(TestDataMaya.hiz)
-                .donanimEkle("Gigaset CL540 FİBER/ Peşin");
+                .donanimEkle("DECT D160_Fiber");
             //.siparisEkle();
             // .siparişOluştur();
             //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
