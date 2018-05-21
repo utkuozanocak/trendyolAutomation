@@ -42,7 +42,13 @@ class ComboBoxHelper extends BaseLibrary {
 
     void openPanel(){
         if($x(panelXpath).is(not(visible)))
-            $(btnTrigger).click();
+            if($(btnTrigger).is(not(visible)))
+            {
+                $(btnTrigger).scrollIntoView(true);
+                $(btnTrigger).click();
+            }
+            else
+                $(btnTrigger).click();
     }
 
     void closePanel(){

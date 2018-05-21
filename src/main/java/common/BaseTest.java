@@ -21,7 +21,7 @@ public class BaseTest extends BaseLibrary {
 
     //Seconds
     static final int timeout = 20;
-    static final int loadingTimeout = 30;
+    static final int loadingTimeout = 40;
 
     public Locale turkishLocal;
 
@@ -52,7 +52,7 @@ public class BaseTest extends BaseLibrary {
         Configuration.screenshots = Configuration.remote == null;
         Configuration.savePageSource = false;
         Configuration.collectionsTimeout = timeout * 1000;
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = Configuration.remote== null;
         Configuration.timeout = timeout * 1000;
         Configuration.startMaximized = true;
         Configuration.pollingInterval = 100;
