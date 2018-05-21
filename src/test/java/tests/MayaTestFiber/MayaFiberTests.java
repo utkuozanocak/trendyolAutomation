@@ -161,7 +161,7 @@ public class MayaFiberTests extends BaseTest {
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
+    @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
     public void TS0010_FiberIkınciDonanimTest() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
@@ -174,22 +174,23 @@ public class MayaFiberTests extends BaseTest {
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .openPage()
-                .degistirTikla()
-                .lokasyonIDDoldur(TestDataMaya.locationId)
-                .Ara()
-                .tablodanLokasyonSec()
-                .lokasyonSec()
-                .daireNoDoldur(TestDataMaya.daireNo)
-                .daireNoSec(TestDataMaya.daireNo)
-                .kaydet()
+             //   .degistirTikla()
+            //    .lokasyonIDDoldur(TestDataMaya.locationId)
+            //    .Ara()
+            //    .tablodanLokasyonSec()
+             //   .lokasyonSec()
+            //    .daireNoDoldur(TestDataMaya.daireNo)
+            //    .daireNoSec(TestDataMaya.daireNo)
+            //    .kaydet()
                 .kampanyaAra(TestDataMaya.fiberKampanya)
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
                 .hizSec(TestDataMaya.hiz)
-                .siparisEkle();
-             // .siparişOluştur();
-        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
-        //mainPageMaya.basariMesajKontrolu();
+                .donanimEkle("DECT D160_Fiber")
+                .siparisEkle()
+               .siparişOluştur();
+            //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
+            //mainPageMaya.basariMesajKontrolu();
 
 
 //        orderCapturePage.adslAc();

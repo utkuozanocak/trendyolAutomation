@@ -1,6 +1,7 @@
 package pages.ustMenuPagesMaya;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -69,6 +70,9 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement BTN_HIZEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_HIZEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA","BTN_SIPARISIOLUSTUR_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SolCrmElement CMB_IKINCIDONANIM_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_IKINCIDONANIM_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+        private SelenideElement BTN_DONANIMEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_DONANIMEKLE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
+
 
         @Step("Fiber menu açılır.")
         public Fiber openPage() {
@@ -165,6 +169,13 @@ public class OrderCapturePage extends MainPageMaya {
             return this;
         }
 
+        @Step("2. donanım ürünü siparişe eklenir.")
+        public Fiber donanimEkle(String donanim) {
+            Selenide.executeJavaScript("javascript:window.scrollBy(250,350)");
+            CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
+            BTN_DONANIMEKLE_XPATH.click();
+            return this;
+        }
         @Step("Sipariş oluştur tıklanır.")
         public Fiber siparişOluştur() {
             BTN_SIPARISIOLUSTUR_XPATH.click();
@@ -257,6 +268,7 @@ public class OrderCapturePage extends MainPageMaya {
             BTN_SIPARISIOLUSTUR_XPATH.click();
             return this;
         }
+
     }
 
     public class VDSL extends MainPageMaya {
