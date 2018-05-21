@@ -1,10 +1,15 @@
 package common;
 
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import listeners.DriverEventListener;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import pages.LoginPageFox;
 import pages.LoginPageMaya;
 import pages.MainPageFox;
@@ -12,8 +17,6 @@ import pages.pageComponents.solcrmElements.SolCrmFramework;
 
 import java.nio.charset.Charset;
 import java.util.Locale;
-
-import static com.codeborne.selenide.Selenide.$$;
 //import static data.TestDataMaya.mayaURL;
 
 
@@ -21,7 +24,7 @@ public class BaseTest extends BaseLibrary {
 
     //Seconds
     static final int timeout = 20;
-    static final int loadingTimeout = 30;
+    static final int loadingTimeout = 40;
 
     public Locale turkishLocal;
 
@@ -52,7 +55,8 @@ public class BaseTest extends BaseLibrary {
         Configuration.screenshots = Configuration.remote == null;
         Configuration.savePageSource = false;
         Configuration.collectionsTimeout = timeout * 1000;
-        Configuration.holdBrowserOpen = false;
+
+        Configuration.holdBrowserOpen = Configuration.remote== null;
         Configuration.timeout = timeout * 1000;
         Configuration.startMaximized = true;
         Configuration.pollingInterval = 100;

@@ -27,9 +27,8 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         mayaCustomerContactPage
                 .kontakBilgileriTikla()
@@ -48,9 +47,8 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         editCorporateCustomerPage
                 .musteriBilgileriTikla()
@@ -67,9 +65,8 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerPropertyPage
                 .musteriOzellikSayfasıAc()
@@ -91,9 +88,8 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         adresBilgileriPage
                 .siparisAdresEkle()
@@ -118,9 +114,8 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerCommunicationInfoDisplay
                 .openPage()
@@ -138,9 +133,8 @@ public class MayaSmokeTests extends BaseTest {
         
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(GetTestParameter("MayaCreateOrderTest", "UnvanKurum")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerStatuAktif")[0],
-                GetTestParameter("MayaCreateOrderTest", "CustomerSegmentSoho")[0]);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
                 .btnAramaTikla()

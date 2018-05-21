@@ -161,6 +161,32 @@ public class MayaFiberTests extends BaseTest {
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
     @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fiber UpSell Kampanya Değişikliği Testi")
+    public void TS0036_FiberKampanyaDegisikligiUpsellTest() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla()
+                .btnKampanyaDegisikligiTikla();
+        changeBundleOfferSelectionPage
+                .cmbKampanyaGecisTipi("UPSELL")
+                .cmbYeniKampanya("KonuşturanFiberİnternetKampanyası_Retention")
+                .btnIleriTikla();
+    }
+    @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
     public void TS0010_FiberIkinciDonanimTest() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();

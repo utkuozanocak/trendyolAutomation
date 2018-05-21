@@ -15,14 +15,25 @@ public class FoxReusableSteps extends BaseLibrary {
     String seriNoFttb = null;
     String seriNoGpon = null;
     String seriNoAdsl = null;
+    String seriNoDect = null;
 
     @Step("Testte kullanılmak üzere cihaz seri no alınır.")
-    public void cihazSeriNoGetir() throws InterruptedException, AWTException {
+    public void cihazSeriNoGetir(String cihaz) throws InterruptedException, AWTException {
 
-        testToolAc(TestDataFox.eamControlUrl);
-        seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazFttb);
-        testToolAc(TestDataFox.eamControlUrl);
-        seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazGpon);
+        switch(cihaz){
+            case "DECT":
+                testToolAc(TestDataFox.eamControlUrl);
+                seriNoDect = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazDect);
+                break;
+            case "FTTB":
+                testToolAc(TestDataFox.eamControlUrl);
+                seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazFttb);
+                break;
+            case "GPON":
+                testToolAc(TestDataFox.eamControlUrl);
+                seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazGpon);
+                break;
+        }
     }
 
     public String seriNoFttb() {
@@ -31,6 +42,9 @@ public class FoxReusableSteps extends BaseLibrary {
 
     public String seriNoGpon() {
         return seriNoGpon;
+    }
+    public String seriNoDect() {
+        return seriNoDect;
     }
 
     @Step("Fox Akış işlemleri tamamladı.")

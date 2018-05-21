@@ -14,7 +14,11 @@ public interface SolCrmElement extends SelenideElement {
 
     SolCrmElement comboBox(By locator);
 
+    SolCrmElement comboText(String selector);
+
     SolCrmElement selectComboBox(String text, boolean... js);
+
+    SolCrmElement selectComboText(String text, boolean... js);
 
     ElementsCollection getComboBoxValues();
     //endregion
