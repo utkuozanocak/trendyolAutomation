@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeSuite;
 import pages.LoginPageFox;
 import pages.LoginPageMaya;
 import pages.MainPageFox;
-import pages.pageComponents.solcrmElements.SolCrmFramework;
+import pages.pageComponents.SolCrmFramework;
 
 import java.nio.charset.Charset;
 import java.util.Locale;

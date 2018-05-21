@@ -6,12 +6,12 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import pages.MainPageMaya;
 import org.openqa.selenium.By;
-import pages.pageComponents.solcrmElements.SolCrmElement;
+import pages.pageComponents.SolCrmElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
-import static pages.pageComponents.solcrmElements.SolCrmFramework.comboText;
+import static pages.pageComponents.SolCrmFramework.comboBox;
+import static pages.pageComponents.SolCrmFramework.comboText;
 
 public class ChangeBundleOfferSelectionPage extends MainPageMaya {
     ElementsCollection TBL_MEVCUTPRODUCTLIST = $$(GetObject("MAYA","TBL_MEVCUTPRODUCTLIST","CSS_SELECTOR","CustomerAssetsPage","PRP"));

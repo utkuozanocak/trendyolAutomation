@@ -6,15 +6,13 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import pages.MainPageMaya;
-import pages.pageComponents.solcrmElements.SolCrmElement;
+import pages.pageComponents.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.*;
-import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
+import static pages.pageComponents.SolCrmFramework.comboBox;
 
 public class OrderCapturePage extends MainPageMaya {
 

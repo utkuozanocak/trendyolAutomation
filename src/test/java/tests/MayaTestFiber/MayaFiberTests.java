@@ -7,6 +7,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
@@ -141,7 +142,7 @@ public class MayaFiberTests extends BaseTest {
     public void TS0035_GuvenliInternetProfilDegisikligi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
-
+        MainPageMaya mainPageMaya = new MainPageMaya();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);

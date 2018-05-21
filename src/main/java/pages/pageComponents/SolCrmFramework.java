@@ -1,9 +1,8 @@
-package pages.pageComponents.solcrmElements;
+package pages.pageComponents;
 
 import com.codeborne.selenide.commands.Commands;
 import com.codeborne.selenide.impl.ElementFinder;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class SolCrmFramework {
 

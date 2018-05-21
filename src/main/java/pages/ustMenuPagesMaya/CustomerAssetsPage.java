@@ -6,12 +6,12 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.MainPageMaya;
-import pages.pageComponents.solcrmElements.SolCrmElement;
+import pages.pageComponents.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static pages.pageComponents.solcrmElements.SolCrmFramework.comboBox;
+import static pages.pageComponents.SolCrmFramework.comboBox;
 
 public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_ARAMA = $(By.id(GetObject("MAYA", "BTN_ARAMA", "ID", "CustomerAssetsPage", "PRP")));

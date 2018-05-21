@@ -1,4 +1,4 @@
-package pages.pageComponents.solcrmElements;
+package pages.pageComponents;
 
 import com.codeborne.selenide.Command;
 import com.codeborne.selenide.ElementsCollection;

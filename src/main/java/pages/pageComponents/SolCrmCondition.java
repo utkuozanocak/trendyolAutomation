@@ -1,4 +1,4 @@
-package pages.pageComponents.solcrmElements;
+package pages.pageComponents;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.impl.Html;
