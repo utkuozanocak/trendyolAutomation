@@ -162,7 +162,7 @@ public class MayaFiberTests extends BaseTest {
     }
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
-    public void TS0010_FiberIkınciDonanimTest() throws InterruptedException {
+    public void TS0010_FiberIkinciDonanimTest() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);

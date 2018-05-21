@@ -5,6 +5,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import pages.MainPageMaya;
 import pages.pageComponents.solcrmElements.SolCrmElement;
 import pages.pageData.UrunEklemeData;
@@ -171,7 +173,8 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("2. donanım ürünü siparişe eklenir.")
         public Fiber donanimEkle(String donanim) {
-            Selenide.executeJavaScript("javascript:window.scrollBy(250,350)");
+
+            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",CMB_IKINCIDONANIM_XPATH);
             CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
             BTN_DONANIMEKLE_XPATH.click();
             return this;
