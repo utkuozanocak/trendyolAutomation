@@ -26,6 +26,11 @@ public class MayaMusteriFaturaHesabi extends BaseTest {
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         CustomerBillAccountPage customerBillAccountPage = new CustomerBillAccountPage();
+        String faturaGondermeSekli = "Kargo";
+        String faturaDetayTuru = "Ses ve Data Detaylı";
+        String hesapParaBirimi = "USD";
+        String faturadaGorunecekAciklama = "TEST MAYA";
+        String varsayilanEPosta = "testmaya@gmail.com";
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
@@ -40,10 +45,16 @@ public class MayaMusteriFaturaHesabi extends BaseTest {
                 .tablodanIlkKayitTikla();
 
         customerBillAccountPage
-                .openPage();
+                .openPage()
+                .seciliKaydiGuncelle()
+                .faturaGondermeSekli(faturaGondermeSekli)
+                .faturaDetayTuru(faturaDetayTuru)
+                .hesapParaBirimi(hesapParaBirimi)
+                .faturadaGorunecekAciklama(faturadaGorunecekAciklama)
+                .varsayilanEPosta(varsayilanEPosta)
+                .guncelle();
 
-        customerBillAccountPage
-                .yeniKayit();
+
 
     }
 }
