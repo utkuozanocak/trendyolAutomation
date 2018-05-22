@@ -20,7 +20,7 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
     private SelenideElement TXT_SEARCHRESULT_ID = $(By.id(GetObject("MAYA", "TXT_SEARCHRESULT_ID", "ID", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_ISLEMLER_XPATH = $(By.xpath(GetObject("MAYA", "BTN_ISLEMLER_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
     private SelenideElement BTN_SIPARISOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISOLUSTUR_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
-
+    ElementsCollection TBL_MUSTERILISTESI = $$(GetObject("MAYA","TBL_MUSTERILISTESI","CSS_SELECTOR","MayaSearchCustomerCorporate","PRP"));
     ElementsCollection tblCustomerList = $$(GetObject("MAYA","TBL_SEARCH_CUSTOMER","CSS_SELECTOR","MayaSearchCustomerCorporate","PRP"));
     SolCrmElement cmbStatu = comboBox(By.id(GetObject("MAYA","BTN_STATU","ID","MayaSearchCustomerCorporate","PRP")));
     SolCrmElement cmbSegment = comboBox(By.id(GetObject("MAYA", "BTN_SEGMENT", "ID", "MayaSearchCustomerCorporate", "PRP")));
@@ -53,6 +53,10 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
     public SearchCustomerCorparatePage tablodanIlkKayitTikla() {
         tblCustomerList.first().click();
         return this;
+    }
+    @Step("Tablodan ilk sıradaki müşteri no alınır")
+    public String tabloIlkMusteriNoAl() {
+        return TBL_MUSTERILISTESI.first().$("td:nth-child(2)").getText();
     }
 
 }

@@ -126,4 +126,8 @@ public class MainPageMaya extends BaseLibrary {
         SelenideElement LBL_SIPARISMESSAGE_XPATH = $(By.xpath(GetObject("MAYA","LBL_SIPARISMESSAGE_XPATH","XPATH","MayaOrderCapturePage","PRP")));
         Assert.assertEquals(LBL_SIPARISMESSAGE_XPATH.isDisplayed(),true,"Başarılı mesaj gelmeli.");
     }
+
+    public ConfirmDialog confirmDialog(){
+        return new ConfirmDialog();
+    }
 }

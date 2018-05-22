@@ -27,7 +27,10 @@
         <packages>
             <package name="tests.FoxAdsl"/>
             <package name="tests.FoxFiber"/>
-
+            <package name="tests.MayaTestAdsl"/>
+            <package name="tests.MayaTestFiber"/>
+            <package name="tests.MayaTestSmoke"/>
+            <package name="tests.SolCrmE2E"/>
         </packages>
     </test>
     <!--<test name="TuzelKisiYonetimiTest">

@@ -28,7 +28,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
@@ -69,7 +69,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
@@ -99,7 +99,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
@@ -114,6 +114,7 @@ public class MayaFiberTests extends BaseTest {
                 .altNedenSec("Kurumsal_Taşınma")
                 .iptalSiparişiTamamla();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
     public void TS0034_FiberDataSifreDegisikligiTest() throws InterruptedException {
@@ -122,7 +123,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
@@ -131,12 +132,13 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc("Aktif","Mbps","Etkileşimler")
+                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler")
                 .btnFiberDataSifreDegisikligi()
                 .btnDataSifreDegistirTikla()
                 .btnDataSifreDegisikligiEvetTikla()
                 .mesajKontrol("Fiber data şifre değişikliği akışı başarıyla başlatılmıştır");
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Data Şifre Değişikliği testi")
     public void TS0035_GuvenliInternetProfilDegisikligi() throws InterruptedException {
@@ -145,7 +147,7 @@ public class MayaFiberTests extends BaseTest {
         MainPageMaya mainPageMaya = new MainPageMaya();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
@@ -154,13 +156,16 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc("Aktif","Mbps","Etkileşimler")
+                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler")
                 .btnGuvenliInternetProfilDegisikligiTikla()
                 .cmbInternetProfilSec("Çocuk Profili")
-                .btnDegisikligiKaydet()
-                .btnPopUpEvet()
+                .btnDegisikligiKaydet().
+                confirmDialog().confirmEvetTikla();
+//                .btnPopUpEvet()
+        customerAssetsPage
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber UpSell Kampanya Değişikliği Testi")
     public void TS0036_FiberKampanyaDegisikligiUpsellTest() throws InterruptedException {
@@ -171,7 +176,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
@@ -190,6 +195,7 @@ public class MayaFiberTests extends BaseTest {
         orderCapturePage
                 .siparisOlusturTikla();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber 2. donanım siparişi girilir.")
     public void TS0010_FiberIkinciDonanimTest() throws InterruptedException {
@@ -197,7 +203,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan,TestDataMaya.statu,TestDataMaya.segment);
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
@@ -218,15 +224,15 @@ public class MayaFiberTests extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .donanimEkle("Dect Telefon C610")
                 .siparisEkle()
-               .siparişOluştur();
-            //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
-            //mainPageMaya.basariMesajKontrolu();
+                .siparişOluştur();
+        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
+        //mainPageMaya.basariMesajKontrolu();
 
 
 //        orderCapturePage.adslAc();
 
 //        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
-    }
+}
 
 

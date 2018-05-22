@@ -17,12 +17,16 @@ public class ConfirmDialog extends MainPageMaya {
         return $$(dialogLocator);
     }
 
+    public ConfirmDialog confirmDialog(){
+        return new ConfirmDialog();
+    }
+
     public SelenideElement getDialog(){return dialogs().filterBy(Condition.visible).first();}
 
     @Step("Onay dialog mesajı")
     public SelenideElement dialogMessage(){
-        return $$(dialogLocator + " .ui-dialog-content p" )
-                .filterBy(Condition.visible).first();
+        return $$(dialogLocator + ",span.ui-confirm-dialog-message" )
+                .filterBy(Condition.visible).last();
     }
 
     @Step("Onay dialog butonu")
