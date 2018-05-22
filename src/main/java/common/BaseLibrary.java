@@ -1125,7 +1125,7 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
-    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus,String... CustomerNo) {
+    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus) {
         Connection connection;
         Statement statement;
         ResultSet rs;
@@ -1133,7 +1133,7 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
-            if(CustomerNo.equals(null)) {
+
                 rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
                         " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
                         " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
@@ -1141,16 +1141,7 @@ public class BaseLibrary extends ElementsContainer {
                         " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
                         " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
                         " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " ORDER BY  v.STARTDATE DESC");
-            }
-            else {
-                rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
-                        " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" + " ON  v.ID = w.WORKFLOWVERSION" +
-                        " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" + " ON  s.WORKFLOWINSTANCE = w.ID" +
-                        " AND s.SEARCHKEY = 'MUSTERINOKEY'" + " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" +
-                        " ON  s2.WORKFLOWINSTANCE = w.ID" + " AND s2.SEARCHKEY = 'TASKIDCODE'" +
-                        " WHERE s.[VALUE] = '" + CustomerNo + "' and s2.[VALUE]='" + TaskId + "'" +
-                        " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " ORDER BY  v.STARTDATE DESC");
-            }
+                
             while (rs.next()) {
                 dataSet[0] = rs.getInt("ID");
             }
