@@ -6,6 +6,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import pages.MainPageMaya;
 import pages.pageComponents.SolCrmElement;
 import pages.pageData.UrunEklemeData;
@@ -180,8 +181,10 @@ public class OrderCapturePage extends MainPageMaya {
 
             Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",CMB_IKINCIDONANIM_XPATH);
 
-//            SelenideElement lbl = $x("//label[normalize-space(text())='Dect Telefon Seçim Grubu Fiber']");
-//            BTN_DONANIMEKLE_XPATH.scrollIntoView(true);
+           SelenideElement lbl = $x("//label[normalize-space(text())='Dect Telefon Seçim Grubu Fiber']");
+           lbl.scrollIntoView(true);
+
+       //     CMB_IKINCIDONANIM_XPATH.sendKeys(Keys.END);
 
             CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
             BTN_DONANIMEKLE_XPATH.click();

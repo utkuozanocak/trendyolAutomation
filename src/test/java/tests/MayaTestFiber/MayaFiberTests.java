@@ -216,7 +216,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
                 .hizSec(TestDataMaya.hiz)
-                .donanimEkle("DECT D160_Fiber")
+                .donanimEkle("Dect Telefon C610")
                 .siparisEkle()
                .siparişOluştur();
             //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
