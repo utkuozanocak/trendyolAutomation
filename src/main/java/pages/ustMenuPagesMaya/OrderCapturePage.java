@@ -115,7 +115,8 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Lokasyon id alanına \"{lokasyonId}\" yazılır.")
         public Fiber lokasyonIDDoldur(String lokasyonId) {
-            TXT_LOCATION_XPATH.setValue(lokasyonId);
+
+            setValueJS(TXT_LOCATION_XPATH,lokasyonId);
             return this;
         }
 
@@ -193,7 +194,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Sipariş oluştur tıklanır.")
         public Fiber siparişOluştur() {
-            BTN_SIPARISIOLUSTUR_XPATH.click();
+            clickJs(BTN_SIPARISIOLUSTUR_XPATH);
             return this;
         }
     }
@@ -239,8 +240,8 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("TT'den gelen erisim no girilir.")
         public ADSL erisimNoGir(String erisimno) {
-            Selenide.sleep(1000);
-            DSL_ERISIM_NO.sendKeys(erisimno);
+
+            setValueJS(DSL_ERISIM_NO,erisimno);
             return this;
         }
 
@@ -286,6 +287,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Sipariş oluştur tıklanır.")
         public ADSL siparişOluştur() {
+            BTN_SIPARISIOLUSTUR_XPATH.shouldBe(Condition.visible);
             BTN_SIPARISIOLUSTUR_XPATH.click();
             return this;
         }
@@ -352,7 +354,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
         public VDSL kampanyaAraDsl(String kampanya) {
-            sleep(2000);
+            sleep(1000);
             TXT_SEARCHCAMPAIGN_XPATH.sendKeys(kampanya);
             return this;
         }

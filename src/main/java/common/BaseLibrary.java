@@ -317,6 +317,7 @@ public class BaseLibrary extends ElementsContainer {
      * @param value
      */
     public void setValueJS(SelenideElement element, String value) {
+        sleep(2000);
         executeJavaScript("arguments[0].value = arguments[1]", element, value);
     }
 
