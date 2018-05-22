@@ -18,7 +18,7 @@ public class FiberFoxTests extends BaseTest {
     public void loginBeforeTests() {
 
     }
-
+    String customerNo;
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
     public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
