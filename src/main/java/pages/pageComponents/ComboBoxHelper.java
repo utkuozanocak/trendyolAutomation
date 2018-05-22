@@ -1,5 +1,6 @@
 package pages.pageComponents;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -7,6 +8,7 @@ import common.BaseLibrary;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -50,9 +52,9 @@ class ComboBoxHelper extends BaseLibrary {
         input = By.id(id + "_input");
 
 
-//        btnTrigger = proxy.attr("class").contains("ui-selectonemenu")
-//                ? By.cssSelector("[id='" + id + "'] .ui-selectonemenu-trigger")
-//                : By.cssSelector("[id='" + id + "'] .ui-selectcheckboxmenu-trigger");
+        btnTrigger = proxy.attr("class").contains("ui-autocomplete")
+                ? By.cssSelector("[id='" + id + "'] .ui-autocomplete-dropdown")
+                : By.cssSelector("[id='" + id + "'] .ui-selectcheckboxmenu-trigger");
        /* if (proxy.has(cssClass("ui-selectonemenu-trigger")))
             btnTrigger = By.cssSelector("[id='" + id + "'] .ui-selectonemenu-trigger");
         else
@@ -63,23 +65,21 @@ class ComboBoxHelper extends BaseLibrary {
         ulLocator = By.cssSelector("[id='" + id + "_panel'] ul");
     }
 
-    void openPanel(){
-        if($x(panelXpath).is(not(visible)))
-            if($(btnTrigger).is(not(visible)))
-            {
+    void openPanel() {
+        if ($x(panelXpath).is(not(visible)))
+            if ($(btnTrigger).is(not(visible))) {
                 $(btnTrigger).scrollIntoView(true);
                 $(btnTrigger).click();
-            }
-            else
+            } else
                 $(btnTrigger).click();
     }
 
-    void closePanel(){
-        if($x(panelXpath).is(visible))
+    void closePanel() {
+        if ($x(panelXpath).is(visible))
             $(btnTrigger).click();
     }
 
-    void selectComboBox(SelenideElement proxy,String text, boolean js) {
+    void selectComboBox(SelenideElement proxy, String text, boolean js) {
         setLocators(proxy);
 
 
@@ -89,13 +89,12 @@ class ComboBoxHelper extends BaseLibrary {
             clickJs($(By.xpath(panelXpath + " //li[.//*[contains(normalize-space(),'" + text + "')]]")).toWebElement());
         }*/
 
-        if (js){
+        if (js) {
             if ($$(liLocator).filterBy(exactText(text)).size() == 0)
                 openPanel();
 
             clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
-        }
-        else {
+        } else {
             openPanel();
             $$(liLocator).filterBy(exactText(text)).get(0).scrollIntoView(false).click();
         }
@@ -103,18 +102,30 @@ class ComboBoxHelper extends BaseLibrary {
         //$(label).shouldHave(text(text));
     }
 
-    void selectComboText(SelenideElement proxy,String text, boolean js) {
+    void selectComboText(SelenideElement proxy, String text) {
         setLocatorsComboText(proxy);
 
-        $(input).sendKeys(text);
+        $(input).shouldBe(visible);
+        if ($(input).isEnabled() && text.length() > 0)
+            $(input).setValue(text);
+        else
+            $(btnTrigger).click();
 
-        if (js){
+        waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
+        $(ulLocator).shouldBe(Condition.visible);
+        clickJs($$(liLocator).filterBy(exactText(text)).shouldHaveSize(1).first());
 
-            clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
-        }
-        else {
-            Allure.addAttachment("ComboText","Aranılan kayıt bulunamadı.");
-        }
+//        boolean flag = $(ulLocator).is(Condition.appear);
+//        if (flag)
+//            if ($$(liLocator).filterBy(exactText(text)).size() == 1) {
+//                clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
+//            } else {
+//                Allure.addAttachment("ComboText", "Aranılan kayıttan listede birden fazla bulunmakta.");
+//            }
+//        else {
+//            Allure.addAttachment("ComboText", "Aranılan kayıt listede bulunamadı.");
+//            Assert.assertEquals(flag,true);
+//        }
 
         //$(label).shouldHave(text(text));
     }
@@ -123,9 +134,10 @@ class ComboBoxHelper extends BaseLibrary {
         WebElement li = WebDriverRunner.getWebDriver().findElement(By.xpath(panelXpath + " //li[.//*[contains(normalize-space(),'" + text + "')]]"));
         executeJavaScript("arguments[0].click()", li);
     }
+
     //ul.ui-selectonemenu-items
     private void click(String text) {
-        if($x(panelXpath).is(not(visible)))
+        if ($x(panelXpath).is(not(visible)))
             $(btnTrigger).click();
 
         $$(liLocator)
