@@ -16,7 +16,7 @@ public interface SolCrmElement extends SelenideElement {
 
     SolCrmElement selectComboBox(String text, boolean... js);
 
-    SolCrmElement selectComboText(String text, boolean... js);
+    SolCrmElement selectComboText(String text);
 
     ElementsCollection getComboBoxValues();
     //endregion
