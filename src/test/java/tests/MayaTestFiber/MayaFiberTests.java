@@ -161,7 +161,7 @@ public class MayaFiberTests extends BaseTest {
                 .cmbInternetProfilSec("Çocuk Profili")
                 .btnDegisikligiKaydet().
                 confirmDialog().confirmEvetTikla();
-//                .btnPopUpEvet()
+                //.btnPopUpEvet()
         customerAssetsPage
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
@@ -210,14 +210,14 @@ public class MayaFiberTests extends BaseTest {
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .openPage()
-                .degistirTikla()
-                .lokasyonIDDoldur(TestDataMaya.locationId)
-                .Ara()
-                .tablodanLokasyonSec()
-                .lokasyonSec()
-                .daireNoDoldur(TestDataMaya.daireNo)
-                .daireNoSec(TestDataMaya.daireNo)
-                .kaydet()
+           //     .degistirTikla()
+             //   .lokasyonIDDoldur(TestDataMaya.locationId)
+             //   .Ara()
+             //   .tablodanLokasyonSec()
+             //   .lokasyonSec()
+             //   .daireNoDoldur(TestDataMaya.daireNo)
+             //   .daireNoSec(TestDataMaya.daireNo)
+             //   .kaydet()
                 .kampanyaAra(TestDataMaya.fiberKampanya)
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
