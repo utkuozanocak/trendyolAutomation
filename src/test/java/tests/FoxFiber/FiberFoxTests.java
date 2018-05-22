@@ -76,28 +76,28 @@ public class FiberFoxTests extends BaseTest {
                 .mesajKontrol(TestDataFox.basariliMesaj);
 
     }
-//    @Severity(SeverityLevel.CRITICAL)
-//    @Test(enabled = true, description = "Fox Fiber İkinci Donanım Kurulum Kapama")
-//    public void TS0001_FoxIkinciDonanimKurulumKapatTest() throws InterruptedException, AWTException {
-//        FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
-//        StepDetayPage stepDetayPage = new StepDetayPage();
-//        MainPageFox mainPageFox = new MainPageFox();
-//
-//        foxReusableSteps.cihazSeriNoGetir("DECT");
-//
-//        loginFox(TestDataFox.username, TestDataFox.password);
-//
-//        foxReusableSteps.foxTicketingProcess(TestDataFox.taskIdIkinciDonanim, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
-//                TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-//                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
-//        stepDetayPage
-//                .teknikFormTabAc()
-//                .ikinciDonanimSeriNoDoldur(foxReusableSteps.seriNoDect())
-//                .seriNoKontrol()
-//                .EAMmesajKontrol(TestDataFox.EAMmesaj)
-//                .EAMmesajKontrolTamam()
-//                .gonder();
-//        mainPageFox
-//                .mesajKontrol(TestDataFox.basariliMesaj);
-//    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Fox Fiber İkinci Donanım Kurulum Kapama")
+    public void TS0001_FoxIkinciDonanimKurulumKapatTest() throws InterruptedException, AWTException {
+        FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
+        StepDetayPage stepDetayPage = new StepDetayPage();
+        MainPageFox mainPageFox = new MainPageFox();
+
+        foxReusableSteps.cihazSeriNoGetir("DECT");
+
+        loginFox(TestDataFox.username, TestDataFox.password);
+
+        foxReusableSteps.foxTicketingProcess(TestDataFox.taskIdIkinciDonanim, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
+                TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
+        stepDetayPage
+                .teknikFormTabAc()
+                .ikinciDonanimSeriNoDoldur(foxReusableSteps.seriNoDect())
+                .seriNoKontrol()
+                .EAMmesajKontrol(TestDataFox.EAMmesaj)
+                .EAMmesajKontrolTamam()
+                .gonder();
+        mainPageFox
+                .mesajKontrol(TestDataFox.basariliMesaj);
+    }
 }
