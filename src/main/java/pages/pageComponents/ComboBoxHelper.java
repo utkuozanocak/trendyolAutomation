@@ -94,6 +94,7 @@ class ComboBoxHelper extends BaseLibrary {
                 openPanel();
 
             clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
+
         } else {
             openPanel();
             $$(liLocator).filterBy(exactText(text)).get(0).scrollIntoView(false).click();
@@ -106,14 +107,21 @@ class ComboBoxHelper extends BaseLibrary {
         setLocatorsComboText(proxy);
 
         $(input).shouldBe(visible);
-        if ($(input).isEnabled() && text.length() > 0)
+        if ($(input).isEnabled() && text.length() > 0){
             $(input).setValue(text);
-        else
+            waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
+            $(ulLocator).shouldBe(Condition.visible);
+            clickJs($$(liLocator).filterBy(exactText(text)).shouldHaveSize(1).first());
+        }
+        else{
             $(btnTrigger).click();
+            waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
+            $(ulLocator).shouldBe(Condition.visible);
+            clickJs($$(liLocator).filterBy(exactText(text)).first());
+        }
 
-        waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
-        $(ulLocator).shouldBe(Condition.visible);
-        clickJs($$(liLocator).filterBy(exactText(text)).shouldHaveSize(1).first());
+
+
 
 //        boolean flag = $(ulLocator).is(Condition.appear);
 //        if (flag)

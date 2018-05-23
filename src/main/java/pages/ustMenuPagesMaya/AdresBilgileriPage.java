@@ -10,7 +10,9 @@ import pages.pageData.MayaUstMenuData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 import static pages.pageComponents.SolCrmFramework.comboBox;
+import static pages.pageComponents.SolCrmFramework.comboText;
 
 public class AdresBilgileriPage extends MainPageMaya
 {
@@ -49,19 +51,21 @@ public class AdresBilgileriPage extends MainPageMaya
 
     @Step("Mahalle seçilir.")
     public AdresBilgileriPage mahalleSec(String mahalle) {
-        CMB_MAHALLE_ID.getComboBoxValues().get(2).click();
+        CMB_MAHALLE_ID.selectComboBox("Altayçeşme");
         return this;
     }
 
     @Step("Sokak seçilir.")
     public AdresBilgileriPage sokakSec(String sokak) {
-        Selenide.sleep(1000);
-        CMB_SOKAK_ID.getComboBoxValues().get(1).click();
+
+        CMB_SOKAK_ID.selectComboBox(sokak);
+
         return this;
     }
 
     @Step("bina No seçilir.")
     public AdresBilgileriPage binaNoIlkKayitSec() {
+
         CMB_BINANO_ID.getComboBoxValues().get(1).click();
         return this;
     }

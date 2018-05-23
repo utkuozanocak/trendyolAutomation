@@ -21,7 +21,7 @@ public class ConfirmDialog extends MainPageMaya {
         return new ConfirmDialog();
     }
 
-    public SelenideElement getDialog(){return dialogs().filterBy(Condition.visible).first();}
+    public SelenideElement getDialog(){return dialogs().filterBy(Condition.appear).first();}
 
     @Step("Onay dialog mesajı")
     public SelenideElement dialogMessage(){
