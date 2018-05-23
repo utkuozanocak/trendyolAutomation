@@ -77,7 +77,7 @@ public class FiberFoxTests extends BaseTest {
 
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fox Fiber İkinci Donanım Kurulum Kapama")
+    @Test(enabled = false, description = "Fox Fiber İkinci Donanım Kurulum Kapama")
     public void TS0001_FoxIkinciDonanimKurulumKapatTest() throws InterruptedException, AWTException {
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
         StepDetayPage stepDetayPage = new StepDetayPage();
