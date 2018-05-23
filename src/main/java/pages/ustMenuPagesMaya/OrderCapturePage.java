@@ -295,6 +295,7 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("Hizmet adresi seçilir.")
         public ADSL hizmetAdresiSec() {
             CMB_HIZMETADRESI_XPATH.getComboBoxValues().get(1).click();
+          //  CMB_HIZMETADRESI_XPATH.getComboBoxValues().get(1).selectOptionByValue("%Maltepe%");
             return this;
         }
         @Step("Hizmet adresi seçilir.")

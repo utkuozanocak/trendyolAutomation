@@ -102,8 +102,8 @@ public class MayaSmokeTests extends BaseTest {
                 .blokEkle("Test Otomasyon")
                 .adresKaydet()
                 .confirmDialog().confirmEvetTikla();
-//               adresBilgileriPage .adresOnay()
-//                .adresEvetButonSec();
+          //     adresBilgileriPage .adresOnay()
+          //   .adresEvetButonSec();
     }
 
     @Severity(SeverityLevel.CRITICAL)
