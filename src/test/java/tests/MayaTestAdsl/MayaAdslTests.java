@@ -19,8 +19,8 @@ public class MayaAdslTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteriye ADSL siparişi girilir.")
-    public void TS0006_MayaCreateDslOrderTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0006 : Kurumsal ADSL Siparis Giris.")
+    public void TS0006_KurumsalADSLSiparisGiris() throws InterruptedException {
 
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
@@ -57,8 +57,8 @@ public class MayaAdslTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = false, description = "Müşteriye VDSL satışı yapılır.")
-    public void TS0007_MayaCreateVdslOrderTest() throws InterruptedException {
+    @Test(enabled = false, description = "TS0007 : Kurumsal VDSL Siparis Giris.")
+    public void TS0007_KurumsalVDSLSiparisGiris() throws InterruptedException {
 
         MainPageMaya mainPage = new MainPageMaya();
         OrderCapturePage orderCapturePage = new OrderCapturePage();

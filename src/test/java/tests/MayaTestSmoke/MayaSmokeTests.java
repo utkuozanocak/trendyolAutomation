@@ -19,8 +19,8 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Kurumsal kontak bilgisi güncelleme")
-    public void TS0003_MayaKontakGuncellemeTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0003 : Kurumsal Kontak Bilgisi Güncelleme.")
+    public void TS0003_KurumsalKontakBilgisiGuncelleme() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         MayaCustomerContactPage mayaCustomerContactPage = new MayaCustomerContactPage();
@@ -39,8 +39,8 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Sms Şifre Gönderimi")
-    public void TS0004_MusteriSmsSifreGonderimiTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0004 : Kurumsal Müşteri Sms Şifre Gönderimi")
+    public void TS0004_KurumsalMusteriSmsSifreGonderimi() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         EditCorporateCustomerPage editCorporateCustomerPage = new EditCorporateCustomerPage();
@@ -57,8 +57,8 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Özellik ekleme")
-    public void TS0005_MusteriOzellikEklemeTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0005 : Kurumsal Musteri Özellik Ekleme.")
+    public void TS0005_KurumsalMusteriOzellikEkleme() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerPropertyPage customerPropertyPage = new CustomerPropertyPage();
@@ -80,8 +80,8 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteriye yeni adres eklenir.")
-    public void TS0002_MayaAdresEkleTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0002 : Kurumsal Musteriye Yeni Adres Ekle")
+    public void TS0002_KurumsalMusteriyeYeniAdresEkle() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
@@ -107,8 +107,8 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Özellik ekleme")
-    public void TS0008_MusteriKurumsalIletisimBilgileriTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0008 : Kurumsal Musteri İletişim Bilgileri.")
+    public void TS0008_KurumsalMusteriIletisimBilgileri() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         customerCommunicationInfoDisplayPage customerCommunicationInfoDisplay = new customerCommunicationInfoDisplayPage();
@@ -127,8 +127,8 @@ public class MayaSmokeTests extends BaseTest {
            //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteri Partner Oranı Girişi")
-    public void TS0022_PartnerOraniGirisiTest() throws InterruptedException {
+    @Test(enabled = true, description = "TS0022 : Kurumsal Musteri Partner Oranı Girişi.")
+    public void TS0022_KurumsalMusteriPartnerOraniGirisi() throws InterruptedException {
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         

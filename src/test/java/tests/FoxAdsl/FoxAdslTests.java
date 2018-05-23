@@ -22,8 +22,8 @@ public class FoxAdslTests extends BaseTest {
 
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fox Adsl Kurulum Kapama")
-    public void TS0001_FoxAdslKurulumKapat() throws InterruptedException, AWTException {
+    @Test(enabled = true, description = "TS0001 : Kurumsal Adsl Kurulum Kapat")
+    public void TS0001_KurumsalAdslKurulumKapat() throws InterruptedException, AWTException {
 
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
         MainPageFox mainPageFox = new MainPageFox();

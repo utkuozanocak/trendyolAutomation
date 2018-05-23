@@ -18,10 +18,10 @@ public class FiberFoxTests extends BaseTest {
     public void loginBeforeTests() {
 
     }
-    String customerNo;
+
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fox Fiber Kurulum Kapama")
-    public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
+    @Test(enabled = true, description = "TS0001 : Kurumsal Fiber Kurulum Kapat")
+    public void TS0001_KurumsalFiberKurulumKapat() throws InterruptedException, AWTException {
 
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
         MainPageFox mainPageFox = new MainPageFox();
@@ -77,8 +77,8 @@ public class FiberFoxTests extends BaseTest {
 
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = false, description = "Fox Fiber İkinci Donanım Kurulum Kapama")
-    public void TS0001_FoxIkinciDonanimKurulumKapatTest() throws InterruptedException, AWTException {
+    @Test(enabled = false, description = "TS0002 : Kurumsal Fiber İkinci Donanım Kurulum Kapat")
+    public void TS0002_KurumsalIkinciDonanimKurulumKapatTest() throws InterruptedException, AWTException {
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
         StepDetayPage stepDetayPage = new StepDetayPage();
         MainPageFox mainPageFox = new MainPageFox();
