@@ -30,4 +30,8 @@ public class SolCrmFramework {
     public static SolCrmElement comboText(String selector) {
         return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
     }
+
+    public static SolCrmElement comboSearchBox(String selector) {
+        return ElementFinder.wrap(SolCrmElement.class, null, By.cssSelector(selector), 0);
+    }
 }

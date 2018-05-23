@@ -18,6 +18,7 @@ class ComboBoxHelper extends BaseLibrary {
     private String panelXpath;
     private By label;
     private By input;
+    private By filter;
     private By btnTrigger;
     private By liLocator;
     private By ulLocator;
@@ -29,6 +30,7 @@ class ComboBoxHelper extends BaseLibrary {
             id = id.substring(0, id.lastIndexOf("_label"));
 
         label = By.id(id + "_label");
+        filter = By.id(id + "_filter");
 
         btnTrigger = proxy.attr("class").contains("ui-selectonemenu")
                 ? By.cssSelector("[id='" + id + "'] .ui-selectonemenu-trigger")
@@ -50,7 +52,6 @@ class ComboBoxHelper extends BaseLibrary {
             id = id.substring(0, id.lastIndexOf("_input"));
 
         input = By.id(id + "_input");
-
 
         btnTrigger = proxy.attr("class").contains("ui-autocomplete")
                 ? By.cssSelector("[id='" + id + "'] .ui-autocomplete-dropdown")
@@ -90,11 +91,14 @@ class ComboBoxHelper extends BaseLibrary {
         }*/
 
         if (js) {
-            if ($$(liLocator).filterBy(exactText(text)).size() == 0)
+            if ($$(liLocator).filterBy(exactText(text)).size() == 0) {
                 openPanel();
-
-            clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
-
+                if ($(filter).is(visible)) {
+                    $(filter).setValue(text);
+                    clickJs($$(liLocator).filterBy(text(text)).first().toWebElement());
+                } else
+                    clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
+            }
         } else {
             openPanel();
             $$(liLocator).filterBy(exactText(text)).get(0).scrollIntoView(false).click();
@@ -107,35 +111,17 @@ class ComboBoxHelper extends BaseLibrary {
         setLocatorsComboText(proxy);
 
         $(input).shouldBe(visible);
-        if ($(input).isEnabled() && text.length() > 0){
+        if ($(input).isEnabled() && text.length() > 0) {
             $(input).setValue(text);
             waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
             $(ulLocator).shouldBe(Condition.visible);
             clickJs($$(liLocator).filterBy(exactText(text)).shouldHaveSize(1).first());
-        }
-        else{
+        } else {
             $(btnTrigger).click();
             waitForLoadingJS(WebDriverRunner.getWebDriver(), 10000);
             $(ulLocator).shouldBe(Condition.visible);
             clickJs($$(liLocator).filterBy(exactText(text)).first());
         }
-
-
-
-
-//        boolean flag = $(ulLocator).is(Condition.appear);
-//        if (flag)
-//            if ($$(liLocator).filterBy(exactText(text)).size() == 1) {
-//                clickJs($$(liLocator).filterBy(exactText(text)).first().toWebElement());
-//            } else {
-//                Allure.addAttachment("ComboText", "Aranılan kayıttan listede birden fazla bulunmakta.");
-//            }
-//        else {
-//            Allure.addAttachment("ComboText", "Aranılan kayıt listede bulunamadı.");
-//            Assert.assertEquals(flag,true);
-//        }
-
-        //$(label).shouldHave(text(text));
     }
 
     private void jsClick(String text) {
