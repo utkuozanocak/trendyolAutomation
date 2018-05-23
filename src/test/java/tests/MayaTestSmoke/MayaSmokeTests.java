@@ -99,7 +99,7 @@ public class MayaSmokeTests extends BaseTest {
                 .mahalleSec(TestDataMaya.mahalle)
                 .sokakSec(TestDataMaya.sokak)
                 .binaNoIlkKayitSec()
-                .blokEkle("Test Blok")
+                .blokEkle("Test Otomasyon")
                 .adresKaydet()
                 .confirmDialog().confirmEvetTikla();
 //               adresBilgileriPage .adresOnay()

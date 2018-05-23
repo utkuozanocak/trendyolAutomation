@@ -49,13 +49,14 @@ public class AdresBilgileriPage extends MainPageMaya
 
     @Step("Mahalle seçilir.")
     public AdresBilgileriPage mahalleSec(String mahalle) {
-        CMB_MAHALLE_ID.selectComboBox(mahalle);
+        CMB_MAHALLE_ID.getComboBoxValues().get(2).click();
         return this;
     }
 
     @Step("Sokak seçilir.")
     public AdresBilgileriPage sokakSec(String sokak) {
-        CMB_SOKAK_ID.selectComboBox(sokak);
+        Selenide.sleep(1000);
+        CMB_SOKAK_ID.getComboBoxValues().get(1).click();
         return this;
     }
 
