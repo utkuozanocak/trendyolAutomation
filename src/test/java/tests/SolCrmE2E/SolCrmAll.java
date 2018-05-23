@@ -69,7 +69,11 @@ public class SolCrmAll extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
+<<<<<<< HEAD
+    @Test(enabled = true, dependsOnMethods = {"TS0001_MayaCreateOrderE2ETest"},description = "Fox Fiber Kurulum Kapama")
+=======
     @Test(enabled = true, dependsOnMethods = {"TS0001_MayaCreateOrderE2ETest"}, description = "Fox Fiber Kurulum Kapama")
+>>>>>>> f2af753d12dd41c3b06be137bd379a027cf668d6
     public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
 
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
