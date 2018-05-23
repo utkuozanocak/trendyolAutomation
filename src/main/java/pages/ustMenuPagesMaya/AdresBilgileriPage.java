@@ -51,7 +51,7 @@ public class AdresBilgileriPage extends MainPageMaya
 
     @Step("Mahalle seçilir.")
     public AdresBilgileriPage mahalleSec(String mahalle) {
-        CMB_MAHALLE_ID.selectComboBox("Altayçeşme");
+        CMB_MAHALLE_ID.selectComboBox(mahalle);
         return this;
     }
 
@@ -65,7 +65,6 @@ public class AdresBilgileriPage extends MainPageMaya
 
     @Step("bina No seçilir.")
     public AdresBilgileriPage binaNoIlkKayitSec() {
-
         CMB_BINANO_ID.getComboBoxValues().get(1).click();
         return this;
     }
