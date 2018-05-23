@@ -23,8 +23,8 @@ import java.util.Locale;
 public class BaseTest extends BaseLibrary {
 
     //Seconds
-    static final int timeout = 20;
-    static final int loadingTimeout = 40;
+    static final int timeout = 60;
+    static final int loadingTimeout = 120;
 
     public Locale turkishLocal;
 
@@ -55,8 +55,7 @@ public class BaseTest extends BaseLibrary {
         Configuration.screenshots = Configuration.remote == null;
         Configuration.savePageSource = false;
         Configuration.collectionsTimeout = timeout * 1000;
-        Configuration.holdBrowserOpen = true;
-        Configuration.holdBrowserOpen = Configuration.remote== null;
+        Configuration.holdBrowserOpen = false;
         Configuration.timeout = timeout * 1000;
         Configuration.startMaximized = true;
         Configuration.pollingInterval = 100;

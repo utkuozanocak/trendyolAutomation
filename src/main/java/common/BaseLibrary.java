@@ -43,7 +43,7 @@ public class BaseLibrary extends ElementsContainer {
     protected static String uploadPath = null;
     protected static String downloadPath = null;
     private static String browserName = null;
-    private long waitForLoading = 30;
+    private long waitForLoading = 60;
     private int doWaitLoading = 0;
     private boolean doNotWaitLoading = false;
     //public WebDriverWait wait;
