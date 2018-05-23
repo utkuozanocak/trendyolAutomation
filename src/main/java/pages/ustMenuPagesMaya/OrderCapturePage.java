@@ -6,6 +6,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import pages.MainPageMaya;
 import pages.pageComponents.SolCrmElement;
 import pages.pageData.UrunEklemeData;
@@ -114,7 +115,8 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Lokasyon id alanına \"{lokasyonId}\" yazılır.")
         public Fiber lokasyonIDDoldur(String lokasyonId) {
-            TXT_LOCATION_XPATH.setValue(lokasyonId);
+
+            setValueJS(TXT_LOCATION_XPATH,lokasyonId);
             return this;
         }
 
@@ -177,11 +179,13 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("2. donanım ürünü siparişe eklenir.")
         public Fiber donanimEkle(String donanim) {
 
-
+            Selenide.sleep(1000);
             Selenide.executeJavaScript("arguments[0].scrollIntoView(true);",CMB_IKINCIDONANIM_XPATH);
 
-//            SelenideElement lbl = $x("//label[normalize-space(text())='Dect Telefon Seçim Grubu Fiber']");
-//            BTN_DONANIMEKLE_XPATH.scrollIntoView(true);
+           SelenideElement lbl = $x("//label[normalize-space(text())='Dect Telefon Seçim Grubu Fiber']");
+           lbl.scrollIntoView(true);
+
+       //     CMB_IKINCIDONANIM_XPATH.sendKeys(Keys.END);
 
             CMB_IKINCIDONANIM_XPATH.selectComboBox(donanim);
             BTN_DONANIMEKLE_XPATH.click();
@@ -190,7 +194,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Sipariş oluştur tıklanır.")
         public Fiber siparişOluştur() {
-            BTN_SIPARISIOLUSTUR_XPATH.click();
+            clickJs(BTN_SIPARISIOLUSTUR_XPATH);
             return this;
         }
     }
@@ -210,6 +214,8 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement BTN_ADSLHIZEKLE_XPATH = $(By.xpath(GetObject("MAYA", "BTN_ADSLHIZEKLE_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_SIPARISEKLE_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISEKLE_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISIOLUSTUR_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
+
+        private SolCrmElement CMB_HIZMETADRESI_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_HIZMETADRESI_XPATH","XPATH","MayaOrderCapturePage","PRP")));
 
 
         @Step("ADSL menu açılır.")
@@ -234,7 +240,8 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("TT'den gelen erisim no girilir.")
         public ADSL erisimNoGir(String erisimno) {
-            DSL_ERISIM_NO.sendKeys(erisimno);
+
+            setValueJS(DSL_ERISIM_NO,erisimno);
             return this;
         }
 
@@ -280,7 +287,13 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Sipariş oluştur tıklanır.")
         public ADSL siparişOluştur() {
+            BTN_SIPARISIOLUSTUR_XPATH.shouldBe(Condition.visible);
             BTN_SIPARISIOLUSTUR_XPATH.click();
+            return this;
+        }
+        @Step("Hizmet adresi seçilir.")
+        public ADSL hizmetAdresiSec(String Lokasyon) {
+            CMB_HIZMETADRESI_XPATH.selectComboBox(Lokasyon);
             return this;
         }
 
@@ -341,7 +354,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Kampanya Ara alanına \"{kampanya}\" yazılır.")
         public VDSL kampanyaAraDsl(String kampanya) {
-            sleep(2000);
+            sleep(1000);
             TXT_SEARCHCAMPAIGN_XPATH.sendKeys(kampanya);
             return this;
         }

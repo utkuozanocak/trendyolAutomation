@@ -33,7 +33,10 @@ public class MayaAdslTests extends BaseTest {
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         orderCapturePage
-                .siparisOlusturSayfaAc()
+                .siparisOlusturSayfaAc();
+       // orderCapturePage.adslAc().hizmetAdresiSec("Yalı Mh. İtina Sk. test Blok No:3A Kartal 34873");
+
+        orderCapturePage
                 .siparseUrunEkleTikla()
                 .adslAc()
                 .openPage()
@@ -54,7 +57,7 @@ public class MayaAdslTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Müşteriye VDSL satışı yapılır.")
+    @Test(enabled = false, description = "Müşteriye VDSL satışı yapılır.")
     public void TS0007_MayaCreateVdslOrderTest() throws InterruptedException {
 
         MainPageMaya mainPage = new MainPageMaya();

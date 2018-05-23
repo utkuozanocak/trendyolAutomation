@@ -26,6 +26,7 @@ public class SolCrmAll extends BaseTest {
     MayaFiberTests mayaFiberTests = new MayaFiberTests();
     FiberFoxTests fiberFoxTests = new FiberFoxTests();
     String customerNo;
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
     public void TS0001_MayaCreateOrderE2ETest() throws InterruptedException {
@@ -65,11 +66,14 @@ public class SolCrmAll extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
-
-
     }
+
     @Severity(SeverityLevel.CRITICAL)
+<<<<<<< HEAD
     @Test(enabled = true, dependsOnMethods = {"TS0001_MayaCreateOrderE2ETest"},description = "Fox Fiber Kurulum Kapama")
+=======
+    @Test(enabled = true, dependsOnMethods = {"TS0001_MayaCreateOrderE2ETest"}, description = "Fox Fiber Kurulum Kapama")
+>>>>>>> f2af753d12dd41c3b06be137bd379a027cf668d6
     public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
 
         FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
@@ -82,16 +86,13 @@ public class SolCrmAll extends BaseTest {
         foxReusableSteps.cihazSeriNoGetir("GPON");
 
         loginFox(TestDataFox.username, TestDataFox.password);
-        if (customerNo.equals(null))
-        {
+        if (customerNo.equals(null)) {
             foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
-                    TestDataFox.akisDurumu, TestDataFox.aciklama,customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
+                    TestDataFox.akisDurumu, TestDataFox.aciklama, customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
                     TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
-        }
-        else
-        {
+        } else {
             foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
-                    TestDataFox.akisDurumu, TestDataFox.aciklama,customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
+                    TestDataFox.akisDurumu, TestDataFox.aciklama, customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
                     TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
         }
 
@@ -106,8 +107,7 @@ public class SolCrmAll extends BaseTest {
                     .guncelle()
                     .mesajKontrolu("Güncelleme işlemi tamamlanmıştır")
                     .seriNoGirisEkraniKapat();
-        }
-        else if (altYapi.equals("GPON")) {
+        } else if (altYapi.equals("GPON")) {
 
             stepDetayPage
                     .teknikFormTabAc()
@@ -134,9 +134,10 @@ public class SolCrmAll extends BaseTest {
                 .mesajKontrol(TestDataFox.basariliMesaj);
 
     }
+
     @Step("Fox Akış işlemleri tamamladı.")
     public void foxTicketingProcess(String foxTaskId, String foxFlowStatu, String foxUserChangeMessage,
-                                    String foxCustomerSegment, String foxAkisDurumu, String Aciklama,String CustomerNo,
+                                    String foxCustomerSegment, String foxAkisDurumu, String Aciklama, String CustomerNo,
                                     String foxKurulumStatu, String foxKurulumAltStatu, String foxSozlesmeStatu, String foxSozlesmeSubStatu) {
 
         MainPageFox mainPageFox = new MainPageFox();
