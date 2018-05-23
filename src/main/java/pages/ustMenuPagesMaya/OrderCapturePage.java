@@ -274,6 +274,7 @@ public class OrderCapturePage extends MainPageMaya {
 
         @Step("Hız Seçilir ve Eklenir.")
         public ADSL hizSecAdsl(String hiz) {
+            Selenide.sleep(2000);
             CMB_ADSLHIZSEC_XPATH.selectComboBox(hiz);
             BTN_ADSLHIZEKLE_XPATH.click();
             return this;
@@ -292,9 +293,14 @@ public class OrderCapturePage extends MainPageMaya {
             return this;
         }
         @Step("Hizmet adresi seçilir.")
-        public ADSL hizmetAdresiSec(String Lokasyon) {
-            CMB_HIZMETADRESI_XPATH.selectComboBox(Lokasyon);
+        public ADSL hizmetAdresiSec() {
+            CMB_HIZMETADRESI_XPATH.getComboBoxValues().get(1).click();
             return this;
+        }
+        @Step("Hizmet adresi seçilir.")
+        public String getAdres() {
+            String x=CMB_HIZMETADRESI_XPATH.getText();
+            return x;
         }
 
     }

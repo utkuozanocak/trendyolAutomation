@@ -34,8 +34,8 @@ public class MayaAdslTests extends BaseTest {
 
         orderCapturePage
                 .siparisOlusturSayfaAc();
-       // orderCapturePage.adslAc().hizmetAdresiSec("Yalı Mh. İtina Sk. test Blok No:3A Kartal 34873");
-
+        orderCapturePage.adslAc().hizmetAdresiSec();
+        // String x=orderCapturePage.adslAc().getAdres();
         orderCapturePage
                 .siparseUrunEkleTikla()
                 .adslAc()
