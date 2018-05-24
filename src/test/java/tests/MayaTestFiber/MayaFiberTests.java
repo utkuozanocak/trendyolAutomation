@@ -228,7 +228,7 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0010 : Kurumsal Fiber İkinci Donanim Sipariş Girişi.")
+    @Test(enabled = true, description = "TS0055 : Kurumsal Fiber Devir Siparişi girilir.")
     public void TS0055_KurumsalFiberDevirSiparisGirisi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
@@ -245,6 +245,10 @@ public class MayaFiberTests extends BaseTest {
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla();
+           /*     .btnDevirTikla()
+                .musteriNoGir("")
+                .musteriSec()
+                .devirSiparisiTamamla(); */
 
 
     }
