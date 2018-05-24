@@ -36,6 +36,8 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_DEGISIKLIGI_KAYDET = $(By.xpath(GetObject("MAYA","BTN_DEGISIKLIGI_KAYDET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_POPUP_EVET = $(By.xpath(GetObject("MAYA","BTN_POPUP_EVET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_KAMPANYA_DEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYA_DEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_NAKIL_XPATH = $(By.xpath(GetObject("FOX","BTN_NAKIL_XPATH","XPATH","CustomerAssetsPage","PRP")));
+
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -193,5 +195,8 @@ public class CustomerAssetsPage extends MainPageMaya {
         Assert.assertEquals(LBL_MSG.text().contains(mesaj), true);
         takeScreenshot();
     }
-
+    @Step("Nakil butonuna tıklanır.")
+    public void btnDevirTikla() {
+        BTN_NAKIL_XPATH.click();
+    }
 }
