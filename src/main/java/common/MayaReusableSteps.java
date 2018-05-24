@@ -3,6 +3,7 @@ package common;
 import data.TestDataMaya;
 import io.qameta.allure.Step;
 import pages.MainPageMaya;
+import pages.TestToolPage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
 public class MayaReusableSteps extends BaseLibrary {
@@ -26,9 +27,10 @@ public class MayaReusableSteps extends BaseLibrary {
 
     @Step("Testte kullanılmak üzere erişim no alınır.")
     public String erisimNoGetir() throws InterruptedException {
+        TestToolPage testToolPage = new TestToolPage();
 
-        testToolAc(TestDataMaya.churnKontrolUrl);
-        erisimNo = GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
+        testToolPage.testToolAc(TestDataMaya.churnKontrolUrl);
+        erisimNo = testToolPage.GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
         return erisimNo;
     }
 }
