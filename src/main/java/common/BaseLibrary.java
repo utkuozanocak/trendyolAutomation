@@ -6,13 +6,11 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -25,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1089,21 +1086,21 @@ public class BaseLibrary extends ElementsContainer {
                         " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
             while (rs.next()) {
                 dataSet[0] = rs.getInt("ID");
-                if (dataSet[0].equals(null))
-                {
-                    rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
-                            " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
-                            " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
-                            " ON  s.WORKFLOWINSTANCE = w.ID" + " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
-                            " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
-                            " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
-                            " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
-                            " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
-                            " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
-                            " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
-                    while (rs.next()) {
-                        dataSet[0] = rs.getInt("ID");
-                    }
+            }
+            if (dataSet[0] == null)
+            {
+                rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
+                        " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
+                        " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
+                        " ON  s.WORKFLOWINSTANCE = w.ID" + " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
+                        " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
+                        " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
+                        " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
+                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
+                        " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
+                        " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
+                while (rs.next()) {
+                    dataSet[0] = rs.getInt("ID");
                 }
             }
             connection.close();
