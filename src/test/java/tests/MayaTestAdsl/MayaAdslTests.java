@@ -11,9 +11,12 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
+import java.lang.reflect.Method;
+
 public class MayaAdslTests extends BaseTest {
 
     String customerNo;
+
     @BeforeMethod
     public void loginBeforeTests() {
 
@@ -54,8 +57,9 @@ public class MayaAdslTests extends BaseTest {
                 .hizSecAdsl(TestDataMaya.adslHiz)
                 .siparisEkle()
                 .siparişOluştur();
-        int testId = getTestId(Test.class.getName())[0];
-        insertCustomer(testId,Integer.parseInt(customerNo),true);
+
+        int testId = getTestId("TS0001_KurumsalADSLSiparisGiris")[0];
+        insertCustomer(Integer.parseInt(customerNo),true,testId);
     }
 
     @Severity(SeverityLevel.CRITICAL)
