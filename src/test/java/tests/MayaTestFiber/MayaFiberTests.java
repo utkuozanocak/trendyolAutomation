@@ -249,9 +249,9 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla();
-           /*     .btnDevirTikla()
-                .musteriNoGir("")
+                .btnEtkilesimlerTikla()
+                .btnDevirTikla();
+              /*  .musteriNoGir("")
                 .musteriSec()
                 .devirSiparisiTamamla(); */
 
