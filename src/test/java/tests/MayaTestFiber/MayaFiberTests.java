@@ -161,7 +161,7 @@ public class MayaFiberTests extends BaseTest {
                 .cmbInternetProfilSec("Çocuk Profili")
                 .btnDegisikligiKaydet().
                 confirmDialog().confirmEvetTikla();
-                //.btnPopUpEvet()
+        //.btnPopUpEvet()
         customerAssetsPage
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
@@ -210,14 +210,14 @@ public class MayaFiberTests extends BaseTest {
                 .siparseUrunEkleTikla()
                 .fiberAc()
                 .openPage()
-           //     .degistirTikla()
-             //   .lokasyonIDDoldur(TestDataMaya.locationId)
-             //   .Ara()
-             //   .tablodanLokasyonSec()
-             //   .lokasyonSec()
-             //   .daireNoDoldur(TestDataMaya.daireNo)
-             //   .daireNoSec(TestDataMaya.daireNo)
-             //   .kaydet()
+                .degistirTikla()
+                .lokasyonIDDoldur(TestDataMaya.locationId)
+                .Ara()
+                .tablodanLokasyonSec()
+                .lokasyonSec()
+                .daireNoDoldur(TestDataMaya.daireNo)
+                .daireNoSec(TestDataMaya.daireNo)
+                .kaydet()
                 .kampanyaAra(TestDataMaya.fiberKampanya)
                 .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
                 .kampanyaSec()
@@ -225,13 +225,28 @@ public class MayaFiberTests extends BaseTest {
                 .donanimEkle("Dect Telefon C610")
                 .siparisEkle()
                 .siparişOluştur();
-        //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
-        //mainPageMaya.basariMesajKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0010 : Kurumsal Fiber İkinci Donanim Sipariş Girişi.")
+    public void TS0055_KurumsalFiberDevirSiparisGirisi() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla();
 
 
-//        orderCapturePage.adslAc();
-
-//        mainPageMaya.urunSecimMenu("Bulut Ürünleri","Eplatform");
     }
 }
 
