@@ -1,25 +1,20 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import common.BaseLibrary;
 import io.qameta.allure.Step;
-import org.apache.poi.hssf.record.LbsDataSubRecord;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.pageData.FoxUstMenuData;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainPageFox extends BaseLibrary {
 
     public void ustMenuFox(Enum menu) {
         String groupName = ((FoxUstMenuData.UstMenuGroupFox) menu).getName();
         $(By.xpath("//ul[@class='nav nav-tabs']//a[.='" + groupName + "']")).should(Condition.visible).click();
-
     }
 
     public void akisNoDoldur(String akisNo) {

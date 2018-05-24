@@ -29,13 +29,16 @@ public class MayaAdslTests extends BaseTest {
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+
         String erisimNo = mayaReusableSteps.erisimNoGetir();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+
         customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
+
         orderCapturePage
                 .siparisOlusturSayfaAc();
         orderCapturePage.adslAc().hizmetAdresiSec();

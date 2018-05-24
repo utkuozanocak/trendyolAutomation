@@ -6,13 +6,11 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -25,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1077,7 +1074,20 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
-            if (CustomerNo.equals(null))
+                rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
+                        " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
+                        " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
+                        " ON  s.WORKFLOWINSTANCE = w.ID" + " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
+                        " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
+                        " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
+                        " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
+                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] = '"+CustomerNo[0]+"' and s2.[VALUE]='" + TaskId + "'" +
+                        " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
+                        " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
+            while (rs.next()) {
+                dataSet[0] = rs.getInt("ID");
+            }
+            if (dataSet[0] == null)
             {
                 rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
                         " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
@@ -1089,24 +1099,9 @@ public class BaseLibrary extends ElementsContainer {
                         " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
                         " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
                         " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
-            }
-            else
-            {
-                rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
-                        " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
-                        " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
-                        " ON  s.WORKFLOWINSTANCE = w.ID" + " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
-                        " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
-                        " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
-                        " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
-                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] = '"+CustomerNo[0]+"' and s2.[VALUE]='" + TaskId + "'" +
-                        " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
-                        " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
-            }
-
-
-            while (rs.next()) {
-                dataSet[0] = rs.getInt("ID");
+                while (rs.next()) {
+                    dataSet[0] = rs.getInt("ID");
+                }
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
@@ -1117,7 +1112,6 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-
 
     public String[] FoxGetUserForChange(String AkisNo) {
         Connection connection;
@@ -1173,62 +1167,6 @@ public class BaseLibrary extends ElementsContainer {
             e.printStackTrace();
         }
         return dataSet;
-    }
-
-    @Step("Test Tool sayfası açılır.")
-    public void testToolAc(String url) throws InterruptedException {
-        Selenide.open(url);
-//        try {
-//            Robot robot = new Robot();
-//            robot.keyPress(KeyEvent.VK_CONTROL);
-//            robot.keyPress(KeyEvent.VK_T);
-//            robot.keyRelease(KeyEvent.VK_CONTROL);
-//            robot.keyRelease(KeyEvent.VK_T);
-//            switchTo().window(1);
-//            Selenide.open(url);
-//        } catch (AWTException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    @Step("Test Tool'dan seri numarası sorgulanır.")
-    public String GetSerialNumber(String ortam, String depo, String cihaz) throws AWTException {
-        String seriNo = null;
-        int i = 0;
-        $(By.id("ctl00_MainContent_DrpOrtamList")).selectOption(ortam);
-        $(By.id("ctl00_MainContent_DrpDepoList")).selectOption(depo);
-        $(By.id("ctl00_MainContent_DrpProductList")).selectOption(cihaz);
-        $(By.id("ctl00_MainContent_lnkSearch")).click();
-        while (!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i < 10) {
-            sleep(1000);
-            i++;
-        }
-        seriNo = $(By.id("ctl00_MainContent_txtSeriNo")).getValue();
-        System.out.println(seriNo);
-//        Robot robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_CONTROL);
-//        robot.keyPress(KeyEvent.VK_W);
-//        robot.keyRelease(KeyEvent.VK_CONTROL);
-//        robot.keyRelease(KeyEvent.VK_W);
-        return seriNo;
-    }
-
-    @Step("Test Tool'dan Telefon numarası sorgulanır.")
-    public String GetPhoneNumber(String city, String env, String churnType) {
-        String phoneNumber = null;
-        int i = 0;
-        $(By.id("ctl00_MainContent_CityList")).selectOption(city);
-        $(By.xpath("//label[text()='" + env + "']//..//input")).click();
-        $(By.id("ctl00_MainContent_ChurnList")).selectOption(churnType);
-        $(By.id("ctl00_MainContent_lnkErisimNoGetir")).click();
-        while (!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i < 10) {
-            sleep(1000);
-            i++;
-        }
-        phoneNumber = $(By.id("ctl00_MainContent_txtTelno")).getValue();
-        System.out.println(phoneNumber);
-//        closeNewWindow();
-        return phoneNumber;
     }
 
     public void tabloComboBoxSec(ElementsCollection element,String statu,String urun,String secim){

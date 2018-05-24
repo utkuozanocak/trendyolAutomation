@@ -11,6 +11,7 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
 import pages.ustMenuPagesMaya.CustomerAssetsPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
 public class MayaFiberTests extends BaseTest {
 
@@ -25,10 +26,10 @@ public class MayaFiberTests extends BaseTest {
     public void TS0001_KurumsalFiberSiparisGiris() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
@@ -49,6 +50,8 @@ public class MayaFiberTests extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
+
+
         int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
 
 
