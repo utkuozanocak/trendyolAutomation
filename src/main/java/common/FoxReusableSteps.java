@@ -60,8 +60,9 @@ public class FoxReusableSteps extends BaseLibrary {
         KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
         AkisDetayPage akisDetayPage = new AkisDetayPage();
         StepDetayPage stepDetayPage = new StepDetayPage();
-        String customerNo = GetCustomer(testName,"1")[0];
-        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu,customerNo)[0].toString();
+        Integer customerNo = GetCustomer(testName,true)[0];
+        String CustomerNo = String.valueOf(customerNo);
+        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu, CustomerNo)[0].toString();
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];

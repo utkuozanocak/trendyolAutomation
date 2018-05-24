@@ -36,7 +36,7 @@ public class FiberFoxTests extends BaseTest {
 
         foxReusableSteps.foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
                 TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu,"TS0001_KurumsalFiberKurulumKapat");
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu,"TS0001_KurumsalFiberSiparisGiris");
          altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
 
         if (altYapi.equals("FTTb")) {
