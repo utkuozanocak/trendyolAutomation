@@ -9,10 +9,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
+import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
 public class MayaAdslTests extends BaseTest {
 
-
+    String customerNo;
     @BeforeMethod
     public void loginBeforeTests() {
 
@@ -20,18 +21,18 @@ public class MayaAdslTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0006 : Kurumsal ADSL Siparis Giris.")
-    public void TS0006_KurumsalADSLSiparisGiris() throws InterruptedException {
+    public void TS0001_KurumsalADSLSiparisGiris() throws InterruptedException {
 
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         String erisimNo = mayaReusableSteps.erisimNoGetir();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
-
+        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
         orderCapturePage
                 .siparisOlusturSayfaAc();
         orderCapturePage.adslAc().hizmetAdresiSec();
@@ -53,7 +54,8 @@ public class MayaAdslTests extends BaseTest {
                 .hizSecAdsl(TestDataMaya.adslHiz)
                 .siparisEkle()
                 .siparişOluştur();
-
+        int testId = getTestId(Test.class.getName())[0];
+        insertCustomer(testId,Integer.parseInt(customerNo),true);
     }
 
     @Severity(SeverityLevel.CRITICAL)

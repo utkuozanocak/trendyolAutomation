@@ -59,8 +59,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0008 : Kurumsal Fiber Hız Değişikliği.")
-    public void TS0008_KurumsalFiberHizDegisikligi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0002 : Kurumsal Fiber Hız Değişikliği.")
+    public void TS0002_KurumsalFiberHizDegisikligi() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
@@ -91,8 +91,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0009 : Kurumsal Fiber İptal Siparişi.")
-    public void TS0009_KurumsalFiberIptalSiparisi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0003 : Kurumsal Fiber İptal Siparişi.")
+    public void TS0003_KurumsalFiberIptalSiparisi() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
@@ -116,8 +116,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0034 : Kurumsal Fiber Data Şifre Değişikliği.")
-    public void TS0034_KurumsalFiberDataSifreDegisikligi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0004 : Kurumsal Fiber Data Şifre Değişikliği.")
+    public void TS0004_KurumsalFiberDataSifreDegisikligi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
 
@@ -140,8 +140,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0035 : Kurumsal Guvenli Internet Profil Degisikligi.")
-    public void TS0035_KurumsalGuvenliInternetProfilDegisikligi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0005 : Kurumsal Guvenli Internet Profil Degisikligi.")
+    public void TS0005_KurumsalGuvenliInternetProfilDegisikligi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         MainPageMaya mainPageMaya = new MainPageMaya();
@@ -167,8 +167,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0036 : Kurumsal Fiber UpSell Kampanya Değişikliği.")
-    public void TS0036_KurumsalFiberUpSellKampanyaDegisikligi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0006 : Kurumsal Fiber UpSell Kampanya Değişikliği.")
+    public void TS0006_KurumsalFiberUpSellKampanyaDegisikligi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
@@ -197,8 +197,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0010 : Kurumsal Fiber İkinci Donanim Sipariş Girişi.")
-    public void TS0010_KurumsalFiberIkinciDonanimSiparisGirisi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0007 : Kurumsal Fiber İkinci Donanim Sipariş Girişi.")
+    public void TS0007_KurumsalFiberIkinciDonanimSiparisGirisi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);

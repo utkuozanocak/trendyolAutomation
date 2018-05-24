@@ -892,63 +892,6 @@ public class BaseLibrary extends ElementsContainer {
         return myIP;
     }
 
-//    public static void connect() throws SQLException, ClassNotFoundException {
-//        String[] _dataSet = new String[2];
-//        String databaseURL = "jdbc:sqlserver://10.35.160.7;databaseName=TestDB;user=SOLTEST;password=SOL2000!";
-//        //String user = "root";
-//        //String password = "root";
-//        connection = null;
-//        try {
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            System.out.println("Connecting to Database...");
-//            connection = DriverManager.getConnection(databaseURL);
-//            if (connection != null) {
-//                System.out.println("Connected to the Database...");
-//            }
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        } catch (ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public static void connectPrp() throws SQLException, ClassNotFoundException {
-//        String[] _dataSet = new String[2];
-//        String databaseURL = "jdbc:sqlserver://10.35.160.5;databaseName=SolTelcoPreProd;user=SOLTEST;password=SOL2000!";
-//        //String user = "root";
-//        //String password = "root";
-//        connection = null;
-//        try {
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            System.out.println("Connecting to Database...");
-//            connection = DriverManager.getConnection(databaseURL);
-//            if (connection != null) {
-//                System.out.println("Connected to the Database...");
-//            }
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        } catch (ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public static void connectFoxPrp() throws SQLException, ClassNotFoundException {
-//        String[] _dataSet = new String[2];
-//        String databaseURL = "jdbc:sqlserver://172.20.164.143:52282;databaseName=NetflowGlobal;user=nf_user;password=mahfel16";
-//        connection = null;
-//        try {
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            System.out.println("Connecting to Database...");
-//            connection = DriverManager.getConnection(databaseURL);
-//            if (connection != null) {
-//                System.out.println("Connected to the Database...");
-//            }
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        } catch (ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 
     public String URL_VALUE;
     public String OBJECT_VALUE;
@@ -1036,6 +979,7 @@ public class BaseLibrary extends ElementsContainer {
         }
         return OBJECT_VALUE;
     }
+
 
     public static String[] GetTestParameter(String strTestName, String strParameterName) {
         Connection connection;
@@ -1284,5 +1228,46 @@ public class BaseLibrary extends ElementsContainer {
         if($x(menu).is(Condition.not(Condition.visible)))
             $(btnTriger).click();
         $$(liLocator).filterBy(Condition.text(secim)).first().click();
+    }
+    public Integer[] getTestId(String testName) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
+        Integer[] dataSet = new Integer[1];
+        try {
+            connection = new DBConnection().connectFoxPrp();
+            statement = connection.createStatement();
+
+            rs = statement.executeQuery("select TestID from TBL_Tests where TestName='" + testName + "'");
+
+            while (rs.next()) {
+                dataSet[0] = rs.getInt("TestID");
+
+            }
+            connection.close();
+            System.out.println("Connection Closed to the Database...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return dataSet;
+    }
+    public static void insertCustomer (int testId, int customerNo, boolean isUsable) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
+        try {
+            connection = new DBConnection().connect();
+            statement = connection.createStatement();
+            int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers " + "VALUES (customerNo,isUsable,testId)");
+            if (executeUpdate > 0) {
+                System.out.println("Insert Success");
+            }
+            connection.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
     }
 }
