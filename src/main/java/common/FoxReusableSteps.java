@@ -3,6 +3,7 @@ package common;
 import data.TestDataFox;
 import io.qameta.allure.Step;
 import pages.MainPageFox;
+import pages.TestToolPage;
 import pages.ustMenuPagesFox.AkisDetayPage;
 import pages.ustMenuPagesFox.AkisListesiPage;
 import pages.ustMenuPagesFox.KullaniciDegistirPage;
@@ -20,18 +21,19 @@ public class FoxReusableSteps extends BaseLibrary {
     @Step("Testte kullanılmak üzere cihaz seri no alınır.")
     public void cihazSeriNoGetir(String cihaz) throws InterruptedException, AWTException {
 
+        TestToolPage testToolPage = new TestToolPage();
         switch(cihaz){
             case "DECT":
-                testToolAc(TestDataFox.eamControlUrl);
-                seriNoDect = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazDect);
+                testToolPage.testToolAc(TestDataFox.eamControlUrl);
+                seriNoDect = testToolPage.GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazDect);
                 break;
             case "FTTB":
-                testToolAc(TestDataFox.eamControlUrl);
-                seriNoFttb = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazFttb);
+                testToolPage.testToolAc(TestDataFox.eamControlUrl);
+                seriNoFttb =testToolPage.GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazFttb);
                 break;
             case "GPON":
-                testToolAc(TestDataFox.eamControlUrl);
-                seriNoGpon = GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazGpon);
+                testToolPage.testToolAc(TestDataFox.eamControlUrl);
+                seriNoGpon = testToolPage.GetSerialNumber(TestDataFox.ortamPrp, TestDataFox.depoFibertek, TestDataFox.cihazGpon);
                 break;
         }
     }

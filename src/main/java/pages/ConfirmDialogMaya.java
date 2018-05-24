@@ -3,13 +3,11 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import common.BaseLibrary;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$$x;
 
-public class ConfirmDialog extends MainPageMaya {
+public class ConfirmDialogMaya extends MainPageMaya {
 
     String dialogLocator = "div.ui-confirm-dialog.ui-dialog,div.ui";
 
@@ -17,8 +15,8 @@ public class ConfirmDialog extends MainPageMaya {
         return $$(dialogLocator);
     }
 
-    public ConfirmDialog confirmDialog(){
-        return new ConfirmDialog();
+    public ConfirmDialogMaya confirmDialog(){
+        return new ConfirmDialogMaya();
     }
 
     public SelenideElement getDialog(){return dialogs().filterBy(Condition.appear).first();}
@@ -35,13 +33,13 @@ public class ConfirmDialog extends MainPageMaya {
     }
 
     @Step("Evet butoun tıklanır.")
-    public ConfirmDialog confirmEvetTikla() {
+    public ConfirmDialogMaya confirmEvetTikla() {
         getConfirmButton("Evet").shouldBe(Condition.visible).pressEnter();
         getConfirmButton("Evet").should(Condition.disappear);
         return this;
     }
     @Step("Hayır butoun tıklanır.")
-    public ConfirmDialog confirmHayirTikla() {
+    public ConfirmDialogMaya confirmHayirTikla() {
         getConfirmButton("Hayır").shouldBe(Condition.visible).pressEnter();
         getConfirmButton("Hayır").should(Condition.disappear);
         return this;

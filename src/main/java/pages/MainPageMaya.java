@@ -127,7 +127,7 @@ public class MainPageMaya extends BaseLibrary {
         Assert.assertEquals(LBL_SIPARISMESSAGE_XPATH.isDisplayed(),true,"Başarılı mesaj gelmeli.");
     }
 
-    public ConfirmDialog confirmDialog(){
-        return new ConfirmDialog();
+    public ConfirmDialogMaya confirmDialog(){
+        return new ConfirmDialogMaya();
     }
 }
