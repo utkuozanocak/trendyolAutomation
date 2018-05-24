@@ -253,10 +253,12 @@ public class MayaFiberTests extends BaseTest {
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla()
-                .btnDevirTikla();
-              /*  .musteriNoGir("")
-                .musteriSec()
-                .devirSiparisiTamamla(); */
+                .btnDevirTikla()
+                .devirTuruIsaretle(true)
+                .musteriNoGir()
+                .btnAraTikla()
+                 .musteriSec()
+                .devirBaslat();
 
 
     }

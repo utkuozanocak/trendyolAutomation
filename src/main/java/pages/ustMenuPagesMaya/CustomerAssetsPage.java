@@ -1,5 +1,6 @@
 package pages.ustMenuPagesMaya;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -36,7 +37,12 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_DEGISIKLIGI_KAYDET = $(By.xpath(GetObject("MAYA","BTN_DEGISIKLIGI_KAYDET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_POPUP_EVET = $(By.xpath(GetObject("MAYA","BTN_POPUP_EVET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_KAMPANYA_DEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYA_DEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_NAKIL_XPATH = $(By.xpath(GetObject("FOX","BTN_NAKIL_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DEVIR_XPATH = $(By.xpath(GetObject("FOX","BTN_DEVIR_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement CHK_DEVIRTURU = $(GetObject("MAYA","CHK_DEVIRTURU","CSS_SELECTOR","CustomerAssetsPage","PRP"));
+    private SelenideElement TXT_DEVIRCUSTOMERNO_ID = $(By.id(GetObject("MAYA","TXT_DEVIRCUSTOMERNO_ID","ID","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DEVIRARA_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRARA_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_MUSTERISEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_MUSTERISEC_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DEVIRBASLAT_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRBASLAT_XPATH","XPATH","CustomerAssetsPage","PRP")));
 
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
@@ -191,12 +197,46 @@ public class CustomerAssetsPage extends MainPageMaya {
     }
 
     @Step("Mesaj kontrolü yapılır.")
-    public void mesajKontrol(String mesaj) {
+    public CustomerAssetsPage mesajKontrol(String mesaj) {
         Assert.assertEquals(LBL_MSG.text().contains(mesaj), true);
         takeScreenshot();
+        return this;
     }
-    @Step("Nakil butonuna tıklanır.")
-    public void btnDevirTikla() {
-        BTN_NAKIL_XPATH.click();
+    @Step("Devir türü seçilir.")
+    public CustomerAssetsPage devirTuruIsaretle(boolean select) {
+        CHK_DEVIRTURU.setSelected(select);
+        return this;
+        //        CHK_DEVIRTURU.shouldBe(Condition.checked);
     }
+    @Step("Devir butonuna tıklanır.")
+    public CustomerAssetsPage btnDevirTikla() {
+        BTN_DEVIR_XPATH.click();
+        return this;
+    }
+
+    @Step("Devir yapılacak müşteri no girilir.")
+    public CustomerAssetsPage musteriNoGir() {
+        TXT_DEVIRCUSTOMERNO_ID.sendKeys("23484706");
+        return this;
+    }
+
+    @Step("Devir yapılacak müşteri aranır.")
+    public CustomerAssetsPage musteriAra() {
+        BTN_DEVIRARA_XPATH.click();
+        return this;
+    }
+
+    @Step("Müşteri seçilir.")
+    public CustomerAssetsPage musteriSec() {
+        BTN_MUSTERISEC_XPATH.click();
+        return this;
+    }
+
+    @Step("Müşteri seçilir.")
+    public CustomerAssetsPage devirBaslat() {
+        BTN_DEVIRBASLAT_XPATH.click();
+        return this;
+    }
+
+
 }
