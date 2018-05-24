@@ -1252,7 +1252,7 @@ public class BaseLibrary extends ElementsContainer {
         ResultSet rs;
         Integer[] dataSet = new Integer[1];
         try {
-            connection = new DBConnection().connectFoxPrp();
+            connection = new DBConnection().connect();
             statement = connection.createStatement();
 
             rs = statement.executeQuery("select TestID from TBL_Tests where TestName='" + testName + "'");
@@ -1270,15 +1270,16 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-    public static void insertCustomer (int testId, int customerNo, boolean isUsable) {
+    public static void insertCustomer (int customerNo,boolean isUsable,int testId) {
         Connection connection;
         Statement statement;
         ResultSet rs;
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
+            
+            int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers (CustomerNo,IsUsable,TestID) VALUES ('"+customerNo+"','"+isUsable+"','"+testId+"')");
 
-            int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers " + "VALUES (customerNo,isUsable,testId)");
             if (executeUpdate > 0) {
                 System.out.println("Insert Success");
             }
