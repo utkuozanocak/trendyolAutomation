@@ -1,6 +1,5 @@
 package tests.FoxAdsl;
 
-import com.sun.tools.javac.util.Convert;
 import common.BaseTest;
 import common.FoxReusableSteps;
 import data.TestDataFox;
