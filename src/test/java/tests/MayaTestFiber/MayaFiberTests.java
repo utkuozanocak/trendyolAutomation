@@ -14,7 +14,7 @@ import pages.ustMenuPagesMaya.OrderCapturePage;
 
 public class MayaFiberTests extends BaseTest {
 
-
+    String customerNo;
     @BeforeMethod
     public void loginBeforeTests() {
 
@@ -49,6 +49,11 @@ public class MayaFiberTests extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
+        int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
+
+
+
+        insertCustomer(Integer.parseInt(customerNo),true,testId);
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
         //mainPageMaya.basariMesajKontrolu();
 

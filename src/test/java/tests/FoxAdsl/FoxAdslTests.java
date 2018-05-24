@@ -37,7 +37,7 @@ public class FoxAdslTests extends BaseTest {
 
         foxReusableSteps.foxTicketingProcess(TestDataFox.taskIdAdsl,TestDataFox.flowStatusAdsl,TestDataFox.mesaj,TestDataFox.segment,
                 TestDataFox.akisDurumu,TestDataFox.aciklama,TestDataFox.kurulumStatu,
-                TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu,"TS0001_KurumsalAdslKurulumKapat");
+                TestDataFox.kurulumAltStatu,TestDataFox.sozlesmeStatu,TestDataFox.sozlesmeSubStatu,"TS0001_KurumsalADSLSiparisGiris");
 
         switchTo().window(0);
 

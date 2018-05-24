@@ -1099,7 +1099,7 @@ public class BaseLibrary extends ElementsContainer {
                         " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
                         " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
                         " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
-                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '"+CustomerNo+"' and s2.[VALUE]='" + TaskId + "'" +
+                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] = '"+CustomerNo[0]+"' and s2.[VALUE]='" + TaskId + "'" +
                         " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
                         " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
             }
@@ -1277,7 +1277,7 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
-            
+
             int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers (CustomerNo,IsUsable,TestID) VALUES ('"+customerNo+"','"+isUsable+"','"+testId+"')");
 
             if (executeUpdate > 0) {
@@ -1289,11 +1289,11 @@ public class BaseLibrary extends ElementsContainer {
             System.err.println(e.getMessage());
         }
     }
-    public String[] GetCustomer(String TestName,String IsUsable) {
+    public Integer[] GetCustomer(String TestName,boolean IsUsable) {
         Connection connection;
         Statement statement;
         ResultSet rs;
-        String[] dataSet = new String[1];
+        Integer[] dataSet = new Integer[1];
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
@@ -1303,7 +1303,7 @@ public class BaseLibrary extends ElementsContainer {
                     " t.TestName='"+ TestName +"' and c.IsUsable='"+IsUsable+"'");
 
             while (rs.next()) {
-                dataSet[0] = rs.getString("CustomerNo");
+                dataSet[0] = rs.getInt("CustomerNo");
             }
             connection.close();
             System.out.println("Connection Closed to the Database...");
