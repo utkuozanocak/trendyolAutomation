@@ -54,7 +54,8 @@ public class MayaAdslTests extends BaseTest {
                 .hizSecAdsl(TestDataMaya.adslHiz)
                 .siparisEkle()
                 .siparişOluştur();
-        int testId = getTestId(Test.class.getName())[0];
+
+        int testId = getTestId("TS0001_KurumsalADSLSiparisGiris")[0];
         insertCustomer(testId,Integer.parseInt(customerNo),true);
     }
 

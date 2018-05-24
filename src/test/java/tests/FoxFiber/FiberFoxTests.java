@@ -36,7 +36,7 @@ public class FiberFoxTests extends BaseTest {
 
         foxReusableSteps.foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
                 TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu,"TS0001_KurumsalFiberKurulumKapat");
          altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
 
         if (altYapi.equals("FTTb")) {
@@ -89,7 +89,7 @@ public class FiberFoxTests extends BaseTest {
 
         foxReusableSteps.foxTicketingProcess(TestDataFox.taskIdIkinciDonanim, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
                 TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu,"TS0002_KurumsalIkinciDonanimKurulumKapatTest");
         stepDetayPage
                 .teknikFormTabAc()
                 .ikinciDonanimSeriNoDoldur(foxReusableSteps.seriNoDect())

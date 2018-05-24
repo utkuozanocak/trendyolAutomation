@@ -1069,7 +1069,7 @@ public class BaseLibrary extends ElementsContainer {
         return dataSet;
     }
 
-    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus) {
+    public Integer[] FoxSearchFlowNo(String TaskId, String FlowStatus,String... CustomerNo) {
         Connection connection;
         Statement statement;
         ResultSet rs;
@@ -1077,7 +1077,8 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connectFoxPrp();
             statement = connection.createStatement();
-
+            if (CustomerNo.equals(null))
+            {
                 rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
                         " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
                         " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
@@ -1088,7 +1089,22 @@ public class BaseLibrary extends ElementsContainer {
                         " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '2%' and s2.[VALUE]='" + TaskId + "'" +
                         " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
                         " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
-                
+            }
+            else
+            {
+                rs = statement.executeQuery("SELECT top 1 w.ID" + " FROM  NFWDTT_WORKFLOWINSTANCE (NOLOCK) w" +
+                        " INNER JOIN NFWDFT_WORKFLOWVERSION (NOLOCK) v" +
+                        " ON  v.ID = w.WORKFLOWVERSION" + " INNER JOIN NFWDTT_WORKFLOWSEARCHKEY (NOLOCK) s" +
+                        " ON  s.WORKFLOWINSTANCE = w.ID" + " AND s.SEARCHKEY = 'MUSTERINOKEY'" +
+                        " LEFT JOIN NFWDTV_POOLRECORDS  R ON R.STEP =  " +
+                        " (SELECT TOP 1 ID FROM nfwdtt_step WHERE WORKFLOWINSTANCE = W.ID  ORDER BY 1 DESC)" +
+                        " LEFT JOIN NFWDTT_WORKFLOWSEARCHKEY s2 (NOLOCK)" + " ON  s2.WORKFLOWINSTANCE = w.ID" +
+                        " AND s2.SEARCHKEY = 'TASKIDCODE'" + " WHERE s.[VALUE] like '"+CustomerNo+"' and s2.[VALUE]='" + TaskId + "'" +
+                        " and  w.WORKFLOWSTATUS ='" + FlowStatus + "'" + " " +
+                        " AND (R.ORGANIZATION='NOVATECH' OR R.ORGANIZATION='FIBERTEKNOLOJI') ORDER BY  v.STARTDATE DESC");
+            }
+
+
             while (rs.next()) {
                 dataSet[0] = rs.getInt("ID");
             }
@@ -1101,6 +1117,7 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
+
 
     public String[] FoxGetUserForChange(String AkisNo) {
         Connection connection;
@@ -1260,6 +1277,7 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
+
             int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers " + "VALUES (customerNo,isUsable,testId)");
             if (executeUpdate > 0) {
                 System.out.println("Insert Success");
@@ -1269,5 +1287,30 @@ public class BaseLibrary extends ElementsContainer {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
+    }
+    public String[] GetCustomer(String TestName,String IsUsable) {
+        Connection connection;
+        Statement statement;
+        ResultSet rs;
+        String[] dataSet = new String[1];
+        try {
+            connection = new DBConnection().connect();
+            statement = connection.createStatement();
+
+            rs = statement.executeQuery("select top 1 c.CustomerNo from TBL_Tests t" +
+                    " join TBL_Customers c on t.TestID=c.TestID where" +
+                    " t.TestName='"+ TestName +"' and c.IsUsable='"+IsUsable+"'");
+
+            while (rs.next()) {
+                dataSet[0] = rs.getString("CustomerNo");
+            }
+            connection.close();
+            System.out.println("Connection Closed to the Database...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return dataSet;
     }
 }

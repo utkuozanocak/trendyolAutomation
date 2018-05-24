@@ -50,15 +50,16 @@ public class FoxReusableSteps extends BaseLibrary {
     @Step("Fox Akış işlemleri tamamladı.")
     public void foxTicketingProcess(String foxTaskId, String foxFlowStatu, String foxUserChangeMessage,
                             String foxCustomerSegment, String foxAkisDurumu, String Aciklama,
-                            String foxKurulumStatu, String foxKurulumAltStatu, String foxSozlesmeStatu, String foxSozlesmeSubStatu) {
+                            String foxKurulumStatu, String foxKurulumAltStatu, String foxSozlesmeStatu, String foxSozlesmeSubStatu,
+                                    String testName) {
 
         MainPageFox mainPageFox = new MainPageFox();
         AkisListesiPage akisListesiPage = new AkisListesiPage();
         KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
         AkisDetayPage akisDetayPage = new AkisDetayPage();
         StepDetayPage stepDetayPage = new StepDetayPage();
-
-        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu)[0].toString();
+        String customerNo = GetCustomer(testName,"1")[0];
+        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu,customerNo)[0].toString();
         String[] dataset = FoxGetUserForChange(akisNo);
         String name = dataset[0];
         String positionName = dataset[1];
