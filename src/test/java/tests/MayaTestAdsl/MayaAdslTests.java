@@ -11,8 +11,6 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
-import java.lang.reflect.Method;
-
 public class MayaAdslTests extends BaseTest {
 
     String customerNo;
@@ -65,7 +63,7 @@ public class MayaAdslTests extends BaseTest {
 
 
 
-        insertCustomer(Integer.parseInt(customerNo),true,testId);
+        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
 
     }
 

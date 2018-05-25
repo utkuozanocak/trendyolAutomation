@@ -56,7 +56,7 @@ public class MayaFiberTests extends BaseTest {
 
 
 
-        insertCustomer(Integer.parseInt(customerNo),true,testId);
+        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
         //mainPageMaya.basariMesajKontrolu();
 

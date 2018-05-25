@@ -1208,7 +1208,7 @@ public class BaseLibrary extends ElementsContainer {
         }
         return dataSet;
     }
-    public static void insertCustomer (int customerNo,boolean isUsable,int testId) {
+    public static void insertCustomer (int customerNo,boolean isUsable,int testId,String CreateDateTime) {
         Connection connection;
         Statement statement;
         ResultSet rs;
@@ -1216,7 +1216,7 @@ public class BaseLibrary extends ElementsContainer {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
 
-            int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers (CustomerNo,IsUsable,TestID) VALUES ('"+customerNo+"','"+isUsable+"','"+testId+"')");
+            int executeUpdate = statement.executeUpdate("INSERT INTO TBL_Customers (CustomerNo,IsUsable,TestID,CreateDateTime) VALUES ('"+customerNo+"','"+isUsable+"','"+testId+"','"+CreateDateTime+"')");
 
             if (executeUpdate > 0) {
                 System.out.println("Insert Success");
