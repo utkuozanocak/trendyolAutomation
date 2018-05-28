@@ -8,6 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
+import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 
@@ -27,7 +28,7 @@ public class MayaAdslTests extends BaseTest {
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-
+        AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         String erisimNo = mayaReusableSteps.erisimNoGetir();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -36,6 +37,20 @@ public class MayaAdslTests extends BaseTest {
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
         customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
+
+        adresBilgileriPage
+                .siparisAdresEkle()
+                .yeniAdresEkle()
+                .sehirSec(TestDataMaya.sehir)
+                .ilceSec(TestDataMaya.ilce)
+                .mahalleSec(TestDataMaya.mahalle)
+                .sokakSec(TestDataMaya.sokak)
+                .binaNoIlkKayitSec()
+                .blokEkle("Test Otomasyon")
+                .adresKaydet()
+                .confirmDialog().confirmEvetTikla();
+        //     adresBilgileriPage .adresOnay()
+        //   .adresEvetButonSec();
 
         orderCapturePage
                 .siparisOlusturSayfaAc();
