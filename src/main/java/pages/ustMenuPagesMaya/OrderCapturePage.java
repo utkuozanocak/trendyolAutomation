@@ -78,8 +78,8 @@ public class OrderCapturePage extends MainPageMaya {
         private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISIOLUSTUR_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SolCrmElement CMB_IKINCIDONANIM_XPATH = comboBox(By.xpath(GetObject("MAYA", "CMB_IKINCIDONANIM_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
         private SelenideElement BTN_DONANIMEKLE_XPATH = $(By.xpath(GetObject("MAYA", "BTN_DONANIMEKLE_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
-
-
+        private SolCrmElement CMB_KKOSEC_XPATH = comboBox(By.xpath(GetObject("MAYA","CMB_KKOSEC_XPATH","XPATH","CustomerAssetsPage","PRP")));
+        private SelenideElement BTN_SESEKLE_XPATH = $(By.xpath(GetObject("MAYA","BTN_SESEKLE_XPATH","XPATH","CustomerAssetsPage","PRP")));
         @Step("Fiber menu açılır.")
         public Fiber openPage() {
             urunSecimMenu(UrunEklemeData.Internet.Fiber);
@@ -195,6 +195,13 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("Sipariş oluştur tıklanır.")
         public Fiber siparişOluştur() {
             clickJs(BTN_SIPARISIOLUSTUR_XPATH);
+            return this;
+        }
+
+        @Step("BroadbandVoip / Upsell - Seçim Grubu  ve Eklenir.")
+        public Fiber sesSec(String kko) {
+            CMB_KKOSEC_XPATH.selectComboBox(kko);
+            BTN_SESEKLE_XPATH.click();
             return this;
         }
     }

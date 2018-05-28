@@ -264,6 +264,40 @@ public class MayaFiberTests extends BaseTest {
                  .musteriSec()
                 .devirBaslat();
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0061 : Kurumsal Fiber Tahsisli Ses Siparişi girilir.")
+
+    public void TS0061_KurumsalFiberTahsisliSesSiparisi() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturSayfaAc()
+                .siparseUrunEkleTikla()
+                .fiberAc()
+                .openPage()
+                .degistirTikla()
+                .lokasyonIDDoldur(TestDataMaya.locationId)
+                .Ara()
+                .tablodanLokasyonSec()
+                .lokasyonSec()
+                .daireNoDoldur(TestDataMaya.daireNo)
+                .daireNoSec(TestDataMaya.daireNo)
+                .kaydet()
+                .kampanyaAra(TestDataMaya.fiberKampanya)
+                .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
+                .kampanyaSec()
+                .hizSec(TestDataMaya.hiz)
+                .sesSec(TestDataMaya.sesSecimGrubu)
+                .siparisEkle();
+        //        .siparişOluştur();
+
+  //      int testId = getTestId("TS0061_KurumsalFiberTahsisliSesSiparisi")[0];
+        //     insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
+
+    }
 }
 
 
