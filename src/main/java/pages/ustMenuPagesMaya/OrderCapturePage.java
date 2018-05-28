@@ -12,6 +12,7 @@ import pages.pageComponents.SolCrmElement;
 import pages.pageData.UrunEklemeData;
 import pages.pageData.MayaUstMenuData;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static pages.pageComponents.SolCrmFramework.comboBox;
 
@@ -23,6 +24,7 @@ public class OrderCapturePage extends MainPageMaya {
     private SelenideElement BTN_SIPARISEURUNEKLE_ID = $(By.id(GetObject("MAYA", "BTN_SIPARISEURUNEKLE_ID", "ID", "MayaOrderCapturePage", "PRP")));
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_YENIKAYIT_XPATH", "XPATH", "MayaCustomerAddressManagementPage", "PRP")));
     private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISIOLUSTUR_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
+    ElementsCollection TBL_SECILENURUNLER_CSS = $$(GetObject("MAYA","TBL_SECILENURUNLER_CSS","CSS_SELECTOR","CustomerAssetsPage","PRP"));
 
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturSayfaAc() {
@@ -42,6 +44,16 @@ public class OrderCapturePage extends MainPageMaya {
         return this;
     }
 
+    @Step("Siparis Detay Aç")
+    public OrderCapturePage tabloSiparisDetayAc() {
+        TBL_SECILENURUNLER_CSS.first().$(".ui-treetable-toggler").click();
+        return this;
+    }
+    @Step("Siparis Detay Aç")
+    public OrderCapturePage tabloKKOOzellikSec(String urun) {
+        TBL_SECILENURUNLER_CSS.filterBy(text(urun)).first().$("[id$='ozellikBtnID']").click();
+        return this;
+    }
     public Fiber fiberAc() {
         return fiber;
     }
@@ -151,7 +163,7 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("Kamapnya tablosundan \"{kampanya}\" seçilir.")
         public Fiber tablodanKampanyaSec(String kampanya) {
             TBL_KAMPANYA
-                    .filterBy(Condition.text(kampanya))
+                    .filterBy(text(kampanya))
                     .first()
                     .click();
             return this;
@@ -273,7 +285,7 @@ public class OrderCapturePage extends MainPageMaya {
         @Step("Kamapnya tablosundan \"{kampanya}\" seçilir.")
         public ADSL tablodanKampanyaSecDsl(String kampanya) {
             TBL_DSLKAMPANYA
-                    .filterBy(Condition.text(kampanya))
+                    .filterBy(text(kampanya))
                     .first()
                     .click();
             return this;

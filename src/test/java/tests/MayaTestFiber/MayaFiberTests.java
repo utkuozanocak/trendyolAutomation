@@ -32,8 +32,6 @@ public class MayaFiberTests extends BaseTest {
 //        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
 //        int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
 
-
-
 //        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
 
         OrderCapturePage orderCapturePage = new OrderCapturePage();
@@ -292,6 +290,10 @@ public class MayaFiberTests extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .sesSec(TestDataMaya.sesSecimGrubu)
                 .siparisEkle();
+        orderCapturePage
+                .tabloSiparisDetayAc()
+                .tabloKKOOzellikSec("Konuştuğun Kadar Öde ICC_Res/Soho");
+
         //        .siparişOluştur();
 
   //      int testId = getTestId("TS0061_KurumsalFiberTahsisliSesSiparisi")[0];
