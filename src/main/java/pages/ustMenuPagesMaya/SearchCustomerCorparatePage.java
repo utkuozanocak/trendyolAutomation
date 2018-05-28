@@ -11,6 +11,7 @@ import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 import static pages.pageComponents.SolCrmFramework.comboBox;
 
 public class SearchCustomerCorparatePage extends MainPageMaya {
@@ -58,11 +59,12 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
         return this;
     }
 
-    @Step("Tablodan ilk sıradaki müştesri no alınır")
+    @Step("Tablodan ilk sıradaki müştesri no alınır.")
     public String tabloRandomMusteriNoSecVeAl() {
         Random rand = new Random();
-        int sayi = TBL_MUSTERILISTESI.size();
-        sayi = rand.nextInt(sayi);
+        sleep(1000);
+        int sayi = TBL_MUSTERILISTESI.size()-1;
+        sayi = rand.nextInt(sayi)+1;
         SelenideElement tabloElement = TBL_MUSTERILISTESI.get(sayi);
         tabloElement.click();
         return tabloElement.$("td:nth-child(2)").getText();
