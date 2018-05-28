@@ -28,8 +28,14 @@ public class MayaFiberTests extends BaseTest {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
-        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
+        customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+//        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
+//        int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
+
+
+
+//        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
+
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         orderCapturePage
                 .siparisOlusturSayfaAc()
@@ -53,8 +59,6 @@ public class MayaFiberTests extends BaseTest {
 
 
         int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
-
-
 
         insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
