@@ -33,10 +33,10 @@ public class MayaAdslTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps
+        customerNo= mayaReusableSteps
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 
-        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
+//        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
 
         adresBilgileriPage
                 .siparisAdresEkle()

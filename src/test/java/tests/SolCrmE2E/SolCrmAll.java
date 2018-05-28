@@ -42,10 +42,10 @@ public class SolCrmAll extends BaseTest {
                 .unvanDoldur(TestDataMaya.unvan)
                 .statuSec(TestDataMaya.statu)
                 .segmentSec(TestDataMaya.segment)
-                .ara()
-                .tablodanIlkKayitTikla();
+                .ara();
+        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
 
-        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
+//        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
 
         orderCapturePage
                 .siparisOlusturSayfaAc()

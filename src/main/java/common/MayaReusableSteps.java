@@ -9,9 +9,10 @@ import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 public class MayaReusableSteps extends BaseLibrary {
 
     String erisimNo = null;
+    String customerNo;
 
     @Step("Müşteri Araması yapılır.")
-    public void customerSearch(String Unvan,String Statu,String Segment) {
+    public String customerSearch(String Unvan, String Statu, String Segment) {
 
         MainPageMaya mainPage = new MainPageMaya();
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
@@ -21,8 +22,9 @@ public class MayaReusableSteps extends BaseLibrary {
                 .unvanDoldur(Unvan)
                 .statuSec(Statu)
                 .segmentSec(Segment)
-                .ara()
-                .tablodanIlkKayitTikla();
+                .ara();
+        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
+        return customerNo;
     }
 
     @Step("Testte kullanılmak üzere erişim no alınır.")
@@ -30,7 +32,7 @@ public class MayaReusableSteps extends BaseLibrary {
         TestToolPage testToolPage = new TestToolPage();
 
         testToolPage.testToolAc(TestDataMaya.churnKontrolUrl);
-        erisimNo = testToolPage.GetPhoneNumber(TestDataMaya.testToolCity,TestDataMaya.ortamPrp,TestDataMaya.testToolChurnType);
+        erisimNo = testToolPage.GetPhoneNumber(TestDataMaya.testToolCity, TestDataMaya.ortamPrp, TestDataMaya.testToolChurnType);
         return erisimNo;
     }
 }
