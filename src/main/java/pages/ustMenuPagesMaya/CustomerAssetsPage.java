@@ -37,7 +37,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_DEGISIKLIGI_KAYDET = $(By.xpath(GetObject("MAYA","BTN_DEGISIKLIGI_KAYDET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_POPUP_EVET = $(By.xpath(GetObject("MAYA","BTN_POPUP_EVET","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_KAMPANYA_DEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYA_DEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DEVIR_XPATH = $(By.xpath(GetObject("FOX","BTN_DEVIR_XPATH","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement BTN_DEVIR_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIR_XPATH","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement CHK_DEVIRTURU = $(GetObject("MAYA","CHK_DEVIRTURU","CSS_SELECTOR","CustomerAssetsPage","PRP"));
     private SelenideElement TXT_DEVIRCUSTOMERNO_ID = $(By.id(GetObject("MAYA","TXT_DEVIRCUSTOMERNO_ID","ID","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_DEVIRARA_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRARA_XPATH","XPATH","CustomerAssetsPage","PRP")));
@@ -204,7 +204,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     }
     @Step("Devir türü seçilir.")
     public CustomerAssetsPage devirTuruIsaretle(boolean select) {
-        CHK_DEVIRTURU.setSelected(select);
+        CHK_DEVIRTURU.click();
         return this;
         //        CHK_DEVIRTURU.shouldBe(Condition.checked);
     }
@@ -216,7 +216,7 @@ public class CustomerAssetsPage extends MainPageMaya {
 
     @Step("Devir yapılacak müşteri no girilir.")
     public CustomerAssetsPage musteriNoGir() {
-        TXT_DEVIRCUSTOMERNO_ID.sendKeys("23484706");
+        TXT_DEVIRCUSTOMERNO_ID.setValue("23484706");
         return this;
     }
 

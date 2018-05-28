@@ -27,6 +27,21 @@ public class MayaReusableSteps extends BaseLibrary {
         return customerNo;
     }
 
+    @Step("Müşteri Araması yapılır.")
+    public void customerSearchWithCustomerNumber(String Unvan, String Statu, String Segment, String CustomerNo) {
+
+        MainPageMaya mainPage = new MainPageMaya();
+        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        mainPage.musteriDetayliArama();
+
+        searchCustomerCorparatePage
+                .unvanDoldur(Unvan)
+                .statuSec(Statu)
+                .segmentSec(Segment)
+                .ara()
+                .tablodanMusteriNoyaGoreKayitTikla(CustomerNo);
+
+    }
     @Step("Testte kullanılmak üzere erişim no alınır.")
     public String erisimNoGetir() throws InterruptedException {
         TestToolPage testToolPage = new TestToolPage();

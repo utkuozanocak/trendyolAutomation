@@ -246,7 +246,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        mayaReusableSteps.customerSearchWithCustomerNumber(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment, "22521789");
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
 
         customerAssetsPage
@@ -260,11 +260,9 @@ public class MayaFiberTests extends BaseTest {
                 .btnDevirTikla()
                 .devirTuruIsaretle(true)
                 .musteriNoGir()
-                .btnAraTikla()
+                .musteriAra()
                  .musteriSec()
                 .devirBaslat();
-
-
     }
 }
 

@@ -9,6 +9,7 @@ import pages.pageComponents.SolCrmElement;
 
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -59,10 +60,17 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
         return this;
     }
 
+    @Step("Tablodan müşterinoya göre kayıt seçilir.")
+    public SearchCustomerCorparatePage tablodanMusteriNoyaGoreKayitTikla(String customerNo) {
+        tblCustomerList.filterBy(text(customerNo)).first().click();
+//        tblCustomerList.get(2).click();
+        return this;
+    }
+
     @Step("Tablodan ilk sıradaki müştesri no alınır.")
     public String tabloRandomMusteriNoSecVeAl() {
         Random rand = new Random();
-        sleep(1000);
+        sleep(2000);
         int sayi = TBL_MUSTERILISTESI.size()-1;
         sayi = rand.nextInt(sayi)+1;
         SelenideElement tabloElement = TBL_MUSTERILISTESI.get(sayi);
