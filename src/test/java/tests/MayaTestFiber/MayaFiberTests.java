@@ -32,8 +32,6 @@ public class MayaFiberTests extends BaseTest {
 //        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
 //        int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
 
-
-
 //        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
 
         OrderCapturePage orderCapturePage = new OrderCapturePage();
@@ -246,7 +244,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        mayaReusableSteps.customerSearchWithCustomerNumber(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment, "22521789");
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
 
         customerAssetsPage
@@ -260,10 +258,46 @@ public class MayaFiberTests extends BaseTest {
                 .btnDevirTikla()
                 .devirTuruIsaretle(true)
                 .musteriNoGir()
-                .btnAraTikla()
+                .musteriAra()
                  .musteriSec()
                 .devirBaslat();
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0061 : Kurumsal Fiber Tahsisli Ses Siparişi girilir.")
 
+    public void TS0061_KurumsalFiberTahsisliSesSiparisi() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+
+        OrderCapturePage orderCapturePage = new OrderCapturePage();
+        orderCapturePage
+                .siparisOlusturSayfaAc()
+                .siparseUrunEkleTikla()
+                .fiberAc()
+                .openPage()
+                .degistirTikla()
+                .lokasyonIDDoldur(TestDataMaya.locationId)
+                .Ara()
+                .tablodanLokasyonSec()
+                .lokasyonSec()
+                .daireNoDoldur(TestDataMaya.daireNo)
+                .daireNoSec(TestDataMaya.daireNo)
+                .kaydet()
+                .kampanyaAra(TestDataMaya.fiberKampanya)
+                .tablodanKampanyaSec(TestDataMaya.fiberKampanya)
+                .kampanyaSec()
+                .hizSec(TestDataMaya.hiz)
+                .sesSec(TestDataMaya.sesSecimGrubu)
+                .siparisEkle();
+        orderCapturePage
+                .tabloSiparisDetayAc()
+                .tabloKKOOzellikSec("Konuştuğun Kadar Öde ICC_Res/Soho");
+
+        //        .siparişOluştur();
+
+  //      int testId = getTestId("TS0061_KurumsalFiberTahsisliSesSiparisi")[0];
+        //     insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
 
     }
 }
