@@ -17,6 +17,7 @@ import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import pages.ustMenuPagesMaya.TrackOrdersPage;
 import tests.FoxFiber.FiberFoxTests;
 import tests.MayaTestFiber.MayaFiberTests;
 
@@ -26,27 +27,26 @@ public class SolCrmAll extends BaseTest {
     MayaFiberTests mayaFiberTests = new MayaFiberTests();
     FiberFoxTests fiberFoxTests = new FiberFoxTests();
     String customerNo;
+    String siparisNo;
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Fiber Sipariş Giriş Testi")
-    public void TS0001_MayaCreateOrderE2ETest() throws InterruptedException {
+    @Test(enabled = true, invocationCount = 10, description = "TS0001 : Kurumsal Fiber Siparis Giris")
+    public void KurumsalFiberSiparisGirisVeKapama() throws InterruptedException, AWTException {
+
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
+        FoxReusableSteps foxReusableSteps =new FoxReusableSteps();
+        StepDetayPage stepDetayPage = new StepDetayPage();
+        MainPageFox mainPageFox = new MainPageFox();
+
+        foxReusableSteps.cihazSeriNoGetir("FTTB");
+        foxReusableSteps.cihazSeriNoGetir("GPON");
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+
         OrderCapturePage orderCapturePage = new OrderCapturePage();
-        MainPageMaya mainPage = new MainPageMaya();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
-        mainPage.musteriDetayliArama();
-
-        searchCustomerCorparatePage
-                .unvanDoldur(TestDataMaya.unvan)
-                .statuSec(TestDataMaya.statu)
-                .segmentSec(TestDataMaya.segment)
-                .ara();
-        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
-
-//        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
-
         orderCapturePage
                 .siparisOlusturSayfaAc()
                 .siparseUrunEkleTikla()
@@ -66,34 +66,23 @@ public class SolCrmAll extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
-    }
 
-    @Severity(SeverityLevel.CRITICAL)
+        trackOrdersPage
+                .sayfaKontrolu();
+        siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
 
-    @Test(enabled = true, dependsOnMethods = {"TS0001_MayaCreateOrderE2ETest"}, description = "Fox Fiber Kurulum Kapama")
 
-    public void TS0001_FoxKurulumKapat() throws InterruptedException, AWTException {
+        int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
 
-        FoxReusableSteps foxReusableSteps = new FoxReusableSteps();
-        MainPageFox mainPageFox = new MainPageFox();
-        StepDetayPage stepDetayPage = new StepDetayPage();
+        insertCustomer(Integer.parseInt(customerNo), true, testId, getDateTime().toString(), siparisNo);
 
         String altYapi;
 
-        foxReusableSteps.cihazSeriNoGetir("FTTB");
-        foxReusableSteps.cihazSeriNoGetir("GPON");
-
         loginFox(TestDataFox.username, TestDataFox.password);
-        if (customerNo.equals(null)) {
-            foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
-                    TestDataFox.akisDurumu, TestDataFox.aciklama, customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-                    TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
-        } else {
-            foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
-                    TestDataFox.akisDurumu, TestDataFox.aciklama, customerNo, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
-                    TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu);
-        }
 
+        foxReusableSteps.foxTicketingProcess(TestDataFox.taskId, TestDataFox.flowStatus, TestDataFox.mesaj, TestDataFox.segment,
+                TestDataFox.akisDurumu, TestDataFox.aciklama, TestDataFox.kurulumStatu, TestDataFox.kurulumAltStatu,
+                TestDataFox.sozlesmeStatu, TestDataFox.sozlesmeSubStatu, "TS0001_KurumsalFiberSiparisGiris");
         altYapi = stepDetayPage.teknikFormTabAc().altYapiBilgisiAl();
 
         if (altYapi.equals("FTTb")) {
@@ -131,67 +120,5 @@ public class SolCrmAll extends BaseTest {
         mainPageFox
                 .mesajKontrol(TestDataFox.basariliMesaj);
 
-    }
-
-    @Step("Fox Akış işlemleri tamamladı.")
-    public void foxTicketingProcess(String foxTaskId, String foxFlowStatu, String foxUserChangeMessage,
-                                    String foxCustomerSegment, String foxAkisDurumu, String Aciklama, String CustomerNo,
-                                    String foxKurulumStatu, String foxKurulumAltStatu, String foxSozlesmeStatu, String foxSozlesmeSubStatu) {
-
-        MainPageFox mainPageFox = new MainPageFox();
-        AkisListesiPage akisListesiPage = new AkisListesiPage();
-        KullaniciDegistirPage kullaniciDegistirPage = new KullaniciDegistirPage();
-        AkisDetayPage akisDetayPage = new AkisDetayPage();
-        StepDetayPage stepDetayPage = new StepDetayPage();
-
-        String akisNo = FoxSearchFlowNo(foxTaskId, foxFlowStatu)[0].toString();
-        String[] dataset = FoxGetUserForChange(akisNo);
-        String name = dataset[0];
-        String positionName = dataset[1];
-
-        akisListesiPage
-                .openPage();
-        mainPageFox
-                .akisNoDoldur(akisNo);
-
-        akisListesiPage
-                .akisDetay(akisNo);
-
-        mainPageFox
-                .kullaniciDegistir();
-
-        kullaniciDegistirPage
-                .organizasyonSec(name)
-                .pozisyonSec(positionName)
-                .ara()
-                .tablodanIlkKayitSec();
-
-        mainPageFox
-                .mesajKontrol(foxUserChangeMessage);
-
-        akisListesiPage
-                .openPage();
-
-        mainPageFox
-                .akisNoDoldur(akisNo);
-
-        akisListesiPage
-                .akisDetay(akisNo);
-
-        akisDetayPage
-                .kurulumAdımınaTikla();
-
-        stepDetayPage
-                .uzerineAl()
-                .pazarlamaSegmentiSec(foxCustomerSegment)
-                .akisDurumuSec(foxAkisDurumu)
-                .bayiOtomasyondanCikar()
-                .aciklamaDoldur(Aciklama)
-                .aciklamaEkle()
-                .teknikFormTabAc()
-                .kurulumStatuSec(foxKurulumStatu)
-                .kurulumAltStatuSec(foxKurulumAltStatu)
-                .sozlesmeStatuSec(foxSozlesmeStatu)
-                .sozlesmeSubStatuSec(foxSozlesmeSubStatu);
     }
 }

@@ -41,8 +41,8 @@ public class StepDetayPage extends MainPageFox {
     @Step("Üzerine Al butonu tıklanır.")
     public StepDetayPage akisDurumuSec(String text) {
         SelenideElement radio = $(By.xpath("//input[@value='" + text + "']"));
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", radio);
-        radio.click();
+//        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", radio);
+        radio.scrollTo().click();
 //        RADIO_AKISDURUMU_XPATH.click();
         return this;
     }
@@ -50,8 +50,8 @@ public class StepDetayPage extends MainPageFox {
     @Step("Bayi Otomasyondan Çıkar varsa tıklanır")
     public StepDetayPage bayiOtomasyondanCikar() {
         if (BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.isDisplayed()) {
-            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_BAYIOTOMASYONUNDANCIKAR_XPATH);
-            BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.click();
+//            Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_BAYIOTOMASYONUNDANCIKAR_XPATH);
+            BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.scrollTo().click();
             int i = 0;
             while (BTN_BAYIOTOMASYONUNDANCIKAR_XPATH.isDisplayed() && i < 10) ;
             i++;
@@ -62,14 +62,17 @@ public class StepDetayPage extends MainPageFox {
 
     @Step("Açıklama alanı doldurulur.")
     public StepDetayPage aciklamaDoldur(String aciklama) {
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", TXT_ACIKLAMA_XPATH);
+
+        $(By.id("FRM_FIELDSET_ASKIFORMU")).scrollTo();
+//        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", $(By.id("FRM_FIELDSET_ASKIFORMU")));
         TXT_ACIKLAMA_XPATH.sendKeys(aciklama);
         return this;
     }
 
     @Step("Açıklama Ekle butonu tıklanır.")
     public StepDetayPage aciklamaEkle() {
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_ACIKLAMAEKLE_XPATH);
+//        $(By.id("FRM_FIELDSET_URUNLER")).scrollTo();
+//        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", BTN_ACIKLAMAEKLE_XPATH);
         BTN_ACIKLAMAEKLE_XPATH.click();
         return this;
     }

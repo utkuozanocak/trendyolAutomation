@@ -20,7 +20,7 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0001 : Kurumsal Fiber Siparis Giris")
+    @Test(enabled = true,invocationCount = 10,description = "TS0001 : Kurumsal Fiber Siparis Giris")
     public void TS0001_KurumsalFiberSiparisGiris() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
