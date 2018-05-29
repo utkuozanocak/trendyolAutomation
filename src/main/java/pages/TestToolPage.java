@@ -52,6 +52,15 @@ public class TestToolPage extends BaseLibrary {
             sleep(1000);
             i++;
         }
+        if(!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı"))
+        {
+            $(By.id("ctl00_MainContent_lnkErisimNoGetir")).click();
+            while (!$(By.id("ctl00_MainContent_lblSuccess")).getText().equals("Sorgulama Tamamlandı") && i < 10) {
+                sleep(1000);
+                i++;
+                $(By.id("ctl00_MainContent_lnkErisimNoGetir")).click();
+            }
+        }
         phoneNumber = $(By.id("ctl00_MainContent_txtTelno")).getValue();
         System.out.println(phoneNumber);
 //        closeNewWindow();
