@@ -18,12 +18,17 @@ public class MayaReusableSteps extends BaseLibrary {
         SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
         mainPage.musteriDetayliArama();
 
+        customerNo="23344133";
+
         searchCustomerCorparatePage
                 .unvanDoldur(Unvan)
+//                .musteriNoDoldur(customerNo)
                 .statuSec(Statu)
                 .segmentSec(Segment)
-                .ara();
-        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
+                .ara()
+                .tablodanIlkKayitTikla();
+
+        customerNo = searchCustomerCorparatePage.tabloIlkMusteriNoAl();
         return customerNo;
     }
 

@@ -12,14 +12,14 @@ public class ConfirmDialogMaya extends MainPageMaya {
     String dialogLocator = "div.ui-confirm-dialog.ui-dialog,div.ui";
 
     private ElementsCollection dialogs(){
-        return $$(dialogLocator);
+        return $$(dialogLocator).filterBy(Condition.visible);
     }
 
     public ConfirmDialogMaya confirmDialog(){
         return new ConfirmDialogMaya();
     }
 
-    public SelenideElement getDialog(){return dialogs().filterBy(Condition.appear).first();}
+    public SelenideElement getDialog(){return dialogs().filterBy(Condition.visible).first();}
 
     @Step("Onay dialog mesajı")
     public SelenideElement dialogMessage(){
@@ -35,7 +35,7 @@ public class ConfirmDialogMaya extends MainPageMaya {
     @Step("Evet butoun tıklanır.")
     public ConfirmDialogMaya confirmEvetTikla() {
         getConfirmButton("Evet").shouldBe(Condition.visible).pressEnter();
-        getConfirmButton("Evet").should(Condition.disappear);
+//        getConfirmButton("Evet").should(Condition.disappear);
         return this;
     }
     @Step("Hayır butoun tıklanır.")

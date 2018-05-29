@@ -1,5 +1,6 @@
 package pages.ustMenuPagesMaya;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -10,6 +11,7 @@ import pages.pageComponents.SolCrmElement;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -28,10 +30,17 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
     ElementsCollection tblCustomerList = $$(GetObject("MAYA", "TBL_SEARCH_CUSTOMER", "CSS_SELECTOR", "MayaSearchCustomerCorporate", "PRP"));
     SolCrmElement cmbStatu = comboBox(By.id(GetObject("MAYA", "BTN_STATU", "ID", "MayaSearchCustomerCorporate", "PRP")));
     SolCrmElement cmbSegment = comboBox(By.id(GetObject("MAYA", "BTN_SEGMENT", "ID", "MayaSearchCustomerCorporate", "PRP")));
+    private SelenideElement TXT_MUSTERINO_XPATH = $(By.xpath(GetObject("MAYA", "TXT_MUSTERINO_XPATH", "XPATH", "MayaSearchCustomerCorporate", "PRP")));
 
     @Step("Ünvan alanına \"{unvan}\" yazılır.")
     public SearchCustomerCorparatePage unvanDoldur(String unvan) {
         TXT_UNVAN_ID.sendKeys(unvan);
+        return this;
+    }
+
+    @Step("Müşteri no alanına \"{musteriNo}\" yazılır.")
+    public SearchCustomerCorparatePage musteriNoDoldur(String musetriNo) {
+        TXT_MUSTERINO_XPATH.sendKeys(musetriNo);
         return this;
     }
 
@@ -63,16 +72,21 @@ public class SearchCustomerCorparatePage extends MainPageMaya {
     @Step("Tablodan müşterinoya göre kayıt seçilir.")
     public SearchCustomerCorparatePage tablodanMusteriNoyaGoreKayitTikla(String customerNo) {
         tblCustomerList.filterBy(text(customerNo)).first().click();
-//        tblCustomerList.get(2).click();
         return this;
+    }
+
+    @Step("Tablodan ilk sıradaki müştesri no alınır.")
+    public String tabloIlkMusteriNoAl() {
+        return TBL_MUSTERILISTESI.first().$("td:nth-child(2)").getText();
     }
 
     @Step("Tablodan ilk sıradaki müştesri no alınır.")
     public String tabloRandomMusteriNoSecVeAl() {
         Random rand = new Random();
-        sleep(2000);
-        int sayi = TBL_MUSTERILISTESI.size()-1;
-        sayi = rand.nextInt(sayi)+1;
+//        sleep(2000);
+        TBL_MUSTERILISTESI.shouldBe(CollectionCondition.sizeGreaterThan(0));
+        int sayi = TBL_MUSTERILISTESI.size() - 1;
+        sayi = rand.nextInt(sayi) + 1;
         SelenideElement tabloElement = TBL_MUSTERILISTESI.get(sayi);
         tabloElement.click();
         return tabloElement.$("td:nth-child(2)").getText();
