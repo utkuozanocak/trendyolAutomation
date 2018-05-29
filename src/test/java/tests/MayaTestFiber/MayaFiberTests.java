@@ -8,14 +8,12 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
-import pages.ustMenuPagesMaya.ChangeBundleOfferSelectionPage;
-import pages.ustMenuPagesMaya.CustomerAssetsPage;
-import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import pages.ustMenuPagesMaya.*;
 
 public class MayaFiberTests extends BaseTest {
 
     String customerNo;
+    String siparisNo;
     @BeforeMethod
     public void loginBeforeTests() {
 
@@ -26,7 +24,7 @@ public class MayaFiberTests extends BaseTest {
     public void TS0001_KurumsalFiberSiparisGiris() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
 //        customerNo = searchCustomerCorparatePage.tabloRandomMusteriNoSecVeAl();
@@ -54,6 +52,11 @@ public class MayaFiberTests extends BaseTest {
                 .hizSec(TestDataMaya.hiz)
                 .siparisEkle()
                 .siparişOluştur();
+
+        trackOrdersPage
+                .sayfaKontrolu();
+        siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
+
 
 
         int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
