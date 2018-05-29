@@ -1238,7 +1238,7 @@ public class BaseLibrary extends ElementsContainer {
 
             rs = statement.executeQuery("select top 1 c.CustomerNo from TBL_Tests t" +
                     " join TBL_Customers c on t.TestID=c.TestID where" +
-                    " t.TestName='"+ TestName +"' and c.IsUsable='"+IsUsable+"'");
+                    " t.TestName='"+ TestName +"' and c.IsUsable='"+IsUsable+"' order by CreateDateTime desc");
 
             while (rs.next()) {
                 dataSet[0] = rs.getInt("CustomerNo");
