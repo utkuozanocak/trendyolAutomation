@@ -61,7 +61,7 @@ public class MayaFiberTests extends BaseTest {
 
         int testId = getTestId("TS0001_KurumsalFiberSiparisGiris")[0];
 
-        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
+        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString(),siparisNo);
         //waitForLoadingJS(WebDriverRunner.getWebDriver(), 300000);
         //mainPageMaya.basariMesajKontrolu();
 

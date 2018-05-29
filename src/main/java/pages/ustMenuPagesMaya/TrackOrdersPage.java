@@ -20,8 +20,7 @@ public class TrackOrdersPage extends MainPageMaya {
     private SelenideElement TXT_BASLAGICTARIHI_ID = $(By.id(GetObject("MAYA", "TXT_BASLAGICTARIHI_ID", "ID", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement TXT_TAMAMLANMATARIHI_ID = $(By.id(GetObject("MAYA", "TXT_TAMAMLANMATARIHI_ID", "ID", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement TXT_YARATANORGANIZASYON_ID = $(By.id(GetObject("MAYA", "TXT_YARATANORGANIZASYON_ID", "ID", "MayaTrackOrdersPage", "PRP")));
-    ElementsCollection TBL_SIPARIS = $$(GetObject("FOX", "TBL_SIPARIS", "CSS_SELECTOR", "MayaTrackOrdersPage", "PRP"));
-    private SelenideElement BTN_YENILE_XPATH = $(By.xpath(GetObject("MAYA", "BTN_YENILE_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
+    ElementsCollection TBL_SIPARIS = $$(GetObject("MAYA","TBL_SIPARIS","CSS_SELECTOR","MayaTrackOrdersPage","PRP"));    private SelenideElement BTN_YENILE_XPATH = $(By.xpath(GetObject("MAYA", "BTN_YENILE_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_SIPARISGECMISI_XPATH = $(By.xpath(GetObject("FOX", "BTN_SIPARISGECMISI_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_PROJELER_XPATH = $(By.xpath(GetObject("MAYA", "BTN_PROJELER_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_SIPARISSATIRLARI_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISSATIRLARI_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));

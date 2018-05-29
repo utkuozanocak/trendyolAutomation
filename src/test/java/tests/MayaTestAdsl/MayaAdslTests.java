@@ -11,10 +11,12 @@ import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
 import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
+import pages.ustMenuPagesMaya.TrackOrdersPage;
 
 public class MayaAdslTests extends BaseTest {
 
     String customerNo;
+    String siparisNo;
 
     @BeforeMethod
     public void loginBeforeTests() {
@@ -27,7 +29,7 @@ public class MayaAdslTests extends BaseTest {
 
         OrderCapturePage orderCapturePage = new OrderCapturePage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-        SearchCustomerCorparatePage searchCustomerCorparatePage = new SearchCustomerCorparatePage();
+        TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
         AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
         String erisimNo = mayaReusableSteps.erisimNoGetir();
 
@@ -74,11 +76,15 @@ public class MayaAdslTests extends BaseTest {
                 .siparisEkle()
                 .siparişOluştur();
 
+        trackOrdersPage
+                .sayfaKontrolu();
+        siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
+
         int testId = getTestId("TS0001_KurumsalADSLSiparisGiris")[0];
 
 
 
-        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());
+        insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString(),siparisNo);
 
     }
 
