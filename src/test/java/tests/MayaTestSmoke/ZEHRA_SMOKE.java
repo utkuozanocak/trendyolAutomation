@@ -38,15 +38,14 @@ public class ZEHRA_SMOKE extends BaseTest
                 .sayfaKontrolu();
     }
 
-}
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0098_XDGProfilYonetimi")
-    public void TS0098_XDGProfilYonetimi() throws InterruptedException {
+    public void TS0097_XDGProfilYonetimi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        newToptanCustomerPage yeniToptanMusteriPage= new newToptanCustomerPage();
+        xdgProfileManagementPage xdgProfileManagement= new xdgProfileManagementPage();
 
-        yeniToptanMusteriPage
+        xdgProfileManagement
                 .openPage()
                 .sayfaKontrolu();
     }
