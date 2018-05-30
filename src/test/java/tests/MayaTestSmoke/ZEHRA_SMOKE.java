@@ -82,4 +82,47 @@ public void TS0096_HDMProfilTanimlama() throws InterruptedException {
                 .openPage()
                 .sayfaKontrolu();
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0093_fbtPriorityGroupManagement")
+    public void TS0093_fbtPriorityGroupManagement() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        FbtPriorityGroupManagementPage fbtOncelik= new FbtPriorityGroupManagementPage();
+        fbtOncelik
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+@Test(enabled = true, description = "TS0092_SistemParametreleriYonetimi")
+public void TS0092_SistemParametreleriYonetimi() throws InterruptedException {
+
+    loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+    systemParameterManagementPage systemParameterManagement= new systemParameterManagementPage();
+    systemParameterManagement
+            .openPage()
+            .sayfaKontrolu();
+}
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0091_BIYonetim")
+    public void TS0091_BIYonetim() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        businessInteractionManagementPage businessInteractionManagement= new businessInteractionManagementPage();
+        businessInteractionManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0090_SMSEpostaSablon")
+    public void TS0090_SMSEpostaSablon() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        SmsEmailTemplateManagementPage SmsEmailTemplateManagement= new SmsEmailTemplateManagementPage();
+        SmsEmailTemplateManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
 }
