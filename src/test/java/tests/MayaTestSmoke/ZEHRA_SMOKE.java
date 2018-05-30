@@ -71,4 +71,15 @@ public void TS0096_HDMProfilTanimlama() throws InterruptedException {
                 .openPage()
                 .sayfaKontrolu();
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0096_HDMProfilTanimlama")
+    public void TS0094_YonetimKurallar() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        RulesPage kuralListesi= new RulesPage();
+        kuralListesi
+                .openPage()
+                .sayfaKontrolu();
+    }
 }
