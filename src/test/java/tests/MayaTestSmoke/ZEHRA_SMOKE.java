@@ -93,4 +93,15 @@ public void TS0096_HDMProfilTanimlama() throws InterruptedException {
                 .openPage()
                 .sayfaKontrolu();
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0092_SistemParametreleriYonetimi")
+    public void TS0092_SistemParametreleriYonetimi() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        systemParameterManagementPage systemParameterManagement= new systemParameterManagementPage();
+        systemParameterManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
 }

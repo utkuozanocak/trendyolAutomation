@@ -26,12 +26,12 @@ public class RulesPage extends MainPageMaya{
     private SelenideElement LBL_KURALLISTESI = $(By.xpath(GetObject("MAYA","LBL_KURALLISTESI","XPATH","BindingListPage","PRP")));
     private SelenideElement BTN_KURALEKLE = $(By.xpath(GetObject("MAYA","BTN_KURALEKLE","XPATH","BindingListPage","PRP")));
 
-    @Step("Yeni toptan müşterisi oluşturma sayfası açılır.")
+    @Step("Kural listesi sayfası açılır.")
     public RulesPage openPage() {
         ustMenu(MayaUstMenuData.Yonetim.KuralTanimlama);
         return this;
     }
-    @Step("Yeni Toptan Müşteri Oluşturma sayfasının geldiği görülür.")
+    @Step("Kural listesi sayfasının geldiği görülür.")
     public RulesPage sayfaKontrolu() {
         Assert.assertEquals(LBL_KURALLISTESI.isDisplayed(),true, "Sayfa Açıldı.");
         takeScreenshot();
