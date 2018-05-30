@@ -121,5 +121,96 @@ public class MayaSmokeTestProductsUstMenu extends BaseTest {
 
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Ödeme Şablonları Sayfası Açılır. ")
+    public void TS0009_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductPaymentPlanTemplatesPage productPaymentPlanTemplatesPage = new ProductPaymentPlanTemplatesPage();
+
+        //Ürün/Ödeme Şablonları  sayfası
+        productPaymentPlanTemplatesPage.openPage();
+        productPaymentPlanTemplatesPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Çapraz Satış İlişkileri Sayfası Açılır. ")
+    public void TS0010_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductCrossSaleRelationsPage productCrossSaleRelationsPage = new ProductCrossSaleRelationsPage();
+
+        //Ürün/Çapraz Satış İlişkileri sayfası
+        productCrossSaleRelationsPage.openPage();
+        productCrossSaleRelationsPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Ürünler Sayfası Açılır. ")
+    public void TS0011_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductCommonOffersPage productCommonOffersPage = new ProductCommonOffersPage();
+
+        //Ürün/Ürünler sayfası
+        productCommonOffersPage.openPage();
+        productCommonOffersPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Taahhütler Sayfası Açılır. ")
+    public void TS0012_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductCommitmentsPage productCommitmentsPage = new ProductCommitmentsPage();
+
+        //Ürün/Taahhütler sayfası
+        productCommitmentsPage.openPage();
+        productCommitmentsPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Çoklu Ürün Aileleri Sayfası Açılır. ")
+    public void TS0013_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductBundleProductsPage productBundleProductsPage = new ProductBundleProductsPage();
+
+        //Ürün/Çoklu Ürün Aileleri sayfası
+        productBundleProductsPage.openPage();
+        productBundleProductsPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Kampanya Grupları Sayfası Açılır. ")
+    public void TS0014_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductBundleOfferGroupsPage productBundleOfferGroupsPage = new ProductBundleOfferGroupsPage();
+
+        //Ürün/Kampanya Grupları sayfası
+        productBundleOfferGroupsPage.openPage();
+        productBundleOfferGroupsPage.sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "Üst Menüden Ürün/Promocode Sayfası Açılır. ")
+    public void TS0015_MayaUrunlerUstMenuTest() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        ProductActivationCodeDefinitionsPage productActivationCodeDefinitionsPage = new ProductActivationCodeDefinitionsPage();
+
+        //Ürün/Promocode sayfası
+        productActivationCodeDefinitionsPage.openPage();
+        productActivationCodeDefinitionsPage.sayfaKontrolu();
+
+    }
+
 
 }
