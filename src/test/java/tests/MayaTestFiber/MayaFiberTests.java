@@ -21,7 +21,7 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true,invocationCount = 10,description = "TS0001 : Kurumsal Fiber Siparis Giris")
+    @Test(enabled = true,description = "TS0001 : Kurumsal Fiber Siparis Giris")
     public void TS0001_KurumsalFiberSiparisGiris() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
@@ -94,7 +94,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla();
         etkilesimlerFrame
-                .btnForEtkilesim("Kampanya İçi Ürün Değişikliği");
+                .btnForEtkilesim("Kampanya Değişiklikleri","Kampanya İçi Ürün Değişikliği");
         changeBundleOfferSelectionPage
                 .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
                 .tablodanIlkHiziSec()
@@ -125,7 +125,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla();
         etkilesimlerFrame
-                .btnForEtkilesim("İptal");
+                .btnForEtkilesim("Abonelik İşlemleri","İptal");
         etkilesimDetayiIptalFrame
                 .cmbIptalAnaNedeniSec("Kurumsal_Taşınma")
                 .altNedenSec("Kurumsal_Taşınma")
@@ -152,7 +152,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunKontratDetayAc()
                 .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler");
         etkilesimlerFrame
-                .btnForEtkilesim("Fiber Data Şifre Değişikliği");
+                .btnForEtkilesim("Abonelik İşlemleri","Fiber Data Şifre Değişikliği");
         etkilesimDetayFiberDataSifreDegisikligiFrame
                 .btnDataSifreDegistirTikla()
                 .btnDataSifreDegisikligiEvetTikla()
@@ -180,7 +180,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunKontratDetayAc()
                 .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler");
         etkilesimlerFrame
-                .btnForEtkilesim("Fiber Güvenli İnternet Profil Değişikliği");
+                .btnForEtkilesim("Abonelik İşlemleri","Fiber Güvenli İnternet Profil Değişikliği");
         etkilesimDetayInternetProfilDegisikligiFrame
                 .cmbInternetProfilSec("Çocuk Profili")
                 .btnDegisikligiKaydet().confirmDialog().confirmEvetTikla();
@@ -209,7 +209,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla();
         etkilesimlerFrame
-                .btnForEtkilesim("Kampanya Değişikliği");
+                .btnForEtkilesim("Kampanya Değişiklikleri","Kampanya Değişikliği");
         changeBundleOfferSelectionPage
                 .cmbKampanyaGecisTipi("UPSELL")
                 .cmbYeniKampanya("KonuşturanFiberİnternetKampanyası_Retention")
@@ -257,7 +257,7 @@ public class MayaFiberTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
-        mayaReusableSteps.customerSearchWithCustomerNumber(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment, "22521789");
+        mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
         EtkilesimDetayDevirFrame etkilesimDetayDevirFrame = new EtkilesimDetayDevirFrame();
@@ -270,7 +270,7 @@ public class MayaFiberTests extends BaseTest {
                 .tablodanIlkUrunIslemlerTikla()
                 .btnEtkilesimlerTikla();
         etkilesimlerFrame
-                .btnForEtkilesim("Devir");
+                .btnForEtkilesim("Abonelik İşlemleri","Devir");
         etkilesimDetayDevirFrame
                 .devirTuruIsaretle(true)
                 .musteriNoGir()
