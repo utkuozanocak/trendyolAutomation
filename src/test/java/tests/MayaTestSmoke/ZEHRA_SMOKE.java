@@ -82,4 +82,15 @@ public void TS0096_HDMProfilTanimlama() throws InterruptedException {
                 .openPage()
                 .sayfaKontrolu();
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0093_fbtPriorityGroupManagement")
+    public void TS0093_fbtPriorityGroupManagement() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        FbtPriorityGroupManagementPage fbtOncelik= new FbtPriorityGroupManagementPage();
+        fbtOncelik
+                .openPage()
+                .sayfaKontrolu();
+    }
 }
