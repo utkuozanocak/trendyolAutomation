@@ -7,16 +7,10 @@ import data.TestDataFox;
 import data.TestDataMaya;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import pages.MainPageFox;
-import pages.MainPageMaya;
-import pages.ustMenuPagesFox.AkisDetayPage;
-import pages.ustMenuPagesFox.AkisListesiPage;
-import pages.ustMenuPagesFox.KullaniciDegistirPage;
 import pages.ustMenuPagesFox.StepDetayPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 import pages.ustMenuPagesMaya.TrackOrdersPage;
 import tests.FoxFiber.FiberFoxTests;
 import tests.MayaTestFiber.MayaFiberTests;
@@ -68,7 +62,7 @@ public class SolCrmAll extends BaseTest {
                 .siparişOluştur();
 
         trackOrdersPage
-                .sayfaKontrolu();
+                .musteriSiparisleriSayfaKontrolu();
         siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
 
 
