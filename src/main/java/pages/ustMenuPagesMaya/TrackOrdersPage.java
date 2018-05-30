@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.MainPageMaya;
 import pages.pageComponents.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
@@ -28,16 +29,28 @@ public class TrackOrdersPage extends MainPageMaya {
     private SelenideElement BTN_OZELLIKKAPAT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_OZELLIKKAPAT_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_SIPARISDETAY_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISDETAY_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_URUNEGIT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_URUNEGIT_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
-
+    private SelenideElement LBL_MUSTERISIPARISLERI = $(By.xpath(GetObject("MAYA","LBL_MUSTERISIPARISLERI","XPATH","MayaTrackOrdersPage","PRP")));
+    private SelenideElement LBL_ETKILESIMLER = $(By.xpath(GetObject("MAYA","LBL_ETKILESIMLER","XPATH","MayaTrackOrdersPage","PRP")));
     @Step("Müşteri Sipraişleri sayfası açılır.")
-    public TrackOrdersPage openPage() {
+    public TrackOrdersPage openMusteriSiparisleriPage() {
         ustMenu(MayaUstMenuData.Islemler.MusteriSiparisleri);
+        return this;
+    }
+    @Step("Müşteri etkileşimler sayfası açılır.")
+    public TrackOrdersPage openMusteriEtkilesimleriPage() {
+        ustMenu(MayaUstMenuData.Islemler.MusteriEtkilesimleri);
         return this;
     }
 
     @Step("Müşteri Sipraişleri sayfasını geldiği görülür.")
-    public TrackOrdersPage sayfaKontrolu() {
-        $x("//span[text()='Müşterinin Siparişleri']").shouldBe(Condition.visible);
+    public TrackOrdersPage musteriSiparisleriSayfaKontrolu() {
+        LBL_MUSTERISIPARISLERI.shouldBe(Condition.visible);
+        takeScreenshot();
+        return this;
+    }
+    @Step("Müşteri Etkileşimleri sayfasının geldiği görülür.")
+    public TrackOrdersPage musteriEtkilesimleriSayfaKontrolu() {
+        Assert.assertEquals(LBL_ETKILESIMLER.isDisplayed(),true,"Müşteri Etkileşimleri Sayfası Açılmalı");
         takeScreenshot();
         return this;
     }
