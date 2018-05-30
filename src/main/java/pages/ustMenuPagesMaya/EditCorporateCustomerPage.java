@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class EditCorporateCustomerPage extends MainPageMaya {
     private SelenideElement BTN_SMSGONDER_ID = $(By.id(GetObject("MAYA","BTN_SMSGONDER_ID","ID","EditCorporateCustomerPage","PRP")));
     private SelenideElement LBL_SMSMSG_XPATH = $(By.xpath(GetObject("MAYA","LBL_SMSMSG_XPATH","XPATH","EditCorporateCustomerPage","PRP")));
+    private SelenideElement LBL_MUSTERIBILGILERI = $(By.xpath(GetObject("MAYA","LBL_MUSTERIBILGILERI","XPATH","EditCorporateCustomerPage","PRP")));
     @Step("SMS butonu tıklanır.")
     public EditCorporateCustomerPage btnSMS() {
         BTN_SMSGONDER_ID.click();
@@ -25,6 +26,12 @@ public class EditCorporateCustomerPage extends MainPageMaya {
     @Step("Müşteri bilgileri sayfası açılır.")
     public EditCorporateCustomerPage musteriBilgileriTikla() {
         ustMenu(MayaUstMenuData.Islemler.MusteriBilgileri);
+        return this;
+    }
+    @Step("Müşteri Bilgileri sayfasının geldiği görülür.")
+    public EditCorporateCustomerPage musteriBilgileriSayfaKontrolu() {
+        Assert.assertEquals(LBL_MUSTERIBILGILERI.isDisplayed(),true,"Müşteri Bilgileri Sayfası Açılmalı");
+        takeScreenshot();
         return this;
     }
 }

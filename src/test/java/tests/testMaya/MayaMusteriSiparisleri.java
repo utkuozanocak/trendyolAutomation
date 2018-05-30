@@ -47,7 +47,7 @@ public class MayaMusteriSiparisleri extends BaseTest {
                 .tablodanIlkKayitTikla();
 
         trackOrdersPage
-                .openPage()
+                .openMusteriSiparisleriPage()
                 .siparisNoGir(siparisno)
                 //trackOrdersPage.islemTipiSec(tip);
                 //trackOrdersPage.statuSec(status);

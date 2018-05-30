@@ -1,6 +1,5 @@
 package pages.ustMenuPagesMaya;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -43,7 +42,13 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_DEVIRARA_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRARA_XPATH","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_MUSTERISEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_MUSTERISEC_XPATH","XPATH","CustomerAssetsPage","PRP")));
     private SelenideElement BTN_DEVIRBASLAT_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRBASLAT_XPATH","XPATH","CustomerAssetsPage","PRP")));
-
+    private SelenideElement LBL_MUSTERIURUNLERI = $(By.xpath(GetObject("MAYA","LBL_MUSTERIURUNLERI","XPATH","CustomerAssetsPage","PRP")));
+    @Step("Müşteri Ürünleri sayfasının geldiği görülür.")
+    public CustomerAssetsPage musteriUrunleriSayfaKontrolu() {
+        Assert.assertEquals(LBL_MUSTERIURUNLERI.isDisplayed(),true,"Müşteri Ürünleri Sayfası Açılmalı");
+        takeScreenshot();
+        return this;
+    }
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);

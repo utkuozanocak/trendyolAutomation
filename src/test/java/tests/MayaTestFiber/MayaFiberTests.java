@@ -54,7 +54,7 @@ public class MayaFiberTests extends BaseTest {
                 .siparişOluştur();
 
         trackOrdersPage
-                .sayfaKontrolu();
+                .musteriSiparisleriSayfaKontrolu();
         siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
 
 
