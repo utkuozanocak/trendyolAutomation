@@ -7,6 +7,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.mayaFrames.EtkilesimlerFrame;
 import pages.ustMenuPagesMaya.*;
 
 
@@ -165,11 +166,11 @@ public class MayaSmokeTests extends BaseTest {
     @Test(enabled = true, description = "TS0008 : Musteri Etkileşimleri Test")
     public void TS0008_MusteriEtkilesimleriTest() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-        TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         mayaReusableSteps
                 .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
-        trackOrdersPage
+        etkilesimlerFrame
                 .openMusteriEtkilesimleriPage()
                 .musteriEtkilesimleriSayfaKontrolu();
     }
