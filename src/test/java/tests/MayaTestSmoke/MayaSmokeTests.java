@@ -385,7 +385,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Maya Login ve Anasayfa Açılır")
-    public void TS0026_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0026_UrunAilesiSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductsProductsPage productsProductsPage = new ProductsProductsPage();
@@ -397,7 +397,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Satış Kategorileri Açılır. ")
-    public void TS0027_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0027_SatisKategorileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductSalesCategoriesPage productSalesCategoriesPage = new ProductSalesCategoriesPage();
@@ -410,7 +410,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Rapor Kategorileri Açılır. ")
-    public void TS0028_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0028_RaporKategorileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductReportCategoriesPage productReportCategoriesPage = new ProductReportCategoriesPage();
@@ -423,7 +423,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Regexp Syafası Açılır. ")
-    public void TS0029_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0029_RegexpSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductRegexpManagementPage productRegexpManagementPage = new ProductRegexpManagementPage();
@@ -436,7 +436,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Değer Listeleri Sayfası Açılır. ")
-    public void TS0030_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0030_DegerlerListesiSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductPropertyListsPage productPropertyListsPage = new ProductPropertyListsPage();
@@ -449,7 +449,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Özellikler Sayfası Açılır. ")
-    public void TS0031_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0031_OzelliklerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductPropertiesPage productPropertiesPage = new ProductPropertiesPage();
@@ -462,7 +462,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün-CFS/PR Sayfası Açılır. ")
-    public void TS0032_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0032_CFSPRSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductProductServicesPage productProductServicesPage = new ProductProductServicesPage();
@@ -475,7 +475,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Ürün Grupları Sayfası Açılır. ")
-    public void TS0033_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0033_UrunGruplariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductProductGroupPage productProductGroupPage = new ProductProductGroupPage();
@@ -488,7 +488,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Ödeme Şablonları Sayfası Açılır. ")
-    public void TS0034_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0034_OdemeSablonlariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductPaymentPlanTemplatesPage productPaymentPlanTemplatesPage = new ProductPaymentPlanTemplatesPage();
@@ -501,7 +501,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Çapraz Satış İlişkileri Sayfası Açılır. ")
-    public void TS0035_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0035_CaprazSatisIliskileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductCrossSaleRelationsPage productCrossSaleRelationsPage = new ProductCrossSaleRelationsPage();
@@ -514,7 +514,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Ürünler Sayfası Açılır. ")
-    public void TS0036_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0036_UrunlerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductCommonOffersPage productCommonOffersPage = new ProductCommonOffersPage();
@@ -527,7 +527,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Taahhütler Sayfası Açılır. ")
-    public void TS0037_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0037_TaahhütlerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductCommitmentsPage productCommitmentsPage = new ProductCommitmentsPage();
@@ -540,7 +540,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Çoklu Ürün Aileleri Sayfası Açılır. ")
-    public void TS0038_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0038_CokluUrunAileleriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductBundleProductsPage productBundleProductsPage = new ProductBundleProductsPage();
@@ -553,7 +553,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Kampanya Grupları Sayfası Açılır. ")
-    public void TS0039_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0039_KampanyaGruplariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductBundleOfferGroupsPage productBundleOfferGroupsPage = new ProductBundleOfferGroupsPage();
@@ -566,7 +566,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "Üst Menüden Ürün/Promocode Sayfası Açılır. ")
-    public void TS0040_MayaUrunlerUstMenuTest() throws InterruptedException {
+    public void TS0040_PromocodeSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductActivationCodeDefinitionsPage productActivationCodeDefinitionsPage = new ProductActivationCodeDefinitionsPage();
