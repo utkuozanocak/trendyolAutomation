@@ -313,4 +313,74 @@ public class MayaSmokeTests extends BaseTest {
 
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0020_BireyselMusteriOlusturma")
+    public void TS0020_YeniKurumsalMusteriOlusturma() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        newCorporateCustomerPage yeniKurumsalMusteriPage= new newCorporateCustomerPage();
+
+        yeniKurumsalMusteriPage
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0021_YeniToptanlMusteriOlusturma")
+    public void TS0021_YeniToptanlMusteriOlusturma() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        newToptanCustomerPage yeniToptanMusteriPage= new newToptanCustomerPage();
+
+        yeniToptanMusteriPage
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0022_XDGProfilYonetimi")
+    public void TS0022_XDGProfilYonetimi() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        xdgProfileManagementPage xdgProfileManagement= new xdgProfileManagementPage();
+
+        xdgProfileManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0023_HDMProfilTanimlama")
+    public void TS0023_HDMProfilTanimlama() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        xdgProfileManagementPage hdmManagement= new xdgProfileManagementPage();
+
+        hdmManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0024_HDMProfilTanimlama")
+    public void TS0024_YonetimEslestirmeler() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        bindingListPage eslestirmeler= new bindingListPage();
+        eslestirmeler
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0025_HDMProfilTanimlama")
+    public void TS0025_YonetimKurallar() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        RulesPage kuralListesi= new RulesPage();
+        kuralListesi
+                .openPage()
+                .sayfaKontrolu();
+    }
+
 }
