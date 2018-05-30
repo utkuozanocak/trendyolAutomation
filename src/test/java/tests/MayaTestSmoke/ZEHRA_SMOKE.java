@@ -19,18 +19,36 @@ public class ZEHRA_SMOKE extends BaseTest
     @Test(enabled = true, description = "TS0099_BireyselMusteriOlusturma")
     public void TS0099_YeniKurumsalMusteriOlusturma() throws InterruptedException {
 
-        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        newCorporateCustomerPage yeniKurumsalMusteriPage= new newCorporateCustomerPage();
+    loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+    newCorporateCustomerPage yeniKurumsalMusteriPage= new newCorporateCustomerPage();
 
-        yeniKurumsalMusteriPage
+    yeniKurumsalMusteriPage
+            .openPage()
+            .sayfaKontrolu();
+}
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0098_YeniToptanlMusteriOlusturma")
+    public void TS0098_YeniToptanlMusteriOlusturma() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        newToptanCustomerPage yeniToptanMusteriPage= new newToptanCustomerPage();
+
+        yeniToptanMusteriPage
                 .openPage()
                 .sayfaKontrolu();
     }
 
+}
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "")
-    public void "TC Name"() throws InterruptedException {
+    @Test(enabled = true, description = "TS0098_XDGProfilYonetimi")
+    public void TS0098_XDGProfilYonetimi() throws InterruptedException {
 
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        newToptanCustomerPage yeniToptanMusteriPage= new newToptanCustomerPage();
+
+        yeniToptanMusteriPage
+                .openPage()
+                .sayfaKontrolu();
     }
 
 }
