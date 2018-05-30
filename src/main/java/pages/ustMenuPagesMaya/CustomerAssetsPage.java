@@ -20,35 +20,19 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_ARA = $(By.xpath(GetObject("MAYA", "BTN_ARA", "XPATH", "CustomerAssetsPage", "PRP")));
     ElementsCollection TBL_PRODUCTLIST = $$(GetObject("MAYA", "TBL_PRODUCTLIST", "CSS_SELECTOR", "CustomerAssetsPage", "PRP"));
     private SelenideElement BTN_ETKILESIMLER = $(By.xpath(GetObject("MAYA", "BTN_ETKILESIMLER", "XPATH", "CustomerAssetsPage", "PRP")));
-    private SelenideElement BTN_KAMPANYAICIURUNDEGISIKLIGI = $(By.xpath(GetObject("MAYA", "BTN_KAMPANYAICIURUNDEGISIKLIGI", "XPATH", "CustomerAssetsPage", "PRP")));
-    private SelenideElement BTN_ABONELIKISLEMLERIIPTAL_XPATH = $(By.xpath(GetObject("MAYA", "BTN_ABONELIKISLEMLERIIPTAL_XPATH", "XPATH", "CustomerAssetsPage", "PRP")));
-    SolCrmElement CMB_IPTALMAINREASON_ID = comboBox(By.xpath(GetObject("MAYA", "CMB_IPTALMAINREASON_ID", "XPATH", "CustomerAssetsPage", "PRP")));
-    private SelenideElement BTN_IPTALSIPARISTAMAMLA_XPATH = $(By.xpath(GetObject("MAYA", "BTN_IPTALSIPARISTAMAMLA_XPATH", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement BTN_PARTNERORANGIRISI = $(By.xpath(GetObject("MAYA", "BTN_PARTNERORANGIRISI", "XPATH", "CustomerAssetsPage", "PRP")));
     SolCrmElement CMB_PARTNER = comboBox(By.id(GetObject("MAYA", "CMB_PARTNER", "ID", "CustomerAssetsPage", "PRP")));
-    SolCrmElement CMB_INTERNETPROFIL = comboBox(GetObject("MAYA","CMB_INTERNETPROFIL","CSS_SELECTOR","CustomerAssetsPage","PRP"));
     private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA", "BTN_KAYDET", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
-    private SelenideElement BTN_FIBERDATASIFREDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_FIBERDATASIFREDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DATASIFREDEGISTIR = $(By.xpath(GetObject("MAYA","BTN_DATASIFREDEGISTIR","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_EVET = $(By.xpath(GetObject("MAYA","BTN_EVET","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_GUVENLIINTERNETPROFILDEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_GUVENLIINTERNETPROFILDEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DEGISIKLIGI_KAYDET = $(By.xpath(GetObject("MAYA","BTN_DEGISIKLIGI_KAYDET","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_POPUP_EVET = $(By.xpath(GetObject("MAYA","BTN_POPUP_EVET","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_KAMPANYA_DEGISIKLIGI = $(By.xpath(GetObject("MAYA","BTN_KAMPANYA_DEGISIKLIGI","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DEVIR_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIR_XPATH","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement CHK_DEVIRTURU = $(GetObject("MAYA","CHK_DEVIRTURU","CSS_SELECTOR","CustomerAssetsPage","PRP"));
-    private SelenideElement TXT_DEVIRCUSTOMERNO_ID = $(By.id(GetObject("MAYA","TXT_DEVIRCUSTOMERNO_ID","ID","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DEVIRARA_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRARA_XPATH","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_MUSTERISEC_XPATH = $(By.xpath(GetObject("MAYA","BTN_MUSTERISEC_XPATH","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement BTN_DEVIRBASLAT_XPATH = $(By.xpath(GetObject("MAYA","BTN_DEVIRBASLAT_XPATH","XPATH","CustomerAssetsPage","PRP")));
-    private SelenideElement LBL_MUSTERIURUNLERI = $(By.xpath(GetObject("MAYA","LBL_MUSTERIURUNLERI","XPATH","CustomerAssetsPage","PRP")));
+    private SelenideElement LBL_MUSTERIURUNLERI = $(By.xpath(GetObject("MAYA", "LBL_MUSTERIURUNLERI", "XPATH", "CustomerAssetsPage", "PRP")));
+
     @Step("Müşteri Ürünleri sayfasının geldiği görülür.")
     public CustomerAssetsPage musteriUrunleriSayfaKontrolu() {
-        Assert.assertEquals(LBL_MUSTERIURUNLERI.isDisplayed(),true,"Müşteri Ürünleri Sayfası Açılmalı");
+        Assert.assertEquals(LBL_MUSTERIURUNLERI.isDisplayed(), true, "Müşteri Ürünleri Sayfası Açılmalı");
         takeScreenshot();
         return this;
     }
+
     @Step("Müşteri ürünleri sayfası açılır.")
     public CustomerAssetsPage musteriUrunleriSayfasiAc() {
         ustMenu(MayaUstMenuData.Islemler.MusteriUrunleri);
@@ -58,31 +42,6 @@ public class CustomerAssetsPage extends MainPageMaya {
     @Step("Arama Butonu Tıklanır")
     public CustomerAssetsPage btnAramaTikla() {
         BTN_ARAMA.click();
-        return this;
-    }
-    @Step("Kampanya Değişikliği Butonu Tıklanır")
-    public CustomerAssetsPage btnKampanyaDegisikligiTikla() {
-        BTN_KAMPANYA_DEGISIKLIGI.click();
-        return this;
-    }
-    @Step("Değişikliği Kaydet Butonu Tıklanır")
-    public CustomerAssetsPage btnDegisikligiKaydet() {
-        BTN_DEGISIKLIGI_KAYDET.click();
-        return this;
-    }
-    @Step("PopUp Evet Butonu Tıklanır")
-    public CustomerAssetsPage btnPopUpEvet() {
-        BTN_POPUP_EVET.click();
-        return this;
-    }
-    @Step("Güvenli İnternet Profil Değişikliği Butonu Tıklanır")
-    public CustomerAssetsPage btnGuvenliInternetProfilDegisikligiTikla() {
-        BTN_GUVENLIINTERNETPROFILDEGISIKLIGI.click();
-        return this;
-    }
-    @Step("İnternet Profil alanında \"{internetProfil}\" seçilir.")
-    public CustomerAssetsPage cmbInternetProfilSec(String internetProfil) {
-        CMB_INTERNETPROFIL.selectComboBox(internetProfil);
         return this;
     }
 
@@ -119,27 +78,11 @@ public class CustomerAssetsPage extends MainPageMaya {
 
 
     @Step("Ürün tablosundan aktif olan ilk kontrat ürün detayı işlemler açılır.")
-    public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc(String statu,String urun,String secim) {
-        tabloComboBoxSec(TBL_PRODUCTLIST,statu,urun,secim);
+    public CustomerAssetsPage tablodanKontratDetayHizIslemlerAc(String statu, String urun, String secim) {
+        tabloComboBoxSec(TBL_PRODUCTLIST, statu, urun, secim);
         return this;
     }
 
-    @Step("Fiber Data Şifre Değişikliği Butonu Tıklanır")
-    public CustomerAssetsPage btnFiberDataSifreDegisikligi() {
-        BTN_FIBERDATASIFREDEGISIKLIGI.click();
-        return this;
-    }
-
-    @Step("Data Şifre Değiştir Butonu Tıklanır")
-    public CustomerAssetsPage btnDataSifreDegistirTikla() {
-        BTN_DATASIFREDEGISTIR.click();
-        return this;
-    }
-    @Step("Data Şifre Değiştir Onay (Evet) Tıklanır")
-    public CustomerAssetsPage btnDataSifreDegisikligiEvetTikla() {
-        BTN_EVET.click();
-        return this;
-    }
 
     @Step("Etkileşimler Butonu Tıklanır")
     public CustomerAssetsPage btnEtkilesimlerTikla() {
@@ -147,41 +90,6 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
-
-    @Step("Kampanya İçi Ürün Değişikliği Butonu Tıklanır")
-    public CustomerAssetsPage btnKampanyaIciUrunDegisikligiTikla() {
-        BTN_KAMPANYAICIURUNDEGISIKLIGI.click();
-        return this;
-    }
-
-    @Step("Abonelik işlemleri/İptal butonuna tıklanır.")
-    public CustomerAssetsPage btnIptalSiparisiTikla() {
-        BTN_ABONELIKISLEMLERIIPTAL_XPATH.click();
-        return this;
-    }
-
-    @Step("İptal ana sebebi seçilir.")
-    public CustomerAssetsPage cmbIptalAnaNedeniSec(String iptalananedeni) {
-        comboBox("div[id^='deactivationForm'][id$='mainReasons']").selectComboBox(iptalananedeni);
-        return this;
-    }
-
-    @Step("İptal ana sebebi seçilir.")
-    public CustomerAssetsPage altNedenSec(String iptalaltnedeni) {
-        comboBox("div[id^='deactivationForm'][id$='detailReasons']").selectComboBox(iptalaltnedeni);
-//        $("div[id^='deactivationForm'][id$='detailReasons'] span[class='ui-icon ui-icon-triangle-1-s ui-c']").click();
-//        $$("div[id^='deactivationForm'][id$='detailReasons_panel'] li")
-//                .filterBy(Condition.text(iptalaltnedeni))
-//                .first()
-//                .click();
-        return this;
-    }
-
-    @Step("İptal siparişi tamamlanır.")
-    public CustomerAssetsPage iptalSiparişiTamamla() {
-        BTN_IPTALSIPARISTAMAMLA_XPATH.click();
-        return this;
-    }
 
     @Step("Partner Oran Girişi Butonu Tıklanır")
     public CustomerAssetsPage btnPartnerOranGirisiTikla() {
@@ -205,41 +113,6 @@ public class CustomerAssetsPage extends MainPageMaya {
     public CustomerAssetsPage mesajKontrol(String mesaj) {
         Assert.assertEquals(LBL_MSG.text().contains(mesaj), true);
         takeScreenshot();
-        return this;
-    }
-    @Step("Devir türü seçilir.")
-    public CustomerAssetsPage devirTuruIsaretle(boolean select) {
-        CHK_DEVIRTURU.click();
-        return this;
-        //        CHK_DEVIRTURU.shouldBe(Condition.checked);
-    }
-    @Step("Devir butonuna tıklanır.")
-    public CustomerAssetsPage btnDevirTikla() {
-        BTN_DEVIR_XPATH.click();
-        return this;
-    }
-
-    @Step("Devir yapılacak müşteri no girilir.")
-    public CustomerAssetsPage musteriNoGir() {
-        TXT_DEVIRCUSTOMERNO_ID.setValue("23484706");
-        return this;
-    }
-
-    @Step("Devir yapılacak müşteri aranır.")
-    public CustomerAssetsPage musteriAra() {
-        BTN_DEVIRARA_XPATH.click();
-        return this;
-    }
-
-    @Step("Müşteri seçilir.")
-    public CustomerAssetsPage musteriSec() {
-        BTN_MUSTERISEC_XPATH.click();
-        return this;
-    }
-
-    @Step("Müşteri seçilir.")
-    public CustomerAssetsPage devirBaslat() {
-        BTN_DEVIRBASLAT_XPATH.click();
         return this;
     }
 
