@@ -10,7 +10,7 @@ import pages.MainPageMaya;
 import pages.pageData.MayaUstMenuData;
 import pages.ustMenuPagesMaya.*;
 
-public class MayaSmokeTestProductsUstMenu extends BaseTest {
+public class HUSEYIN_SMOKE extends BaseTest {
 
     @BeforeMethod
     public void loginBeforeTests() {
