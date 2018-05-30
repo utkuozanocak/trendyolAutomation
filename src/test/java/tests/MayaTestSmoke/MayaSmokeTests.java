@@ -577,5 +577,46 @@ public class MayaSmokeTests extends BaseTest {
 
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0041_fbtPriorityGroupManagement")
+    public void TS0041_fbtPriorityGroupManagement() throws InterruptedException {
 
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        FbtPriorityGroupManagementPage fbtOncelik= new FbtPriorityGroupManagementPage();
+        fbtOncelik
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0042_SistemParametreleriYonetimi")
+    public void TS0042_SistemParametreleriYonetimi() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        systemParameterManagementPage systemParameterManagement= new systemParameterManagementPage();
+        systemParameterManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0043_BIYonetim")
+    public void TS0043_BIYonetim() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        businessInteractionManagementPage businessInteractionManagement= new businessInteractionManagementPage();
+        businessInteractionManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0044_SMSEpostaSablon")
+    public void TS0044_SMSEpostaSablon() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        SmsEmailTemplateManagementPage SmsEmailTemplateManagement= new SmsEmailTemplateManagementPage();
+        SmsEmailTemplateManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
 }
