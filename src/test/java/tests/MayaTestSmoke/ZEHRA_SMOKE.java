@@ -114,4 +114,15 @@ public void TS0092_SistemParametreleriYonetimi() throws InterruptedException {
                 .openPage()
                 .sayfaKontrolu();
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0090_SMSEpostaSablon")
+    public void TS0090_SMSEpostaSablon() throws InterruptedException {
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        SmsEmailTemplateManagementPage SmsEmailTemplateManagement= new SmsEmailTemplateManagementPage();
+        SmsEmailTemplateManagement
+                .openPage()
+                .sayfaKontrolu();
+    }
 }
