@@ -260,7 +260,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TC0016 : İş emri no ile arama.")
-    public void TS0016IsEmriNoIleArama() throws InterruptedException {
+    public void TS0016_IsEmriNoIleArama() throws InterruptedException {
 
         ProjectTaskSearchPage projectTaskSearchPage = new ProjectTaskSearchPage();
 
@@ -273,7 +273,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0017 : Muşteri Ürünü Ara")
-    public void TS0017MusteriUrunuAra() throws InterruptedException {
+    public void TS0017_MusteriUrunuAra() throws InterruptedException {
 
         CustomerAssetSearchPage customerAssetSearchPage = new CustomerAssetSearchPage();
 
@@ -287,7 +287,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0018 : Taslak Siparişlerim")
-    public void TS0018TaslakSiparislerim() throws InterruptedException {
+    public void TS0018_TaslakSiparislerim() throws InterruptedException {
 
         MyTrackOrdersPage myTrackOrdersPage = new MyTrackOrdersPage();
 
@@ -301,7 +301,7 @@ public class MayaSmokeTests extends BaseTest {
 
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0019 : Hizmet No ile Sipariş")
-    public void TS0019HizmetNoIleSiparis() throws InterruptedException {
+    public void TS0019_HizmetNoIleSiparis() throws InterruptedException {
 
         TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
 
