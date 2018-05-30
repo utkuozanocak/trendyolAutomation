@@ -258,4 +258,59 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriAdresBilgileriSayfaKontrolu();
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TC0016 : İş emri no ile arama.")
+    public void TS0016IsEmriNoIleArama() throws InterruptedException {
+
+        ProjectTaskSearchPage projectTaskSearchPage = new ProjectTaskSearchPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        projectTaskSearchPage
+                .openPage()
+                .sayfaKontrolu();
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0017 : Muşteri Ürünü Ara")
+    public void TS0017MusteriUrunuAra() throws InterruptedException {
+
+        CustomerAssetSearchPage customerAssetSearchPage = new CustomerAssetSearchPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        customerAssetSearchPage
+                .openPage()
+                .sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0018 : Taslak Siparişlerim")
+    public void TS0018TaslakSiparislerim() throws InterruptedException {
+
+        MyTrackOrdersPage myTrackOrdersPage = new MyTrackOrdersPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        myTrackOrdersPage
+                .openPage()
+                .sayfaKontrolu();
+
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0019 : Hizmet No ile Sipariş")
+    public void TS0019HizmetNoIleSiparis() throws InterruptedException {
+
+        TrackOrdersPage trackOrdersPage = new TrackOrdersPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        trackOrdersPage
+                .openPageHizmetNoIleSiparis()
+                .hizmetNoIleSiparisSayfaKontrolu();
+
+    }
+
 }
