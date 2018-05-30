@@ -3,6 +3,7 @@ package pages.ustMenuPagesMaya;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.MainPageMaya;
 import pages.pageData.MayaUstMenuData;
 
@@ -25,7 +26,7 @@ public class CustomerBillAccountPage extends MainPageMaya {
     private SelenideElement BTN_KAPAT_XPATH = $(By.xpath(GetObject("MAYA","BTN_KAPAT_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement TXT_ACIKLAMA_XPATH = $(By.xpath(GetObject("MAYA","TXT_ACIKLAMA_XPATH","XPATH","CustomerBillAccountPage","PRP")));
     private SelenideElement BTN_KAYDET_XPATH = $(By.xpath(GetObject("MAYA","BTN_KAYDET_XPATH","XPATH","CustomerBillAccountPage","PRP")));
-
+    private SelenideElement LBL_FATURAHESABI = $(By.xpath(GetObject("MAYA","LBL_FATURAHESABI","XPATH","CustomerBillAccountPage","PRP")));
 
 
     @Step("Müsteri Fatura Hesabı Sayfası Açılır.")
@@ -34,7 +35,12 @@ public class CustomerBillAccountPage extends MainPageMaya {
         ustMenu(MayaUstMenuData.Islemler.MusteriFaturaHesabi);
         return this;
     }
-
+    @Step("Müşteri Fatura Hesabı sayfasının geldiği görülür.")
+    public CustomerBillAccountPage musteriFaturaHesabiSayfaKontrolu() {
+        Assert.assertEquals(LBL_FATURAHESABI.isDisplayed(),true,"Müşteri Fatura Hesabı Sayfası Açılmalı");
+        takeScreenshot();
+        return this;
+    }
     @Step("Yeni Kayıt Butonuna Tıklanır.")
     public CustomerBillAccountPage yeniKayit()
     {

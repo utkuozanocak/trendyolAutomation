@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import pages.MainPageMaya;
 import pages.ustMenuPagesMaya.AdresBilgileriPage;
 import pages.ustMenuPagesMaya.OrderCapturePage;
-import pages.ustMenuPagesMaya.SearchCustomerCorparatePage;
 import pages.ustMenuPagesMaya.TrackOrdersPage;
 
 public class MayaAdslTests extends BaseTest {
@@ -77,7 +76,7 @@ public class MayaAdslTests extends BaseTest {
                 .siparişOluştur();
 
         trackOrdersPage
-                .sayfaKontrolu();
+                .musteriSiparisleriSayfaKontrolu();
         siparisNo = trackOrdersPage.tablodanIlkSiparisNoAl();
 
         int testId = getTestId("TS0001_KurumsalADSLSiparisGiris")[0];
