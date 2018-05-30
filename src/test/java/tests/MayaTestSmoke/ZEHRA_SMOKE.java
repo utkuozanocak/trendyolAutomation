@@ -51,13 +51,23 @@ public class ZEHRA_SMOKE extends BaseTest
     }
 
     @Severity(SeverityLevel.CRITICAL)
+@Test(enabled = true, description = "TS0096_HDMProfilTanimlama")
+public void TS0096_HDMProfilTanimlama() throws InterruptedException {
+
+    loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+    xdgProfileManagementPage hdmManagement= new xdgProfileManagementPage();
+
+    hdmManagement
+            .openPage()
+            .sayfaKontrolu();
+    }
+    @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0096_HDMProfilTanimlama")
-    public void TS0096_HDMProfilTanimlama() throws InterruptedException {
+    public void TS0095_YonetimEslestirmeler() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        xdgProfileManagementPage hdmManagement= new xdgProfileManagementPage();
-
-        hdmManagement
+        bindingListPage eslestirmeler= new bindingListPage();
+        eslestirmeler
                 .openPage()
                 .sayfaKontrolu();
     }
