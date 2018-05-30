@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pages.MainPageMaya;
 import pages.pageComponents.SolCrmElement;
 import pages.pageData.MayaUstMenuData;
@@ -28,10 +29,23 @@ public class TrackOrdersPage extends MainPageMaya {
     private SelenideElement BTN_OZELLIKKAPAT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_OZELLIKKAPAT_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_SIPARISDETAY_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISDETAY_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
     private SelenideElement BTN_URUNEGIT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_URUNEGIT_XPATH", "XPATH", "MayaTrackOrdersPage", "PRP")));
+    private SelenideElement LBL_HIZMETNOSIPARISLERI = $(By.xpath(GetObject("MAYA","LBL_HIZMETNOSIPARISLERI","XPATH","MayaTrackOrdersPage","PRP")));
 
     @Step("Müşteri Sipraişleri sayfası açılır.")
     public TrackOrdersPage openPage() {
         ustMenu(MayaUstMenuData.Islemler.MusteriSiparisleri);
+        return this;
+    }
+    @Step("Hizmet No Siparişleri sayfası açılır.")
+    public TrackOrdersPage openPageHizmetNoIleSiparis() {
+        ustMenu(MayaUstMenuData.Satis.HizmetNoIleSiparis);
+        return this;
+    }
+
+    @Step("Müşteri Sipraişleri sayfasını geldiği görülür.")
+    public TrackOrdersPage hizmetNoIleSiparisSayfaKontrolu() {
+        Assert.assertEquals(LBL_HIZMETNOSIPARISLERI.isDisplayed(), true, "Sayfa açıldı");
+        takeScreenshot();
         return this;
     }
 
