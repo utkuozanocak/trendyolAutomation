@@ -8,6 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MainPageMaya;
+import pages.mayaFrames.*;
 import pages.ustMenuPagesMaya.*;
 
 public class MayaFiberTests extends BaseTest {
@@ -79,7 +80,7 @@ public class MayaFiberTests extends BaseTest {
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
-
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
@@ -91,9 +92,9 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla()
-                .btnKampanyaIciUrunDegisikligiTikla();
-
+                .btnEtkilesimlerTikla();
+        etkilesimlerFrame
+                .btnForEtkilesim("Kampanya İçi Ürün Değişikliği");
         changeBundleOfferSelectionPage
                 .tablodanDegistirButonuTikla(TestDataMaya.fiberHizSecimGrubu)
                 .tablodanIlkHiziSec()
@@ -109,7 +110,8 @@ public class MayaFiberTests extends BaseTest {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
-
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
+        EtkilesimDetayiIptalFrame etkilesimDetayiIptalFrame = new EtkilesimDetayiIptalFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
@@ -121,8 +123,10 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla()
-                .btnIptalSiparisiTikla()
+                .btnEtkilesimlerTikla();
+        etkilesimlerFrame
+                .btnForEtkilesim("İptal");
+        etkilesimDetayiIptalFrame
                 .cmbIptalAnaNedeniSec("Kurumsal_Taşınma")
                 .altNedenSec("Kurumsal_Taşınma")
                 .iptalSiparişiTamamla();
@@ -133,7 +137,8 @@ public class MayaFiberTests extends BaseTest {
     public void TS0004_KurumsalFiberDataSifreDegisikligi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
-
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
+        EtkilesimDetayFiberDataSifreDegisikligiFrame etkilesimDetayFiberDataSifreDegisikligiFrame = new EtkilesimDetayFiberDataSifreDegisikligiFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
@@ -145,8 +150,10 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler")
-                .btnFiberDataSifreDegisikligi()
+                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler");
+        etkilesimlerFrame
+                .btnForEtkilesim("Fiber Data Şifre Değişikliği");
+        etkilesimDetayFiberDataSifreDegisikligiFrame
                 .btnDataSifreDegistirTikla()
                 .btnDataSifreDegisikligiEvetTikla()
                 .mesajKontrol("Fiber data şifre değişikliği akışı başarıyla başlatılmıştır");
@@ -158,6 +165,8 @@ public class MayaFiberTests extends BaseTest {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         MainPageMaya mainPageMaya = new MainPageMaya();
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
+        EtkilesimDetayInternetProfilDegisikligiFrame etkilesimDetayInternetProfilDegisikligiFrame = new EtkilesimDetayInternetProfilDegisikligiFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
@@ -169,13 +178,13 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
-                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler")
-                .btnGuvenliInternetProfilDegisikligiTikla()
+                .tablodanKontratDetayHizIslemlerAc("Aktif", "Mbps", "Etkileşimler");
+        etkilesimlerFrame
+                .btnForEtkilesim("Fiber Güvenli İnternet Profil Değişikliği");
+        etkilesimDetayInternetProfilDegisikligiFrame
                 .cmbInternetProfilSec("Çocuk Profili")
-                .btnDegisikligiKaydet().
-                confirmDialog().confirmEvetTikla();
-        //.btnPopUpEvet()
-        customerAssetsPage
+                .btnDegisikligiKaydet().confirmDialog().confirmEvetTikla();
+        etkilesimDetayInternetProfilDegisikligiFrame
                 .mesajKontrol("Güvenli İnternet Profil Değişikliği akışı başarıyla başlatılmıştır");
     }
 
@@ -186,7 +195,7 @@ public class MayaFiberTests extends BaseTest {
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         ChangeBundleOfferSelectionPage changeBundleOfferSelectionPage = new ChangeBundleOfferSelectionPage();
         OrderCapturePage orderCapturePage = new OrderCapturePage();
-
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
@@ -198,8 +207,9 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla()
-                .btnKampanyaDegisikligiTikla();
+                .btnEtkilesimlerTikla();
+        etkilesimlerFrame
+                .btnForEtkilesim("Kampanya Değişikliği");
         changeBundleOfferSelectionPage
                 .cmbKampanyaGecisTipi("UPSELL")
                 .cmbYeniKampanya("KonuşturanFiberİnternetKampanyası_Retention")
@@ -249,7 +259,8 @@ public class MayaFiberTests extends BaseTest {
 
         mayaReusableSteps.customerSearchWithCustomerNumber(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment, "22521789");
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
-
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
+        EtkilesimDetayDevirFrame etkilesimDetayDevirFrame = new EtkilesimDetayDevirFrame();
         customerAssetsPage
                 .musteriUrunleriSayfasiAc()
                 .btnAramaTikla()
@@ -257,12 +268,14 @@ public class MayaFiberTests extends BaseTest {
                 .urunSec(TestDataMaya.fiberKampanya)
                 .btnAraTikla()
                 .tablodanIlkUrunIslemlerTikla()
-                .btnEtkilesimlerTikla()
-                .btnDevirTikla()
+                .btnEtkilesimlerTikla();
+        etkilesimlerFrame
+                .btnForEtkilesim("Devir");
+        etkilesimDetayDevirFrame
                 .devirTuruIsaretle(true)
                 .musteriNoGir()
                 .musteriAra()
-                 .musteriSec()
+                .musteriSec()
                 .devirBaslat();
     }
     @Severity(SeverityLevel.CRITICAL)
