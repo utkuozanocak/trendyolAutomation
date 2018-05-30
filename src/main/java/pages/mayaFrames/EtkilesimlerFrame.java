@@ -17,21 +17,25 @@ import static com.codeborne.selenide.Selenide.$;
  * Yazan: Utku Ozan OCAK
  ****************************************************/
 public class EtkilesimlerFrame extends MainPageMaya {
-    private SelenideElement LBL_ETKILESIMLER = $(By.xpath(GetObject("MAYA","LBL_ETKILESIMLER","XPATH","MayaTrackOrdersPage","PRP")));
+    private SelenideElement LBL_ETKILESIMLER = $(By.xpath(GetObject("MAYA", "LBL_ETKILESIMLER", "XPATH", "MayaTrackOrdersPage", "PRP")));
+
     @Step("Müşteri etkileşimler sayfası açılır.")
     public EtkilesimlerFrame openMusteriEtkilesimleriPage() {
         ustMenu(MayaUstMenuData.Islemler.MusteriEtkilesimleri);
         return this;
     }
-    @Step("\"{buttonText}\" tıklanır")
-    public EtkilesimlerFrame btnForEtkilesim(String buttonText) {
-        $(By.xpath("//span[text()='"+buttonText+"']//..//..//button")).shouldBe(Condition.visible).click();
+
+    @Step("\"{formText}\" altındaki \"{buttonText}\" butonu tıklanır.")
+    public EtkilesimlerFrame btnForEtkilesim(String formText, String buttonText) {
+        $(By.xpath("//span[text()='" + formText + "']//..//..//span[text()='" + buttonText + "']//..//..//button")).shouldBe(Condition.visible).click();
+//        $(By.xpath("//span[text()='"+buttonText+"']//..//..//button")).shouldBe(Condition.visible).click();
         return this;
     }
+
     @Step("Müşteri Etkileşimleri sayfasının geldiği görülür.")
     public EtkilesimlerFrame musteriEtkilesimleriSayfaKontrolu() {
         LBL_ETKILESIMLER.shouldBe(Condition.visible);
-        Assert.assertEquals(LBL_ETKILESIMLER.isDisplayed(),true,"Müşteri Etkileşimleri Sayfası Açılmalı");
+        Assert.assertEquals(LBL_ETKILESIMLER.isDisplayed(), true, "Müşteri Etkileşimleri Sayfası Açılmalı");
         takeScreenshot();
         return this;
     }
