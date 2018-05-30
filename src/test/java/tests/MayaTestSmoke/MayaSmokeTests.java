@@ -315,7 +315,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0020_BireyselMusteriOlusturma")
+    @Test(enabled = true, description = "TS0020 : BireyselMusteriOlusturma")
     public void TS0020_YeniKurumsalMusteriOlusturma() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -327,7 +327,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0021_YeniToptanlMusteriOlusturma")
+    @Test(enabled = true, description = "TS0021 : YeniToptanlMusteriOlusturma")
     public void TS0021_YeniToptanlMusteriOlusturma() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -339,7 +339,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0022_XDGProfilYonetimi")
+    @Test(enabled = true, description = "TS0022 : XDGProfilYonetimi")
     public void TS0022_XDGProfilYonetimi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -351,7 +351,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0023_HDMProfilTanimlama")
+    @Test(enabled = true, description = "TS0023 : HDMProfilTanimlama")
     public void TS0023_HDMProfilTanimlama() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -363,7 +363,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0024_HDMProfilTanimlama")
+    @Test(enabled = true, description = "TS0024 : YonetimEslestirmeler")
     public void TS0024_YonetimEslestirmeler() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -374,7 +374,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0025_HDMProfilTanimlama")
+    @Test(enabled = true, description = "TS0025 : YonetimKurallar")
     public void TS0025_YonetimKurallar() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -385,7 +385,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Maya Login ve Anasayfa Açılır")
+    @Test(enabled = true, description = "TS0026 : UrunAilesiSayfasi")
     public void TS0026_UrunAilesiSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -397,7 +397,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Satış Kategorileri Açılır. ")
+    @Test(enabled = true, description = "TS0027 : SatisKategorileriSayfasi ")
     public void TS0027_SatisKategorileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -410,7 +410,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Rapor Kategorileri Açılır. ")
+    @Test(enabled = true, description = "TS0028 : RaporKategorileriSayfasi")
     public void TS0028_RaporKategorileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -423,7 +423,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Regexp Syafası Açılır. ")
+    @Test(enabled = true, description = "TS0029 : RegexpSayfasi ")
     public void TS0029_RegexpSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -436,7 +436,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Değer Listeleri Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0030 : DegerlerListesiSayfasi")
     public void TS0030_DegerlerListesiSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -449,7 +449,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Özellikler Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0031 : OzelliklerSayfasi")
     public void TS0031_OzelliklerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -462,7 +462,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün-CFS/PR Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0032 : CFSPRSayfasi")
     public void TS0032_CFSPRSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -475,7 +475,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Ürün Grupları Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0033 : UrunGruplariSayfasi")
     public void TS0033_UrunGruplariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -488,7 +488,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Ödeme Şablonları Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0034 : OdemeSablonlariSayfasi ")
     public void TS0034_OdemeSablonlariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -501,7 +501,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Çapraz Satış İlişkileri Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0035 : CaprazSatisIliskileriSayfasi")
     public void TS0035_CaprazSatisIliskileriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -514,7 +514,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Ürünler Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0036 : UrunlerSayfasi")
     public void TS0036_UrunlerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -527,7 +527,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Taahhütler Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0037 : TaahhütlerSayfasi")
     public void TS0037_TaahhütlerSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -540,7 +540,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Çoklu Ürün Aileleri Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0038 : CokluUrunAileleriSayfasi")
     public void TS0038_CokluUrunAileleriSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -553,7 +553,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Kampanya Grupları Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0039 : KampanyaGruplariSayfasi")
     public void TS0039_KampanyaGruplariSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -566,7 +566,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "Üst Menüden Ürün/Promocode Sayfası Açılır. ")
+    @Test(enabled = true, description = "TS0040 : PromocodeSayfasi")
     public void TS0040_PromocodeSayfasi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -579,7 +579,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0041_fbtPriorityGroupManagement")
+    @Test(enabled = true, description = "TS0041 : fbtPriorityGroupManagement")
     public void TS0041_fbtPriorityGroupManagement() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -600,7 +600,7 @@ public class MayaSmokeTests extends BaseTest {
                 .sayfaKontrolu();
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0043_BIYonetim")
+    @Test(enabled = true, description = "TS0043 : BIYonetim")
     public void TS0043_BIYonetim() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -611,7 +611,7 @@ public class MayaSmokeTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0044_SMSEpostaSablon")
+    @Test(enabled = true, description = "TS0044 : SMSEpostaSablon")
     public void TS0044_SMSEpostaSablon() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
