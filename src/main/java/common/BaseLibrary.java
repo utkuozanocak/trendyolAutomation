@@ -894,18 +894,20 @@ public class BaseLibrary extends ElementsContainer {
     public String OBJECT_VALUE;
     private String sEnvironment = "";
 
-    public String GetUrl(String strapp, String strenv) {
+    public static String GetUrl(String strapp, String strenv,boolean isUse) {
+
         Connection connection;
         Statement statement;
         ResultSet rs;
+        String[] dataSet = new String[1];
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
-            rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and Environment='" + strenv + "'");
+            rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and Environment='" + strenv + "' and IsUse='" + isUse + "' ");
 
             while (rs.next()) {
 
-                URL_VALUE = rs.getNString("Url");
+                dataSet[0] = rs.getNString("Url");
             }
 //            connection.close();
         } catch (SQLException e) {
@@ -913,8 +915,10 @@ public class BaseLibrary extends ElementsContainer {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return URL_VALUE;
+        return dataSet[0];
     }
+
+
 
     public String GetObject(String strApp, String strObjectName, String strObjectType, String strPageName) {
         Connection connection;

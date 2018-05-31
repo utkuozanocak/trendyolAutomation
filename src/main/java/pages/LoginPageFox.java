@@ -1,7 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.*;
-import data.TestDataMaya;
+import data.TestDataFox;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -33,7 +33,7 @@ public class LoginPageFox extends MainPageFox {
 
     @Step("\"{username}\" kullanıcısı ile giriş yap")
     public LoginPageFox loginFox(String username, String password) {
-        Configuration.baseUrl = (System.getProperty("URLFOX") == null) ? TestDataMaya.foxURL : System.getProperty("URLFOX");
+        Configuration.baseUrl = (System.getProperty("URLFOX") == null) ? TestDataFox.foxURL : System.getProperty("URLFOX");
         open();
         TXT_USERNAMEFOX.sendKeys(username);
         TXT_PASSWORDFOX.sendKeys(password);
