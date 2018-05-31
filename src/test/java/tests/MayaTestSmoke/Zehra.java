@@ -6,6 +6,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.CustomerAssetPropPage;
 import pages.mayaFrames.EtkilesimlerFrame;
 import pages.ustMenuPagesMaya.*;
 
@@ -24,6 +25,7 @@ public class Zehra extends BaseTest {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        CustomerAssetPropPage ozelliklerPage= new CustomerAssetPropPage();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps
@@ -36,6 +38,8 @@ public class Zehra extends BaseTest {
                 .btnAraTikla()
                 .tablodanIlkUrunKontratDetayAc()
                 .tablodanKontratDetayHizOzelliklerAc("Aktif", "Mbps", "Özellikler");
+        ozelliklerPage
+                .SayfaKontrolu();
 
     }
 }
