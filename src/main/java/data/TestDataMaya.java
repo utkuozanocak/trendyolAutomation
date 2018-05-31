@@ -4,8 +4,8 @@ import common.BaseLibrary;
 
 public class TestDataMaya extends BaseLibrary {
 
-    public static final String mayaURL = "https://extprp.superonline.net/sol-crm-2.0/login.xhtml";
-    public static final String foxURL = "http://172.20.165.150/netflowsolprp/LoginForm.aspx";
+    //"https://extprp.superonline.net/sol-crm-2.0/login.xhtml";
+    public static final String mayaURL = GetUrl("MAYA","PRP",true);
     public static final String username = GetTestParameter("MayaLoginTest", "Username")[0];
     public static final String password = GetTestParameter("MayaLoginTest", "Password")[0];
     public static final String mainOrg = GetTestParameter("MayaLoginTest", "MainOrg")[0];
