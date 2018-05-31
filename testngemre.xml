@@ -5,9 +5,7 @@
 
     <test name="Emre Sencan Tests">
         <packages>
-            <package name="tests.FoxAdsl"/>
-            <package name="tests.MayaTestAdsl"/>
-            <package name="tests.MayaTestSmoke"/>
+            <package name="tests.FoxFiber"/>
         </packages>
     </test>
 
