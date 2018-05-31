@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import listeners.DriverEventListener;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -48,6 +49,7 @@ public class BaseTest extends BaseLibrary {
 
         System.setProperty("webdriver.chrome.driver","C:\\SeleniumDrivers\\chromedriver\\chromedriver.exe");
 
+//        Configuration.remote = "http://localhost:5555/wd/hub";
         Configuration.browser="chrome";
 
         Configuration.driverManagerEnabled = false;

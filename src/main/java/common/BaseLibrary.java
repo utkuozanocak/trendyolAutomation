@@ -894,7 +894,7 @@ public class BaseLibrary extends ElementsContainer {
     public String OBJECT_VALUE;
     private String sEnvironment = "";
 
-    public static String GetUrl(String strapp, String strenv,boolean isUse) {
+    public static String GetUrl(String strapp, boolean isUse) {
 
         Connection connection;
         Statement statement;
@@ -903,7 +903,7 @@ public class BaseLibrary extends ElementsContainer {
         try {
             connection = new DBConnection().connect();
             statement = connection.createStatement();
-            rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and Environment='" + strenv + "' and IsUse='" + isUse + "' ");
+            rs = statement.executeQuery("select Url from TBL_App where App='" + strapp + "' and IsUse='" + isUse + "' ");
 
             while (rs.next()) {
 
