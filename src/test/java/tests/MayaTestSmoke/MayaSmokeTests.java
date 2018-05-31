@@ -73,8 +73,8 @@ public class MayaSmokeTests extends BaseTest {
         customerPropertyPage
                 .musteriOzellikSayfasıAc()
                 .btnYeniOzellikTikla()
-                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı "+createRandomNumber(8))
-                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu "+createRandomNumber(8))
+                .txtOzellikAdiDoldur("Test Otomasyon Özellik Adı " + createRandomNumber(8))
+                .txtOzellikKoduDoldur("Test Otomasyon Özellik Kodu " + createRandomNumber(8))
                 .txtMinimumDegerDoldur("1")
                 .txtMaksimumDegerDoldur("10")
                 .btnKaydetTikla()
@@ -86,7 +86,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0004_KurumsalMusteriyeYeniAdresEkle() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-        AdresBilgileriPage adresBilgileriPage= new AdresBilgileriPage();
+        AdresBilgileriPage adresBilgileriPage = new AdresBilgileriPage();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
@@ -104,8 +104,8 @@ public class MayaSmokeTests extends BaseTest {
                 .blokEkle("Test Otomasyon")
                 .adresKaydet()
                 .confirmDialog().confirmEvetTikla();
-          //     adresBilgileriPage .adresOnay()
-          //   .adresEvetButonSec();
+        //     adresBilgileriPage .adresOnay()
+        //   .adresEvetButonSec();
     }
 
     @Severity(SeverityLevel.CRITICAL)
@@ -126,14 +126,15 @@ public class MayaSmokeTests extends BaseTest {
                 .güncelleSec()
                 .yeniNumaraGirisi()
                 .güncellePopUpOnaySec();
-           //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
+        //     .mesajKontrol("kodlu özellik seti başarıyla kaydedildi/güncellendi");
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0006 : Kurumsal Musteri Partner Oranı Girişi.")
     public void TS0006_KurumsalMusteriPartnerOraniGirisi() throws InterruptedException {
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
-        
+
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps
@@ -151,6 +152,7 @@ public class MayaSmokeTests extends BaseTest {
                 .btnPartnerKaydetTikla()
                 .mesajKontrol("Partner Oran Girişi İşlemi Tamamlanmıştır. Partner:");
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0007 : Musteri Siparisleri")
     public void TS0007_MusteriSiparisleri() throws InterruptedException {
@@ -163,6 +165,7 @@ public class MayaSmokeTests extends BaseTest {
                 .openMusteriSiparisleriPage()
                 .musteriSiparisleriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0008 : Musteri Etkileşimleri")
     public void TS0008_MusteriEtkilesimleri() throws InterruptedException {
@@ -175,6 +178,7 @@ public class MayaSmokeTests extends BaseTest {
                 .openMusteriEtkilesimleriPage()
                 .musteriEtkilesimleriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0009 : Musteri Bilgileri")
     public void TS0009_MusteriBilgileri() throws InterruptedException {
@@ -187,6 +191,7 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriBilgileriTikla()
                 .musteriBilgileriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0010 : Musteri Profil Bilgileri")
     public void TS0010_MusteriProfilBilgileri() throws InterruptedException {
@@ -199,6 +204,7 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriProfilBilgileriTikla()
                 .musteriProfilBilgileriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0011 : Musteri Ürünleri")
     public void TS0011_MusteriUrunleri() throws InterruptedException {
@@ -211,6 +217,7 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriUrunleriSayfasiAc()
                 .musteriUrunleriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0012 : Musteri Geçmişi")
     public void TS0012_MusteriGecmisi() throws InterruptedException {
@@ -223,6 +230,7 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriGecmisiTikla()
                 .musteriGecmisiSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0013 : Musteri İlişkileri")
     public void TS0013_MusteriIliskileri() throws InterruptedException {
@@ -235,6 +243,7 @@ public class MayaSmokeTests extends BaseTest {
                 .musteriIliskileriTikla()
                 .musteriIliskileriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0014 : Musteri Fatura Hesabı")
     public void TS0014_MusteriFaturaHesabi() throws InterruptedException {
@@ -247,6 +256,7 @@ public class MayaSmokeTests extends BaseTest {
                 .openPage()
                 .musteriFaturaHesabiSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0015 : Musteri Adres Bilgileri")
     public void TS0015_MusteriAdresBilgileri() throws InterruptedException {
@@ -320,7 +330,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0020_YeniKurumsalMusteriOlusturma() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        newCorporateCustomerPage yeniKurumsalMusteriPage= new newCorporateCustomerPage();
+        newCorporateCustomerPage yeniKurumsalMusteriPage = new newCorporateCustomerPage();
 
         yeniKurumsalMusteriPage
                 .openPage()
@@ -332,7 +342,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0021_YeniToptanlMusteriOlusturma() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        newToptanCustomerPage yeniToptanMusteriPage= new newToptanCustomerPage();
+        newToptanCustomerPage yeniToptanMusteriPage = new newToptanCustomerPage();
 
         yeniToptanMusteriPage
                 .openPage()
@@ -344,7 +354,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0022_XDGProfilYonetimi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        xdgProfileManagementPage xdgProfileManagement= new xdgProfileManagementPage();
+        xdgProfileManagementPage xdgProfileManagement = new xdgProfileManagementPage();
 
         xdgProfileManagement
                 .openPage()
@@ -356,7 +366,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0023_HDMProfilTanimlama() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        xdgProfileManagementPage hdmManagement= new xdgProfileManagementPage();
+        xdgProfileManagementPage hdmManagement = new xdgProfileManagementPage();
 
         hdmManagement
                 .openPage()
@@ -368,7 +378,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0024_YonetimEslestirmeler() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        bindingListPage eslestirmeler= new bindingListPage();
+        bindingListPage eslestirmeler = new bindingListPage();
         eslestirmeler
                 .openPage()
                 .sayfaKontrolu();
@@ -379,7 +389,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0025_YonetimKurallar() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        RulesPage kuralListesi= new RulesPage();
+        RulesPage kuralListesi = new RulesPage();
         kuralListesi
                 .openPage()
                 .sayfaKontrolu();
@@ -584,7 +594,7 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0041_fbtPriorityGroupManagement() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        FbtPriorityGroupManagementPage fbtOncelik= new FbtPriorityGroupManagementPage();
+        FbtPriorityGroupManagementPage fbtOncelik = new FbtPriorityGroupManagementPage();
         fbtOncelik
                 .openPage()
                 .sayfaKontrolu();
@@ -595,17 +605,18 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0042_SistemParametreleriYonetimi() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        systemParameterManagementPage systemParameterManagement= new systemParameterManagementPage();
+        systemParameterManagementPage systemParameterManagement = new systemParameterManagementPage();
         systemParameterManagement
                 .openPage()
                 .sayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0043 : BIYonetim")
     public void TS0043_BIYonetim() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        businessInteractionManagementPage businessInteractionManagement= new businessInteractionManagementPage();
+        businessInteractionManagementPage businessInteractionManagement = new businessInteractionManagementPage();
         businessInteractionManagement
                 .openPage()
                 .sayfaKontrolu();
@@ -616,11 +627,12 @@ public class MayaSmokeTests extends BaseTest {
     public void TS0044_SMSEpostaSablon() throws InterruptedException {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
-        SmsEmailTemplateManagementPage SmsEmailTemplateManagement= new SmsEmailTemplateManagementPage();
+        SmsEmailTemplateManagementPage SmsEmailTemplateManagement = new SmsEmailTemplateManagementPage();
         SmsEmailTemplateManagement
                 .openPage()
                 .sayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0045 : Etkileşimler")
     public void TS0045_Etkilesimler() throws InterruptedException {
@@ -641,13 +653,14 @@ public class MayaSmokeTests extends BaseTest {
         etkilesimlerFrame
                 .musteriEtkilesimleriSayfaKontrolu();
     }
+
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0046 : Kurumsal Müşteri Özellikler")
     public void TS0046_Ozellikler() throws InterruptedException {
 
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
-        CustomerAssetPropPage ozelliklerPage= new CustomerAssetPropPage();
+        CustomerAssetPropPage ozelliklerPage = new CustomerAssetPropPage();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
 
         mayaReusableSteps
@@ -664,4 +677,26 @@ public class MayaSmokeTests extends BaseTest {
                 .SayfaKontrolu();
 
     }
+
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0047 : Kurumsal Detay Bilgileri sayfası açılır.")
+    public void TS0047_KurumsalDetayBilgileri() throws InterruptedException {
+
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .musteriUrunleriSayfaKontrolu()
+                .tablodanKontratDetayHizIslemlerAc("Aktivasyon Sürecinde","ADSL / Superonline ADSL Bireysel Satış Tarife", "Detay Bilgiler")
+                .detayBilgilerSayfaKontrolu();
+
+    }
+
 }

@@ -25,6 +25,7 @@ public class CustomerAssetsPage extends MainPageMaya {
     private SelenideElement BTN_KAYDET = $(By.xpath(GetObject("MAYA", "BTN_KAYDET", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MSG = $(By.xpath(GetObject("MAYA", "LBL_MSG", "XPATH", "CustomerAssetsPage", "PRP")));
     private SelenideElement LBL_MUSTERIURUNLERI = $(By.xpath(GetObject("MAYA", "LBL_MUSTERIURUNLERI", "XPATH", "CustomerAssetsPage", "PRP")));
+    private SelenideElement LBL_KONTRATDETAYNUMARASI = $(By.xpath(GetObject("MAYA","LBL_KONTRATDETAYNUMARASI","XPATH","CustomerAssetsPage","PRP")));
 
     @Step("Müşteri Ürünleri sayfasının geldiği görülür.")
     public CustomerAssetsPage musteriUrunleriSayfaKontrolu() {
@@ -120,5 +121,10 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
+    @Step("Detay Bilgiler sayfasının açıldığı görülür.")
+    public CustomerAssetsPage detayBilgilerSayfaKontrolu() {
+        Assert.assertEquals(LBL_KONTRATDETAYNUMARASI.isDisplayed(),true,"Sayfa açılmalı.");
+        return this;
+    }
 
 }
