@@ -7,6 +7,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.CustomerAssetPropPage;
 import pages.mayaFrames.EtkilesimlerFrame;
 import pages.ustMenuPagesMaya.*;
 
@@ -639,5 +640,28 @@ public class MayaSmokeTests extends BaseTest {
                 .btnEtkilesimlerTikla();
         etkilesimlerFrame
                 .musteriEtkilesimleriSayfaKontrolu();
+    }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0046 : Kurumsal Müşteri Özellikler")
+    public void TS0046_Ozellikler() throws InterruptedException {
+
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        CustomerAssetPropPage ozelliklerPage= new CustomerAssetPropPage();
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunKontratDetayAc()
+                .tablodanKontratDetayHizOzelliklerAc("Aktif", "Mbps", "Özellikler");
+        ozelliklerPage
+                .SayfaKontrolu();
+
     }
 }
