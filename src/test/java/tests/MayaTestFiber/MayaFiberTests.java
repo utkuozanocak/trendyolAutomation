@@ -251,8 +251,8 @@ public class MayaFiberTests extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0055 : Kurumsal Fiber Devir Siparişi girilir.")
-    public void TS0055_KurumsalFiberDevirSiparisGirisi() throws InterruptedException {
+    @Test(enabled = true, description = "TS0008 : Kurumsal Fiber Devir Siparişi girilir.")
+    public void TS0008_KurumsalFiberDevirSiparisGirisi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
@@ -279,9 +279,9 @@ public class MayaFiberTests extends BaseTest {
                 .devirBaslat();
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Test(enabled = true, description = "TS0061 : Kurumsal Fiber Tahsisli Ses Siparişi girilir.")
+    @Test(enabled = true, description = "TS0009 : Kurumsal Fiber Tahsisli Ses Siparişi girilir.")
 
-    public void TS0061_KurumsalFiberTahsisliSesSiparisi() throws InterruptedException {
+    public void TS0009_KurumsalFiberTahsisliSesSiparisi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
