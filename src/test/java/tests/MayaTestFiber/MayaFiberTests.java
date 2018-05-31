@@ -281,7 +281,7 @@ public class MayaFiberTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(enabled = true, description = "TS0009 : Kurumsal Fiber Tahsisli Ses Siparişi girilir.")
 
-    public void TS0009_KurumsalFiberTahsisliSesSiparisi() throws InterruptedException {
+    public void TS0009_KurumsalFiberTahsisliNonCografikSesSiparisi() throws InterruptedException {
         MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         customerNo = mayaReusableSteps.customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
