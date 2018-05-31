@@ -83,13 +83,17 @@ public class CustomerAssetsPage extends MainPageMaya {
         return this;
     }
 
+    @Step("Ürün tablosundan aktif olan ilk kontrat ürün detayı özellikler açılır.")
+    public CustomerAssetsPage tablodanKontratDetayHizOzelliklerAc(String statu, String urun, String secim) {
+        tabloComboBoxSec(TBL_PRODUCTLIST, statu, urun, secim);
+        return this;
+    }
 
     @Step("Etkileşimler Butonu Tıklanır")
     public CustomerAssetsPage btnEtkilesimlerTikla() {
         BTN_ETKILESIMLER.click();
         return this;
     }
-
 
     @Step("Partner Oran Girişi Butonu Tıklanır")
     public CustomerAssetsPage btnPartnerOranGirisiTikla() {
