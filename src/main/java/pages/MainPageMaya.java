@@ -32,7 +32,7 @@ public class MainPageMaya extends BaseLibrary {
         String groupName = ((MayaUstMenuData.UstMenuDataInterface) menu).getGroupName();
         String menuName = ((MayaUstMenuData.UstMenuDataInterface) menu).getName();
         Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + groupName + "']")).should(Condition.visible).click();
-        Selenide.$(By.xpath("//div[@class='headerMenu']//a[.='" + menuName + "']")).should(Condition.visible).click();
+        Selenide.$(By.xpath("//div[@class='headerMenu']//li[contains(@class,'ui-menuitem-active')]//a[.='" + menuName + "']")).should(Condition.visible).click();
     }
 
     public void urunSecimMenu(String kategori, String... altKategori) {

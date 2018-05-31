@@ -453,7 +453,7 @@ public class MayaSmokeTests extends BaseTest {
 
         loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
         ProductPropertiesPage productPropertiesPage = new ProductPropertiesPage();
-        Thread.sleep(2000);
+
         //Ürün/Özellikler sayfası
         productPropertiesPage.openPage();
         productPropertiesPage.sayfaKontrolu();
