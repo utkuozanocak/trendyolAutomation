@@ -620,4 +620,24 @@ public class MayaSmokeTests extends BaseTest {
                 .openPage()
                 .sayfaKontrolu();
     }
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(enabled = true, description = "TS0045 : Etkileşimler")
+    public void TS0045_Etkilesimler() throws InterruptedException {
+        MayaReusableSteps mayaReusableSteps = new MayaReusableSteps();
+        CustomerAssetsPage customerAssetsPage = new CustomerAssetsPage();
+        EtkilesimlerFrame etkilesimlerFrame = new EtkilesimlerFrame();
+        loginMaya(TestDataMaya.username, TestDataMaya.password, TestDataMaya.mainOrg, TestDataMaya.subOrg);
+        mayaReusableSteps
+                .customerSearch(TestDataMaya.unvan, TestDataMaya.statu, TestDataMaya.segment);
+        customerAssetsPage
+                .musteriUrunleriSayfasiAc()
+                .btnAramaTikla()
+                .statuSec("Aktif")
+                .urunSec(TestDataMaya.fiberKampanya)
+                .btnAraTikla()
+                .tablodanIlkUrunIslemlerTikla()
+                .btnEtkilesimlerTikla();
+        etkilesimlerFrame
+                .musteriEtkilesimleriSayfaKontrolu();
+    }
 }
