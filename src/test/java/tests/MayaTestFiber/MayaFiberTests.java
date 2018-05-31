@@ -308,11 +308,13 @@ public class MayaFiberTests extends BaseTest {
                 .siparisEkle();
         orderCapturePage
                 .tabloSiparisDetayAc()
-                .tabloKKOOzellikSec("Konuştuğun Kadar Öde ICC_Res/Soho")
+                .tabloKKOOzellikSec("Konuştuğun_Kadar_Öde_Res/Soho ")
                 .erisimNumarasiEkle()
-                .erisimNumarasiAra();
-
-        //        .siparişOluştur();
+                .erisimNumarasiAra()
+                .tablodanIlkNumaraSec()
+                .erisimNoReverveEt()
+                .numaraRezervasyonKaydet()
+                .siparisOlusturTikla();
 
   //      int testId = getTestId("TS0061_KurumsalFiberTahsisliSesSiparisi")[0];
         //     insertCustomer(Integer.parseInt(customerNo),true,testId,getDateTime().toString());

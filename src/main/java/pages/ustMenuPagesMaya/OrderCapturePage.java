@@ -28,6 +28,8 @@ public class OrderCapturePage extends MainPageMaya {
     private SelenideElement BTN_ERISIMNOEKLE = $(By.xpath(GetObject("MAYA","BTN_ERISIMNOEKLE","XPATH","MayaOrderCapturePage","PRP")));
     private SelenideElement BTN_NUMARAARA = $(By.xpath(GetObject("MAYA","BTN_NUMARAARA","XPATH","MayaOrderCapturePage","PRP")));
     ElementsCollection TBL_ERISIMNO = $$(GetObject("MAYA","TBL_ERISIMNO","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
+    private SelenideElement BTN_NUMARAREZERVEET = $(By.xpath(GetObject("MAYA","BTN_NUMARAREZERVEET","XPATH","MayaOrderCapturePage","PRP")));
+    private SelenideElement BTN_SESKAYDET = $(By.xpath(GetObject("MAYA","BTN_SESKAYDET","XPATH","MayaOrderCapturePage","PRP")));
 
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturSayfaAc() {
@@ -71,7 +73,17 @@ public class OrderCapturePage extends MainPageMaya {
         return this;
     }
 
+    @Step("Erişim Numarası Reverve Et butonuna tıklanır.")
+    public OrderCapturePage erisimNoReverveEt() {
+        BTN_NUMARAREZERVEET.click();
+        return this;
+    }
 
+    @Step("Özellik ekleme ekranı kaydedilir.")
+    public OrderCapturePage numaraRezervasyonKaydet() {
+        BTN_SESKAYDET.click();
+        return this;
+    }
 
     @Step("Tablodan ilk numarayı seçer.")
     public OrderCapturePage tablodanIlkNumaraSec() {
@@ -243,6 +255,7 @@ public class OrderCapturePage extends MainPageMaya {
             return this;
         }
     }
+
 
 
     public class ADSL extends MainPageMaya {
