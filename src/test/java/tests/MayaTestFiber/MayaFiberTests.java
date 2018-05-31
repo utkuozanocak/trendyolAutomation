@@ -308,7 +308,9 @@ public class MayaFiberTests extends BaseTest {
                 .siparisEkle();
         orderCapturePage
                 .tabloSiparisDetayAc()
-                .tabloKKOOzellikSec("Konuştuğun Kadar Öde ICC_Res/Soho");
+                .tabloKKOOzellikSec("Konuştuğun Kadar Öde ICC_Res/Soho")
+                .erisimNumarasiEkle()
+                .erisimNumarasiAra();
 
         //        .siparişOluştur();
 

@@ -25,6 +25,9 @@ public class OrderCapturePage extends MainPageMaya {
     private SelenideElement BTN_YENIKAYIT_XPATH = $(By.xpath(GetObject("MAYA", "BTN_YENIKAYIT_XPATH", "XPATH", "MayaCustomerAddressManagementPage", "PRP")));
     private SelenideElement BTN_SIPARISIOLUSTUR_XPATH = $(By.xpath(GetObject("MAYA", "BTN_SIPARISIOLUSTUR_XPATH", "XPATH", "MayaOrderCapturePage", "PRP")));
     ElementsCollection TBL_SECILENURUNLER_CSS = $$(GetObject("MAYA", "TBL_SECILENURUNLER_CSS", "CSS_SELECTOR", "CustomerAssetsPage", "PRP"));
+    private SelenideElement BTN_ERISIMNOEKLE = $(By.xpath(GetObject("MAYA","BTN_ERISIMNOEKLE","XPATH","MayaOrderCapturePage","PRP")));
+    private SelenideElement BTN_NUMARAARA = $(By.xpath(GetObject("MAYA","BTN_NUMARAARA","XPATH","MayaOrderCapturePage","PRP")));
+    ElementsCollection TBL_ERISIMNO = $$(GetObject("MAYA","TBL_ERISIMNO","CSS_SELECTOR","MayaOrderCapturePage","PRP"));
 
     @Step("Siparis Oluştur sayfası açılır.")
     public OrderCapturePage siparisOlusturSayfaAc() {
@@ -53,6 +56,26 @@ public class OrderCapturePage extends MainPageMaya {
     @Step("Siparis Detay Aç")
     public OrderCapturePage tabloKKOOzellikSec(String urun) {
         TBL_SECILENURUNLER_CSS.filterBy(text(urun)).first().$("[id$='ozellikBtnID']").click();
+        return this;
+    }
+
+    @Step("Erişim Numarası Ekle butonuna tıklanır.")
+    public OrderCapturePage erisimNumarasiEkle() {
+        BTN_ERISIMNOEKLE.click();
+        return this;
+    }
+
+    @Step("Erişim Numarası Ara butonuna tıklanır.")
+    public OrderCapturePage erisimNumarasiAra() {
+        BTN_NUMARAARA.click();
+        return this;
+    }
+
+
+
+    @Step("Tablodan ilk numarayı seçer.")
+    public OrderCapturePage tablodanIlkNumaraSec() {
+        TBL_ERISIMNO.first().click();
         return this;
     }
 
