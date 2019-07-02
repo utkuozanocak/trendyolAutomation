@@ -4,16 +4,11 @@ import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.annotations.ITestAnnotation;
-import org.testng.annotations.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-/**
- * Yazan: Ilyas Bayraktar
- * Tarih: 7.01.2018
- * Açıklama:
- */
+
 public class RerunFailedTests implements IRetryAnalyzer, IAnnotationTransformer {
 
     int counter = 0;

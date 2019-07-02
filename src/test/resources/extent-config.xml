@@ -19,7 +19,7 @@
         <documentTitle>ExtentReports 2.0</documentTitle>
 
         <!-- report name - displayed at top-nav -->
-        <reportName>Turksat</reportName>
+        <reportName>trendyol</reportName>
 
         <!-- report headline - displayed at top-nav, after reportHeadline -->
         <reportHeadline>Automation Report</reportHeadline>

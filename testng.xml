@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<!--<suite thread-count="1" name="Test Suite" parallel="none" verbose="1">-->
-<!--<suite thread-count="5" name="Test Suite" parallel="classes" verbose="1">-->
-
-
-<suite thread-count="3" name="SolCrmTest" parallel="classes" verbose="1">
-    <!--<method-selectors>
-        <method-selector>
-            <selector-class name="tests.BirimIcerikSablonu.BirimIcerikSablonuTest">
-                <include name="">
-
-                </include>
-            </selector-class>
-        </method-selector>
-    </method-selectors>-->
-
-    <!--thread-count="10"-->
-    <!--<listeners>-->
-    <!--<listener class-name="listeners.TestListener"></listener>-->
-    <!--</listeners>-->
-    <!--<suite-files>-->
-    <!--<suite-file path="testSuite1.xml"></suite-file>-->
-    <!--<suite-file path="testSuite2.xml"></suite-file>-->
-    <!--</suite-files>-->
-    <test name="SolCrmTest">
+<suite thread-count="1" name="TrendyolTest" parallel="classes" verbose="1">
+    <test name="TrendyolTest">
         <packages>
-            <package name="tests.FoxAdsl"/>
-            <package name="tests.FoxFiber"/>
-            <package name="tests.MayaTestAdsl"/>
-            <package name="tests.MayaTestFiber"/>
-            <package name="tests.MayaTestSmoke"/>
+            <package name="tests.TrendyolTests"/>
         </packages>
     </test>
-    <!--<test name="TuzelKisiYonetimiTest">
-        <classes>
-            <class name="tests.TuzelKisiYonetimi.TuzelKisiYonetimiTest"/>
-        </classes>
-    </test>-->
-    <!--<test name="All">
-        <packages>
-            <package name="tests.*"/>
-        </packages>
-    </test>-->
 </suite>

@@ -11,11 +11,6 @@ import java.util.Properties;
 import static java.lang.System.getenv;
 import static java.util.Optional.ofNullable;
 
-/**
- * Yazan: Ilyas Bayraktar
- * Tarih: 9.01.2018
- * Açıklama:
- */
 public class AllureEnvironmentUtils {
 
     public static void create() {

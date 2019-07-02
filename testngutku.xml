@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" name="Utku Suite" parallel="classes" verbose="1">
-    <test name="Utku Tests">
-        <packages>
-            <package name="tests.MayaTestSmoke"/>
-        </packages>
-    </test>
-</suite>
